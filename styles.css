@@ -171,12 +171,84 @@ a:focus-visible {
   object-position: 50% 48%;
 }
 
+.portfolio {
+  background: var(--paper);
+}
+
+.portfolio__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.case-card {
+  min-width: 0;
+}
+
+.case-card__preview {
+  width: 100%;
+  aspect-ratio: 40 / 43;
+  overflow: hidden;
+  background: #e1e1e1;
+}
+
+.case-card--pending .case-card__preview {
+  background: #f4f4f4;
+}
+
+.case-card__preview img,
+.case-card__preview video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.case-card__meta {
+  min-height: 9rem;
+  padding-top: var(--page-space);
+}
+
+.case-card:first-child .case-card__meta {
+  padding-left: var(--page-space);
+}
+
+.case-card__title,
+.case-card__description,
+.case-card__year {
+  margin: 0;
+  font-size: 0.933333rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.case-card__title {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.12em;
+}
+
+.case-card__description {
+  margin-top: 0.333333rem;
+  color: var(--muted);
+}
+
+.case-card__year {
+  margin-top: 2.066667rem;
+  color: var(--muted);
+}
+
+.case-card--pending .case-card__title {
+  color: var(--muted);
+  text-decoration: none;
+}
+
 .mobile-note {
   display: none;
 }
 
 @media (max-device-width: 1023px) {
-  .hero {
+  .hero,
+  .portfolio {
     display: none;
   }
 
