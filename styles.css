@@ -1,8 +1,8 @@
 @font-face {
   font-family: "Singel Portfolio";
-  src: url("./assets/singel-semibold.ttf") format("truetype");
+  src: url("./assets/singel-bold.ttf") format("truetype");
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
   font-display: swap;
 }
 
@@ -19,9 +19,9 @@
   --ink: #101010;
   --paper: #ffffff;
   --muted: #77756f;
-  --title-size: 2.666667rem;
+  --title-size: 2.857143rem;
   --text-size: 1rem;
-  --page-space: 2.133333rem;
+  --page-space: 1.428571rem;
 }
 
 * {
@@ -35,12 +35,24 @@ body {
 }
 
 html {
-  font-size: 15px;
+  font-size: 14px;
 }
 
-@media (min-width: 1024px) {
+@media (min-device-width: 1440px) {
   html {
-    font-size: clamp(12.8px, 1.25vw, 24px);
+    font-size: 16.8px;
+  }
+}
+
+@media (min-device-width: 1600px) {
+  html {
+    font-size: 18.666667px;
+  }
+}
+
+@media (min-device-width: 1920px) {
+  html {
+    font-size: 22.4px;
   }
 }
 
@@ -70,27 +82,27 @@ body {
 
 .hero__top {
   display: grid;
-  gap: clamp(42px, 4.1667vw, 80px);
+  gap: 3.571429rem;
 }
 
 .hero__name {
   margin: 0;
   font-family: "Singel Portfolio", sans-serif;
   font-size: var(--title-size);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 0.95;
 }
 
 .bio {
   display: grid;
-  gap: clamp(24px, 2.0833vw, 40px);
-  max-width: clamp(440px, 39vw, 750px);
+  gap: 1.785714rem;
+  max-width: 33.428571rem;
 }
 
 .bio__section {
   display: grid;
-  gap: clamp(6px, 0.5556vw, 11px);
+  gap: 0.47619rem;
 }
 
 .hero__name,
@@ -163,7 +175,7 @@ a:focus-visible {
   display: none;
 }
 
-@media (max-width: 1023px) {
+@media (max-device-width: 1023px) {
   .hero {
     display: none;
   }
@@ -203,10 +215,10 @@ a:focus-visible {
   }
 
   .hero__top {
-    gap: 28px;
+    gap: 2rem;
   }
 
   .bio {
-    gap: 18px;
+    gap: 1.285714rem;
   }
 }
