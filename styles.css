@@ -64,6 +64,40 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+html.is-loading,
+html.is-loading body {
+  overflow: hidden;
+}
+
+.site-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  place-items: center;
+  background: var(--paper);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 180ms ease, visibility 180ms ease;
+}
+
+html.is-loading .site-loader,
+html.is-ready .site-loader {
+  display: grid;
+}
+
+html.is-ready .site-loader {
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.site-loader__text {
+  color: var(--muted);
+  font-size: var(--text-size);
+  line-height: 1.4;
+}
+
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -292,5 +326,11 @@ a:focus-visible {
 
   .bio {
     gap: 1.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-loader {
+    transition: none;
   }
 }

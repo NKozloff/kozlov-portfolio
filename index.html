@@ -8,9 +8,19 @@
       content="Козлов Никита — продуктовый дизайнер. Портфолио и опыт работы."
     />
     <title>Козлов Никита — продуктовый дизайнер</title>
-    <link rel="stylesheet" href="./styles.css?v=12" />
+    <link rel="preload" as="image" href="./assets/nikita-kozlov.jpg" />
+    <link rel="preload" as="image" href="./assets/case-core.png" />
+    <link rel="preload" as="image" href="./assets/case-echo.png" />
+    <script>
+      document.documentElement.classList.add("is-loading");
+    </script>
+    <link rel="stylesheet" href="./styles.css?v=13" />
   </head>
   <body>
+    <div class="site-loader" role="status" aria-live="polite">
+      <span class="site-loader__text">Загрузка</span>
+    </div>
+
     <main class="hero" aria-label="Кратко о Никите Козлове">
       <section class="hero__info">
         <div class="hero__top">
@@ -55,6 +65,9 @@
           alt="Никита Козлов"
           width="1728"
           height="2048"
+          data-critical-image
+          fetchpriority="high"
+          decoding="async"
         />
       </figure>
     </main>
@@ -68,7 +81,7 @@
               alt="Обложка кейса CORE"
               width="1234"
               height="1376"
-              loading="lazy"
+              data-critical-image
               decoding="async"
             />
           </div>
@@ -86,7 +99,7 @@
               alt="Обложка кейса ECHO"
               width="1234"
               height="1376"
-              loading="lazy"
+              data-critical-image
               decoding="async"
             />
           </div>
@@ -118,5 +131,43 @@
         <p>Откройте сайт на компьютере — так макеты сохранят все детали.</p>
       </div>
     </main>
+
+    <script>
+      (() => {
+        const root = document.documentElement;
+        const images = [...document.querySelectorAll("[data-critical-image]")];
+
+        const waitForImage = (image) =>
+          new Promise((resolve) => {
+            const finish = () => {
+              if (image.naturalWidth > 0 && typeof image.decode === "function") {
+                image.decode().catch(() => {}).finally(resolve);
+                return;
+              }
+
+              resolve();
+            };
+
+            if (image.complete) {
+              finish();
+              return;
+            }
+
+            image.addEventListener("load", finish, { once: true });
+            image.addEventListener("error", resolve, { once: true });
+          });
+
+        let revealed = false;
+        const revealSite = () => {
+          if (revealed) return;
+          revealed = true;
+          root.classList.add("is-ready");
+          root.classList.remove("is-loading");
+        };
+
+        Promise.all(images.map(waitForImage)).then(revealSite);
+        window.setTimeout(revealSite, 12000);
+      })();
+    </script>
   </body>
 </html>
