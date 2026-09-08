@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Козлов Никита — продуктовый дизайнер. Портфолио и опыт работы."
+    />
+    <title>Козлов Никита — продуктовый дизайнер</title>
+    <link rel="preload" as="image" href="assets/nikita-kozlov.jpg" />
+    <link rel="preload" as="image" href="assets/case-core.png" />
+    <link rel="preload" as="image" href="assets/case-echo.png" />
+    <script>
+      document.documentElement.classList.add("is-loading");
+    </script>
+    <link rel="stylesheet" href="styles.css?v=17" />
+  </head>
+  <body>
+    <div class="site-loader" role="status" aria-live="polite">
+      <span class="site-loader__text">Загрузка</span>
+    </div>
+
+    <main class="hero" aria-label="Кратко о Никите Козлове">
+      <section class="hero__info">
+        <div class="hero__top">
+          <h1 class="hero__name">Козлов Никита</h1>
+
+          <div class="bio">
+            <section class="bio__section">
+              <p class="bio__label">Кратко</p>
+              <p class="bio__lead">
+                4 года в продуктовой разработке, 30+ проектов и широкая UX/UI-экспертиза.
+              </p>
+            </section>
+
+            <section class="bio__section">
+              <p class="bio__label">Опыт</p>
+              <p class="bio__lead">
+                2 года в
+                <a href="https://arcsinus.ru/" target="_blank" rel="noreferrer">arcsinus</a>
+                + 2 года в
+                <a href="https://articul.ru/" target="_blank" rel="noreferrer">articul.</a><br />
+                Много приложений и веб-проектов. Много дискавери.<br />
+                Работал с InDrive, КХЛ, ВТБ, Роял Канин, ВШЭ.
+              </p>
+            </section>
+
+            <section class="bio__section">
+              <p class="bio__label">Связь</p>
+              <p class="bio__contacts">
+                <span>Телега</span>, <span>ВК</span>, <span>gmail</span>, <span>hh.ru</span>,
+                <a href="tel:+79819803854">+7&nbsp;(981)&nbsp;980-38-54</a>
+              </p>
+            </section>
+          </div>
+        </div>
+
+        <p class="hero__promise">Не обещаю знать всё, но обещаю разобраться</p>
+      </section>
+
+      <figure class="hero__portrait">
+        <img
+          src="assets/nikita-kozlov.jpg"
+          alt="Никита Козлов"
+          width="1728"
+          height="2048"
+          data-critical-image
+          fetchpriority="high"
+          decoding="async"
+        />
+      </figure>
+    </main>
+
+    <section class="portfolio" id="projects" aria-label="Проекты">
+      <div class="portfolio__grid">
+        <article class="case-card">
+          <a class="case-card__link" href="core/" aria-label="Открыть кейс CORE">
+            <div class="case-card__preview">
+              <img
+                src="assets/case-core.png"
+                alt="Обложка кейса CORE"
+                width="1234"
+                height="1376"
+                data-critical-image
+                decoding="async"
+              />
+            </div>
+            <div class="case-card__meta">
+              <p class="case-card__title">CORE</p>
+              <p class="case-card__description">Мессенджер без пользователя</p>
+              <p class="case-card__year">2026</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="case-card">
+          <div class="case-card__preview">
+            <img
+              src="assets/case-echo.png"
+              alt="Обложка кейса ECHO"
+              width="1234"
+              height="1376"
+              data-critical-image
+              decoding="async"
+            />
+          </div>
+          <div class="case-card__meta">
+            <p class="case-card__title">ECHO</p>
+            <p class="case-card__description">Платформа встречи бизнеса и блогеров</p>
+            <p class="case-card__year">2026</p>
+          </div>
+        </article>
+
+        <article class="case-card case-card--pending">
+          <div
+            class="case-card__preview"
+            role="img"
+            aria-label="Изображение кейса LUMI появится позже"
+          ></div>
+          <div class="case-card__meta">
+            <p class="case-card__title">LUMI</p>
+            <p class="case-card__description">В разработке</p>
+            <p class="case-card__year">2026</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <main class="mobile-note">
+      <div class="mobile-note__content">
+        <h1>Проекты лучше смотреть на большом экране</h1>
+        <p>Откройте сайт на компьютере — так макеты сохранят все детали.</p>
+      </div>
+    </main>
+
+    <script>
+      (() => {
+        const root = document.documentElement;
+        const images = [...document.querySelectorAll("[data-critical-image]")];
+
+        const waitForImage = (image) =>
+          new Promise((resolve) => {
+            const finish = () => {
+              if (image.naturalWidth > 0 && typeof image.decode === "function") {
+                image.decode().catch(() => {}).finally(resolve);
+                return;
+              }
+
+              resolve();
+            };
+
+            if (image.complete) {
+              finish();
+              return;
+            }
+
+            image.addEventListener("load", finish, { once: true });
+            image.addEventListener("error", resolve, { once: true });
+          });
+
+        let revealed = false;
+        const revealSite = () => {
+          if (revealed) return;
+          revealed = true;
+          root.classList.add("is-ready");
+          root.classList.remove("is-loading");
+        };
+
+        Promise.all(images.map(waitForImage)).then(revealSite);
+        window.setTimeout(revealSite, 12000);
+      })();
+    </script>
+  </body>
+</html>
