@@ -434,7 +434,7 @@ a:focus-visible {
 }
 
 .case-body {
-  background: var(--paper);
+  background: #f4f4f4;
 }
 
 .case-section {
@@ -530,8 +530,8 @@ a:focus-visible {
 .case-highlight {
   width: 100%;
   margin: 3.333333rem 0 0;
-  padding: 1.333333rem;
-  background: #f4f0d8;
+  padding: 0;
+  background: #fffdd8;
 }
 
 .case-table-wrap {
