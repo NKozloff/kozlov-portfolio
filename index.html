@@ -14,7 +14,7 @@
     <script>
       document.documentElement.classList.add("is-loading");
     </script>
-    <link rel="stylesheet" href="./styles.css?v=13" />
+    <link rel="stylesheet" href="./styles.css?v=14" />
   </head>
   <body>
     <div class="site-loader" role="status" aria-live="polite">
@@ -72,24 +72,26 @@
       </figure>
     </main>
 
-    <section class="portfolio" aria-label="Проекты">
+    <section class="portfolio" id="projects" aria-label="Проекты">
       <div class="portfolio__grid">
         <article class="case-card">
-          <div class="case-card__preview">
-            <img
-              src="./assets/case-core.png"
-              alt="Обложка кейса CORE"
-              width="1234"
-              height="1376"
-              data-critical-image
-              decoding="async"
-            />
-          </div>
-          <div class="case-card__meta">
-            <p class="case-card__title">CORE</p>
-            <p class="case-card__description">Мессенджер без пользователя</p>
-            <p class="case-card__year">2026</p>
-          </div>
+          <a class="case-card__link" href="./core/" aria-label="Открыть кейс CORE">
+            <div class="case-card__preview">
+              <img
+                src="./assets/case-core.png"
+                alt="Обложка кейса CORE"
+                width="1234"
+                height="1376"
+                data-critical-image
+                decoding="async"
+              />
+            </div>
+            <div class="case-card__meta">
+              <p class="case-card__title">CORE</p>
+              <p class="case-card__description">Мессенджер без пользователя</p>
+              <p class="case-card__year">2026</p>
+            </div>
+          </a>
         </article>
 
         <article class="case-card">
