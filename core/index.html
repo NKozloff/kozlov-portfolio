@@ -8,7 +8,8 @@
       content="CORE — закрытый мессенджер для приватной коммуникации. Кейс продуктового дизайнера Никиты Козлова."
     />
     <title>CORE — мессенджер без пользователя</title>
-    <link rel="stylesheet" href="../styles.css?v=14" />
+    <link rel="preload" as="image" href="../assets/case-core.png" />
+    <link rel="stylesheet" href="../styles.css?v=15" />
   </head>
   <body class="core-page">
     <main class="core-intro" id="intro">
@@ -44,12 +45,23 @@
         </div>
       </section>
 
-      <div class="core-intro__media" role="img" aria-label="Обложка кейса появится здесь">
-        <a class="core-close" href="../#projects" aria-label="Закрыть кейс">×</a>
+      <div class="core-intro__media">
+        <img
+          src="../assets/case-core.png"
+          alt="Обложка кейса CORE"
+          width="1234"
+          height="1376"
+          fetchpriority="high"
+          decoding="async"
+        />
       </div>
     </main>
 
-    <nav class="core-nav" aria-label="Разделы кейса">
+    <a class="core-close" href="../#projects" aria-label="Закрыть кейс">×</a>
+
+    <section class="core-next-block" aria-hidden="true"></section>
+
+    <nav class="core-nav" aria-label="Разделы кейса" aria-hidden="true" inert>
       <ul class="core-nav__list">
         <li><a class="core-nav__link" href="#intro" aria-current="location">Вводная</a></li>
         <li><a class="core-nav__link" href="#discovery">Дискавери</a></li>
@@ -67,5 +79,30 @@
         <p>Откройте сайт на компьютере — так макеты сохранят все детали.</p>
       </div>
     </main>
+
+    <script>
+      (() => {
+        const intro = document.querySelector(".core-intro");
+        const nav = document.querySelector(".core-nav");
+        let frameId = 0;
+
+        const updateNavigation = () => {
+          const isVisible = intro.getBoundingClientRect().bottom <= 0;
+          nav.classList.toggle("is-visible", isVisible);
+          nav.setAttribute("aria-hidden", String(!isVisible));
+          nav.inert = !isVisible;
+          frameId = 0;
+        };
+
+        const scheduleUpdate = () => {
+          if (frameId) return;
+          frameId = window.requestAnimationFrame(updateNavigation);
+        };
+
+        window.addEventListener("scroll", scheduleUpdate, { passive: true });
+        window.addEventListener("resize", scheduleUpdate);
+        updateNavigation();
+      })();
+    </script>
   </body>
 </html>
