@@ -360,20 +360,19 @@ a:focus-visible {
   width: 3rem;
   height: 3rem;
   place-items: center;
+  box-sizing: border-box;
+  border: 1px solid #000;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.68);
-  color: #858585;
-  font-family: Arial, sans-serif;
-  font-size: 2.266667rem;
-  font-weight: 300;
-  line-height: 1;
+  background: transparent;
   text-decoration: none;
+  cursor: pointer;
+  transition: none;
 }
 
-.core-close:hover,
-.core-close:focus-visible {
-  background: rgba(255, 255, 255, 0.9);
-  text-decoration: none;
+.core-close img {
+  display: block;
+  width: 24px;
+  height: 24px;
 }
 
 .core-close:focus-visible {
@@ -435,10 +434,11 @@ a:focus-visible {
 
 .case-body {
   background: #f4f4f4;
+  font-family: "Arial Portfolio", Arial, sans-serif;
 }
 
 .case-section {
-  width: min(80rem, 100%);
+  width: 100%;
   margin: 0 auto;
   padding: 8rem var(--page-space) 0;
   scroll-margin-top: 2.533333rem;
@@ -472,7 +472,7 @@ a:focus-visible {
   max-width: 58rem;
   margin: 0;
   font-family: "Singel Portfolio", sans-serif;
-  font-size: 3.2rem;
+  font-size: 2.25rem;
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 0.98;
@@ -484,7 +484,6 @@ a:focus-visible {
 
 .case-context-heading {
   max-width: 68rem;
-  font-size: 2.4rem;
   line-height: 1.03;
 }
 
@@ -533,14 +532,14 @@ a:focus-visible {
 
 .case-highlight {
   width: 100%;
-  margin: 32px 0 0;
+  margin: 16px 0 0;
   padding: 0;
   background: #fffdd8;
 }
 
 .case-table-wrap {
   width: 100%;
-  margin-top: 32px;
+  margin-top: 16px;
   overflow: hidden;
 }
 
@@ -563,7 +562,7 @@ a:focus-visible {
 
 .case-table th {
   background: #e4e4e4;
-  color: var(--muted);
+  color: var(--ink);
   font-weight: 400;
 }
 
