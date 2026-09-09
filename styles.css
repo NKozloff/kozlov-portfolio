@@ -690,6 +690,17 @@ a:focus-visible {
   min-height: 32rem;
 }
 
+.core-page.typography-only .core-intro__media {
+  background: #ffffff;
+}
+
+.core-page.typography-only .core-intro__media > img,
+.core-page.typography-only .case-body .media-grid,
+.core-page.typography-only .case-body .media-placeholder,
+.core-page.typography-only .case-body figcaption {
+  display: none;
+}
+
 .case-end {
   height: 6rem;
   scroll-margin-top: 2.533333rem;
