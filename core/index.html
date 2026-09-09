@@ -14,23 +14,17 @@
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
       <section class="core-intro__copy" aria-labelledby="core-title">
-        <h1 class="core-intro__title" id="core-title">Мессенджер без пользователя</h1>
+        <h1 class="core-intro__title" id="core-title">MVP приватного мессенджера</h1>
 
         <div class="core-intro__details">
           <section class="core-intro__group">
             <p class="core-intro__label">Задача</p>
-            <p class="core-intro__value">
-              Закрытый мессенджер для приватной коммуникации внутри ограниченного круга людей
-            </p>
+            <p class="core-intro__value">Мобильное приложение без персональных данных</p>
           </section>
 
           <section class="core-intro__group">
-            <p class="core-intro__label">Особенность</p>
-            <p class="core-intro__value">
-              Клиенту был нужен сервис без регистрации, телефона, имени и публичного профиля.
-              Приложение не должно было знать, кто общается, и не должно было иметь доступ к
-              сообщениям, документам и файлам
-            </p>
+            <p class="core-intro__label">Проект</p>
+            <p class="core-intro__value"><span class="core-intro__project-link">App Store</span></p>
           </section>
 
           <section class="core-intro__group">
@@ -62,8 +56,8 @@
     </a>
 
     <div class="case-body">
-      <section class="case-section" id="intro" data-case-section>
-        <p class="case-section__label">Вводная</p>
+      <section class="case-section" id="discovery" data-case-section>
+        <p class="case-section__label">Дискавери</p>
 
         <div class="case-block">
           <h2 class="case-heading">Что значит «без пользователя»?</h2>
@@ -139,57 +133,16 @@
             Поэтому готовый мессенджер мог быть референсом для отдельных механик, но не заменял сам продукт
           </p>
         </div>
-      </section>
-
-      <section class="case-section" id="discovery" data-case-section>
-        <p class="case-section__label">Дискавери</p>
-
         <div class="case-block">
-          <h2 class="case-heading">Почему не взять готовый мессенджер?</h2>
-          <p class="case-lead">Сначала я проверил, можно ли решить задачу готовым продуктом</p>
-
-          <div class="case-table-wrap">
-            <table class="case-table case-table--three">
-              <thead>
-                <tr>
-                  <th>Сервис</th>
-                  <th>Что было близко</th>
-                  <th>Почему не подошёл</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Signal</td>
-                  <td>Защита переписки</td>
-                  <td>Нужен номер телефона</td>
-                </tr>
-                <tr>
-                  <td>Session</td>
-                  <td>Без телефона и email</td>
-                  <td>Открытый продукт, не закрытый круг</td>
-                </tr>
-                <tr>
-                  <td>SimpleX</td>
-                  <td>Нет постоянного user ID</td>
-                  <td>Не подходил как кастомный закрытый сервис</td>
-                </tr>
-                <tr>
-                  <td>Briar</td>
-                  <td>QR-контакт после личной встречи</td>
-                  <td>Близко по логике, но не по задаче клиента</td>
-                </tr>
-                <tr>
-                  <td>Threema</td>
-                  <td>ID вместо обязательного телефона</td>
-                  <td>Всё равно внешний продукт со своей моделью</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <h2 class="case-heading">Ближайшим референсом оказался Briar</h2>
+          <p class="case-lead">
+            Сравнил privacy-first мессенджеры по ключевым требованиям — ни один не подходил целиком.
+            Ближе всего оказался Briar: контакт в нём можно добавить после личной встречи через QR —
+            без поиска по телефону или публичному профилю
+          </p>
 
           <p class="case-highlight">
-            Briar был ближе всех по логике. Но клиенту нужен был свой сервис: свой дизайн,
-            свой доступ, без посторонних пользователей.
+            Этот паттерн подтвердил главное: знакомство можно оставить офлайн, а в приложение переносить уже установленное доверие
           </p>
         </div>
 
@@ -934,8 +887,7 @@
 
     <nav class="core-nav" aria-label="Разделы кейса" aria-hidden="true" inert>
       <ul class="core-nav__list">
-        <li><a class="core-nav__link" href="#intro" aria-current="location">Вводная</a></li>
-        <li><a class="core-nav__link" href="#discovery">Дискавери</a></li>
+        <li><a class="core-nav__link" href="#discovery" aria-current="location">Дискавери</a></li>
         <li><a class="core-nav__link" href="#mvp">MVP</a></li>
         <li><a class="core-nav__link" href="#scenarios">Сценарии</a></li>
         <li><a class="core-nav__link" href="#branding">Брендинг</a></li>
