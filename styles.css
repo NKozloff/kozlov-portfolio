@@ -775,3 +775,7 @@ a:focus-visible {
   text-underline-offset: 0.12em;
   cursor: default;
 }
+
+.core-page .case-body > .case-section:first-child {
+  padding-top: 24px;
+}
