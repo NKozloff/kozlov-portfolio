@@ -324,9 +324,9 @@ a:focus-visible {
 
 .core-intro__details {
   display: grid;
-  gap: 3.2rem;
+  gap: 1.666667rem;
   max-width: 38rem;
-  margin-top: 5.066667rem;
+  margin-top: 3.333333rem;
 }
 
 .core-intro__group {
@@ -522,7 +522,7 @@ a:focus-visible {
 
 .case-copy {
   max-width: 50rem;
-  margin: 1.333333rem 0 0;
+  margin: 0.666667rem 0 0;
 }
 
 .case-subheading {
