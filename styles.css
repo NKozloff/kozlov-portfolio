@@ -533,14 +533,14 @@ a:focus-visible {
 
 .case-highlight {
   width: 100%;
-  margin: 3.333333rem 0 0;
+  margin: 32px 0 0;
   padding: 0;
   background: #fffdd8;
 }
 
 .case-table-wrap {
   width: 100%;
-  margin-top: 3.333333rem;
+  margin-top: 32px;
   overflow: hidden;
 }
 
