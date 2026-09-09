@@ -9,7 +9,7 @@
     />
     <title>CORE — мессенджер без пользователя</title>
     <link rel="preload" as="image" href="../assets/case-core-v32.png" />
-    <link rel="stylesheet" href="../styles.css?v=45" />
+    <link rel="stylesheet" href="../styles.css?v=46" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -140,6 +140,11 @@
             Этот паттерн подтвердил главное: знакомство можно оставить офлайн, а в приложение переносить уже установленное доверие
           </p>
         </div>
+
+      </section>
+
+      <section class="case-section case-section--mvp" id="mvp" data-case-section>
+        <p class="case-section__label">MVP</p>
 
         <div class="case-block">
           <h2 class="case-heading">Собрал MVP вокруг трёх уровней защиты</h2>
@@ -285,9 +290,6 @@
           </div>
         </div>
 
-      </section>
-
-      <section class="case-section" id="scenarios-more" data-case-section data-nav-target="scenarios">
         <div class="case-block">
           <h2 class="case-heading">Добавление контакта — только после личной встречи</h2>
           <p class="case-lead case-lead--wide">
@@ -383,10 +385,6 @@
             Команда разработки выбрала сквозное шифрование. Сообщение закрывается у отправителя, проходит через сервер закрытым и открывается только у получателя.
           </p>
         </div>
-      </section>
-
-      <section class="case-section case-section--mvp" id="mvp" data-case-section>
-        <p class="case-section__label">MVP</p>
 
         <div class="case-block">
           <h2 class="case-heading case-heading--wide">
@@ -396,10 +394,6 @@
             Сроки и бюджет уже были сжаты. Я собрал MVP вокруг ключевых сценариев клиента. Остальное — в backlog: первая версия должна была быстро заменить привычное общение на защищённое.
           </p>
         </div>
-      </section>
-
-      <section class="case-section" id="scenarios" data-case-section>
-        <p class="case-section__label">Интересные сценарии</p>
 
         <div class="case-block">
           <h2 class="case-heading">Онбординг как первый trust-механизм</h2>
@@ -905,7 +899,6 @@
       <ul class="core-nav__list">
         <li><a class="core-nav__link" href="#discovery" aria-current="location">Дискавери</a></li>
         <li><a class="core-nav__link" href="#mvp">MVP</a></li>
-        <li><a class="core-nav__link" href="#scenarios">Сценарии</a></li>
         <li><a class="core-nav__link" href="#branding">Брендинг</a></li>
         <li><a class="core-nav__link" href="#ui">UI</a></li>
         <li><a class="core-nav__link" href="#results">Выводы</a></li>
@@ -933,10 +926,10 @@
           nav.setAttribute("aria-hidden", String(!isVisible));
           nav.inert = !isVisible;
 
-          let currentSection = sections[0].dataset.navTarget || sections[0].id;
+          let currentSection = sections[0].id;
           for (const section of sections) {
             if (section.getBoundingClientRect().top <= nav.offsetHeight + 8) {
-              currentSection = section.dataset.navTarget || section.id;
+              currentSection = section.id;
             }
           }
 
