@@ -440,12 +440,12 @@ a:focus-visible {
 .case-section {
   width: min(80rem, 100%);
   margin: 0 auto;
-  padding: 8rem var(--page-space) 2rem;
+  padding: 8rem var(--page-space) 0;
   scroll-margin-top: 2.533333rem;
 }
 
 .case-section--mvp {
-  padding-bottom: 6rem;
+  padding-bottom: 0;
 }
 
 .case-section__label {
@@ -460,7 +460,7 @@ a:focus-visible {
 }
 
 .case-section__label + .case-block {
-  margin-top: 6.666667rem;
+  margin-top: 8rem;
 }
 
 .case-heading,
@@ -543,25 +543,28 @@ a:focus-visible {
 .case-table {
   width: 100%;
   table-layout: fixed;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0 1.066667rem;
   font-size: 0.933333rem;
   line-height: 1.4;
 }
 
 .case-table th,
 .case-table td {
-  padding: 1.066667rem 1.333333rem 1.066667rem 0;
-  border-bottom: 1px solid #dedede;
+  padding: 1.066667rem;
+  border: 0;
   text-align: left;
   vertical-align: top;
 }
 
 .case-table th {
+  background: #e4e4e4;
   color: var(--muted);
   font-weight: 400;
 }
 
 .case-table td {
+  background: #ffffff;
   font-weight: 400;
 }
 
