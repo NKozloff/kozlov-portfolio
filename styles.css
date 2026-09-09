@@ -14,6 +14,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Arial Portfolio";
+  src: url("./assets/arial-cyrillic-bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
 :root {
   color-scheme: light;
   --ink: #101010;
@@ -520,6 +528,12 @@ a:focus-visible {
 .case-subheading {
   max-width: 58rem;
   margin: 0;
+  font-weight: 700;
+}
+
+.case-bold {
+  font-family: "Arial Portfolio", Arial, sans-serif;
+  font-weight: 700;
 }
 
 .case-subheading--spaced {
