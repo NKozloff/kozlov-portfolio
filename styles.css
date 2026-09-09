@@ -779,3 +779,11 @@ a:focus-visible {
 .core-page .case-body > .case-section:first-child {
   padding-top: 24px;
 }
+
+.case-scenario-placeholder {
+  width: 100vw;
+  height: 600px;
+  margin-top: 32px;
+  margin-left: calc(50% - 50vw);
+  background: #e6e6e6;
+}

@@ -9,7 +9,7 @@
     />
     <title>CORE — мессенджер без пользователя</title>
     <link rel="preload" as="image" href="../assets/case-core-v32.png" />
-    <link rel="stylesheet" href="../styles.css?v=43" />
+    <link rel="stylesheet" href="../styles.css?v=45" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -285,48 +285,22 @@
           </div>
         </div>
 
-        <div class="case-block">
-          <h2 class="case-heading case-heading--wide">
-            Как спроектировать приложение без персональных данных и каков будет принцип шифрования?
-          </h2>
+      </section>
 
-          <div class="case-table-wrap">
-            <table class="case-table case-table--three">
-              <thead>
-                <tr>
-                  <th>Варианты</th>
-                  <th>Путь</th>
-                  <th>Риск</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>ID</td>
-                  <td>Скопировать или продиктовать → ввести → подтвердить</td>
-                  <td>Ошибка при вводе. Передача третьим лицам</td>
-                </tr>
-                <tr>
-                  <td>Код</td>
-                  <td>Получить код → ввести → подтвердить</td>
-                  <td>Код устарел или введён неверно. Передача третьим лицам</td>
-                </tr>
-                <tr>
-                  <td>Bluetooth</td>
-                  <td>Включить доступы → найти устройство → подтвердить</td>
-                  <td>Разрешения. Поиск устройства. Сбои соединения</td>
-                </tr>
-                <tr>
-                  <td>QR</td>
-                  <td>Навести камеру</td>
-                  <td>—</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+      <section class="case-section" id="scenarios-more" data-case-section data-nav-target="scenarios">
+        <div class="case-block">
+          <h2 class="case-heading">Добавление контакта — только после личной встречи</h2>
+          <p class="case-lead case-lead--wide">
+            Вместо телефона, username или поиска — один пользователь показывает QR, второй сканирует его камерой. После сканирования новый чат сразу появляется в списке
+          </p>
+
+          <p class="case-copy case-bold">Показать QR → Сканировать → Чат создан</p>
 
           <p class="case-highlight">
-            QR выигрывал по UX: знакомый паттерн, меньше шагов, меньше ошибок, быстрее старт общения.
+            Никаких персональных идентификаторов и адресной книги: доверие устанавливается между людьми офлайн, приложение только создаёт связь
           </p>
+
+          <div class="case-scenario-placeholder" role="img" aria-label="Интерфейсы сценария добавления контакта"></div>
         </div>
 
         <div class="case-block">
@@ -959,10 +933,10 @@
           nav.setAttribute("aria-hidden", String(!isVisible));
           nav.inert = !isVisible;
 
-          let currentSection = sections[0].id;
+          let currentSection = sections[0].dataset.navTarget || sections[0].id;
           for (const section of sections) {
             if (section.getBoundingClientRect().top <= nav.offsetHeight + 8) {
-              currentSection = section.id;
+              currentSection = section.dataset.navTarget || section.id;
             }
           }
 
