@@ -527,7 +527,12 @@ a:focus-visible {
 }
 
 .case-subblock {
-  margin-top: 5.333333rem;
+  margin-top: 2.666667rem;
+}
+
+.case-block > .case-heading + *,
+.case-block > .case-context-heading + * {
+  margin-top: 2.666667rem;
 }
 
 .case-highlight {
