@@ -530,6 +530,10 @@ a:focus-visible {
   margin-top: 2.666667rem;
 }
 
+.case-subblock + .case-subblock {
+  margin-top: 32px;
+}
+
 .case-block > .case-heading + *,
 .case-block > .case-context-heading + * {
   margin-top: 2.666667rem;
