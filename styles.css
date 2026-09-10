@@ -979,6 +979,7 @@ a:focus-visible {
   font-family: "Arial Portfolio", Arial, sans-serif;
   font-size: 2.295rem;
   font-weight: 400;
+  line-height: 1.06;
 }
 
 .core-page #discovery .case-article-list {
@@ -1016,4 +1017,25 @@ a:focus-visible {
 
 .core-page #discovery .case-block--section-start .case-article-list + .case-highlight {
   margin-top: 20px;
+}
+
+.core-page #discovery .case-block--section-start .case-article-copy {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin: 24px auto 0;
+}
+
+.core-page #discovery .case-block--section-start .case-article-copy p {
+  margin: 0;
+  font-size: var(--text-size);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.core-page #discovery .case-block--section-start .case-article-copy p + p {
+  margin-top: 16px;
+}
+
+.core-page #discovery .case-block--section-start .case-article-copy + .case-highlight {
+  margin-top: 24px;
 }
