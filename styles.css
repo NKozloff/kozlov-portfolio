@@ -813,3 +813,39 @@ a:focus-visible {
   height: auto;
   object-fit: contain;
 }
+
+
+.case-proxy-status-placeholder {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 229px));
+  justify-content: center;
+  gap: 75px;
+  width: auto;
+  margin-top: 32px;
+  margin-left: calc(0px - var(--page-space));
+  margin-right: calc(0px - var(--page-space));
+  padding: 144px clamp(48px, 10vw, 192px);
+  background: #ffffff;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.case-proxy-status-placeholder__item {
+  width: 100%;
+  max-width: 229px;
+  aspect-ratio: 1170 / 2532;
+  justify-self: center;
+  background: #ffffff;
+  border: 1px solid #ededed;
+  box-sizing: border-box;
+}
+
+.case-proxy-flow-placeholder {
+  width: auto;
+  height: 620px;
+  margin-top: 32px;
+  margin-left: calc(0px - var(--page-space));
+  margin-right: calc(0px - var(--page-space));
+  background: #ffffff;
+  box-sizing: border-box;
+}
