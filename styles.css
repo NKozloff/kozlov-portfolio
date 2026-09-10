@@ -1109,7 +1109,7 @@ a:focus-visible {
   left: 50%;
   width: min(calc(100% - 48px), 720px);
   height: 2.533333rem;
-  border-radius: 16px;
+  border-radius: 56px;
   overflow: hidden;
   transform: translate(-50%, 110%);
 }
@@ -1148,17 +1148,18 @@ a:focus-visible {
   border-bottom: 0;
 }
 
-/* v87: equal-width anchor tabs with subtle active state */
+/* v88: pill tabs inside the floating anchor navigation */
 .core-nav__list {
   gap: 0;
-  padding: 0;
+  padding: 4px;
+  align-items: stretch;
 }
 
 .core-nav__list li {
   display: flex;
   flex: 1 1 0;
   min-width: 0;
-  height: 100%;
+  height: auto;
 }
 
 .core-nav__link {
@@ -1168,7 +1169,8 @@ a:focus-visible {
   align-items: center;
   justify-content: center;
   padding: 0 8px;
-  color: rgba(255, 255, 255, 0.76);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.5);
   text-align: center;
 }
 
@@ -1178,6 +1180,68 @@ a:focus-visible {
 }
 
 .core-nav__link[aria-current="location"] {
-  background: #1d1d1d;
+  background: #343434;
   color: #ffffff;
+}
+
+/* v89: restore the original split hero */
+.core-intro {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  height: 48rem;
+  padding: 0;
+  background: transparent;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.core-intro__copy {
+  min-width: 0;
+  width: auto;
+  margin-top: 0;
+  padding: var(--page-space);
+}
+
+.core-intro__title {
+  max-width: none;
+  margin: 0;
+  text-align: left;
+  font-family: "Singel Portfolio", sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 0.95;
+}
+
+.core-intro__details {
+  display: grid;
+  gap: 1.666667rem;
+  max-width: 38rem;
+  margin-top: 3.333333rem;
+}
+
+.core-intro__group {
+  display: grid;
+  gap: 0.444444rem;
+}
+
+.core-intro__media {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #343624;
+  overflow: hidden;
+}
+
+.core-intro__media img {
+  display: block;
+  width: 229px;
+  height: auto;
+  object-fit: contain;
+}
+
+.core-cover-placeholder {
+  display: none;
 }

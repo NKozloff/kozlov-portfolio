@@ -8,21 +8,42 @@
       content="CORE — закрытый мессенджер для приватной коммуникации. Кейс продуктового дизайнера Никиты Козлова."
     />
     <title>CORE — мессенджер без пользователя</title>
-<link rel="stylesheet" href="../styles.css?v=87" />
+<link rel="stylesheet" href="../styles.css?v=89" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
-      <div class="core-intro__meta">
-        <p class="core-intro__year">2026</p>
-        <p class="core-intro__store"><span class="core-intro__project-link">App Store</span></p>
-      </div>
-
       <section class="core-intro__copy" aria-labelledby="core-title">
         <h1 class="core-intro__title" id="core-title">MVP приватного мессенджера</h1>
-      </section>
-    </main>
 
-    <div class="core-cover-placeholder" role="img" aria-label="Обложка кейса CORE"></div>
+        <div class="core-intro__details">
+          <section class="core-intro__group">
+            <p class="core-intro__label">Задача</p>
+            <p class="core-intro__value">Мобильное приложение без персональных данных</p>
+          </section>
+
+          <section class="core-intro__group">
+            <p class="core-intro__label">Проект</p>
+            <p class="core-intro__value"><span class="core-intro__project-link">App Store</span></p>
+          </section>
+
+          <section class="core-intro__group">
+            <p class="core-intro__label">Год</p>
+            <p class="core-intro__value">2026</p>
+          </section>
+        </div>
+      </section>
+
+      <div class="core-intro__media">
+        <img
+          src="../assets/core-onboarding-step-1-v66.png"
+          alt="Первый экран онбординга CORE"
+          width="1234"
+          height="1376"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+    </main>
 
     <a class="core-close" href="../#projects" aria-label="Закрыть кейс">
       <img src="../assets/icon-close.svg" alt="" width="24" height="24" />
@@ -68,36 +89,68 @@
 
         <div class="case-block">
           <h2 class="case-heading">Почему не взять готовое приложение?</h2>
+          <p class="case-outline-table__intro">
+            Одной приватности было недостаточно. Клиент хотел собственный закрытый продукт:
+            управлять кругом пользователей и получить интерфейс, сделанный под себя
+          </p>
 
-          <div class="case-article-copy">
-            <p>
-              Одной приватности было недостаточно. Клиент хотел собственный закрытый продукт и сам решать, кто сможет им пользоваться.
-            </p>
-            <p>
-              Поэтому доступ должен был оставаться закрытым, а круг пользователей — управляемым.
-            </p>
-            <p>
-              Отдельным требованием был собственный визуальный дизайн: интерфейс нужно было делать под клиента, а не адаптировать готовое приложение.
-            </p>
-            <p>
-              Поэтому существующие мессенджеры могли быть референсами для отдельных механик, но не заменяли сам продукт.
-            </p>
+          <div class="case-outline-table-wrap">
+            <table class="case-outline-table">
+              <thead>
+                <tr>
+                  <th>Запрос клиента</th>
+                  <th>Требование к продукту</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>«Хочу сам решать, кто пользуется приложением»</td>
+                  <td>Закрытый доступ и возможность управлять участниками</td>
+                </tr>
+                <tr>
+                  <td>«Хочу свой визуальный дизайн»</td>
+                  <td>Собственный визуальный язык и интерфейс</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+
+          <p class="case-outline-table__conclusion">
+            Поэтому готовый мессенджер мог быть референсом для отдельных механик, но не заменял сам продукт.
+          </p>
         </div>
         <div class="case-block">
           <h2 class="case-heading">Ближайшим референсом оказался Briar</h2>
+          <p class="case-outline-table__intro">
+            Сравнил privacy-first мессенджеры по ключевым требованиям — ни один не подходил целиком.
+            Ближе всего оказался Briar: контакт в нём можно добавить после личной встречи через QR —
+            без поиска по телефону или публичному профилю
+          </p>
 
-          <div class="case-article-copy">
-            <p>
-              Я сравнил privacy-first мессенджеры по ключевым требованиям. Ни один не подходил целиком, но ближе всего оказался Briar.
-            </p>
-            <p>
-              В Briar контакт можно добавить после личной встречи через QR — без поиска по номеру телефона или публичному профилю.
-            </p>
-            <p>
-              Этот паттерн показал, что знакомство можно оставить офлайн, а в приложение переносить уже установленное доверие.
-            </p>
+          <div class="case-outline-table-wrap">
+            <table class="case-outline-table">
+              <thead>
+                <tr>
+                  <th>Что показал референс</th>
+                  <th>Почему это важно для CORE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Контакт можно добавить после личной встречи через QR</td>
+                  <td>Знакомство можно оставить офлайн</td>
+                </tr>
+                <tr>
+                  <td>Нет поиска по телефону или публичному профилю</td>
+                  <td>В приложение переносится уже установленное доверие</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+
+          <p class="case-outline-table__conclusion">
+            Этот паттерн подтвердил главное: знакомство можно оставить офлайн, а в приложение переносить уже установленное доверие.
+          </p>
         </div>
 
         <div class="case-block">
