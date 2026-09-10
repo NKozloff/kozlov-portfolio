@@ -1027,7 +1027,7 @@ a:focus-visible {
 
 /* v83: compact rhythm inside sections, separators only between sections */
 .core-page .case-section:is(#discovery, #mvp, #scenarios) > .case-block + .case-block {
-  margin-top: 4rem;
+  margin-top: 4.8rem;
 }
 
 .core-page .case-section:is(#discovery, #mvp, #scenarios)::after {
@@ -1044,7 +1044,7 @@ a:focus-visible {
 .core-page #discovery .case-block--section-start .case-outline-table-wrap {
   width: min(100%, 720px);
   max-width: 720px;
-  margin: 48px auto 0;
+  margin: 20px auto 0;
 }
 
 .core-page #discovery .case-outline-table {
@@ -1060,12 +1060,12 @@ a:focus-visible {
 
 .core-page #discovery .case-outline-table th,
 .core-page #discovery .case-outline-table td {
-  padding: 16px 18px;
+  padding: 8px 18px;
   border: 1px solid #111111;
   background: transparent;
   color: #111111;
   text-align: left;
-  vertical-align: middle;
+  vertical-align: top;
 }
 
 .core-page #discovery .case-outline-table th {
@@ -1090,4 +1090,60 @@ a:focus-visible {
   font-weight: 400;
   line-height: 1.5;
   color: #111111;
+}
+
+.core-page #discovery .case-outline-table__intro {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin: 48px auto 0;
+  font-size: var(--text-size);
+  font-weight: 400;
+  line-height: 1.5;
+  color: #111111;
+}
+
+/* v86: compact floating anchor navigation */
+.core-nav {
+  right: auto;
+  bottom: 24px;
+  left: 50%;
+  width: min(calc(100% - 48px), 720px);
+  height: 2.533333rem;
+  border-radius: 16px;
+  overflow: hidden;
+  transform: translate(-50%, 110%);
+}
+
+.core-nav.is-visible {
+  transform: translate(-50%, 0);
+}
+
+.core-nav__list {
+  justify-content: center;
+  gap: 1.466667rem;
+  padding: 0 20px;
+}
+
+/* v86: rounded outline table */
+.core-page #discovery .case-outline-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #111111;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.core-page #discovery .case-outline-table th,
+.core-page #discovery .case-outline-table td {
+  border: 0;
+  border-right: 1px solid #111111;
+  border-bottom: 1px solid #111111;
+}
+
+.core-page #discovery .case-outline-table tr > *:last-child {
+  border-right: 0;
+}
+
+.core-page #discovery .case-outline-table tbody tr:last-child td {
+  border-bottom: 0;
 }
