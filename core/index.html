@@ -9,7 +9,7 @@
     />
     <title>CORE — мессенджер без пользователя</title>
     <link rel="preload" as="image" href="../assets/core-onboarding-step-1-v51.png" />
-    <link rel="stylesheet" href="../styles.css?v=62" />
+    <link rel="stylesheet" href="../styles.css?v=65" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -320,19 +320,16 @@
         </div>
       </section>
 
-      <section class="case-section" id="implementation" data-case-section>
-        <p class="case-section__label">Реализация</p>
+      <section class="case-section" id="scenarios" data-case-section>
+        <p class="case-section__label">Сценарии</p>
 
         <div class="case-block">
-          <h2 class="case-heading">А теперь как это работает для пользователя</h2>
+          <h2 class="case-heading">Онбординг как первый trust-механизм</h2>
+          <p class="case-lead case-lead--wide">
+            Я собрал структуру и тексты онбординга вокруг одной задачи — показать, где пользователь сможет контролировать свою безопасность
+          </p>
 
-          <div class="case-subblock">
-            <h3 class="case-subheading">Пользователь впервые открывает приложение</h3>
-            <p class="case-copy">
-              Сначала объясняем, как устроена защита и что пользователь сможет контролировать сам.
-            </p>
-
-            <div class="case-scenario-gallery" aria-label="Онбординг приложения CORE">
+          <div class="case-scenario-gallery" aria-label="Онбординг приложения CORE">
               <img
                 class="case-scenario-gallery__image"
                 src="../assets/core-onboarding-step-1-v51.png"
@@ -362,45 +359,44 @@
                 decoding="async"
               />
             </div>
-          </div>
+        </div>
 
-          <div class="case-subblock">
-            <h3 class="case-subheading">Пользователь добавляет новый контакт</h3>
-            <p class="case-copy">
-              После личной встречи один пользователь показывает QR, второй сканирует его — контакт создаётся без телефона, username и поиска.
-            </p>
+        <div class="case-block">
+          <h2 class="case-heading">Пользователь добавляет новый контакт</h2>
+          <p class="case-lead case-lead--wide">
+            После личной встречи один пользователь показывает QR, второй сканирует его — контакт создаётся без телефона, username и поиска
+          </p>
 
-            <div class="case-scenario-gallery" aria-label="Добавление контакта через QR в CORE">
+          <div class="case-scenario-gallery" aria-label="Добавление контакта через QR в CORE">
               <img
                 class="case-scenario-gallery__image"
-                src="../assets/core-contact-step-1-v62.png"
+                src="../assets/core-contact-step-1-v63.png"
                 alt="Добавление контакта через QR, экран 1"
                 loading="lazy"
                 decoding="async"
               />
               <img
                 class="case-scenario-gallery__image"
-                src="../assets/core-contact-step-2-v62.png"
+                src="../assets/core-contact-step-2-v63.png"
                 alt="Добавление контакта через QR, экран 2"
                 loading="lazy"
                 decoding="async"
               />
               <img
                 class="case-scenario-gallery__image"
-                src="../assets/core-contact-step-3-v62.png"
+                src="../assets/core-contact-step-3-v64.png"
                 alt="Добавление контакта через QR, экран 3"
                 loading="lazy"
                 decoding="async"
               />
               <img
                 class="case-scenario-gallery__image"
-                src="../assets/core-contact-step-4-v62.png"
+                src="../assets/core-contact-step-4-v63.png"
                 alt="Добавление контакта через QR, экран 4"
                 loading="lazy"
                 decoding="async"
               />
             </div>
-          </div>
         </div>
 
         <div class="case-block" hidden>
@@ -596,31 +592,6 @@
           </p>
         </div>
 
-<div class="case-block">
-          <h2 class="case-heading">Онбординг как первый trust-механизм</h2>
-          <p class="case-lead case-lead--wide">
-            Я собрал структуру и тексты онбординга вокруг одной задачи — показать, где пользователь сможет контролировать свою безопасность
-          </p>
-
-          <div class="media-grid media-grid--phones-four">
-            <figure class="media-item">
-              <div class="media-placeholder media-placeholder--phone" role="img" aria-label="Онбординг, шаг 1"></div>
-              <figcaption>Шаг 1</figcaption>
-            </figure>
-            <figure class="media-item">
-              <div class="media-placeholder media-placeholder--phone" role="img" aria-label="Онбординг, шаг 2"></div>
-              <figcaption>Шаг 2</figcaption>
-            </figure>
-            <figure class="media-item">
-              <div class="media-placeholder media-placeholder--phone" role="img" aria-label="Онбординг, шаг 3"></div>
-              <figcaption>Шаг 3</figcaption>
-            </figure>
-            <figure class="media-item">
-              <div class="media-placeholder media-placeholder--phone" role="img" aria-label="Онбординг, шаг 4"></div>
-              <figcaption>Шаг 4</figcaption>
-            </figure>
-          </div>
-        </div>
 
         <div class="case-block">
           <h2 class="case-heading">Как не потерять защищённое соединение?</h2>
@@ -1100,7 +1071,7 @@
       <ul class="core-nav__list">
         <li><a class="core-nav__link" href="#discovery" aria-current="location">Дискавери</a></li>
         <li><a class="core-nav__link" href="#mvp">MVP</a></li>
-        <li><a class="core-nav__link" href="#implementation">Реализация</a></li>
+        <li><a class="core-nav__link" href="#scenarios">Сценарии</a></li>
         <li><a class="core-nav__link" href="#branding">Брендинг</a></li>
         <li><a class="core-nav__link" href="#ui">UI</a></li>
         <li><a class="core-nav__link" href="#results">Выводы</a></li>
