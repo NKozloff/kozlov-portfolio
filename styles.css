@@ -509,7 +509,7 @@ a:focus-visible {
   width: 100%;
   margin: 16px 0 0;
   padding: 0;
-  background: #fffdd8;
+  background: transparent;
 }
 
 .case-table-wrap {
@@ -972,4 +972,43 @@ a:focus-visible {
 .case-numbered-list__text {
   margin-top: 4px;
   font-weight: 400;
+}
+
+/* v78: article treatment for the first Discovery block */
+.core-page #discovery .case-heading--article {
+  font-family: "Arial Portfolio", Arial, sans-serif;
+  font-weight: 400;
+}
+
+.core-page #discovery .case-article-list {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin: 16px auto 0;
+  padding: 0;
+  list-style: none;
+}
+
+.core-page #discovery .case-article-list li {
+  position: relative;
+  margin: 0;
+  padding-left: 16px;
+  font-size: var(--text-size);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.core-page #discovery .case-article-list li + li {
+  margin-top: 16px;
+}
+
+.core-page #discovery .case-article-list li::before {
+  content: "";
+  position: absolute;
+  top: 0.62em;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #111111;
+  transform: translateY(-50%);
 }
