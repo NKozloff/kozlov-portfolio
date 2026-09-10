@@ -9,7 +9,7 @@
     />
     <title>CORE — мессенджер без пользователя</title>
     <link rel="preload" as="image" href="../assets/core-onboarding-step-1-v66.png" />
-    <link rel="stylesheet" href="../styles.css?v=69" />
+    <link rel="stylesheet" href="../styles.css?v=70" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -402,9 +402,8 @@
           <h2 class="case-heading">Как не потерять защищённое соединение?</h2>
 
           <div class="case-subblock">
-            <h3 class="case-subheading">Продумал статусную модель</h3>
             <p class="case-copy case-copy--wide">
-              Разложил работу прокси на четыре состояния, которые покрывают весь цикл соединения.
+              Продумал статусную модель, которая покрывает весь цикл соединения.
             </p>
 
             <div class="case-proxy-status-placeholder" aria-label="Четыре состояния прокси-соединения">
@@ -440,9 +439,8 @@
           </div>
 
           <div class="case-subblock">
-            <h3 class="case-subheading">Продумал восстановление соединения</h3>
             <p class="case-copy case-copy--wide">
-              Чтобы подключение оставалось защищённым, предусмотрел переходы между состояниями и fallback-сценарии: если прокси недоступен, передача данных останавливается до восстановления.
+              Продумал восстановление соединения и fallback-сценарии на случай сбоев.
             </p>
 
             <div class="case-proxy-flow-placeholder" role="img" aria-label="Схема переходов и fallback-сценариев прокси-соединения"></div>
