@@ -793,11 +793,11 @@ a:focus-visible {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 100px;
+  gap: 75px;
   width: 100vw;
   margin-top: 32px;
   margin-left: calc(50% - 50vw);
-  padding: 48px 64px;
+  padding: 144px 192px;
   background: #ffffff;
   overflow-x: auto;
   box-sizing: border-box;
@@ -805,7 +805,7 @@ a:focus-visible {
 
 .case-scenario-gallery__image {
   display: block;
-  width: 260px;
+  width: 208px;
   height: auto;
   flex: 0 0 auto;
 }
