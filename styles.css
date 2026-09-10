@@ -787,3 +787,11 @@ a:focus-visible {
   margin-left: calc(50% - 50vw);
   background: #e6e6e6;
 }
+
+.case-scenario-image {
+  display: block;
+  width: 100vw;
+  height: auto;
+  margin-top: 32px;
+  margin-left: calc(50% - 50vw);
+}
