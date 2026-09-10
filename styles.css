@@ -345,20 +345,6 @@ a:focus-visible {
 .core-intro__label {
   color: var(--muted);
 }
-
-.core-intro__media {
-  position: relative;
-  min-width: 0;
-  background: #a0a0a0;
-}
-
-.core-intro__media img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .core-close {
   position: fixed;
   top: 24px;
@@ -690,10 +676,7 @@ a:focus-visible {
   min-height: 32rem;
 }
 
-.core-page.typography-only .core-intro__media {
-  background: #ffffff;
-}
-
+.core-page.typography-only 
 .core-page.typography-only .case-body .media-grid,
 .core-page.typography-only .case-body .media-placeholder,
 .core-page.typography-only .case-body figcaption {
@@ -805,7 +788,25 @@ a:focus-visible {
 
 .case-scenario-gallery__image {
   display: block;
-  width: 208px;
+  width: 229px;
   height: auto;
   flex: 0 0 auto;
+}
+
+
+.core-intro__media {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #343624;
+  overflow: hidden;
+}
+
+.core-intro__media img {
+  display: block;
+  width: 229px;
+  height: auto;
+  object-fit: contain;
 }
