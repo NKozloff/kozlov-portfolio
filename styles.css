@@ -1008,19 +1008,86 @@ a:focus-visible {
 }
 
 /* v81: narrative article flow for the first three Discovery blocks */
-.core-page #discovery .case-article-copy {
+.core-page .case-section:is(#discovery, #mvp) .case-article-copy {
   width: min(100%, 720px);
   max-width: 720px;
   margin: 48px auto 0;
 }
 
-.core-page #discovery .case-article-copy p {
+.core-page .case-section:is(#discovery, #mvp) .case-article-copy p {
   margin: 0;
   font-size: var(--text-size);
   font-weight: 400;
   line-height: 1.5;
 }
 
-.core-page #discovery .case-article-copy p + p {
+.core-page .case-section:is(#discovery, #mvp) .case-article-copy p + p {
   margin-top: 16px;
+}
+
+/* v83: compact rhythm inside sections, separators only between sections */
+.core-page .case-section:is(#discovery, #mvp, #scenarios) > .case-block + .case-block {
+  margin-top: 4rem;
+}
+
+.core-page .case-section:is(#discovery, #mvp, #scenarios)::after {
+  content: "";
+  display: block;
+  width: calc(100vw - 48px);
+  height: 32px;
+  margin-top: 4rem;
+  margin-left: calc(24px - var(--page-space));
+  background: #f2f2f2;
+}
+
+/* v84: outline-only table in the first Discovery block */
+.core-page #discovery .case-block--section-start .case-outline-table-wrap {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin: 48px auto 0;
+}
+
+.core-page #discovery .case-outline-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border: 1px solid #111111;
+  background: transparent;
+  color: #111111;
+  font-size: var(--text-size);
+  line-height: 1.4;
+}
+
+.core-page #discovery .case-outline-table th,
+.core-page #discovery .case-outline-table td {
+  padding: 16px 18px;
+  border: 1px solid #111111;
+  background: transparent;
+  color: #111111;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.core-page #discovery .case-outline-table th {
+  font-weight: 400;
+}
+
+.core-page #discovery .case-outline-table th:first-child,
+.core-page #discovery .case-outline-table td:first-child {
+  width: 45%;
+}
+
+.core-page #discovery .case-outline-table th:last-child,
+.core-page #discovery .case-outline-table td:last-child {
+  width: 55%;
+}
+
+.core-page #discovery .case-outline-table__conclusion {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin: 20px auto 0;
+  font-size: var(--text-size);
+  font-weight: 400;
+  line-height: 1.5;
+  color: #111111;
 }
