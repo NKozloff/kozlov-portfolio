@@ -866,22 +866,16 @@ a:focus-visible {
 }
 
 .core-page .case-section:is(#discovery, #mvp, #scenarios) .case-table-wrap {
-  width: 100%;
-  max-width: 1050px;
+  width: min(100%, 720px);
+  max-width: 720px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.core-page .case-section:is(#discovery, #mvp, #scenarios) .case-table--two {
-  width: 100%;
-  max-width: 920px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
+.core-page .case-section:is(#discovery, #mvp, #scenarios) .case-table--two,
 .core-page .case-section:is(#discovery, #mvp, #scenarios) .case-table--three {
   width: 100%;
-  max-width: 1050px;
+  max-width: 720px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -894,4 +888,25 @@ a:focus-visible {
 .core-page .case-section:is(#discovery, #mvp, #scenarios) .case-table--two th:last-child,
 .core-page .case-section:is(#discovery, #mvp, #scenarios) .case-table--two td:last-child {
   width: 55%;
+}
+
+.core-page .case-section:is(#discovery, #mvp, #scenarios) .case-table th,
+.core-page .case-section:is(#discovery, #mvp, #scenarios) .case-table td {
+  vertical-align: middle;
+}
+
+/* Section descriptors aligned with the first heading */
+.core-page .case-section:is(#discovery, #mvp, #scenarios) > .case-block--section-start {
+  position: relative;
+  margin-top: calc(8rem + 1.306667rem);
+}
+
+.core-page .case-section:is(#discovery, #mvp, #scenarios) > .case-block--section-start > .case-section__label {
+  position: absolute;
+  top: 0;
+  left: calc(24px - var(--page-space));
+  width: auto;
+  max-width: none;
+  margin: 0;
+  white-space: nowrap;
 }
