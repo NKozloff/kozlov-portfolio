@@ -300,40 +300,6 @@ a:focus-visible {
   padding-bottom: 2.533333rem;
   background: var(--paper);
 }
-
-.core-intro {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  height: 48rem;
-  overflow: hidden;
-}
-
-.core-intro__copy {
-  min-width: 0;
-  padding: var(--page-space);
-}
-
-.core-intro__title {
-  margin: 0;
-  font-family: "Singel Portfolio", sans-serif;
-  font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 0.95;
-}
-
-.core-intro__details {
-  display: grid;
-  gap: 1.666667rem;
-  max-width: 38rem;
-  margin-top: 3.333333rem;
-}
-
-.core-intro__group {
-  display: grid;
-  gap: 0.444444rem;
-}
-
 .core-intro__label,
 .core-intro__value {
   margin: 0;
@@ -795,26 +761,6 @@ a:focus-visible {
   height: auto;
   justify-self: center;
 }
-
-
-.core-intro__media {
-  position: relative;
-  min-width: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #343624;
-  overflow: hidden;
-}
-
-.core-intro__media img {
-  display: block;
-  width: 229px;
-  height: auto;
-  object-fit: contain;
-}
-
-
 .case-proxy-status-placeholder {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 229px));
@@ -909,4 +855,57 @@ a:focus-visible {
   max-width: none;
   margin: 0;
   white-space: nowrap;
+}
+
+/* Full-screen editorial cover */
+.core-intro {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.core-intro__copy {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+}
+
+.core-intro__title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(calc(100% - 48px), 960px);
+  margin: 0;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: "Singel Portfolio", sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 0.95;
+}
+
+.core-intro__details {
+  position: absolute;
+  top: calc(50% + 72px);
+  left: 50%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 48px;
+  width: max-content;
+  max-width: calc(100% - 48px);
+  margin: 0;
+  transform: translateX(-50%);
+}
+
+.core-intro__group {
+  display: grid;
+  gap: 0.444444rem;
+  min-width: max-content;
+  text-align: left;
 }
