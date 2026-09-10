@@ -394,6 +394,7 @@ a:focus-visible {
 
 .case-body {
   background: #f4f4f4;
+  padding-top: 8rem;
   font-family: "Arial Portfolio", Arial, sans-serif;
 }
 
@@ -1261,4 +1262,9 @@ a:focus-visible {
   max-width: 720px;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* v92: first case offset belongs to the grey body, not to a white gap */
+.case-body > .case-section:first-child {
+  padding-top: 0;
 }
