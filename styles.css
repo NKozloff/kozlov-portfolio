@@ -928,7 +928,7 @@ a:focus-visible {
 .core-page .case-section:is(#discovery, #mvp, #scenarios) .case-numbered-list {
   width: min(100%, 720px);
   max-width: 720px;
-  margin: 16px auto 0;
+  margin: 20px auto 0;
   padding: 0;
   list-style: none;
 }
@@ -977,6 +977,7 @@ a:focus-visible {
 /* v78: article treatment for the first Discovery block */
 .core-page #discovery .case-heading--article {
   font-family: "Arial Portfolio", Arial, sans-serif;
+  font-size: 2.295rem;
   font-weight: 400;
 }
 
@@ -998,7 +999,7 @@ a:focus-visible {
 }
 
 .core-page #discovery .case-article-list li + li {
-  margin-top: 16px;
+  margin-top: 8px;
 }
 
 .core-page #discovery .case-article-list li::before {
@@ -1006,9 +1007,13 @@ a:focus-visible {
   position: absolute;
   top: 0.62em;
   left: 0;
-  width: 4px;
-  height: 4px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: #111111;
   transform: translateY(-50%);
+}
+
+.core-page #discovery .case-block--section-start .case-article-list + .case-highlight {
+  margin-top: 20px;
 }
