@@ -773,24 +773,27 @@ a:focus-visible {
 
 
 .case-scenario-gallery {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 229px));
   justify-content: center;
-  align-items: flex-start;
+  align-items: start;
   gap: 75px;
-  width: 100vw;
+  width: auto;
   margin-top: 32px;
-  margin-left: calc(50% - 50vw);
-  padding: 144px 192px;
+  margin-left: calc(0px - var(--page-space));
+  margin-right: calc(0px - var(--page-space));
+  padding: 144px clamp(48px, 10vw, 192px);
   background: #ffffff;
-  overflow-x: auto;
+  overflow: hidden;
   box-sizing: border-box;
 }
 
 .case-scenario-gallery__image {
   display: block;
-  width: 229px;
+  width: 100%;
+  max-width: 229px;
   height: auto;
-  flex: 0 0 auto;
+  justify-self: center;
 }
 
 
