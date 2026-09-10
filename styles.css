@@ -788,10 +788,24 @@ a:focus-visible {
   background: #e6e6e6;
 }
 
-.case-scenario-image {
-  display: block;
+
+.case-scenario-gallery {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 100px;
   width: 100vw;
-  height: auto;
   margin-top: 32px;
   margin-left: calc(50% - 50vw);
+  padding: 48px 64px;
+  background: #ffffff;
+  overflow-x: auto;
+  box-sizing: border-box;
+}
+
+.case-scenario-gallery__image {
+  display: block;
+  width: 260px;
+  height: auto;
+  flex: 0 0 auto;
 }
