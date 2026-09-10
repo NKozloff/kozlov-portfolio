@@ -9,7 +9,7 @@
     />
     <title>CORE — мессенджер без пользователя</title>
     <link rel="preload" as="image" href="../assets/core-onboarding-step-1-v51.png" />
-    <link rel="stylesheet" href="../styles.css?v=58" />
+    <link rel="stylesheet" href="../styles.css?v=62" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -315,9 +315,13 @@
             Итак, лозунг нашего MVP — «Защитить то, чем уже пользуются»
           </h2>
           <p class="case-copy case-copy--wide">
-            Сроки и бюджет уже были сжаты. Я собрал MVP вокруг ключевых сценариев клиента. Остальное — в backlog: первая версия должна была быстро заменить привычное общение на защищённое.
+            Я собрал MVP вокруг ключевых сценариев клиента. Остальное — в backlog: первая версия должна была быстро заменить привычное общение на защищённое.
           </p>
         </div>
+      </section>
+
+      <section class="case-section" id="implementation" data-case-section>
+        <p class="case-section__label">Реализация</p>
 
         <div class="case-block">
           <h2 class="case-heading">А теперь как это работает для пользователя</h2>
@@ -354,6 +358,44 @@
                 class="case-scenario-gallery__image"
                 src="../assets/core-onboarding-step-4-v51.png"
                 alt="Онбординг CORE, экран 4"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+
+          <div class="case-subblock">
+            <h3 class="case-subheading">Пользователь добавляет новый контакт</h3>
+            <p class="case-copy">
+              После личной встречи один пользователь показывает QR, второй сканирует его — контакт создаётся без телефона, username и поиска.
+            </p>
+
+            <div class="case-scenario-gallery" aria-label="Добавление контакта через QR в CORE">
+              <img
+                class="case-scenario-gallery__image"
+                src="../assets/core-contact-step-1-v62.png"
+                alt="Добавление контакта через QR, экран 1"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                class="case-scenario-gallery__image"
+                src="../assets/core-contact-step-2-v62.png"
+                alt="Добавление контакта через QR, экран 2"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                class="case-scenario-gallery__image"
+                src="../assets/core-contact-step-3-v62.png"
+                alt="Добавление контакта через QR, экран 3"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                class="case-scenario-gallery__image"
+                src="../assets/core-contact-step-4-v62.png"
+                alt="Добавление контакта через QR, экран 4"
                 loading="lazy"
                 decoding="async"
               />
@@ -458,7 +500,7 @@
           </div>
         </div>
 
-        <div class="case-block">
+        <div class="case-block" hidden>
           <h2 class="case-heading">Добавление контакта — только после личной встречи</h2>
           <p class="case-lead case-lead--wide">
             Вместо телефона, username или поиска — один пользователь показывает QR, второй сканирует его камерой. После сканирования новый чат сразу появляется в списке
@@ -1058,6 +1100,7 @@
       <ul class="core-nav__list">
         <li><a class="core-nav__link" href="#discovery" aria-current="location">Дискавери</a></li>
         <li><a class="core-nav__link" href="#mvp">MVP</a></li>
+        <li><a class="core-nav__link" href="#implementation">Реализация</a></li>
         <li><a class="core-nav__link" href="#branding">Брендинг</a></li>
         <li><a class="core-nav__link" href="#ui">UI</a></li>
         <li><a class="core-nav__link" href="#results">Выводы</a></li>
