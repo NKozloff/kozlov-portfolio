@@ -1587,3 +1587,20 @@ a:focus-visible {
 .core-page .case-section:is(#discovery, #mvp, #scenarios) > .case-block + .case-block {
   margin-top: 6.912rem;
 }
+
+/* v107: the case starts with exactly one grey rhythm unit */
+.case-body {
+  margin-top: 0;
+  padding-top: 6.912rem;
+  background: #f4f4f4;
+}
+
+/* Override the older, more specific first-block margin that caused the oversized gap */
+.core-page .case-section#discovery > .case-block--section-start {
+  margin-top: 0;
+}
+
+/* Keep the same rhythm between blocks */
+.core-page .case-section:is(#discovery, #mvp, #scenarios) > .case-block + .case-block {
+  margin-top: 6.912rem;
+}
