@@ -8,7 +8,7 @@
       content="CORE — закрытый мессенджер для приватной коммуникации. Кейс продуктового дизайнера Никиты Козлова."
     />
     <title>CORE — мессенджер без пользователя</title>
-<link rel="stylesheet" href="../styles.css?v=107" />
+<link rel="stylesheet" href="../styles.css?v=110" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -53,6 +53,26 @@
     </a>
 
     <div class="case-body">
+      <section class="case-section" id="client" data-case-section>
+        <div class="case-block case-block--section-start">
+          <p class="case-section__label">Клиент</p>
+          <h2 class="case-heading">Клиент остался инкогнито</h2>
+          <p class="case-lead case-lead--wide">
+            Нам не раскрывали его имя — только то, что это частный бизнесмен. Все требования, вопросы и согласования по проекту передавались через его менеджера и личного ассистента.
+          </p>
+        </div>
+      </section>
+
+      <section class="case-section" id="task" data-case-section>
+        <div class="case-block case-block--section-start">
+          <p class="case-section__label">Задача</p>
+          <h2 class="case-heading">Хочу отдельное приложение для общения со своим кругом — и чтобы оно было максимально безопасным</h2>
+          <p class="case-lead case-lead--wide">
+            По сути, формат был ближе к digital concierge: решения принимались не для «среднего пользователя», а под его сценарии, требования и привычки.
+          </p>
+        </div>
+      </section>
+
       <section class="case-section" id="discovery" data-case-section>
         <div class="case-block case-block--section-start">
           <p class="case-section__label">Дискавери</p>
@@ -735,35 +755,27 @@
           <div class="media-placeholder media-placeholder--feature" role="img" aria-label="Сценарий добавления контакта по QR"></div>
         </div>
 
-        <div class="case-block">
+        <div class="case-block case-block--call">
           <h2 class="case-heading">Звонок внутри приложения</h2>
-          <p class="case-lead case-lead--wide case-bold">
-            Входящий звонок остаётся системным для iOS, но детали разговора показываются внутри приложения.
-          </p>
-          <p class="case-copy">
-            Когда звонок активен, иконка Calls в нижнем меню подсвечивается зелёным. По нажатию пользователь попадает на экран текущего звонка и видит call-widget: имя собеседника, активное соединение и включённые инструменты на его стороне — mute, speaker, Bluetooth audio.
-          </p>
-          <p class="case-copy">
-            При этом пользователю не нужно постоянно мониторить экран звонка. Если собеседник включает важный инструмент, приложение показывает короткое in-app сообщение — например, Contact speaker turned on.
-          </p>
-          <p class="case-copy case-copy--wide">
-            Так я не перегружал системный экран, но оставил быстрый доступ к контексту звонка и не давал пропустить изменение условий разговора.
+
+          <p class="case-lead case-lead--wide">
+            В обычном звонке пользователь не знает, что собеседник включил динамик, подключил наушники или изменил голос. Готового паттерна для такого контроля я не нашёл, поэтому решение требовало отдельной проверки.
           </p>
 
-          <div class="media-grid media-grid--phones-three">
-            <figure class="media-item">
-              <div class="media-placeholder media-placeholder--phone" role="img" aria-label="Индикатор активного звонка"></div>
-              <figcaption>Индикатор активного звонка</figcaption>
-            </figure>
-            <figure class="media-item">
-              <div class="media-placeholder media-placeholder--phone" role="img" aria-label="Системное сообщение"></div>
-              <figcaption>Сообщение</figcaption>
-            </figure>
-            <figure class="media-item">
-              <div class="media-placeholder media-placeholder--phone" role="img" aria-label="Виджет активного звонка"></div>
-              <figcaption>Виджет активного звонка</figcaption>
-            </figure>
+          <div class="case-call-copy">
+            <p>
+              Для такой проверки не обязательно было идти именно к узкому целевому пользователю: важнее понять, считывается ли незнакомая механика без дополнительных объяснений. Поэтому сценарий можно было проверить на сотрудниках со стороны клиента.
+            </p>
+            <p>
+              Критерии простые: замечает ли человек изменение условий звонка, понимает ли значение индикаторов и не мешают ли уведомления самому разговору.
+            </p>
           </div>
+
+          <p class="case-highlight case-highlight--call">
+            <span class="case-conclusion-mark">В согласованной реализации статусы собеседника видны прямо во время звонка, а изменения появляются как отдельные события.</span>
+          </p>
+
+          <div class="case-call-placeholder" role="img" aria-label="Интерфейсы сценария звонка будут добавлены позже"></div>
         </div>
       </section>
 

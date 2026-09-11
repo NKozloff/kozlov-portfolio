@@ -1604,3 +1604,95 @@ a:focus-visible {
 .core-page .case-section:is(#discovery, #mvp, #scenarios) > .case-block + .case-block {
   margin-top: 6.912rem;
 }
+
+/* v108: final call scenario narrative */
+.core-page #scenarios .case-call-copy {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin: 16px auto 0;
+}
+
+.core-page #scenarios .case-call-copy p {
+  margin: 0;
+  font-size: var(--text-size);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.core-page #scenarios .case-call-copy p + p {
+  margin-top: 16px;
+}
+
+.core-page #scenarios .case-highlight--call {
+  margin-top: 22px;
+  background: transparent;
+  padding: 0;
+}
+
+.core-page #scenarios .case-highlight--call .case-conclusion-mark {
+  display: inline;
+  padding: 2px 0;
+  background: #fffdd8;
+  line-height: calc(1em + 4px);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.core-page #scenarios .case-call-placeholder {
+  width: auto;
+  aspect-ratio: 16 / 9;
+  margin-top: 22px;
+  margin-left: calc(0px - var(--page-space));
+  margin-right: calc(0px - var(--page-space));
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+/* v109: Client + Task sections before Discovery */
+.core-page .case-section:is(#client, #task, #discovery, #mvp, #scenarios) .case-section__label,
+.core-page .case-section:is(#client, #task, #discovery, #mvp, #scenarios) .case-heading,
+.core-page .case-section:is(#client, #task, #discovery, #mvp, #scenarios) .case-lead,
+.core-page .case-section:is(#client, #task, #discovery, #mvp, #scenarios) .case-copy {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.core-page .case-section:is(#client, #task, #discovery, #mvp, #scenarios) > .case-block--section-start {
+  position: relative;
+  margin-top: 0;
+}
+
+.core-page .case-section:is(#client, #task, #discovery, #mvp, #scenarios) > .case-block--section-start > .case-section__label {
+  position: absolute;
+  top: 0;
+  left: calc(24px - var(--page-space));
+  width: auto;
+  max-width: none;
+  margin: 0;
+  white-space: nowrap;
+  color: #111111;
+  font-size: var(--text-size);
+}
+
+/* Same vertical rhythm for the two new sections */
+.core-page .case-section:is(#client, #task)::after {
+  content: "";
+  display: block;
+  width: calc(100vw - 48px);
+  height: 1px;
+  margin-top: 6.912rem;
+  margin-left: calc(24px - var(--page-space));
+  background: #dedede;
+}
+
+.core-page #task,
+.core-page #discovery {
+  padding-top: 6.912rem;
+}
+
+/* Discovery no longer needs a special first-section assumption */
+.core-page .case-section#discovery > .case-block--section-start {
+  margin-top: 0;
+}
