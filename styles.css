@@ -2047,3 +2047,19 @@ a:focus-visible {
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
+
+/* v132: two centered call screens inside the scenarios block */
+.case-scenario-gallery--two {
+  grid-template-columns: repeat(2, minmax(0, 229px));
+}
+
+/* v133: second visual layer for call-state system messages */
+.core-page #scenarios .case-call-messages-placeholder {
+  width: auto;
+  aspect-ratio: 16 / 9;
+  margin-top: 39.6px;
+  margin-left: calc(0px - var(--page-space));
+  margin-right: calc(0px - var(--page-space));
+  background: #f4f4f4;
+  box-sizing: border-box;
+}
