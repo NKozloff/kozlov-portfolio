@@ -1731,3 +1731,32 @@ a:focus-visible {
   object-fit: cover;
   pointer-events: none;
 }
+
+/* v118: white page, structural dividers, softer table descriptors */
+
+/* Entire CORE case on white */
+.core-page,
+.case-body {
+  background: #ffffff;
+}
+
+/* First screen: white media half with a full-height center divider */
+.core-intro {
+  border-bottom: 1px solid #dedede;
+}
+
+.core-intro__media {
+  background: #ffffff;
+  border-left: 1px solid #dedede;
+  box-sizing: border-box;
+}
+
+/* Keep the animation in markup/assets, but hide it for now */
+.core-intro__phone-video {
+  display: none;
+}
+
+/* Table descriptor/header background now uses the former case-body gray */
+.core-page #discovery .case-outline-table th {
+  background: #f4f4f4;
+}
