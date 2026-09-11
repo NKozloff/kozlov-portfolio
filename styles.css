@@ -1831,3 +1831,51 @@ a:focus-visible {
 .core-page #scenarios .case-call-placeholder {
   background: #f4f4f4;
 }
+
+/* v121: one monotone vertical rhythm; section labels behave like ordinary blocks */
+
+/* Remove all legacy section-level top offsets. Spacing is handled only between sibling entities. */
+.core-page .case-section[data-case-section] {
+  padding-top: 0 !important;
+  margin-top: 0;
+}
+
+/* One and the same gap everywhere:
+   content block -> descriptor -> content block -> next content block */
+.core-page .case-section[data-case-section] + .case-section[data-case-section],
+.core-page .case-section[data-case-section] > .case-section__label + .case-block,
+.core-page .case-section[data-case-section] > .case-block + .case-block {
+  margin-top: 6.912rem !important;
+}
+
+/* The first descriptor starts with the same rhythm from the hero */
+.case-body {
+  padding-top: 6.912rem;
+}
+
+/* Descriptors stay as their own neutral blocks */
+.core-page .case-section[data-case-section] > .case-section__label {
+  position: static !important;
+  margin: 0;
+  color: #8a8a8a;
+  font-size: var(--text-size);
+  line-height: 1.4;
+}
+
+/* Anchor menu: content-width tabs with 8px side padding, distributed across the bar */
+.core-nav__list {
+  justify-content: space-between;
+  gap: 0;
+  padding: 4px;
+}
+
+.core-nav__list li {
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+.core-nav__link {
+  width: auto;
+  padding-left: 8px;
+  padding-right: 8px;
+}
