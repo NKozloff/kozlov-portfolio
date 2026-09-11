@@ -1031,77 +1031,20 @@ a:focus-visible {
   margin-top: 4.8rem;
 }
 
+.core-page .case-section:is(#discovery, #mvp) > .case-block + .case-block {
+  margin-top: 5.76rem;
+}
+
 .core-page .case-section:is(#discovery, #mvp, #scenarios)::after {
   content: "";
   display: block;
   width: calc(100vw - 48px);
-  height: 32px;
-  margin-top: 4rem;
+  height: 1px;
+  margin-top: 4.8rem;
   margin-left: calc(24px - var(--page-space));
-  background: #f2f2f2;
+  background: #dedede;
 }
 
-/* v84: outline-only table in the first Discovery block */
-.core-page #discovery .case-outline-table-wrap {
-  width: min(100%, 720px);
-  max-width: 720px;
-  margin: 22px auto 0;
-}
-
-.core-page #discovery .case-outline-table {
-  width: 100%;
-  table-layout: fixed;
-  border-collapse: collapse;
-  border: 1px solid #111111;
-  background: transparent;
-  color: #111111;
-  font-size: var(--text-size);
-  line-height: 1.4;
-}
-
-.core-page #discovery .case-outline-table th,
-.core-page #discovery .case-outline-table td {
-  padding: 8px 13.5px;
-  border: 1px solid #111111;
-  background: transparent;
-  color: #111111;
-  text-align: left;
-  vertical-align: top;
-}
-
-.core-page #discovery .case-outline-table th {
-  font-weight: 400;
-}
-
-.core-page #discovery .case-outline-table th:first-child,
-.core-page #discovery .case-outline-table td:first-child {
-  width: 45%;
-}
-
-.core-page #discovery .case-outline-table th:last-child,
-.core-page #discovery .case-outline-table td:last-child {
-  width: 55%;
-}
-
-.core-page #discovery .case-outline-table__conclusion {
-  width: min(100%, 720px);
-  max-width: 720px;
-  margin: 22px auto 0;
-  font-size: var(--text-size);
-  font-weight: 400;
-  line-height: 1.5;
-  color: #111111;
-}
-
-.core-page #discovery .case-outline-table__intro {
-  width: min(100%, 720px);
-  max-width: 720px;
-  margin: 48px auto 0;
-  font-size: var(--text-size);
-  font-weight: 400;
-  line-height: 1.5;
-  color: #111111;
-}
 
 /* v86: compact floating anchor navigation */
 .core-nav {
@@ -1267,4 +1210,166 @@ a:focus-visible {
 /* v92: first case offset belongs to the grey body, not to a white gap */
 .case-body > .case-section:first-child {
   padding-top: 0;
+}
+
+/* v93: one spacing rhythm between blocks and section dividers */
+.core-page .case-section:is(#mvp, #scenarios) {
+  padding-top: 4.8rem;
+}
+
+.core-page .case-section:is(#mvp, #scenarios) > .case-block--section-start {
+  margin-top: 0;
+}
+
+/* v94: conclusions are highlighted again */
+.core-page .case-section:is(#discovery, #mvp) .case-outline-table__conclusion,
+.core-page .case-section:is(#discovery, #mvp) .case-highlight {
+  background: #fffdd8;
+}
+
+/* v95: first three section descriptors */
+.core-page .case-section:is(#discovery, #mvp, #scenarios) .case-section__label {
+  color: #111111;
+  font-size: calc(var(--text-size) * 1.25);
+}
+
+/* v96: filled Discovery tables with gray descriptor headers and inner dividers */
+.core-page #discovery .case-outline-table-wrap,
+.core-page #discovery .case-outline-table__intro,
+.core-page #discovery .case-outline-table__conclusion {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.core-page #discovery .case-outline-table__intro {
+  margin-top: 48px;
+  font-size: var(--text-size);
+  font-weight: 400;
+  line-height: 1.5;
+  color: #111111;
+}
+
+.core-page #discovery .case-outline-table-wrap {
+  margin-top: 22px;
+}
+
+.core-page #discovery .case-outline-table {
+  width: 100%;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #d8d8d8;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #ffffff;
+  color: #111111;
+  font-size: var(--text-size);
+  line-height: 1.4;
+}
+
+.core-page #discovery .case-outline-table th,
+.core-page #discovery .case-outline-table td {
+  padding: 8px 13.5px;
+  text-align: left;
+  vertical-align: top;
+  border: 0;
+  border-right: 1px solid #d8d8d8;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.core-page #discovery .case-outline-table th {
+  background: #e6e6e6;
+  color: #111111;
+  font-weight: 400;
+}
+
+.core-page #discovery .case-outline-table td {
+  background: #ffffff;
+  color: #111111;
+}
+
+.core-page #discovery .case-outline-table tr > *:last-child {
+  border-right: 0;
+}
+
+.core-page #discovery .case-outline-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.core-page #discovery .case-outline-table th:first-child,
+.core-page #discovery .case-outline-table td:first-child {
+  width: 45%;
+}
+
+.core-page #discovery .case-outline-table th:last-child,
+.core-page #discovery .case-outline-table td:last-child {
+  width: 55%;
+}
+
+.core-page #discovery .case-outline-table__conclusion {
+  margin-top: 22px;
+  padding: 14px 16px;
+  font-size: var(--text-size);
+  font-weight: 400;
+  line-height: 1.5;
+  color: #111111;
+}
+
+/* v97: scenarios spacing aligned with Discovery */
+.core-page #scenarios > .case-block + .case-block {
+  margin-top: 5.76rem;
+}
+
+.core-page #scenarios > .case-block > .case-heading + .case-lead,
+.core-page #scenarios > .case-block > .case-heading + .case-copy,
+.core-page #scenarios > .case-block > .case-heading + .case-subblock {
+  margin-top: 48px;
+}
+
+.core-page #scenarios .case-scenario-gallery,
+.core-page #scenarios .case-proxy-status-placeholder,
+.core-page #scenarios .case-proxy-flow-placeholder {
+  margin-top: 22px;
+}
+
+.core-page #scenarios .case-subblock + .case-subblock {
+  margin-top: 48px;
+}
+
+.core-page #scenarios .case-subblock > .case-copy:first-child,
+.core-page #scenarios .case-subblock > .case-lead:first-child {
+  margin-top: 0;
+}
+
+/* v98: proxy + notifications follow the same Scenarios rhythm */
+.core-page #scenarios > .case-block > .case-heading + .case-subblock {
+  margin-top: 48px;
+}
+
+.core-page #scenarios .case-subblock > .case-copy:first-child {
+  margin-top: 0;
+}
+
+.core-page #scenarios .case-proxy-status-placeholder,
+.core-page #scenarios .case-proxy-flow-placeholder,
+.core-page #scenarios .case-notification-placeholder {
+  margin-top: 22px;
+}
+
+.core-page #scenarios .case-subblock + .case-subblock {
+  margin-top: 48px;
+}
+
+.core-page #scenarios .case-notification-placeholder {
+  width: auto;
+  aspect-ratio: 16 / 9;
+  margin-left: calc(0px - var(--page-space));
+  margin-right: calc(0px - var(--page-space));
+  background: #ffffff;
+  box-sizing: border-box;
 }
