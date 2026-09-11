@@ -1760,3 +1760,74 @@ a:focus-visible {
 .core-page #discovery .case-outline-table th {
   background: #f4f4f4;
 }
+
+/* v119: section descriptors replace the horizontal section dividers */
+
+/* No horizontal divider lines between the hero/body sections anymore */
+.core-intro {
+  border-bottom: 0;
+}
+
+.core-page .case-section::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Every section begins with its descriptor in the old divider position */
+.core-page .case-section[data-case-section] {
+  padding-top: 0;
+}
+
+.core-page .case-section[data-case-section] + .case-section[data-case-section] {
+  margin-top: 6.912rem;
+}
+
+.core-page .case-section[data-case-section] > .case-section__label {
+  position: static;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  color: #8a8a8a;
+  font-size: var(--text-size);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+/* Keep the established divider-to-content rhythm, now from descriptor to content */
+.core-page .case-section[data-case-section] > .case-section__label + .case-block {
+  margin-top: 6.912rem;
+}
+
+/* The first descriptor also starts one rhythm unit below the hero */
+.case-body {
+  padding-top: 6.912rem;
+}
+
+/* v120: quieter table headers + light-gray full-width visual fields */
+
+/* All table descriptor/header cells: white background, 60% black text */
+.core-page .case-table thead th,
+.core-page #discovery .case-outline-table thead th {
+  background: #ffffff;
+  color: rgba(17, 17, 17, 0.6);
+  font-weight: 400;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+/* Discovery keeps its full grid/frame; header gets the missing horizontal divider */
+.core-page #discovery .case-outline-table thead th {
+  border-right: 1px solid #d8d8d8;
+}
+
+.core-page #discovery .case-outline-table thead th:last-child {
+  border-right: 0;
+}
+
+/* Full-width scenario image/visual fields are now lightly gray against the white page */
+.core-page #scenarios .case-scenario-gallery,
+.core-page #scenarios .case-proxy-status-placeholder,
+.core-page #scenarios .case-proxy-flow-placeholder,
+.core-page #scenarios .case-notification-placeholder,
+.core-page #scenarios .case-call-placeholder {
+  background: #f4f4f4;
+}
