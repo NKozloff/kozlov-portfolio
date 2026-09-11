@@ -1373,3 +1373,47 @@ a:focus-visible {
   background: #ffffff;
   box-sizing: border-box;
 }
+
+/* v99: tighter heading rhythm, compact conclusions, horizontal-only table rules */
+
+/* 20% less space from each block heading to its first content */
+.core-page .case-section:is(#discovery, #mvp, #scenarios) > .case-block > .case-heading + *,
+.core-page #scenarios > .case-block > .case-heading + .case-subblock {
+  margin-top: 38.4px;
+}
+
+/* Keep the paragraph as the 720px layout carrier, but paint only the text fragments */
+.core-page .case-section:is(#discovery, #mvp) .case-outline-table__conclusion,
+.core-page .case-section:is(#discovery, #mvp) .case-highlight {
+  background: transparent;
+  padding: 0;
+}
+
+.core-page .case-section:is(#discovery, #mvp) .case-conclusion-mark {
+  display: inline;
+  padding: 2px 0;
+  background: #fffdd8;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Discovery tables: no frame and no vertical rule; only horizontal row separators */
+.core-page #discovery .case-outline-table {
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.core-page #discovery .case-outline-table th,
+.core-page #discovery .case-outline-table td {
+  border-right: 0;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.core-page #discovery .case-outline-table thead th {
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.core-page #discovery .case-outline-table tbody tr:last-child td {
+  border-bottom: 0;
+}
