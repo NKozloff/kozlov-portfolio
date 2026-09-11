@@ -1884,3 +1884,13 @@ a:focus-visible {
 .core-intro {
   border-bottom: 1px solid #dedede;
 }
+
+/* v123: all section descriptors gray + wider anchor-link padding */
+.core-page .case-section[data-case-section] > .case-section__label {
+  color: #8a8a8a !important;
+}
+
+.core-nav__link {
+  padding-left: 16px;
+  padding-right: 16px;
+}
