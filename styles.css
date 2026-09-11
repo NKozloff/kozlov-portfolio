@@ -1561,3 +1561,29 @@ a:focus-visible {
 .core-page #discovery .case-outline-table tbody tr:not(:last-child) td::after {
   content: none;
 }
+
+
+/* v105: enlarge hero phone and overlay looping animation inside the first screen */
+.core-intro__phone {
+  position: relative;
+  width: 263px;
+  max-width: calc(100% - 48px);
+  flex: 0 0 auto;
+}
+
+.core-intro__phone .core-intro__phone-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* v106: no top padding on the case-body container; block rhythm stays unchanged */
+.case-body {
+  padding-top: 0;
+}
+
+/* Preserve the established spacing between blocks */
+.core-page .case-section:is(#discovery, #mvp, #scenarios) > .case-block + .case-block {
+  margin-top: 6.912rem;
+}
