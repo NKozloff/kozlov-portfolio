@@ -1894,3 +1894,52 @@ a:focus-visible {
   padding-left: 16px;
   padding-right: 16px;
 }
+
+/* v124: all tables use a white background */
+.core-page .case-table,
+.core-page .case-table th,
+.core-page .case-table td,
+.core-page #discovery .case-outline-table,
+.core-page #discovery .case-outline-table th,
+.core-page #discovery .case-outline-table td {
+  background: #ffffff !important;
+}
+
+/* v125: descriptors return beside the first heading, without divider lines */
+
+/* Sections keep the same monotone spacing as ordinary blocks */
+.core-page .case-section[data-case-section] {
+  padding-top: 0 !important;
+  margin-top: 0;
+}
+
+.core-page .case-section[data-case-section] + .case-section[data-case-section],
+.core-page .case-section[data-case-section] > .case-block + .case-block {
+  margin-top: 6.912rem !important;
+}
+
+/* First block in every section starts immediately; the section gap already provides the rhythm */
+.core-page .case-section[data-case-section] > .case-block--section-start {
+  position: relative;
+  margin-top: 0 !important;
+}
+
+/* Descriptor sits on the left, horizontally aligned with the section heading */
+.core-page .case-section[data-case-section] > .case-block--section-start > .case-section__label {
+  position: absolute !important;
+  top: 0;
+  left: calc(24px - var(--page-space));
+  width: auto !important;
+  max-width: none !important;
+  margin: 0 !important;
+  color: #8a8a8a !important;
+  font-size: var(--text-size);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+/* No section divider lines */
+.core-page .case-section::after {
+  content: none !important;
+  display: none !important;
+}
