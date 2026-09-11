@@ -1515,3 +1515,49 @@ a:focus-visible {
 .case-body {
   padding-top: 0;
 }
+
+/* v104: restore top rhythm and full Discovery table grid */
+
+/* The case starts with the same spacing used between Discovery blocks */
+.case-body {
+  padding-top: 6.912rem;
+}
+
+/* Restore the table frame and vertical divider */
+.core-page #discovery .case-outline-table {
+  border: 1px solid #d8d8d8;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.core-page #discovery .case-outline-table th,
+.core-page #discovery .case-outline-table td {
+  border-right: 1px solid #d8d8d8;
+  border-bottom: 0;
+}
+
+.core-page #discovery .case-outline-table tr > *:last-child {
+  border-right: 0;
+}
+
+/* Keep the descriptor/header separated by background only */
+.core-page #discovery .case-outline-table thead th {
+  border-bottom: 0;
+}
+
+/* Body row separators run across the full table width */
+.core-page #discovery .case-outline-table tbody tr {
+  background-image: none;
+}
+
+.core-page #discovery .case-outline-table tbody tr:not(:last-child) td {
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.core-page #discovery .case-outline-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.core-page #discovery .case-outline-table tbody tr:not(:last-child) td::after {
+  content: none;
+}
