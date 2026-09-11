@@ -1976,3 +1976,74 @@ a:focus-visible {
   padding-top: 40px;
   padding-bottom: 40px;
 }
+
+/* v131: compact usability-check table for the call scenario */
+.core-page #scenarios .case-call-table-wrap {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin: 39.6px auto 0;
+}
+
+.core-page #scenarios .case-call-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #d8d8d8;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #ffffff;
+  color: #111111;
+  font-size: var(--text-size);
+  line-height: 1.4;
+}
+
+.core-page #scenarios .case-call-table th,
+.core-page #scenarios .case-call-table td {
+  padding: 8px 13.5px;
+  text-align: left;
+  vertical-align: top;
+  background: #ffffff;
+  border-right: 1px solid #d8d8d8;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.core-page #scenarios .case-call-table th {
+  color: rgba(17, 17, 17, 0.6);
+  font-weight: 400;
+}
+
+.core-page #scenarios .case-call-table tr > *:last-child {
+  border-right: 0;
+}
+
+.core-page #scenarios .case-call-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.core-page #scenarios .case-call-table th:first-child,
+.core-page #scenarios .case-call-table td:first-child {
+  width: 45%;
+}
+
+.core-page #scenarios .case-call-table th:last-child,
+.core-page #scenarios .case-call-table td:last-child {
+  width: 55%;
+}
+
+.core-page #scenarios .case-highlight--call {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin: 22px auto 0;
+  padding: 0;
+  background: transparent;
+}
+
+.core-page #scenarios .case-highlight--call .case-conclusion-mark {
+  display: inline;
+  padding: 2px 0;
+  background: #fffdd8;
+  line-height: calc(1em + 4px);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
