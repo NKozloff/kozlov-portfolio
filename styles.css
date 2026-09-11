@@ -1879,3 +1879,8 @@ a:focus-visible {
   padding-left: 8px;
   padding-right: 8px;
 }
+
+/* v122: restore the full-width bottom divider on the first screen */
+.core-intro {
+  border-bottom: 1px solid #dedede;
+}
