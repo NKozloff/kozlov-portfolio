@@ -1481,3 +1481,37 @@ a:focus-visible {
   height: 1px;
   background: #d8d8d8;
 }
+
+/* v102: one continuous row divider + regular-size section descriptors */
+
+/* Discovery table body: one continuous inset line per row, not one per cell */
+.core-page #discovery .case-outline-table tbody tr {
+  background-color: #ffffff;
+}
+
+.core-page #discovery .case-outline-table tbody td {
+  position: static;
+  background: transparent;
+}
+
+.core-page #discovery .case-outline-table tbody tr:not(:last-child) {
+  background-image: linear-gradient(#d8d8d8, #d8d8d8);
+  background-repeat: no-repeat;
+  background-position: 13.5px 100%;
+  background-size: calc(100% - 27px) 1px;
+}
+
+.core-page #discovery .case-outline-table tbody tr:not(:last-child) td::after {
+  content: none;
+}
+
+/* Discovery / MVP / Scenarios descriptors back to regular body text size */
+.core-page .case-section:is(#discovery, #mvp, #scenarios) .case-section__label {
+  color: #111111;
+  font-size: var(--text-size);
+}
+
+/* v103: remove top offset from the case body */
+.case-body {
+  padding-top: 0;
+}
