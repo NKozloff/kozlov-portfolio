@@ -1943,3 +1943,8 @@ a:focus-visible {
   content: none !important;
   display: none !important;
 }
+
+/* v126: first case screen never exceeds the visible viewport */
+.core-intro {
+  height: min(48rem, 100svh);
+}
