@@ -1948,3 +1948,25 @@ a:focus-visible {
 .core-intro {
   height: min(48rem, 100svh);
 }
+
+/* v127: +50% spacing from text to interface visuals */
+.core-page #scenarios .case-scenario-gallery,
+.core-page #scenarios .case-proxy-status-placeholder,
+.core-page #scenarios .case-proxy-flow-placeholder,
+.core-page #scenarios .case-notification-placeholder,
+.core-page #scenarios .case-call-placeholder {
+  margin-top: 39.6px;
+}
+
+/* v128: proxy fallback scheme image */
+.core-page #scenarios .case-proxy-flow-placeholder {
+  height: auto;
+  padding: 0;
+  overflow: hidden;
+}
+
+.core-page #scenarios .case-proxy-flow-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
