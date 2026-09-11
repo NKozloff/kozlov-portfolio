@@ -1970,3 +1970,9 @@ a:focus-visible {
   width: 100%;
   height: auto;
 }
+
+/* v129: vertical breathing room inside the proxy flow frame */
+.core-page #scenarios .case-proxy-flow-placeholder {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
