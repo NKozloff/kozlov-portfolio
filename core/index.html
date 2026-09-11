@@ -8,7 +8,7 @@
       content="CORE — закрытый мессенджер для приватной коммуникации. Кейс продуктового дизайнера Никиты Козлова."
     />
     <title>CORE — мессенджер без пользователя</title>
-<link rel="stylesheet" href="../styles.css?v=110" />
+<link rel="stylesheet" href="../styles.css?v=117" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -16,10 +16,6 @@
         <h1 class="core-intro__title" id="core-title">MVP приватного мессенджера</h1>
 
         <div class="core-intro__details">
-          <section class="core-intro__group">
-            <p class="core-intro__label">Задача</p>
-            <p class="core-intro__value">Мобильное приложение без персональных данных</p>
-          </section>
 
           <section class="core-intro__group">
             <p class="core-intro__label">Проект</p>
@@ -44,6 +40,17 @@
             fetchpriority="high"
             decoding="async"
           />
+          <video
+            class="core-intro__phone-video"
+            autoplay
+            loop
+            muted
+            playsinline
+            preload="auto"
+            aria-hidden="true"
+          >
+            <source src="../assets/head.mp4" type="video/mp4" />
+          </video>
         </div>
       </div>
     </main>
@@ -56,9 +63,9 @@
       <section class="case-section" id="client" data-case-section>
         <div class="case-block case-block--section-start">
           <p class="case-section__label">Клиент</p>
-          <h2 class="case-heading">Клиент остался инкогнито</h2>
+          <h2 class="case-heading">Клиент — частный бизнесмен</h2>
           <p class="case-lead case-lead--wide">
-            Нам не раскрывали его имя — только то, что это частный бизнесмен. Все требования, вопросы и согласования по проекту передавались через его менеджера и личного ассистента.
+            Все требования, вопросы и согласования по проекту передавались через его менеджера и личного ассистента.
           </p>
         </div>
       </section>
@@ -66,7 +73,7 @@
       <section class="case-section" id="task" data-case-section>
         <div class="case-block case-block--section-start">
           <p class="case-section__label">Задача</p>
-          <h2 class="case-heading">Хочу отдельное приложение для общения со своим кругом — и чтобы оно было максимально безопасным</h2>
+          <h2 class="case-heading">«Хочу отдельное приложение для общения со своим кругом — и чтобы оно было максимально безопасным»</h2>
           <p class="case-lead case-lead--wide">
             По сути, формат был ближе к digital concierge: решения принимались не для «среднего пользователя», а под его сценарии, требования и привычки.
           </p>
@@ -613,7 +620,7 @@
           <div class="case-scenario-placeholder" role="img" aria-label="Интерфейсы сценария добавления контакта"></div>
         </div>
 
-        <div class="case-block">
+        <div class="case-block" hidden>
           <h2 class="case-heading">Как назвать человека без профиля?</h2>
           <p class="case-lead">Если у пользователя нет аккаунта, сервис не может брать имя из профиля</p>
 
@@ -656,7 +663,7 @@
           </p>
         </div>
 
-        <div class="case-block">
+        <div class="case-block" hidden>
           <h2 class="case-heading">Как шифровать содержимое переписок?</h2>
           <p class="case-lead">Техническое решение согласовывалось с разработкой. Мне было важно понять принцип</p>
 
@@ -741,7 +748,7 @@
           </div>
         </div>
 
-        <div class="case-block">
+        <div class="case-block" hidden>
           <h2 class="case-heading">QR вместо адресной книги</h2>
           <p class="case-lead case-lead--wide case-bold">
             Здесь было важно не просто показать QR и кнопку скана

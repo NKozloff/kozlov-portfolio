@@ -1696,3 +1696,38 @@ a:focus-visible {
 .core-page .case-section#discovery > .case-block--section-start {
   margin-top: 0;
 }
+
+/* v111: restore the divider-to-Discovery spacing */
+.core-page .case-section#discovery {
+  padding-top: 6.912rem;
+}
+
+/* v113: +20% spacing from text to full-width scenario visuals */
+.core-page #scenarios .case-scenario-gallery,
+.core-page #scenarios .case-proxy-status-placeholder,
+.core-page #scenarios .case-proxy-flow-placeholder,
+.core-page #scenarios .case-notification-placeholder,
+.core-page #scenarios .case-call-placeholder {
+  margin-top: 26.4px;
+}
+
+/* v115: anchor menu closer to the viewport bottom */
+.core-nav {
+  bottom: 16px;
+}
+
+/* v117: hero background matches the gray table descriptors + restore animation */
+.core-intro__media {
+  background: #e6e6e6;
+}
+
+.core-intro__phone-video {
+  position: absolute;
+  left: 5.813953%;
+  top: 41.796875%;
+  width: 88.372093%;
+  aspect-ratio: 1 / 1;
+  display: block;
+  object-fit: cover;
+  pointer-events: none;
+}
