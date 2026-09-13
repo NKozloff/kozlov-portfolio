@@ -2125,10 +2125,8 @@ a:focus-visible {
   background: #f4f4f4;
 }
 
-.case-card--pending .case-card__preview,
-.case-card__preview--pending {
+.case-card--pending .case-card__preview {
   background: #f4f4f4;
-  aspect-ratio: 40 / 42.75;
 }
 
 .case-card__preview img,

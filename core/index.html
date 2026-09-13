@@ -8,7 +8,7 @@
       content="CORE — закрытый мессенджер для приватной коммуникации. Кейс продуктового дизайнера Никиты Козлова."
     />
     <title>CORE — мессенджер без пользователя</title>
-<link rel="stylesheet" href="../styles.css?v=145" />
+<link rel="stylesheet" href="../styles.css?v=148" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -928,248 +928,38 @@
         </div>
 
         <div class="case-block">
-          <h2 class="case-heading">Приватность как визуальный язык</h2>
-          <p class="case-context case-bold">Контекст — много текста. Много языков. Две платформы.</p>
-          <h3 class="case-subheading">На языке требований:</h3>
-
-          <div class="case-table-wrap">
-            <table class="case-table case-table--two">
-              <thead>
-                <tr>
-                  <th>Требования</th>
-                  <th>Почему важно</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Легко читать</td>
-                  <td>Мессенджер держится на переписке. Текста много, читать его будут каждый день.</td>
-                </tr>
-                <tr>
-                  <td>Работать на iOS и Android</td>
-                  <td>Интерфейс должен выглядеть своим на каждой платформе</td>
-                </tr>
-                <tr>
-                  <td>Поддерживать языки</td>
-                  <td>Первая версия — английский. Дальше — арабский и китайский.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p class="case-highlight">Очевидно, что нужен нейтральный гротеск</p>
-
-          <div class="case-subblock">
-            <h3 class="case-subheading">3 подхода:</h3>
-            <div class="case-table-wrap">
-              <table class="case-table case-table--three">
-                <thead>
-                  <tr>
-                    <th>Подход</th>
-                    <th>Как работает</th>
-                    <th>Риск</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1 шрифт на всё</td>
-                    <td>Одна кроссплатформенная система для iOS и Android</td>
-                    <td>Может выглядеть чужим на обеих платформах</td>
-                  </tr>
-                  <tr>
-                    <td>Нативная типографика</td>
-                    <td>iOS использует свою системную пару, Android — свою</td>
-                    <td>Нужно держать визуальный характер не шрифтом, а всей системой</td>
-                  </tr>
-                  <tr>
-                    <td>Брендовая гарнитура</td>
-                    <td>Свой шрифт как часть айдентики</td>
-                    <td>Дороже, сложнее, не нужно для MVP</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div class="case-subblock">
-            <h3 class="case-subheading">Изучил, каким методом пользуются существующие мессенджеры:</h3>
-            <div class="case-table-wrap">
-              <table class="case-table case-table--two">
-                <thead>
-                  <tr>
-                    <th>Продукт</th>
-                    <th>Подход</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Телеграм</td>
-                    <td>Нативная типографика (SF Pro / Android)</td>
-                  </tr>
-                  <tr>
-                    <td>WhatsApp</td>
-                    <td>Нативная типографика (SF Pro / Android)</td>
-                  </tr>
-                  <tr>
-                    <td>VK</td>
-                    <td>Собственная гарнитура</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <p class="case-copy case-copy--wide">
-            Решил, что для MVP лучше подходит нативный подход: один универсальный шрифт на обе платформы мог вызывать ощущение чужеродности интерфейса.
-          </p>
-          <p class="case-highlight">
-            Раз шрифт нейтральный, значит характер продукта сложится из цвета, композиции и графики.
-          </p>
-        </div>
-
-        <div class="case-block">
-          <h2 class="case-context-heading">Клиентское ограничение 1 — «Не ещё один Telegram»</h2>
-          <p class="case-copy">
-            Клиент считал привычные мессенджеры слишком скучными: спокойные цвета, стандартные пузырьки, минимум визуального характера.
-          </p>
-          <p class="case-copy">
-            Но делать «красиво ради красоты» тоже было нельзя. Продукт оставался мессенджером: чат должен читаться, сценарии — быть знакомыми.
-          </p>
-
-          <div class="case-subblock">
-            <h3 class="case-subheading">Разложил будущий визуальный код на критерии</h3>
-            <div class="case-table-wrap">
-              <table class="case-table case-table--three">
-                <thead>
-                  <tr>
-                    <th>Контекст</th>
-                    <th>Ключевое слово</th>
-                    <th>Что это значит для визуала</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Закрытый круг</td>
-                    <td>Приватность</td>
-                    <td>Тёмная тема</td>
-                  </tr>
-                  <tr>
-                    <td>Предприниматели. В основном мужская аудитория</td>
-                    <td>Сдержанность</td>
-                    <td>Не кричащий премиум, а спокойная точность. Более собранный, строгий тон</td>
-                  </tr>
-                  <tr>
-                    <td>Безопасность</td>
-                    <td>Контроль</td>
-                    <td>Чёткие состояния, статусы, аккуратные акценты</td>
-                  </tr>
-                  <tr>
-                    <td>Мессенджер</td>
-                    <td>Привычность</td>
-                    <td>Минимализм сохраняем, декоративность не мешает чату</td>
-                  </tr>
-                  <tr>
-                    <td>Не Telegram</td>
-                    <td>Характер</td>
-                    <td>Нужен свой визуальный слой: цвет, композиция, графика</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <p class="case-highlight">Из этого стало понятно, какие референсы искать</p>
-        </div>
-
-        <div class="case-block">
-          <h2 class="case-context-heading">Клиентское ограничение 2 — Military без камуфляжа</h2>
-          <p class="case-copy">
-            Клиент задал направление military. Я разобрал направление как набор визуальных признаков.
+          <h2 class="case-heading">Графика внутри military-кода</h2>
+          <p class="case-lead case-lead--wide">
+            Хотел добавить в интерфейс анимацию, чтобы визуальный язык ощущался современнее и технологичнее.
           </p>
 
           <div class="case-table-wrap">
             <table class="case-table case-table--two">
               <thead>
                 <tr>
-                  <th>Признак</th>
-                  <th>Что можно взять в продукт</th>
+                  <th>Ограничение</th>
+                  <th>Что это значит для графики</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Тёмная палитра</td>
-                  <td>Графит, хаки, оливковый, песочный, приглушённые акценты</td>
+                  <td>Мобильное приложение</td>
+                  <td>Графика должна мало весить</td>
                 </tr>
                 <tr>
-                  <td>Тактическая графика</td>
-                  <td>Сетки, координаты, схемы, маркеры, технические линии</td>
+                  <td>Анимация</td>
+                  <td>Должна хорошо работать в движении и собираться средствами кода</td>
                 </tr>
                 <tr>
-                  <td>Собранная композиция</td>
-                                   <td>Больше структуры и контроля</td>
-                </tr>
-                <tr>
-                  <td>Жёсткая иконка</td>
-                  <td>Простые формы, углы, контур, без мягкой дружелюбности</td>
+                  <td>Military-направление</td>
+                  <td>Нужен технический, системный характер</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <p class="case-highlight">
-            Military стало не декором, а направлением для визуального кода — тёмного, точного и собранного
-          </p>
-        </div>
-
-        <div class="case-block">
-          <h2 class="case-heading">Логотип</h2>
-          <p class="case-copy case-bold">
-            Сперва решил отразить безопасность через привычный пользователям знак сокрытия данных.
-          </p>
-          <p class="case-copy">
-            В логотипе должна распознаваться сфера, которая хранит в себе засекреченные данные.
-          </p>
-
-          <div class="media-grid media-grid--logos-three">
-            <div class="media-placeholder media-placeholder--logo" role="img" aria-label="Вариант логотипа 1"></div>
-            <div class="media-placeholder media-placeholder--logo" role="img" aria-label="Вариант логотипа 2"></div>
-            <div class="media-placeholder media-placeholder--logo" role="img" aria-label="Вариант логотипа 3"></div>
-          </div>
-
-          <p class="case-subheading case-subheading--spaced">
-            Нетривиально спроектировать величественное монолитное ядро.
-          </p>
-          <p class="case-copy">
-            Уйти от очевидной формы в пользу нестандартной, способной зацепить внимание пользователя.
-          </p>
-
-          <div class="media-grid media-grid--logos-two">
-            <div class="media-placeholder media-placeholder--logo" role="img" aria-label="Вариант монолитного логотипа 1"></div>
-            <div class="media-placeholder media-placeholder--logo" role="img" aria-label="Вариант монолитного логотипа 2"></div>
-          </div>
-
           <p class="case-copy case-copy--wide">
-            Эти варианты клиент не принял. На уровне идеи ему было ближе другое направление: две телефонные трубки, направленные друг к другу, как знак приватного соединения между двумя людьми.
-          </p>
-          <h3 class="case-subheading">Отрисовал хотелку клиента</h3>
-
-          <div class="media-grid media-grid--logos-three">
-            <div class="media-placeholder media-placeholder--logo" role="img" aria-label="Вариант знака с трубками 1"></div>
-            <div class="media-placeholder media-placeholder--logo" role="img" aria-label="Вариант знака с трубками 2"></div>
-            <div class="media-placeholder media-placeholder--logo" role="img" aria-label="Вариант знака с трубками 3"></div>
-          </div>
-
-          <p class="case-copy case-copy--wide">
-            После второй итерации стало понятно, что клиент не хочет сложных графических ходов. Ему нужен был максимально прямой и узнаваемый знак, поэтому финальное направление упростилось до базовой иконки телефонной трубки.
-          </p>
-          <h3 class="case-subheading">Отрисовал</h3>
-
-          <div class="media-grid media-grid--logo-one">
-            <div class="media-placeholder media-placeholder--logo" role="img" aria-label="Финальный логотип"></div>
-          </div>
-
-          <p class="case-copy case-copy--wide">
-            Финальный знак не был тем решением, которое я бы выбрал сам. Но сроки уже поджимали, а продукт не выходил на открытый рынок: им должен был пользоваться узкий круг людей. Поэтому я зафиксировал это как компромисс для MVP и оставил переработку логотипа на следующий этап.
+            Одним из подходящих направлений стала символьная графика — знакомая по визуальному языку «Матрицы» и Ghost in the Shell. Она понравилась клиенту.
           </p>
         </div>
 
