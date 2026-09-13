@@ -2077,3 +2077,78 @@ a:focus-visible {
 .core-page .case-section#branding > .case-block.case-block--section-start {
   position: relative;
 }
+
+/* v137: full-stroke tables and yellow conclusion in Branding */
+.core-page #branding .case-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #d8d8d8;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.core-page #branding .case-table th,
+.core-page #branding .case-table td {
+  border: 0;
+  border-right: 1px solid #d8d8d8;
+  border-bottom: 1px solid #d8d8d8;
+  background: #ffffff !important;
+}
+
+.core-page #branding .case-table tr > *:last-child {
+  border-right: 0;
+}
+
+.core-page #branding .case-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.core-page #branding .case-highlight {
+  background: transparent;
+  padding: 0;
+}
+
+.core-page #branding .case-conclusion-mark {
+  display: inline;
+  padding: 2px 0;
+  background: #fffdd8;
+  line-height: calc(1em + 4px);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+
+/* v138: homepage case covers updated */
+.case-card__preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f4f4f4;
+}
+
+.case-card--pending .case-card__preview,
+.case-card__preview--pending {
+  background: #f4f4f4;
+}
+
+.case-card__preview img,
+.case-card__preview video {
+  max-width: none;
+}
+
+.case-card__preview--core img {
+  width: auto;
+  height: 90%;
+  object-fit: contain;
+}
+
+.case-card__preview--echo {
+  justify-content: flex-end;
+}
+
+.case-card__preview--echo img {
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+}
