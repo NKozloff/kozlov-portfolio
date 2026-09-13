@@ -2138,7 +2138,7 @@ a:focus-visible {
 
 .case-card__preview--core img {
   width: auto;
-  height: 90%;
+  height: 80%;
   object-fit: contain;
 }
 
@@ -2148,7 +2148,16 @@ a:focus-visible {
 
 .case-card__preview--echo img {
   width: auto;
-  height: 100%;
-  object-fit: cover;
+  height: 80%;
+  object-fit: contain;
   object-position: right center;
+}
+
+/* v140: cleaner homepage titles + matching CORE hero media background */
+.case-card__title {
+  text-decoration: none;
+}
+
+.core-intro__media {
+  background: #f4f4f4;
 }
