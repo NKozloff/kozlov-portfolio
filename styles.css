@@ -2159,3 +2159,38 @@ a:focus-visible {
 .core-intro__media {
   background: #f4f4f4;
 }
+
+/* v149: full-width placeholder for symbolic graphics */
+.core-page #branding .case-branding-graphics-placeholder {
+  width: auto;
+  aspect-ratio: 16 / 9;
+  margin-top: 39.6px;
+  margin-left: calc(0px - var(--page-space));
+  margin-right: calc(0px - var(--page-space));
+  background: #f4f4f4;
+  box-sizing: border-box;
+}
+
+/* v150: Branding graphic is the final edge of the case */
+.core-page {
+  padding-bottom: 0;
+}
+
+.core-page #branding {
+  padding-bottom: 0;
+}
+
+.core-page #branding > .case-block:last-child {
+  margin-bottom: 0;
+}
+
+.core-page #branding .case-branding-graphics-placeholder {
+  margin-bottom: 0;
+}
+
+/* v151: all table cells in the CORE case align top-left */
+.core-page table th,
+.core-page table td {
+  text-align: left !important;
+  vertical-align: top !important;
+}
