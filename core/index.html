@@ -8,7 +8,7 @@
       content="CORE — закрытый мессенджер для приватной коммуникации. Кейс продуктового дизайнера Никиты Козлова."
     />
     <title>CORE — мессенджер без пользователя</title>
-<link rel="stylesheet" href="../styles.css?v=151" />
+<link rel="stylesheet" href="../styles.css?v=153" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -1025,6 +1025,24 @@
           if (frameId) return;
           frameId = window.requestAnimationFrame(updateNavigation);
         };
+
+        for (const link of links) {
+          link.addEventListener("click", (event) => {
+            const href = link.getAttribute("href");
+            const target = href ? document.querySelector(href) : null;
+            if (!target) return;
+
+            event.preventDefault();
+
+            const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            target.scrollIntoView({
+              behavior: reduceMotion ? "auto" : "smooth",
+              block: "start",
+            });
+
+            window.history.replaceState(null, "", href);
+          });
+        }
 
         window.addEventListener("scroll", scheduleUpdate, { passive: true });
         window.addEventListener("resize", scheduleUpdate);
