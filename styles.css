@@ -2427,3 +2427,28 @@ a:focus-visible {
 .core-page #discovery .case-discovery-article > .case-scenario-gallery {
   background: #f4f4f4;
 }
+
+
+/* v175: unresolved cells use the same gray as section descriptors */
+.core-page #discovery .case-table-cell--muted {
+  color: #8a8a8a !important;
+}
+
+
+/* v178: merge ready-made app and Briar research into one compact narrative block */
+.core-page #discovery .case-reference-story {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin: 48px auto 0;
+}
+
+.core-page #discovery .case-reference-story p {
+  margin: 0;
+  font-size: var(--text-size);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.core-page #discovery .case-reference-story p + p {
+  margin-top: 22px;
+}
