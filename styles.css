@@ -2452,3 +2452,182 @@ a:focus-visible {
 .core-page #discovery .case-reference-story p + p {
   margin-top: 22px;
 }
+
+
+/* v182: five centered screens for the second QR user flow */
+.case-scenario-gallery--five {
+  grid-template-columns: repeat(5, minmax(0, 229px));
+}
+
+
+/* v183: coded six-step QR flow with directional connectors */
+.core-page #scenarios .case-contact-flow {
+  --flow-screen: 229px;
+  --flow-arrow: clamp(132px, 10vw, 180px);
+  --flow-ink: #5f6260;
+
+  display: grid;
+  grid-template-columns:
+    var(--flow-screen)
+    var(--flow-arrow)
+    var(--flow-screen)
+    var(--flow-arrow)
+    var(--flow-screen);
+  grid-template-rows: auto 104px auto;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  margin-left: calc(0px - var(--page-space));
+  margin-right: calc(0px - var(--page-space));
+  padding: 96px clamp(36px, 6vw, 96px);
+  background: #f4f4f4;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.core-page #scenarios .case-contact-flow__screen {
+  display: block;
+  width: var(--flow-screen);
+  max-width: var(--flow-screen);
+  height: auto;
+  justify-self: center;
+}
+
+.core-page #scenarios .case-contact-flow__screen--1 { grid-column: 1; grid-row: 1; }
+.core-page #scenarios .case-contact-flow__screen--2 { grid-column: 3; grid-row: 1; }
+.core-page #scenarios .case-contact-flow__screen--3 { grid-column: 5; grid-row: 1; }
+.core-page #scenarios .case-contact-flow__screen--4 { grid-column: 5; grid-row: 3; }
+.core-page #scenarios .case-contact-flow__screen--5 { grid-column: 3; grid-row: 3; }
+.core-page #scenarios .case-contact-flow__screen--6 { grid-column: 1; grid-row: 3; }
+
+.core-page #scenarios .case-contact-flow__arrow {
+  position: relative;
+  color: var(--flow-ink);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.25;
+  box-sizing: border-box;
+}
+
+.core-page #scenarios .case-contact-flow__arrow--1 { grid-column: 2; grid-row: 1; }
+.core-page #scenarios .case-contact-flow__arrow--2 { grid-column: 4; grid-row: 1; }
+.core-page #scenarios .case-contact-flow__arrow--3 {
+  grid-column: 5;
+  grid-row: 2;
+  justify-self: center;
+  align-self: stretch;
+}
+.core-page #scenarios .case-contact-flow__arrow--4 { grid-column: 4; grid-row: 3; }
+.core-page #scenarios .case-contact-flow__arrow--5 { grid-column: 2; grid-row: 3; }
+
+.core-page #scenarios .case-contact-flow__arrow--right,
+.core-page #scenarios .case-contact-flow__arrow--left {
+  width: 100%;
+  min-width: 0;
+  padding-top: 28px;
+}
+
+.core-page #scenarios .case-contact-flow__label {
+  position: absolute;
+  color: var(--flow-ink);
+  white-space: nowrap;
+}
+
+.core-page #scenarios .case-contact-flow__arrow--right .case-contact-flow__label,
+.core-page #scenarios .case-contact-flow__arrow--left .case-contact-flow__label {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.core-page #scenarios .case-contact-flow__line {
+  position: relative;
+  display: block;
+  background: var(--flow-ink);
+}
+
+/* All connectors have a start dot and a triangular arrowhead. */
+.core-page #scenarios .case-contact-flow__line::before {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--flow-ink);
+}
+
+.core-page #scenarios .case-contact-flow__line::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.core-page #scenarios .case-contact-flow__arrow--right .case-contact-flow__line,
+.core-page #scenarios .case-contact-flow__arrow--left .case-contact-flow__line {
+  width: calc(100% - 18px);
+  height: 2px;
+  margin: 0 9px;
+}
+
+.core-page #scenarios .case-contact-flow__arrow--right .case-contact-flow__line::before {
+  left: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.core-page #scenarios .case-contact-flow__arrow--right .case-contact-flow__line::after {
+  right: -7px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 9px solid var(--flow-ink);
+}
+
+.core-page #scenarios .case-contact-flow__arrow--left .case-contact-flow__line::before {
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.core-page #scenarios .case-contact-flow__arrow--left .case-contact-flow__line::after {
+  left: -7px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 9px solid var(--flow-ink);
+}
+
+.core-page #scenarios .case-contact-flow__arrow--down {
+  width: 160px;
+  min-height: 104px;
+}
+
+.core-page #scenarios .case-contact-flow__arrow--down .case-contact-flow__label {
+  left: calc(50% + 18px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.core-page #scenarios .case-contact-flow__arrow--down .case-contact-flow__line {
+  width: 2px;
+  height: calc(100% - 18px);
+  margin: 9px auto;
+}
+
+.core-page #scenarios .case-contact-flow__arrow--down .case-contact-flow__line::before {
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.core-page #scenarios .case-contact-flow__arrow--down .case-contact-flow__line::after {
+  bottom: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 9px solid var(--flow-ink);
+}
