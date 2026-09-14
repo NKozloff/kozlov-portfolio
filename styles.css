@@ -2216,8 +2216,9 @@ a:focus-visible {
   display: grid;
   grid-template-columns: repeat(2, 343.5px);
   place-content: center;
-  gap: 75px;
+  gap: 150px;
   overflow: hidden;
+  background: #52573B;
 }
 
 .core-page #branding .case-branding-graphics-video {
@@ -2268,4 +2269,39 @@ a:focus-visible {
 
 .core-page #task .case-task-copy p + p {
   margin-top: 8px;
+}
+
+/* v160: single centered call screen in the first block of the in-app call scenario */
+.case-scenario-gallery--single {
+  grid-template-columns: minmax(0, 229px);
+}
+
+
+/* v162: expanded call narrative; visual slots kept as placeholders */
+.core-page #scenarios .case-call-story {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.core-page #scenarios .case-call-story p {
+  margin: 0;
+  font-size: var(--text-size);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.core-page #scenarios .case-call-story p + p {
+  margin-top: 8px;
+}
+
+.core-page #scenarios .case-call-widget-placeholder {
+  width: auto;
+  height: 620px;
+  margin-top: 39.6px;
+  margin-left: calc(0px - var(--page-space));
+  margin-right: calc(0px - var(--page-space));
+  background: #f4f4f4;
+  box-sizing: border-box;
 }

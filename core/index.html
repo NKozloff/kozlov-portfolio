@@ -8,7 +8,7 @@
       content="CORE — закрытый мессенджер для приватной коммуникации. Кейс продуктового дизайнера Никиты Козлова."
     />
     <title>CORE — мессенджер без пользователя</title>
-<link rel="stylesheet" href="../styles.css?v=156" />
+<link rel="stylesheet" href="../styles.css?v=162" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -424,7 +424,7 @@
               />
               <img
                 class="case-scenario-gallery__image"
-                src="../assets/core-contact-step-2-v63.png"
+                src="../assets/core-contact-step-2-v159.png"
                 alt="Добавление контакта через QR, экран 2"
                 loading="lazy"
                 decoding="async"
@@ -438,7 +438,7 @@
               />
               <img
                 class="case-scenario-gallery__image"
-                src="../assets/core-contact-step-4-v63.png"
+                src="../assets/core-contact-step-4-v158.png"
                 alt="Добавление контакта через QR, экран 4"
                 loading="lazy"
                 decoding="async"
@@ -801,41 +801,40 @@
           <h2 class="case-heading">Звонок внутри приложения</h2>
 
           <div class="case-subblock">
-            <p class="case-copy case-copy--wide">
-              На системный интерфейс звонка повлиять невозможно. Поэтому состояния инструментов собеседника решили показывать внутри приложения.
-            </p>
-
-            <div class="case-scenario-gallery case-scenario-gallery--two" aria-label="Сценарий звонка внутри приложения в CORE">
-              <img
-                class="case-scenario-gallery__image"
-                src="../assets/core-call-step-1-v132.png"
-                alt="Сценарий звонка внутри приложения CORE, экран 1"
-                loading="lazy"
-                decoding="async"
-              />
-              <img
-                class="case-scenario-gallery__image"
-                src="../assets/core-call-step-2-v132.png"
-                alt="Сценарий звонка внутри приложения CORE, экран 2"
-                loading="lazy"
-                decoding="async"
-              />
+            <div class="case-call-story">
+              <p>
+                Клиент хотел видеть, что происходит на стороне собеседника во время звонка: какие инструменты он включает и выключает.
+              </p>
+              <p>
+                Я изучил возможности системного звонка и выяснил, что его интерфейс нельзя кастомизировать. Поэтому перенёс контроль внутрь приложения — во время активного звонка рядом с таб-баром закрепляется виджет со статусами инструментов собеседника.
+              </p>
             </div>
+
+            <div
+              class="case-call-widget-placeholder"
+              role="img"
+              aria-label="Интерфейс закреплённого виджета звонка будет добавлен позже"
+            ></div>
           </div>
 
           <div class="case-subblock">
-            <p class="case-copy case-copy--wide">
-              Пользователь может продолжать ходить по приложению во время разговора. Если собеседник меняет состояние звонка, об этом сообщаем прямо на текущем экране.
-            </p>
+            <div class="case-call-story">
+              <p>
+                Затем проверил сценарии использования и нашёл слепую зону: внутри чата таб-бара уже нет, поэтому виджет становится недоступен.
+              </p>
+              <p>
+                Чтобы изменения всё равно не проходили незаметно, добавил короткие сообщения прямо поверх текущего экрана. Именно сообщения внутри приложения, а не push — частые переключения инструментов не должны спамить телефон.
+              </p>
+            </div>
 
             <p class="case-highlight case-highlight--call">
-              <span class="case-conclusion-mark">Не меняли сам звонок — добавили поверх него недостающий слой контроля.</span>
+              <span class="case-conclusion-mark">Не меняли системный звонок — добавили внутри приложения собственный слой контроля.</span>
             </p>
 
             <div
               class="case-call-messages-placeholder"
               role="img"
-              aria-label="Интерфейсы системных сообщений во время звонка будут добавлены позже"
+              aria-label="Интерфейсы сообщений во время звонка будут добавлены позже"
             ></div>
           </div>
         </div>
