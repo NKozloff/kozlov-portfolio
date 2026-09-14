@@ -8,7 +8,7 @@
       content="CORE — закрытый мессенджер для приватной коммуникации. Кейс продуктового дизайнера Никиты Козлова."
     />
     <title>CORE — мессенджер без пользователя</title>
-<link rel="stylesheet" href="../styles.css?v=169" />
+<link rel="stylesheet" href="../styles.css?v=173" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -227,35 +227,22 @@
           </p>
         </div>
 
+        <div class="case-block">
+          <h2 class="case-heading case-heading--wide">
+            Итак, лозунг нашего MVP — «Защитить то, чем уже пользуются»
+          </h2>
+
+          <div class="case-article-copy">
+            <p>
+              Я собрал MVP вокруг ключевых сценариев клиента. Остальное оставили в backlog: первая версия должна была быстро заменить привычное общение на защищённое.
+            </p>
+          </div>
+        </div>
+
         <div class="case-block case-block--contact">
           <h2 class="case-heading">Как добавить контакт</h2>
 
           <div class="case-discovery-article">
-            <p class="case-discovery-article__text">
-              Мы не можем хранить персональные данные. Тогда как добавить контакт в приложение?
-            </p>
-
-            <div class="case-outline-table-wrap">
-              <table class="case-outline-table">
-                <thead>
-                  <tr>
-                    <th>Риск</th>
-                    <th>Как снижаем риск</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Имя из профиля становится персональными данными на стороне сервиса</td>
-                    <td>Не запрашиваем и не храним имя</td>
-                  </tr>
-                  <tr>
-                    <td>Технический ID не помогает понять, кто перед тобой</td>
-                    <td>Пользователь сам задаёт локальное имя контакту</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
             <p class="case-discovery-article__text">
               Сначала я погрузился в контекст сценария: перед нами два человека, которые уже встретились и познакомились. Приложение нужно им не для старта диалога, а для безопасного продолжения общения. Из этого я зафиксировал два ограничения.
             </p>
@@ -275,6 +262,10 @@
                   </tr>
                   <tr>
                     <td>Способ подключения нельзя передать третьему лицу</td>
+                    <td class="case-table-cell--muted">Предстояло узнать</td>
+                  </tr>
+                  <tr>
+                    <td>При подключении нельзя передавать персональные данные</td>
                     <td class="case-table-cell--muted">Предстояло узнать</td>
                   </tr>
                 </tbody>
@@ -318,6 +309,10 @@
               Под наши ограничения лучше всего подошёл динамический QR: он работает при личной встрече и постоянно обновляется, поэтому сохранённый код нельзя использовать как постоянный способ подключения.
             </p>
 
+            <p class="case-discovery-article__text">
+              В итоге один пользователь показывает QR, второй сканирует его, после взаимного подтверждения контакт появляется в приложении, а имя остаётся локальным на устройстве.
+            </p>
+
             <div class="case-scenario-gallery" aria-label="Добавление контакта через динамический QR в CORE">
               <img
                 class="case-scenario-gallery__image"
@@ -348,10 +343,6 @@
                 decoding="async"
               />
             </div>
-
-            <p class="case-discovery-article__text">
-              В итоге один пользователь показывает QR, второй сканирует его, после взаимного подтверждения контакт появляется в приложении, а имя остаётся локальным на устройстве.
-            </p>
           </div>
         </div>
         <div class="case-block">
@@ -446,21 +437,6 @@
           </p>
         </div>
 
-      </section>
-
-      <section class="case-section case-section--mvp" id="mvp" data-case-section>
-        <div class="case-block case-block--section-start">
-          <p class="case-section__label">MVP</p>
-          <h2 class="case-heading case-heading--wide">
-            Итак, лозунг нашего MVP — «Защитить то, чем уже пользуются»
-          </h2>
-
-          <div class="case-article-copy">
-            <p>
-              Я собрал MVP вокруг ключевых сценариев клиента. Остальное оставили в backlog: первая версия должна была быстро заменить привычное общение на защищённое.
-            </p>
-          </div>
-        </div>
       </section>
 
       <section class="case-section" id="scenarios" data-case-section>
@@ -1106,7 +1082,6 @@
       <ul class="core-nav__list">
         <li><a class="core-nav__link" href="#task" aria-current="location">Задача</a></li>
         <li><a class="core-nav__link" href="#discovery">Дискавери</a></li>
-        <li><a class="core-nav__link" href="#mvp">MVP</a></li>
         <li><a class="core-nav__link" href="#scenarios">Сценарии</a></li>
         <li><a class="core-nav__link" href="#branding">Брендинг</a></li>
       </ul>
