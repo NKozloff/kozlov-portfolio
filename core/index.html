@@ -8,7 +8,7 @@
       content="CORE — закрытый мессенджер для приватной коммуникации. Кейс продуктового дизайнера Никиты Козлова."
     />
     <title>CORE — мессенджер без пользователя</title>
-<link rel="stylesheet" href="../styles.css?v=183" />
+<link rel="stylesheet" href="../styles.css?v=188" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -264,7 +264,11 @@
             </p>
 
             <p class="case-discovery-article__text">
-              Если пользователь сканирует первым, после считывания QR он попадает в ожидание: приложение показывает его код и просит дождаться обратного сканирования. После взаимного подтверждения он задаёт контакту локальное имя.
+              Принцип подключения у обоих пользователей один: встреча происходит офлайн, один человек показывает динамический QR, второй считывает его, а затем приложение запрашивает ответное сканирование для взаимного подтверждения. После этого каждый задаёт контакту локальное имя — и новый диалог появляется в списке контактов.
+            </p>
+
+            <p class="case-discovery-article__text">
+              Ниже — пример полного пути пользователя, который начинает подключение первым.
             </p>
 
             <div class="case-contact-flow" aria-label="Путь пользователя, который первым сканирует QR">
@@ -342,47 +346,6 @@
               />
             </div>
 
-            <p class="case-discovery-article__text">
-              У второго пользователя путь короче: первый уже отсканировал его QR, поэтому этап ожидания не нужен. Он сканирует код в ответ, задаёт локальное имя — и контакт появляется в приложении.
-            </p>
-
-            <div class="case-scenario-gallery case-scenario-gallery--five" aria-label="Сценарий пользователя, чей QR был отсканирован первым">
-              <img
-                class="case-scenario-gallery__image"
-                src="../assets/core-contact-scan-second-1-v182.png"
-                alt="Второй пользователь: экран контактов"
-                loading="lazy"
-                decoding="async"
-              />
-              <img
-                class="case-scenario-gallery__image"
-                src="../assets/core-contact-scan-second-2-v182.png"
-                alt="Второй пользователь: экран подключения по QR"
-                loading="lazy"
-                decoding="async"
-              />
-              <img
-                class="case-scenario-gallery__image"
-                src="../assets/core-contact-scan-second-3-v182.png"
-                alt="Второй пользователь: QR уже отсканирован, ожидание обратного сканирования"
-                loading="lazy"
-                decoding="async"
-              />
-              <img
-                class="case-scenario-gallery__image"
-                src="../assets/core-contact-scan-second-4-v182.png"
-                alt="Второй пользователь: ввод локального имени контакта"
-                loading="lazy"
-                decoding="async"
-              />
-              <img
-                class="case-scenario-gallery__image"
-                src="../assets/core-contact-scan-second-5-v182.png"
-                alt="Второй пользователь: созданный контакт"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
           </div>
         </div>
         <div class="case-block">

@@ -389,7 +389,9 @@ a:focus-visible {
   font-size: 0.933333rem;
   line-height: 1.4;
   text-decoration: none;
-  white-space: nowrap;
+  white-space: normal;
+  text-align: center;
+  max-width: calc(100% - 8px);
 }
 
 .core-nav__link:hover,
@@ -2463,7 +2465,7 @@ a:focus-visible {
 /* v183: coded six-step QR flow with directional connectors */
 .core-page #scenarios .case-contact-flow {
   --flow-screen: 229px;
-  --flow-arrow: clamp(132px, 10vw, 180px);
+  --flow-arrow: clamp(198px, 15vw, 270px);
   --flow-ink: #5f6260;
 
   display: grid;
@@ -2537,6 +2539,7 @@ a:focus-visible {
 .core-page #scenarios .case-contact-flow__arrow--left .case-contact-flow__label {
   top: 0;
   left: 50%;
+  width: calc(100% - 12px);
   transform: translateX(-50%);
 }
 
@@ -2606,9 +2609,11 @@ a:focus-visible {
 }
 
 .core-page #scenarios .case-contact-flow__arrow--down .case-contact-flow__label {
-  left: calc(50% + 18px);
+  left: calc(50% + 22px);
   top: 50%;
+  width: 132px;
   transform: translateY(-50%);
+  text-align: left;
 }
 
 .core-page #scenarios .case-contact-flow__arrow--down .case-contact-flow__line {
@@ -2630,4 +2635,143 @@ a:focus-visible {
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-top: 9px solid var(--flow-ink);
+}
+
+/* v188: one 720px editorial grid for all case text and tables */
+.core-page .case-body .case-heading,
+.core-page .case-body .case-context-heading,
+.core-page .case-body .case-lead,
+.core-page .case-body .case-context,
+.core-page .case-body .case-copy,
+.core-page .case-body .case-subheading,
+.core-page .case-body .case-highlight,
+.core-page .case-body .case-task-copy,
+.core-page .case-body .case-reference-story,
+.core-page .case-body .case-article-copy,
+.core-page .case-body .case-discovery-article__text,
+.core-page .case-body .case-outline-table__intro,
+.core-page .case-body .case-outline-table__conclusion,
+.core-page .case-body .case-outline-table-wrap,
+.core-page .case-body .case-table-wrap,
+.core-page .case-body .case-call-story,
+.core-page .case-body .case-notification-story,
+.core-page .case-body .case-proxy-story {
+  width: min(100%, 720px) !important;
+  max-width: 720px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-sizing: border-box;
+}
+
+/* Contact article moved from Discovery to Scenarios: keep the same editorial rhythm. */
+.core-page #scenarios .case-block--contact > .case-heading + .case-discovery-article {
+  margin-top: 48px;
+}
+
+.core-page #scenarios .case-discovery-article {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.core-page #scenarios .case-discovery-article > .case-outline-table-wrap,
+.core-page #scenarios .case-discovery-article > .case-contact-flow {
+  margin-top: 0;
+}
+
+.core-page #scenarios .case-table-cell--muted {
+  color: #8a8a8a !important;
+}
+
+/* Outline tables use the same 720px grid and visual treatment in every section. */
+.core-page .case-body .case-outline-table-wrap {
+  overflow: hidden;
+}
+
+.core-page .case-body .case-outline-table {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #d8d8d8;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #ffffff !important;
+  color: #111111;
+  font-size: var(--text-size);
+  line-height: 1.4;
+}
+
+.core-page .case-body .case-outline-table th,
+.core-page .case-body .case-outline-table td {
+  padding: 8px 13.5px;
+  border: 0;
+  border-right: 1px solid #d8d8d8;
+  border-bottom: 1px solid #d8d8d8;
+  background: #ffffff !important;
+  text-align: left !important;
+  vertical-align: top !important;
+}
+
+.core-page .case-body .case-outline-table thead th {
+  color: rgba(17, 17, 17, 0.6);
+  font-weight: 400;
+}
+
+.core-page .case-body .case-outline-table tr > *:last-child {
+  border-right: 0;
+}
+
+.core-page .case-body .case-outline-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.core-page .case-body .case-outline-table th:first-child,
+.core-page .case-body .case-outline-table td:first-child {
+  width: 45%;
+}
+
+.core-page .case-body .case-outline-table th:last-child,
+.core-page .case-body .case-outline-table td:last-child {
+  width: 55%;
+}
+
+/* Regular case tables are always contained by their 720px wrapper. */
+.core-page .case-body .case-table-wrap .case-table {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Yellow conclusions stay on the editorial grid; only the text itself is highlighted. */
+.core-page .case-body .case-outline-table__conclusion,
+.core-page .case-body .case-highlight {
+  padding: 0;
+  background: transparent;
+}
+
+.core-page .case-body .case-conclusion-mark {
+  display: inline;
+  padding: 2px 0;
+  background: #fffdd8;
+  line-height: calc(1em + 4px);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Full-width visual fields deliberately remain outside the 720px text grid. */
+.core-page .case-body .case-scenario-gallery,
+.core-page .case-body .case-contact-flow,
+.core-page .case-body .case-proxy-status-placeholder,
+.core-page .case-body .case-proxy-flow-placeholder,
+.core-page .case-body .case-notification-placeholder,
+.core-page .case-body .case-call-placeholder,
+.core-page .case-body .case-call-widget-placeholder,
+.core-page .case-body .case-call-messages-placeholder,
+.core-page .case-body .case-branding-graphics-placeholder,
+.core-page .case-body .media-placeholder--feature {
+  max-width: none;
 }
