@@ -2335,3 +2335,64 @@ a:focus-visible {
 .core-page #scenarios .case-notification-story--after {
   margin-top: 39.6px;
 }
+
+
+/* v167: expanded proxy narrative */
+.core-page #scenarios .case-proxy-story {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.core-page #scenarios .case-proxy-story p {
+  margin: 0;
+  font-size: var(--text-size);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.core-page #scenarios .case-proxy-story p + p {
+  margin-top: 8px;
+}
+
+.core-page #scenarios .case-highlight--proxy {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin: 11px auto 0;
+  padding: 0;
+  background: transparent;
+}
+
+
+/* v168: QR decision-making and finished scenario now live inside Discovery question 1 */
+.core-page #discovery .case-discovery-subheading {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin: 39.6px auto 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+.core-page #discovery .case-discovery-subheading + .case-outline-table__intro {
+  margin-top: 8px;
+}
+
+.core-page #discovery .case-table-cell--muted {
+  color: #8a8a8a;
+}
+
+.core-page #discovery .case-discovery-result {
+  margin-top: 16px;
+}
+
+.core-page #discovery .case-scenario-gallery {
+  margin-top: 39.6px;
+  background: #f4f4f4;
+}
+
+.core-page #discovery .case-discovery-result--after {
+  margin-top: 39.6px;
+}

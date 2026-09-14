@@ -8,7 +8,7 @@
       content="CORE — закрытый мессенджер для приватной коммуникации. Кейс продуктового дизайнера Никиты Козлова."
     />
     <title>CORE — мессенджер без пользователя</title>
-<link rel="stylesheet" href="../styles.css?v=165" />
+<link rel="stylesheet" href="../styles.css?v=168" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -257,6 +257,101 @@
           <p class="case-outline-table__conclusion">
             <span class="case-conclusion-mark">Имя существует только для самого пользователя: сервис не получает персональные данные, а контакт остаётся узнаваемым.</span>
           </p>
+
+          <h3 class="case-discovery-subheading">Как вообще добавить человека?</h3>
+          <p class="case-outline-table__intro">
+            CORE нужен не для старта диалога, а для его безопасного продолжения.
+          </p>
+
+          <div class="case-outline-table-wrap">
+            <table class="case-outline-table">
+              <thead>
+                <tr>
+                  <th>Ограничение</th>
+                  <th>Решение</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Подключение должно происходить только при личной встрече</td>
+                  <td class="case-table-cell--muted">Предстояло узнать</td>
+                </tr>
+                <tr>
+                  <td>Способ подключения нельзя передать третьему лицу</td>
+                  <td class="case-table-cell--muted">Предстояло узнать</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="case-discovery-subheading">Чем соединить два устройства?</h3>
+          <p class="case-outline-table__intro">
+            С этими ограничениями посмотрел, как подключение устроено в других мессенджерах и privacy-first сервисах.
+          </p>
+
+          <div class="case-outline-table-wrap">
+            <table class="case-outline-table">
+              <thead>
+                <tr>
+                  <th>Вариант</th>
+                  <th>Что показал анализ</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Номер телефона или постоянный ID</td>
+                  <td>Можно подключиться удалённо, а у пользователя появляется постоянный идентификатор</td>
+                </tr>
+                <tr>
+                  <td>Одноразовый код</td>
+                  <td>Его можно переслать другому человеку до использования</td>
+                </tr>
+                <tr>
+                  <td>Статичный QR</td>
+                  <td>Подходит для личной встречи, но код можно сохранить и передать</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="case-outline-table__intro case-discovery-result">
+            Лучше всего под ограничения подошёл QR. Чтобы его нельзя было сохранить и передать дальше, сделал его динамическим — код постоянно обновляется.
+          </p>
+
+          <div class="case-scenario-gallery" aria-label="Добавление контакта через динамический QR в CORE">
+              <img
+                class="case-scenario-gallery__image"
+                src="../assets/core-contact-step-1-v63.png"
+                alt="Добавление контакта через QR, экран 1"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                class="case-scenario-gallery__image"
+                src="../assets/core-contact-step-2-v159.png"
+                alt="Добавление контакта через QR, экран 2"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                class="case-scenario-gallery__image"
+                src="../assets/core-contact-step-3-v64.png"
+                alt="Добавление контакта через QR, экран 3"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                class="case-scenario-gallery__image"
+                src="../assets/core-contact-step-4-v158.png"
+                alt="Добавление контакта через QR, экран 4"
+                loading="lazy"
+                decoding="async"
+              />
+          </div>
+
+          <p class="case-outline-table__intro case-discovery-result case-discovery-result--after">
+            В итоге один пользователь показывает QR, второй сканирует его, после взаимного подтверждения контакт появляется в приложении, а имя остаётся локальным на устройстве.
+          </p>
         </div>
 
         <div class="case-block">
@@ -408,50 +503,19 @@
             </div>
         </div>
 
-        <div class="case-block">
-          <h2 class="case-heading">QR вместо адресной книги</h2>
-          <p class="case-lead case-lead--wide">
-            Заменил поиск и адресную книгу на офлайн-сценарий: один пользователь показывает QR, второй сканирует его — после этого контакт создаётся напрямую
-          </p>
 
-          <div class="case-scenario-gallery" aria-label="Добавление контакта через QR в CORE">
-              <img
-                class="case-scenario-gallery__image"
-                src="../assets/core-contact-step-1-v63.png"
-                alt="Добавление контакта через QR, экран 1"
-                loading="lazy"
-                decoding="async"
-              />
-              <img
-                class="case-scenario-gallery__image"
-                src="../assets/core-contact-step-2-v159.png"
-                alt="Добавление контакта через QR, экран 2"
-                loading="lazy"
-                decoding="async"
-              />
-              <img
-                class="case-scenario-gallery__image"
-                src="../assets/core-contact-step-3-v64.png"
-                alt="Добавление контакта через QR, экран 3"
-                loading="lazy"
-                decoding="async"
-              />
-              <img
-                class="case-scenario-gallery__image"
-                src="../assets/core-contact-step-4-v158.png"
-                alt="Добавление контакта через QR, экран 4"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-        </div>
         <div class="case-block">
           <h2 class="case-heading">Как не потерять защищённое соединение?</h2>
 
           <div class="case-subblock">
-            <p class="case-copy case-copy--wide">
-              Продумал статусную модель, которая покрывает весь цикл соединения.
-            </p>
+            <div class="case-proxy-story">
+              <p>
+                Прокси был базовым слоем сетевой приватности: трафик приложения должен проходить через защищённую точку подключения, а не напрямую с устройства пользователя. Иначе сервис на другой стороне соединения сможет увидеть его реальный IP и часть сетевых метаданных.
+              </p>
+              <p>
+                Поэтому заложил правило: приложение не должно незаметно переключаться на обычное соединение. Пока прокси работает — пользователь общается как обычно. Если соединение теряется, приложение пытается восстановить его и явно показывает текущее состояние.
+              </p>
+            </div>
 
             <div class="case-proxy-status-placeholder" aria-label="Четыре состояния прокси-соединения">
               <img
@@ -486,8 +550,14 @@
           </div>
 
           <div class="case-subblock">
-            <p class="case-copy case-copy--wide">
-              Продумал восстановление соединения и fallback-сценарии на случай сбоев.
+            <div class="case-proxy-story">
+              <p>
+                Отдельно продумал негативный сценарий. При потере защищённого соединения пользователь может продолжать ходить по приложению и читать уже доступные данные, но сетевые действия блокируются: нельзя отправлять сообщения, звонить и передавать файлы.
+              </p>
+            </div>
+
+            <p class="case-highlight case-highlight--proxy">
+              <span class="case-conclusion-mark">Лучше остановить передачу данных, чем незаметно отправить их в обход защищённого соединения.</span>
             </p>
 
             <div class="case-proxy-flow-placeholder">
@@ -551,13 +621,10 @@
             <p>
               В MVP настройка действует сразу на все чаты: можно скрыть имя, содержание сообщения или полностью отключить уведомления.
             </p>
-            <p>
-              Следующим шагом этот же контроль можно перенести на уровень конкретного собеседника.
-            </p>
           </div>
 
           <p class="case-highlight">
-            <span class="case-conclusion-mark">Приватность не должна заканчиваться внутри чата — она продолжается и на системном экране.</span>
+            <span class="case-conclusion-mark">Следующим шагом этот же контроль можно перенести на уровень конкретного собеседника.</span>
           </p>
         </div>
 
