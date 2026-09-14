@@ -2311,3 +2311,27 @@ a:focus-visible {
 .case-scenario-gallery--three {
   grid-template-columns: repeat(3, minmax(0, 229px));
 }
+
+
+/* v165: notification scenario narrative */
+.core-page #scenarios .case-notification-story {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.core-page #scenarios .case-notification-story p {
+  margin: 0;
+  font-size: var(--text-size);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.core-page #scenarios .case-notification-story p + p {
+  margin-top: 8px;
+}
+
+.core-page #scenarios .case-notification-story--after {
+  margin-top: 39.6px;
+}
