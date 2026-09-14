@@ -2228,3 +2228,63 @@ a:focus-visible {
   pointer-events: none;
   user-select: none;
 }
+
+
+/* v155: merged Intro section with two descriptor levels */
+.core-page #intro .case-intro-block {
+  position: relative;
+}
+
+.core-page #intro .case-section__label {
+  position: absolute !important;
+  top: 0;
+  left: calc(24px - var(--page-space));
+  width: auto !important;
+  max-width: none !important;
+  margin: 0 !important;
+  color: #8a8a8a !important;
+  font-size: var(--text-size);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.core-page #intro .case-intro-row {
+  position: relative;
+}
+
+.core-page #intro .case-intro-row__content {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.core-page #intro .case-intro-row__label {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 360px - 144px);
+  width: 112px;
+  margin: 0;
+  color: #8a8a8a;
+  font-size: var(--text-size);
+  font-weight: 400;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.core-page #intro .case-heading,
+.core-page #intro .case-lead,
+.core-page #intro .case-copy {
+  width: 100%;
+  max-width: none;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.core-page #intro .case-intro-row--client {
+  margin-top: 48px;
+}
+
+.core-page #intro .case-intro-client-copy {
+  margin-top: 0;
+}
