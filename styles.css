@@ -2041,7 +2041,7 @@ a:focus-visible {
 .core-page #scenarios .case-highlight--call {
   width: min(100%, 720px);
   max-width: 720px;
-  margin: 22px auto 0;
+  margin: 11px auto 0;
   padding: 0;
   background: transparent;
 }
@@ -2208,4 +2208,23 @@ a:focus-visible {
 .core-nav__link {
   width: 100%;
   justify-content: center;
+}
+
+
+/* v154: centered looping motion illustrations in the final Branding field */
+.core-page #branding .case-branding-graphics-placeholder {
+  display: grid;
+  grid-template-columns: repeat(2, 343.5px);
+  place-content: center;
+  gap: 75px;
+  overflow: hidden;
+}
+
+.core-page #branding .case-branding-graphics-video {
+  display: block;
+  width: 343.5px;
+  height: 343.5px;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
 }
