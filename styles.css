@@ -2305,3 +2305,9 @@ a:focus-visible {
   background: #f4f4f4;
   box-sizing: border-box;
 }
+
+
+/* v163: three centered call-state screens in the first in-app call block */
+.case-scenario-gallery--three {
+  grid-template-columns: repeat(3, minmax(0, 229px));
+}

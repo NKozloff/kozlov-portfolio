@@ -8,7 +8,7 @@
       content="CORE — закрытый мессенджер для приватной коммуникации. Кейс продуктового дизайнера Никиты Козлова."
     />
     <title>CORE — мессенджер без пользователя</title>
-<link rel="stylesheet" href="../styles.css?v=162" />
+<link rel="stylesheet" href="../styles.css?v=164" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -806,15 +806,33 @@
                 Клиент хотел видеть, что происходит на стороне собеседника во время звонка: какие инструменты он включает и выключает.
               </p>
               <p>
-                Я изучил возможности системного звонка и выяснил, что его интерфейс нельзя кастомизировать. Поэтому перенёс контроль внутрь приложения — во время активного звонка рядом с таб-баром закрепляется виджет со статусами инструментов собеседника.
+                Я изучил возможности системного звонка и выяснил, что его интерфейс нельзя кастомизировать. Поэтому перенёс контроль внутрь приложения — во время активного звонка виджет всегда фиксируется у таб-бара и показывает статусы инструментов собеседника.
               </p>
             </div>
 
-            <div
-              class="case-call-widget-placeholder"
-              role="img"
-              aria-label="Интерфейс закреплённого виджета звонка будет добавлен позже"
-            ></div>
+            <div class="case-scenario-gallery case-scenario-gallery--three" aria-label="Закреплённый виджет звонка в разных экранах CORE">
+              <img
+                class="case-scenario-gallery__image"
+                src="../assets/core-call-widget-1-v163.png"
+                alt="Виджет звонка внутри списка звонков"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                class="case-scenario-gallery__image"
+                src="../assets/core-call-widget-2-v163.png"
+                alt="Виджет звонка внутри настроек"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                class="case-scenario-gallery__image"
+                src="../assets/core-call-widget-3-v163.png"
+                alt="Виджет звонка внутри списка чатов"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </div>
 
           <div class="case-subblock">
@@ -831,11 +849,15 @@
               <span class="case-conclusion-mark">Не меняли системный звонок — добавили внутри приложения собственный слой контроля.</span>
             </p>
 
-            <div
-              class="case-call-messages-placeholder"
-              role="img"
-              aria-label="Интерфейсы сообщений во время звонка будут добавлены позже"
-            ></div>
+            <div class="case-scenario-gallery case-scenario-gallery--single" aria-label="Сообщение внутри приложения во время звонка">
+              <img
+                class="case-scenario-gallery__image"
+                src="../assets/core-call-messages-1-v164.png"
+                alt="Сообщение внутри чата во время звонка"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </div>
         </div>
       </section>
