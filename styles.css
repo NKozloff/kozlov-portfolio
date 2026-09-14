@@ -2396,3 +2396,34 @@ a:focus-visible {
 .core-page #discovery .case-discovery-result--after {
   margin-top: 39.6px;
 }
+
+
+/* v169: article rhythm for the merged contact Discovery block */
+.core-page #discovery .case-block--contact > .case-heading + .case-discovery-article {
+  margin-top: 48px;
+}
+
+.core-page #discovery .case-discovery-article {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.core-page #discovery .case-discovery-article__text {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: var(--text-size);
+  font-weight: 400;
+  line-height: 1.5;
+  color: #111111;
+}
+
+.core-page #discovery .case-discovery-article > .case-outline-table-wrap,
+.core-page #discovery .case-discovery-article > .case-scenario-gallery {
+  margin-top: 0;
+}
+
+.core-page #discovery .case-discovery-article > .case-scenario-gallery {
+  background: #f4f4f4;
+}

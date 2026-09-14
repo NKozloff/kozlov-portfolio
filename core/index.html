@@ -8,7 +8,7 @@
       content="CORE — закрытый мессенджер для приватной коммуникации. Кейс продуктового дизайнера Никиты Козлова."
     />
     <title>CORE — мессенджер без пользователя</title>
-<link rel="stylesheet" href="../styles.css?v=168" />
+<link rel="stylesheet" href="../styles.css?v=169" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -227,98 +227,98 @@
           </p>
         </div>
 
-        <div class="case-block">
-          <h2 class="case-heading">Вопрос 1: как назвать человека без профиля?</h2>
-          <p class="case-outline-table__intro">
-            Если у пользователя нет аккаунта, сервис не должен получать его имя. Но самому пользователю всё равно нужно понимать, с кем он общается
-          </p>
+        <div class="case-block case-block--contact">
+          <h2 class="case-heading">Как добавить контакт</h2>
 
-          <div class="case-outline-table-wrap">
-            <table class="case-outline-table">
-              <thead>
-                <tr>
-                  <th>Риск</th>
-                  <th>Как снижаем риск</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Имя из профиля становится персональными данными на стороне сервиса</td>
-                  <td>Не запрашиваем и не храним имя</td>
-                </tr>
-                <tr>
-                  <td>Технический ID не помогает понять, кто перед тобой</td>
-                  <td>Пользователь сам задаёт локальное имя контакту</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <div class="case-discovery-article">
+            <p class="case-discovery-article__text">
+              Мы не можем хранить персональные данные. Тогда как добавить контакт в приложение?
+            </p>
 
-          <p class="case-outline-table__conclusion">
-            <span class="case-conclusion-mark">Имя существует только для самого пользователя: сервис не получает персональные данные, а контакт остаётся узнаваемым.</span>
-          </p>
+            <div class="case-outline-table-wrap">
+              <table class="case-outline-table">
+                <thead>
+                  <tr>
+                    <th>Риск</th>
+                    <th>Как снижаем риск</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Имя из профиля становится персональными данными на стороне сервиса</td>
+                    <td>Не запрашиваем и не храним имя</td>
+                  </tr>
+                  <tr>
+                    <td>Технический ID не помогает понять, кто перед тобой</td>
+                    <td>Пользователь сам задаёт локальное имя контакту</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-          <h3 class="case-discovery-subheading">Как вообще добавить человека?</h3>
-          <p class="case-outline-table__intro">
-            CORE нужен не для старта диалога, а для его безопасного продолжения.
-          </p>
+            <p class="case-discovery-article__text">
+              Сначала я погрузился в контекст сценария: перед нами два человека, которые уже встретились и познакомились. Приложение нужно им не для старта диалога, а для безопасного продолжения общения. Из этого я зафиксировал два ограничения.
+            </p>
 
-          <div class="case-outline-table-wrap">
-            <table class="case-outline-table">
-              <thead>
-                <tr>
-                  <th>Ограничение</th>
-                  <th>Решение</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Подключение должно происходить только при личной встрече</td>
-                  <td class="case-table-cell--muted">Предстояло узнать</td>
-                </tr>
-                <tr>
-                  <td>Способ подключения нельзя передать третьему лицу</td>
-                  <td class="case-table-cell--muted">Предстояло узнать</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+            <div class="case-outline-table-wrap">
+              <table class="case-outline-table">
+                <thead>
+                  <tr>
+                    <th>Ограничение</th>
+                    <th>Решение</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Подключение должно происходить только при личной встрече</td>
+                    <td class="case-table-cell--muted">Предстояло узнать</td>
+                  </tr>
+                  <tr>
+                    <td>Способ подключения нельзя передать третьему лицу</td>
+                    <td class="case-table-cell--muted">Предстояло узнать</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-          <h3 class="case-discovery-subheading">Чем соединить два устройства?</h3>
-          <p class="case-outline-table__intro">
-            С этими ограничениями посмотрел, как подключение устроено в других мессенджерах и privacy-first сервисах.
-          </p>
+            <p class="case-discovery-article__text">
+              С этими ограничениями посмотрел, как эту задачу решают обычные мессенджеры и privacy-first мессенджеры.
+            </p>
 
-          <div class="case-outline-table-wrap">
-            <table class="case-outline-table">
-              <thead>
-                <tr>
-                  <th>Вариант</th>
-                  <th>Что показал анализ</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Номер телефона или постоянный ID</td>
-                  <td>Можно подключиться удалённо, а у пользователя появляется постоянный идентификатор</td>
-                </tr>
-                <tr>
-                  <td>Одноразовый код</td>
-                  <td>Его можно переслать другому человеку до использования</td>
-                </tr>
-                <tr>
-                  <td>Статичный QR</td>
-                  <td>Подходит для личной встречи, но код можно сохранить и передать</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+            <div class="case-outline-table-wrap">
+              <table class="case-outline-table">
+                <thead>
+                  <tr>
+                    <th>Вариант</th>
+                    <th>Что не подходит</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Номер телефона / username</td>
+                    <td>Требует постоянного идентификатора и позволяет подключиться удалённо</td>
+                  </tr>
+                  <tr>
+                    <td>Ссылка или код</td>
+                    <td>Можно переслать другому человеку</td>
+                  </tr>
+                  <tr>
+                    <td>Статичный QR</td>
+                    <td>Подходит для встречи, но его можно сохранить и передать</td>
+                  </tr>
+                  <tr>
+                    <td>Динамический QR</td>
+                    <td>Работает при личной встрече и теряет актуальность после сохранения</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-          <p class="case-outline-table__intro case-discovery-result">
-            Лучше всего под ограничения подошёл QR. Чтобы его нельзя было сохранить и передать дальше, сделал его динамическим — код постоянно обновляется.
-          </p>
+            <p class="case-discovery-article__text">
+              Под наши ограничения лучше всего подошёл динамический QR: он работает при личной встрече и постоянно обновляется, поэтому сохранённый код нельзя использовать как постоянный способ подключения.
+            </p>
 
-          <div class="case-scenario-gallery" aria-label="Добавление контакта через динамический QR в CORE">
+            <div class="case-scenario-gallery" aria-label="Добавление контакта через динамический QR в CORE">
               <img
                 class="case-scenario-gallery__image"
                 src="../assets/core-contact-step-1-v63.png"
@@ -347,13 +347,13 @@
                 loading="lazy"
                 decoding="async"
               />
+            </div>
+
+            <p class="case-discovery-article__text">
+              В итоге один пользователь показывает QR, второй сканирует его, после взаимного подтверждения контакт появляется в приложении, а имя остаётся локальным на устройстве.
+            </p>
           </div>
-
-          <p class="case-outline-table__intro case-discovery-result case-discovery-result--after">
-            В итоге один пользователь показывает QR, второй сканирует его, после взаимного подтверждения контакт появляется в приложении, а имя остаётся локальным на устройстве.
-          </p>
         </div>
-
         <div class="case-block">
           <h2 class="case-heading">Вопрос 2: как контролировать чат?</h2>
           <p class="case-outline-table__intro">
