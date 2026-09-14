@@ -864,7 +864,8 @@ a:focus-visible {
   width: auto;
   max-width: none;
   margin: 0;
-  white-space: nowrap;
+  white-space: normal;
+  text-align: center;
 }
 
 /* Continuous editorial cover */
@@ -1799,7 +1800,8 @@ a:focus-visible {
   color: #8a8a8a;
   font-size: var(--text-size);
   line-height: 1.4;
-  white-space: nowrap;
+  white-space: normal;
+  text-align: center;
 }
 
 /* Keep the established divider-to-content rhythm, now from descriptor to content */
@@ -1944,7 +1946,8 @@ a:focus-visible {
   color: #8a8a8a !important;
   font-size: var(--text-size);
   line-height: 1.4;
-  white-space: nowrap;
+  white-space: normal;
+  text-align: center;
 }
 
 /* No section divider lines */
@@ -2255,7 +2258,8 @@ a:focus-visible {
   color: #8a8a8a;
   font-size: var(--text-size);
   line-height: 1.4;
-  white-space: nowrap;
+  white-space: normal;
+  text-align: center;
 }
 
 .core-page #task .case-task-copy {
@@ -2532,7 +2536,8 @@ a:focus-visible {
 .core-page #scenarios .case-contact-flow__label {
   position: absolute;
   color: var(--flow-ink);
-  white-space: nowrap;
+  white-space: normal;
+  text-align: center;
 }
 
 .core-page #scenarios .case-contact-flow__arrow--right .case-contact-flow__label,
@@ -2541,6 +2546,7 @@ a:focus-visible {
   left: 50%;
   width: calc(100% - 12px);
   transform: translateX(-50%);
+  text-align: center;
 }
 
 .core-page #scenarios .case-contact-flow__line {
@@ -2609,11 +2615,11 @@ a:focus-visible {
 }
 
 .core-page #scenarios .case-contact-flow__arrow--down .case-contact-flow__label {
-  left: calc(50% + 22px);
+  left: 50%;
   top: 50%;
   width: 132px;
-  transform: translateY(-50%);
-  text-align: left;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .core-page #scenarios .case-contact-flow__arrow--down .case-contact-flow__line {
@@ -2774,4 +2780,42 @@ a:focus-visible {
 .core-page .case-body .case-branding-graphics-placeholder,
 .core-page .case-body .media-placeholder--feature {
   max-width: none;
+}
+
+/* v189: QR article uses the same text rhythm as “Звонок внутри приложения” */
+.core-page #scenarios .case-block--contact > .case-heading + .case-discovery-article {
+  margin-top: 38.4px;
+}
+
+.core-page #scenarios .case-discovery-article {
+  display: block;
+}
+
+.core-page #scenarios .case-discovery-article > * {
+  margin-top: 22px;
+}
+
+.core-page #scenarios .case-discovery-article > :first-child {
+  margin-top: 0;
+}
+
+.core-page #scenarios .case-discovery-article__text {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: var(--text-size);
+  font-weight: 400;
+  line-height: 1.4;
+  color: #111111;
+}
+
+.core-page #scenarios .case-discovery-article__text + .case-discovery-article__text {
+  margin-top: 8px;
+}
+
+.core-page #scenarios .case-discovery-article > .case-outline-table-wrap,
+.core-page #scenarios .case-discovery-article > .case-highlight,
+.core-page #scenarios .case-discovery-article > .case-contact-flow {
+  margin-top: 22px;
 }
