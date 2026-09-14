@@ -2229,62 +2229,43 @@ a:focus-visible {
   user-select: none;
 }
 
-
-/* v155: merged Intro section with two descriptor levels */
-.core-page #intro .case-intro-block {
-  position: relative;
-}
-
-.core-page #intro .case-section__label {
-  position: absolute !important;
-  top: 0;
-  left: calc(24px - var(--page-space));
-  width: auto !important;
-  max-width: none !important;
-  margin: 0 !important;
-  color: #8a8a8a !important;
-  font-size: var(--text-size);
-  line-height: 1.4;
-  white-space: nowrap;
-}
-
-.core-page #intro .case-intro-row {
-  position: relative;
-}
-
-.core-page #intro .case-intro-row__content {
+/* v156: task intro with client context in one continuous text layer */
+.core-page #task .case-heading,
+.core-page #task .case-task-copy {
   width: min(100%, 720px);
   max-width: 720px;
   margin-right: auto;
   margin-left: auto;
 }
 
-.core-page #intro .case-intro-row__label {
+.core-page #task > .case-block--section-start {
+  position: relative;
+}
+
+.core-page #task > .case-block--section-start > .case-section__label {
   position: absolute;
   top: 0;
-  left: calc(50% - 360px - 144px);
-  width: 112px;
+  left: calc(24px - var(--page-space));
+  width: auto;
+  max-width: none;
   margin: 0;
   color: #8a8a8a;
   font-size: var(--text-size);
-  font-weight: 400;
   line-height: 1.4;
   white-space: nowrap;
 }
 
-.core-page #intro .case-heading,
-.core-page #intro .case-lead,
-.core-page #intro .case-copy {
-  width: 100%;
-  max-width: none;
-  margin-right: 0;
-  margin-left: 0;
+.core-page #task .case-task-copy {
+  margin-top: 2.666667rem;
 }
 
-.core-page #intro .case-intro-row--client {
-  margin-top: 48px;
+.core-page #task .case-task-copy p {
+  margin: 0;
+  font-size: var(--text-size);
+  font-weight: 400;
+  line-height: 1.4;
 }
 
-.core-page #intro .case-intro-client-copy {
-  margin-top: 0;
+.core-page #task .case-task-copy p + p {
+  margin-top: 8px;
 }
