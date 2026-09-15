@@ -2850,12 +2850,10 @@ a:focus-visible {
 }
 
 .core-page #scenarios .case-chat-indicators {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 229px));
+  display: flex;
   justify-content: center;
-  align-items: start;
-  column-gap: clamp(56px, 6vw, 96px);
-  row-gap: 0;
+  align-items: flex-start;
+  gap: 72px;
   width: auto;
   margin-top: 22px;
   margin-left: calc(0px - var(--page-space));
@@ -2863,20 +2861,23 @@ a:focus-visible {
   padding: 96px clamp(48px, 7vw, 120px);
   background: #f4f4f4;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .core-page #scenarios .case-chat-indicators__item {
   width: 229px;
+  min-width: 229px;
   margin: 0;
 }
 
 .core-page #scenarios .case-chat-indicators__label {
+  display: block;
   margin: 0 0 24px;
   color: var(--ink);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 1.25;
+  line-height: 1.35;
   text-align: center;
 }
 
@@ -2888,4 +2889,28 @@ a:focus-visible {
   background: #ffffff;
   border: 1px solid #e4e4e4;
   box-sizing: border-box;
+}
+
+
+/* v199: consistent paragraph rhythm and call-table breathing room */
+.core-page .case-body .case-task-copy p + p,
+.core-page .case-body .case-reference-story p + p,
+.core-page .case-body .case-article-copy p + p,
+.core-page .case-body .case-call-story p + p,
+.core-page .case-body .case-notification-story p + p,
+.core-page .case-body .case-proxy-story p + p,
+.core-page .case-body .case-chat-story p + p {
+  margin-top: 16px !important;
+}
+
+.core-page #scenarios .case-discovery-article__text + .case-discovery-article__text {
+  margin-top: 16px !important;
+}
+
+.core-page #scenarios .case-block--call .case-subblock > .case-outline-table-wrap {
+  margin-top: 22px !important;
+}
+
+.core-page #scenarios .case-block--call .case-subblock > .case-outline-table-wrap + .case-call-story {
+  margin-top: 22px !important;
 }
