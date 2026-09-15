@@ -363,44 +363,123 @@
             </p>
           </div>
 
-          <div class="case-chat-indicators" aria-label="Индикаторы действий в чате и списке чатов">
+          <div class="case-chat-indicators" aria-label="Примеры контроля действий в чате и списке чатов">
             <figure class="case-chat-indicators__item">
-              <figcaption class="case-chat-indicators__label">Индикаторы в чате</figcaption>
-              <div class="case-chat-indicators__screen" aria-label="Место для интерфейса индикаторов внутри чата"></div>
+              <figcaption class="case-chat-indicators__label">Скриншот сообщения</figcaption>
+              <img
+                class="case-chat-indicators__screen"
+                src="../assets/core-chat-control-1-v197.png"
+                alt="Пример системного сообщения о скриншоте внутри чата"
+                loading="lazy"
+                decoding="async"
+              />
             </figure>
             <figure class="case-chat-indicators__item">
-              <figcaption class="case-chat-indicators__label">Индикаторы в чатах</figcaption>
-              <div class="case-chat-indicators__screen" aria-label="Место для интерфейса индикаторов в списке чатов"></div>
+              <figcaption class="case-chat-indicators__label">Пересылка сообщений</figcaption>
+              <img
+                class="case-chat-indicators__screen"
+                src="../assets/core-chat-control-2-v197.png"
+                alt="Пример системного сообщения о пересылке сообщения внутри чата"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+            <figure class="case-chat-indicators__item">
+              <figcaption class="case-chat-indicators__label">Индикаторы</figcaption>
+              <img
+                class="case-chat-indicators__screen"
+                src="../assets/core-chat-control-3-v197.png"
+                alt="Пример индикаторов действий на уровне списка чатов"
+                loading="lazy"
+                decoding="async"
+              />
             </figure>
           </div>
         </div>
 
-        <div class="case-block">
-          <h2 class="case-heading">Вопрос 3: как контролировать звонок?</h2>
-          <p class="case-outline-table__intro">
-            Во время разговора собеседник может менять условия звонка, а второй участник этого не заметит
-          </p>
+        <div class="case-block case-block--call">
+          <h2 class="case-heading">Как контролировать звонок?</h2>
 
-          <div class="case-outline-table-wrap">
-            <table class="case-outline-table">
-              <thead>
-                <tr>
-                  <th>Риск</th>
-                  <th>Как снижаем риск</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Собеседник включает или выключает инструменты звонка</td>
-                  <td>Показываем индикацию активных инструментов</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="case-subblock">
+            <div class="case-call-story">
+              <p>
+                Сначала разобрал, какие действия собеседника могут изменить условия разговора незаметно для второго участника.
+              </p>
+            </div>
+
+            <div class="case-outline-table-wrap">
+              <table class="case-outline-table">
+                <thead>
+                  <tr>
+                    <th>Действие собеседника</th>
+                    <th>В чём риск</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Включает громкую связь</td>
+                    <td>Разговор могут слышать люди рядом</td>
+                  </tr>
+                  <tr>
+                    <td>Выключает микрофон</td>
+                    <td>Собеседник может говорить с людьми рядом, а второй участник этого не слышит</td>
+                  </tr>
+                  <tr>
+                    <td>Подключает Bluetooth-устройство</td>
+                    <td>Разговор может воспроизводиться через внешнее устройство, о котором второй участник не знает</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="case-call-story">
+              <p>
+                У конкурентов такого контроля не было — готового паттерна, который можно было бы перенять, я не нашёл.
+              </p>
+              <p>
+                Дальше я проверил, где эту информацию можно показывать, и столкнулся с ограничением: системный экран звонка iOS нельзя кастомизировать под наши индикаторы.
+              </p>
+            </div>
+
+            <p class="case-highlight case-highlight--call">
+              <span class="case-conclusion-mark">Поэтому контроль перенесли внутрь приложения: во время звонка там появляется собственный виджет, который показывает состояние инструментов на стороне собеседника.</span>
+            </p>
+
+            <div class="case-scenario-gallery case-scenario-gallery--single" aria-label="Виджет контроля во время звонка">
+              <img
+                class="case-scenario-gallery__image"
+                src="../assets/core-call-widget-1-v163.png"
+                alt="Виджет звонка с индикаторами инструментов собеседника"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </div>
 
-          <p class="case-outline-table__conclusion">
-            <span class="case-conclusion-mark">Изменения условий разговора становятся видимыми во время звонка.</span>
-          </p>
+          <div class="case-subblock">
+            <div class="case-call-story">
+              <p>
+                Во время проверки пользовательского пути нашёл ещё одну слепую зону: человек может продолжать ходить по приложению, а на некоторых экранах — например, внутри чата или настроек — виджет звонка не отображается.
+              </p>
+              <p>
+                При этом собеседник всё ещё может включить громкую связь, выключить микрофон или переключить устройство вывода звука.
+              </p>
+            </div>
+
+            <p class="case-highlight case-highlight--call">
+              <span class="case-conclusion-mark">Чтобы изменения не проходили незаметно, добавил короткие сообщения поверх текущего экрана — они появляются каждый раз, когда собеседник меняет условия звонка.</span>
+            </p>
+
+            <div class="case-scenario-gallery case-scenario-gallery--single" aria-label="Сообщение об изменении условий звонка">
+              <img
+                class="case-scenario-gallery__image"
+                src="../assets/core-call-messages-1-v164.png"
+                alt="Сообщение внутри приложения об изменении условий звонка"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
         </div>
 
         <div class="case-block">
@@ -853,69 +932,7 @@
           <div class="media-placeholder media-placeholder--feature" role="img" aria-label="Сценарий добавления контакта по QR"></div>
         </div>
 
-        <div class="case-block case-block--call">
-          <h2 class="case-heading">Звонок внутри приложения</h2>
 
-          <div class="case-subblock">
-            <div class="case-call-story">
-              <p>
-                Клиент хотел видеть, что происходит на стороне собеседника во время звонка: какие инструменты он включает и выключает.
-              </p>
-              <p>
-                Я изучил возможности системного звонка и выяснил, что его интерфейс нельзя кастомизировать. Поэтому перенёс контроль внутрь приложения — во время активного звонка виджет всегда фиксируется у таб-бара и показывает статусы инструментов собеседника.
-              </p>
-            </div>
-
-            <div class="case-scenario-gallery case-scenario-gallery--three" aria-label="Закреплённый виджет звонка в разных экранах CORE">
-              <img
-                class="case-scenario-gallery__image"
-                src="../assets/core-call-widget-1-v163.png"
-                alt="Виджет звонка внутри списка звонков"
-                loading="lazy"
-                decoding="async"
-              />
-              <img
-                class="case-scenario-gallery__image"
-                src="../assets/core-call-widget-2-v163.png"
-                alt="Виджет звонка внутри настроек"
-                loading="lazy"
-                decoding="async"
-              />
-              <img
-                class="case-scenario-gallery__image"
-                src="../assets/core-call-widget-3-v163.png"
-                alt="Виджет звонка внутри списка чатов"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-          </div>
-
-          <div class="case-subblock">
-            <div class="case-call-story">
-              <p>
-                Затем проверил сценарии использования и нашёл слепую зону: внутри чата таб-бара уже нет, поэтому виджет становится недоступен.
-              </p>
-              <p>
-                Чтобы изменения всё равно не проходили незаметно, добавил короткие сообщения прямо поверх текущего экрана. Именно сообщения внутри приложения, а не push — частые переключения инструментов не должны спамить телефон.
-              </p>
-            </div>
-
-            <p class="case-highlight case-highlight--call">
-              <span class="case-conclusion-mark">Не меняли системный звонок — добавили внутри приложения собственный слой контроля.</span>
-            </p>
-
-            <div class="case-scenario-gallery case-scenario-gallery--single" aria-label="Сообщение внутри приложения во время звонка">
-              <img
-                class="case-scenario-gallery__image"
-                src="../assets/core-call-messages-1-v164.png"
-                alt="Сообщение внутри чата во время звонка"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-          </div>
-        </div>
       </section>
 
       <section class="case-section" id="branding" data-case-section>

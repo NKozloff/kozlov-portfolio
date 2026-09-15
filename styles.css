@@ -2851,15 +2851,16 @@ a:focus-visible {
 
 .core-page #scenarios .case-chat-indicators {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 229px));
+  grid-template-columns: repeat(3, minmax(0, 229px));
   justify-content: center;
   align-items: start;
-  gap: clamp(96px, 10vw, 160px);
+  column-gap: clamp(56px, 6vw, 96px);
+  row-gap: 0;
   width: auto;
   margin-top: 22px;
   margin-left: calc(0px - var(--page-space));
   margin-right: calc(0px - var(--page-space));
-  padding: 96px clamp(48px, 10vw, 192px);
+  padding: 96px clamp(48px, 7vw, 120px);
   background: #f4f4f4;
   box-sizing: border-box;
   overflow: hidden;
@@ -2871,7 +2872,7 @@ a:focus-visible {
 }
 
 .core-page #scenarios .case-chat-indicators__label {
-  margin: 0 0 10px;
+  margin: 0 0 24px;
   color: var(--ink);
   font-size: 13px;
   font-weight: 400;
@@ -2880,7 +2881,9 @@ a:focus-visible {
 }
 
 .core-page #scenarios .case-chat-indicators__screen {
+  display: block;
   width: 229px;
+  height: auto;
   aspect-ratio: 945 / 2048;
   background: #ffffff;
   border: 1px solid #e4e4e4;
