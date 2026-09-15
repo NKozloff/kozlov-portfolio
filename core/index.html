@@ -8,7 +8,7 @@
       content="CORE — закрытый мессенджер для приватной коммуникации. Кейс продуктового дизайнера Никиты Козлова."
     />
     <title>CORE — мессенджер без пользователя</title>
-<link rel="stylesheet" href="../styles.css?v=189" />
+<link rel="stylesheet" href="../styles.css?v=192" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -307,7 +307,7 @@
               />
 
               <div class="case-contact-flow__arrow case-contact-flow__arrow--down case-contact-flow__arrow--3">
-                <span class="case-contact-flow__label">Отсканировал QR</span>
+                <span class="case-contact-flow__label case-contact-flow__label--state">Отсканировал QR</span>
                 <span class="case-contact-flow__line" aria-hidden="true"></span>
               </div>
 
@@ -320,7 +320,7 @@
               />
 
               <div class="case-contact-flow__arrow case-contact-flow__arrow--left case-contact-flow__arrow--4">
-                <span class="case-contact-flow__label">Получил ответное сканирование</span>
+                <span class="case-contact-flow__label">Отсканировал в ответ</span>
                 <span class="case-contact-flow__line" aria-hidden="true"></span>
               </div>
 
@@ -348,36 +348,28 @@
 
           </div>
         </div>
-        <div class="case-block">
-          <h2 class="case-heading">Вопрос 2: как контролировать чат?</h2>
-          <p class="case-outline-table__intro">
-            Даже защищённая переписка может выйти за пределы разговора — через скриншот или пересылку
-          </p>
+        <div class="case-block case-block--chat-control">
+          <h2 class="case-heading">Как контролировать чат?</h2>
 
-          <div class="case-outline-table-wrap">
-            <table class="case-outline-table">
-              <thead>
-                <tr>
-                  <th>Риск</th>
-                  <th>Как снижаем риск</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Собеседник делает скриншот незаметно</td>
-                  <td>Показываем системное сообщение о скриншоте</td>
-                </tr>
-                <tr>
-                  <td>Собеседник пересылает сообщение в другой чат</td>
-                  <td>Показываем системное сообщение о пересылке</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="case-chat-story">
+            <p>
+              При разборе сценария я нашёл две точки, где защищённая переписка всё равно может выйти за пределы разговора: скриншот и пересылка сообщения.
+            </p>
+            <p class="case-highlight">
+              <span class="case-conclusion-mark">На этапе анализа конкурентов я уже видел рабочий паттерн: такие действия можно не запрещать, а делать заметными для второго участника прямо внутри чата.</span>
+            </p>
           </div>
 
-          <p class="case-outline-table__conclusion">
-            <span class="case-conclusion-mark">Действия, которые выводят содержание за пределы разговора, становятся заметны обоим участникам.</span>
-          </p>
+          <div class="case-chat-indicators" aria-label="Индикаторы действий в чате и списке чатов">
+            <figure class="case-chat-indicators__item">
+              <figcaption class="case-chat-indicators__label">Индикаторы в чате</figcaption>
+              <div class="case-chat-indicators__screen" aria-label="Место для интерфейса индикаторов внутри чата"></div>
+            </figure>
+            <figure class="case-chat-indicators__item">
+              <figcaption class="case-chat-indicators__label">Индикаторы в чатах</figcaption>
+              <div class="case-chat-indicators__screen" aria-label="Место для интерфейса индикаторов в списке чатов"></div>
+            </figure>
+          </div>
         </div>
 
         <div class="case-block">
