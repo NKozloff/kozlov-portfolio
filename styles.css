@@ -3242,3 +3242,14 @@ a:focus-visible {
   padding-right: 16px;
   white-space: nowrap;
 }
+
+
+/* v243: remove the inherited 8px trailing gap inside anchor tabs. */
+.core-nav__link {
+  max-width: none !important;
+}
+
+/* Restore the standard inter-block rhythm before Branding. */
+.core-page #scenarios + #branding {
+  margin-top: 6.912rem;
+}
