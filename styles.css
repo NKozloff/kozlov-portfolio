@@ -3089,13 +3089,16 @@ a:focus-visible {
 }
 
 .core-page #scenarios .case-animated-screen--contact-flow .case-animated-screen__video {
-  width: calc(100% - 24px);
+  width: calc(100% - 20px);
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
 
-.core-page #scenarios .case-contact-flow__screen--1.case-animated-screen--contact-flow .case-animated-screen__video,
+.core-page #scenarios .case-contact-flow__screen--1.case-animated-screen--contact-flow .case-animated-screen__video {
+  top: calc(50% - 2px);
+}
+
 .core-page #scenarios .case-contact-flow__screen--5.case-animated-screen--contact-flow .case-animated-screen__video {
   top: 50%;
 }
