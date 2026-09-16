@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=248" />
+<link rel="stylesheet" href="../styles.css?v=249" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -1239,7 +1239,22 @@
           })
           .filter(Boolean);
 
+        const rootFontSize = () =>
+          parseFloat(getComputedStyle(document.documentElement).fontSize);
+        const anchorOffset = () => rootFontSize() * 6.912;
+
         let frameId = 0;
+        let pendingNavigation = null;
+
+        const setActive = (key) => {
+          for (const item of anchors) {
+            if (item.key === key) {
+              item.link.setAttribute("aria-current", "location");
+            } else {
+              item.link.removeAttribute("aria-current");
+            }
+          }
+        };
 
         const updateNavigation = () => {
           const isVisible = intro.getBoundingClientRect().bottom <= 0;
@@ -1247,10 +1262,18 @@
           nav.setAttribute("aria-hidden", String(!isVisible));
           nav.inert = !isVisible;
 
-          // Add a tiny tolerance for subpixel rounding: scroll-margin-top can land
-          // the target a fraction of a pixel below the computed activation line.
-          const activationLine =
-            parseFloat(getComputedStyle(document.documentElement).fontSize) * 6.912 + 2;
+          if (pendingNavigation) {
+            setActive(pendingNavigation.key);
+
+            if (Math.abs(window.scrollY - pendingNavigation.top) <= 2) {
+              pendingNavigation = null;
+            }
+
+            frameId = 0;
+            return;
+          }
+
+          const activationLine = anchorOffset() + 2;
           let currentKey = anchors[0]?.key || "task";
 
           for (const item of anchors) {
@@ -1259,8 +1282,6 @@
             }
           }
 
-          // The final section is shorter than the viewport and cannot naturally
-          // reach the activation line. At the end of the case, treat it as active.
           const reachedCaseEnd =
             window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4;
 
@@ -1268,14 +1289,7 @@
             currentKey = "launch";
           }
 
-          for (const item of anchors) {
-            if (item.key === currentKey) {
-              item.link.setAttribute("aria-current", "location");
-            } else {
-              item.link.removeAttribute("aria-current");
-            }
-          }
-
+          setActive(currentKey);
           frameId = 0;
         };
 
@@ -1289,9 +1303,19 @@
             event.preventDefault();
 
             const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            const desiredTop =
+              item.target.getBoundingClientRect().top + window.scrollY - anchorOffset();
+            const maxScroll = Math.max(
+              0,
+              document.documentElement.scrollHeight - window.innerHeight
+            );
+            const destinationTop = Math.max(0, Math.min(desiredTop, maxScroll));
 
-            item.target.scrollIntoView({
-              block: "start",
+            pendingNavigation = { key: item.key, top: destinationTop };
+            setActive(item.key);
+
+            window.scrollTo({
+              top: destinationTop,
               behavior: reduceMotion ? "auto" : "smooth",
             });
 
@@ -1299,6 +1323,13 @@
           });
         }
 
+        const cancelPendingNavigation = () => {
+          pendingNavigation = null;
+          scheduleUpdate();
+        };
+
+        window.addEventListener("wheel", cancelPendingNavigation, { passive: true });
+        window.addEventListener("touchstart", cancelPendingNavigation, { passive: true });
         window.addEventListener("scroll", scheduleUpdate, { passive: true });
         window.addEventListener("resize", scheduleUpdate);
         updateNavigation();

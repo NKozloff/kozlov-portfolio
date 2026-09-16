@@ -3275,3 +3275,9 @@ a:focus-visible {
   left: 50%;
   transform: translate(-50%, 22px);
 }
+
+
+/* v249: anchor-menu clicks use explicit coordinates in JS; this remains as a fallback for direct hash navigation. */
+.core-page [data-nav-anchor] {
+  scroll-margin-top: 6.912rem;
+}
