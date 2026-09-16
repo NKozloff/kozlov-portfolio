@@ -3323,3 +3323,105 @@ a:focus-visible {
 .hero__video-presentation {
   margin-top: auto;
 }
+
+
+/* v259: compact contact row with blinking availability dot and socials tooltip. */
+.bio__contacts--inline {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0 0.22em;
+}
+
+.bio__status-dot {
+  display: inline-block;
+  width: 0.42em;
+  height: 0.42em;
+  margin-right: 0.22em;
+  border-radius: 50%;
+  background: #101010;
+  transform: translateY(-0.03em);
+  animation: bio-status-blink 4.5s linear infinite;
+}
+
+@keyframes bio-status-blink {
+  0%, 11.111% {
+    opacity: 1;
+  }
+  11.112%, 55.555% {
+    opacity: 0;
+  }
+  55.556%, 77.777% {
+    opacity: 1;
+  }
+  77.778%, 100% {
+    opacity: 0;
+  }
+}
+
+.bio__socials {
+  position: relative;
+  display: inline-block;
+}
+
+.bio__socials-trigger {
+  appearance: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  text-decoration-line: underline;
+  text-decoration-color: rgba(16, 16, 16, 0.35);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.12em;
+  cursor: pointer;
+}
+
+.bio__socials-trigger:hover,
+.bio__socials-trigger:focus-visible {
+  text-decoration-color: currentColor;
+}
+
+.bio__socials-tooltip {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 8px);
+  z-index: 20;
+  display: grid;
+  gap: 4px;
+  min-width: max-content;
+  padding: 10px 12px;
+  border: 1px solid #d9d9d9;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(16, 16, 16, 0.08);
+  color: #101010;
+  font-size: 0.866667rem;
+  line-height: 1.35;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  pointer-events: none;
+  transition:
+    opacity 140ms ease,
+    transform 140ms ease,
+    visibility 140ms ease;
+}
+
+.bio__socials:hover .bio__socials-tooltip,
+.bio__socials:focus-within .bio__socials-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bio__status-dot {
+    animation: none;
+  }
+
+  .bio__socials-tooltip {
+    transition: none;
+  }
+}
