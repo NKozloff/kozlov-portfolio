@@ -3443,3 +3443,11 @@ a:focus-visible {
 .bio__socials-trigger {
   text-decoration: none !important;
 }
+
+
+/* v261: remove inherited underline from all spans inside the inline contacts row. */
+.bio__contacts--inline span,
+.bio__contacts--inline a,
+.bio__socials-trigger {
+  text-decoration: none !important;
+}
