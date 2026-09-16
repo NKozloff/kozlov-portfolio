@@ -1740,9 +1740,10 @@ a:focus-visible {
   display: block;
   object-fit: cover;
   filter:
-    brightness(0.92)
+    brightness(0.93)
     contrast(1.10);
   pointer-events: none;
+  transform: translateY(24px);
 }
 
 /* v118: white page, structural dividers, softer table descriptors */
@@ -3026,4 +3027,35 @@ a:focus-visible {
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
+}
+
+
+/* v218: reuse the CORE hero animation on the homepage cover */
+.case-card__preview--core .case-card__core-phone {
+  position: relative;
+  height: 80%;
+  aspect-ratio: 945 / 2048;
+  flex: 0 0 auto;
+}
+
+.case-card__preview--core .case-card__core-phone > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.case-card__core-video {
+  position: absolute;
+  left: 5.813953%;
+  top: 41.796875%;
+  width: 88.372093%;
+  aspect-ratio: 1 / 1;
+  display: block;
+  object-fit: cover;
+  filter:
+    brightness(0.93)
+    contrast(1.10);
+  pointer-events: none;
+  transform: translateY(10.33%);
 }

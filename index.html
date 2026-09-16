@@ -8,13 +8,13 @@
       content="Козлов Никита — продуктовый дизайнер. Портфолио и опыт работы."
     />
     <title>Козлов Никита — продуктовый дизайнер</title>
-    <link rel="preload" as="image" href="assets/nikita-kozlov.jpg?v=30" />
-    <link rel="preload" as="image" href="assets/case-core-v138.png" />
-    <link rel="preload" as="image" href="assets/case-echo-v138.png" />
+    <link rel="preload" as="image" href="assets/optimized-v219/nikita-kozlov-1728w.jpg?v=219" />
+    <link rel="preload" as="image" href="assets/optimized-v219/case-core-v138-945w.png?v=219" />
+    <link rel="preload" as="image" href="assets/optimized-v219/case-echo-v138-1334w.png?v=219" />
     <script>
       document.documentElement.classList.add("is-loading");
     </script>
-    <link rel="stylesheet" href="styles.css?v=215" />
+    <link rel="stylesheet" href="styles.css?v=219" />
   </head>
   <body>
     <div class="site-loader" role="status" aria-live="polite">
@@ -61,7 +61,9 @@
 
       <figure class="hero__portrait">
         <img
-          src="assets/nikita-kozlov.jpg?v=30"
+          src="assets/optimized-v219/nikita-kozlov-864w.jpg?v=219"
+          srcset="assets/optimized-v219/nikita-kozlov-864w.jpg?v=219 864w, assets/optimized-v219/nikita-kozlov-1728w.jpg?v=219 1728w"
+          sizes="(max-width: 960px) 100vw, 50vw"
           alt="Никита Козлов"
           width="1728"
           height="2048"
@@ -77,14 +79,29 @@
         <article class="case-card">
           <a class="case-card__link" href="core/" aria-label="Открыть кейс Запустил MVP приватного мессенджера">
             <div class="case-card__preview case-card__preview--core">
-              <img
-                src="assets/case-core-v138.png"
-                alt="Обложка кейса CORE"
-                width="1234"
-                height="1376"
-                data-critical-image
-                decoding="async"
-              />
+              <div class="case-card__core-phone">
+                <img
+                  src="assets/optimized-v219/case-core-v138-473w.png?v=219"
+                  srcset="assets/optimized-v219/case-core-v138-473w.png?v=219 473w, assets/optimized-v219/case-core-v138-945w.png?v=219 945w"
+                  sizes="(max-width: 960px) 100vw, 31vw"
+                  alt="Обложка кейса CORE"
+                  width="945"
+                  height="2048"
+                  data-critical-image
+                  decoding="async"
+                />
+                <video
+                  class="case-card__core-video"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  preload="auto"
+                  aria-hidden="true"
+                >
+                  <source src="assets/head-v208.mp4?v=219" type="video/mp4" />
+                </video>
+              </div>
             </div>
             <div class="case-card__meta">
               <p class="case-card__title">Запустил MVP приватного мессенджера</p>
@@ -97,7 +114,9 @@
         <article class="case-card">
           <div class="case-card__preview case-card__preview--echo">
             <img
-              src="assets/case-echo-v138.png"
+              src="assets/optimized-v219/case-echo-v138-667w.png?v=219"
+              srcset="assets/optimized-v219/case-echo-v138-667w.png?v=219 667w, assets/optimized-v219/case-echo-v138-1334w.png?v=219 1334w"
+              sizes="(max-width: 960px) 100vw, 31vw"
               alt="Обложка кейса ECHO"
               width="1234"
               height="1376"
