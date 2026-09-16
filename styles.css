@@ -2914,3 +2914,34 @@ a:focus-visible {
 .core-page #scenarios .case-block--call .case-subblock > .case-outline-table-wrap + .case-call-story {
   margin-top: 22px !important;
 }
+
+
+/* v200: one consistent text-to-visual gap across the case */
+.core-page .case-body :is(
+  .case-lead,
+  .case-copy,
+  .case-highlight,
+  .case-outline-table__conclusion,
+  .case-discovery-article__text,
+  .case-call-story,
+  .case-notification-story,
+  .case-proxy-story,
+  .case-article-copy,
+  .case-reference-story,
+  .case-task-copy
+) + :is(
+  .case-scenario-gallery,
+  .case-contact-flow,
+  .case-chat-indicators,
+  .case-proxy-status-placeholder,
+  .case-proxy-flow-placeholder,
+  .case-notification-placeholder,
+  .case-call-placeholder,
+  .case-call-widget-placeholder,
+  .case-call-messages-placeholder,
+  .case-branding-graphics-placeholder,
+  .media-placeholder--feature
+),
+.core-page .case-body .case-chat-story + .case-chat-indicators {
+  margin-top: 22px !important;
+}
