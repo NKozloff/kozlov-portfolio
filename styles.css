@@ -3261,3 +3261,9 @@ a:focus-visible {
 .core-page .case-block {
   scroll-margin-top: 6.912rem;
 }
+
+
+/* v245: second onboarding screen gets the planet animation with the same scale and vertical offset as the first symbolic overlay. */
+.core-page #scenarios .case-scenario-gallery__item--onboarding-planet .case-animated-screen__video {
+  transform: translateY(22px);
+}
