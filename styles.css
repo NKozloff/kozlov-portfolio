@@ -3146,9 +3146,11 @@ a:focus-visible {
 }
 
 .core-intro__video-avatar {
+  display: block;
   width: 128px;
   height: 128px;
   border-radius: 50%;
+  object-fit: cover;
   background: #d9d9d9;
 }
 
@@ -3168,3 +3170,45 @@ a:focus-visible {
   color: var(--ink);
 }
 
+
+
+/* v239: final Launch section */
+.core-page #launch .case-heading,
+.core-page #launch .case-copy {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.core-page #launch > .case-block--section-start {
+  position: relative;
+}
+
+.core-page #launch > .case-block--section-start > .case-section__label {
+  position: absolute !important;
+  top: 0;
+  left: calc(24px - var(--page-space));
+  width: auto !important;
+  max-width: none !important;
+  margin: 0 !important;
+  color: #8a8a8a !important;
+  font-size: var(--text-size);
+  line-height: 1.4;
+  white-space: normal;
+  text-align: center;
+}
+
+.core-page #launch .case-heading + .case-copy {
+  margin-top: 16px;
+}
+
+/* Branding is no longer the final section. */
+.core-page #branding > .case-block:last-child {
+  margin-bottom: 0;
+}
+
+/* Keep the standard end gap after the true final block. */
+.core-page #launch > .case-block:last-child {
+  margin-bottom: 6.912rem;
+}
