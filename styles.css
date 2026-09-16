@@ -1739,7 +1739,9 @@ a:focus-visible {
   aspect-ratio: 1 / 1;
   display: block;
   object-fit: cover;
-  filter: brightness(0.88) contrast(1.10);
+  filter:
+    brightness(0.92)
+    contrast(1.10);
   pointer-events: none;
 }
 
