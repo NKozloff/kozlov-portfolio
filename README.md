@@ -38,3 +38,6 @@
 ## Как изменить сайт без специальных программ
 
 Файлы можно редактировать прямо на GitHub. VS Code понадобится только в том случае, если вы захотите работать с кодом на своём компьютере.
+
+
+- v229: QR block animated overlays reset to centered placement; width set to phone width minus 32px (16px margins on both sides).

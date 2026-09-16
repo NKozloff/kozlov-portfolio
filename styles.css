@@ -3089,16 +3089,15 @@ a:focus-visible {
 }
 
 .core-page #scenarios .case-animated-screen--contact-flow .case-animated-screen__video {
-  width: 129.8%;
-  left: -19.4%;
+  width: calc(100% - 32px);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.core-page #scenarios .case-contact-flow__screen--1.case-animated-screen--contact-flow .case-animated-screen__video {
-  top: 27.7%;
-}
-
+.core-page #scenarios .case-contact-flow__screen--1.case-animated-screen--contact-flow .case-animated-screen__video,
 .core-page #scenarios .case-contact-flow__screen--5.case-animated-screen--contact-flow .case-animated-screen__video {
-  top: 25.6%;
+  top: 50%;
 }
 
 .core-page #scenarios .case-scenario-gallery__item {
