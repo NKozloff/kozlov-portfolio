@@ -3146,8 +3146,8 @@ a:focus-visible {
 }
 
 .core-intro__video-avatar {
-  width: 64px;
-  height: 64px;
+  width: 128px;
+  height: 128px;
   border-radius: 50%;
   background: #d9d9d9;
 }
@@ -3156,8 +3156,7 @@ a:focus-visible {
   margin-top: 12px;
 }
 
-.core-intro__video-title,
-.core-intro__video-duration {
+.core-intro__video-title {
   margin: 0;
   font-family: "Arial Portfolio", Arial, sans-serif;
   font-size: var(--text-size);
@@ -3169,7 +3168,3 @@ a:focus-visible {
   color: var(--ink);
 }
 
-.core-intro__video-duration {
-  margin-top: 2px;
-  color: #8a8a8a;
-}
