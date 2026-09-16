@@ -2945,3 +2945,27 @@ a:focus-visible {
 .core-page .case-body .case-chat-story + .case-chat-indicators {
   margin-top: 22px !important;
 }
+
+
+/* v204: onboarding narrative */
+.core-page #scenarios .case-onboarding-story {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.core-page #scenarios .case-onboarding-story p {
+  margin: 0;
+  font-size: var(--text-size);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.core-page #scenarios .case-onboarding-story p + p {
+  margin-top: 16px;
+}
+
+.core-page #scenarios .case-onboarding-story + .case-scenario-gallery {
+  margin-top: 22px !important;
+}
