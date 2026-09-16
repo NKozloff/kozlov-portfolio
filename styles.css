@@ -3045,11 +3045,12 @@ a:focus-visible {
   object-fit: contain;
 }
 
-.case-card__core-video {
+.case-card__preview--core .case-card__core-video {
   position: absolute;
   left: 5.813953%;
   top: 41.796875%;
   width: 88.372093%;
+  height: auto;
   aspect-ratio: 1 / 1;
   display: block;
   object-fit: cover;
@@ -3058,4 +3059,5 @@ a:focus-visible {
     contrast(1.10);
   pointer-events: none;
   transform: translateY(11.2%);
+  z-index: 1;
 }
