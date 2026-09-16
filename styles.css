@@ -3299,3 +3299,14 @@ a:focus-visible {
   object-position: right center;
   flex: 0 0 auto;
 }
+
+
+/* v252: keep case years aligned to the bottom of homepage card metadata. */
+.case-card__meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.case-card__year {
+  margin-top: auto;
+}
