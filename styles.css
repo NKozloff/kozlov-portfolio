@@ -3281,3 +3281,21 @@ a:focus-visible {
 .core-page [data-nav-anchor] {
   scroll-margin-top: 6.912rem;
 }
+
+
+/* v250: ECHO case first screen — same cover treatment as the homepage preview, using the full-resolution source. */
+.echo-page .echo-intro__media {
+  justify-content: flex-end;
+  align-items: center;
+  background: #f4f4f4;
+}
+
+.echo-page .echo-intro__media .echo-intro__cover-image {
+  display: block;
+  width: auto;
+  height: 80%;
+  max-width: none;
+  object-fit: contain;
+  object-position: right center;
+  flex: 0 0 auto;
+}
