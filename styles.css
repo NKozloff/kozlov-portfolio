@@ -3130,3 +3130,46 @@ a:focus-visible {
 .core-page #branding > .case-block:last-child {
   margin-bottom: 6.912rem;
 }
+
+
+/* v232: Loom video-presentation teaser at the bottom of the CORE hero copy */
+.core-intro__copy {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.core-intro__video-presentation {
+  margin-top: auto;
+  font-family: "Arial Portfolio", Arial, sans-serif;
+}
+
+.core-intro__video-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #d9d9d9;
+}
+
+.core-intro__video-copy {
+  margin-top: 12px;
+}
+
+.core-intro__video-title,
+.core-intro__video-duration {
+  margin: 0;
+  font-family: "Arial Portfolio", Arial, sans-serif;
+  font-size: var(--text-size);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.core-intro__video-title {
+  color: var(--ink);
+}
+
+.core-intro__video-duration {
+  margin-top: 2px;
+  color: #8a8a8a;
+}
