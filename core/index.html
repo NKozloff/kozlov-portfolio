@@ -8,7 +8,7 @@
       content="CORE — закрытый мессенджер для приватной коммуникации. Кейс продуктового дизайнера Никиты Козлова."
     />
     <title>CORE — мессенджер без пользователя</title>
-<link rel="stylesheet" href="../styles.css?v=205" />
+<link rel="stylesheet" href="../styles.css?v=207" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -51,7 +51,7 @@
             preload="auto"
             aria-hidden="true"
           >
-            <source src="../assets/head.mp4" type="video/mp4" />
+            <source src="../assets/head-v208.mp4" type="video/mp4" />
           </video>
         </div>
       </div>
@@ -80,7 +80,7 @@
 
       <section class="case-section" id="discovery" data-case-section>
         <div class="case-block case-block--section-start">
-          <p class="case-section__label">Дискавери</p>
+          <p class="case-section__label">Продуктовые решения</p>
           <h2 class="case-heading">Как превратить приватность в требование к продукту?</h2>
 
           <p class="case-outline-table__intro">Перевёл запрос клиента в продуктовые требования</p>
@@ -195,7 +195,6 @@
 
       <section class="case-section" id="scenarios" data-case-section>
         <div class="case-block case-block--contact case-block--section-start">
-          <p class="case-section__label">Сценарии</p>
           <h2 class="case-heading">Итак, как добавить контакт</h2>
 
           <div class="case-discovery-article">
@@ -1115,8 +1114,7 @@
     <nav class="core-nav" aria-label="Разделы кейса" aria-hidden="true" inert>
       <ul class="core-nav__list">
         <li><a class="core-nav__link" href="#task" aria-current="location">Задача</a></li>
-        <li><a class="core-nav__link" href="#discovery">Дискавери</a></li>
-        <li><a class="core-nav__link" href="#scenarios">Сценарии</a></li>
+        <li><a class="core-nav__link" href="#discovery">Продуктовые решения</a></li>
         <li><a class="core-nav__link" href="#branding">Брендинг</a></li>
       </ul>
     </nav>
@@ -1149,8 +1147,10 @@
             }
           }
 
+          const navigationSection = currentSection === "scenarios" ? "discovery" : currentSection;
+
           for (const link of links) {
-            const isCurrent = link.getAttribute("href") === `#${currentSection}`;
+            const isCurrent = link.getAttribute("href") === `#${navigationSection}`;
             if (isCurrent) link.setAttribute("aria-current", "location");
             else link.removeAttribute("aria-current");
           }
