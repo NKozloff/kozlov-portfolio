@@ -3317,3 +3317,9 @@ a:focus-visible {
 .case-card__meta {
   min-height: 11.066667rem;
 }
+
+
+/* v255: homepage self-presentation uses the same visual pattern as case video teasers. */
+.hero__video-presentation {
+  margin-top: auto;
+}
