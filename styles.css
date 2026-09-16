@@ -3425,3 +3425,21 @@ a:focus-visible {
     transition: none;
   }
 }
+
+
+/* v260: static centered status dot; contact row has no underlined items. */
+.bio__contacts--inline {
+  align-items: center;
+}
+
+.bio__status-dot {
+  margin-right: 0.22em;
+  transform: none;
+  animation: none !important;
+  flex: 0 0 auto;
+}
+
+.bio__contacts--inline a,
+.bio__socials-trigger {
+  text-decoration: none !important;
+}
