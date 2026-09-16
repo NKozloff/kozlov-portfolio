@@ -3061,3 +3061,49 @@ a:focus-visible {
   transform: translateY(11.2%);
   z-index: 1;
 }
+
+
+/* v222: animated symbolic illustration overlays inside QR flow and onboarding */
+.core-page #scenarios .case-animated-screen {
+  position: relative;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.core-page #scenarios .case-animated-screen__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.core-page #scenarios .case-animated-screen__video {
+  position: absolute;
+  left: 5.813953%;
+  top: 41.796875%;
+  width: 88.372093%;
+  aspect-ratio: 1 / 1;
+  display: block;
+  object-fit: cover;
+  filter: brightness(0.94) contrast(1.10);
+  pointer-events: none;
+}
+
+.core-page #scenarios .case-animated-screen--contact-flow .case-animated-screen__video {
+  transform: translateY(22px);
+}
+
+.core-page #scenarios .case-scenario-gallery__item {
+  position: relative;
+  width: 100%;
+  max-width: 229px;
+  justify-self: center;
+  line-height: 0;
+}
+
+.core-page #scenarios .case-scenario-gallery__item--animated .case-scenario-gallery__image {
+  max-width: none;
+}
+
+.core-page #scenarios .case-scenario-gallery__item--onboarding .case-animated-screen__video {
+  transform: translateY(22px);
+}

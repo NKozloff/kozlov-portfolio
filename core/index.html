@@ -8,7 +8,7 @@
       content="CORE — закрытый мессенджер для приватной коммуникации. Кейс продуктового дизайнера Никиты Козлова."
     />
     <title>CORE — мессенджер без пользователя</title>
-<link rel="stylesheet" href="../styles.css?v=221" />
+<link rel="stylesheet" href="../styles.css?v=222" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -273,15 +273,28 @@
             </p>
 
             <div class="case-contact-flow" aria-label="Путь пользователя, который первым сканирует QR">
-              <img
-                class="case-contact-flow__screen case-contact-flow__screen--1"
-                src="../assets/optimized-v201/core-contact-first-flow-1-v183-458w.png"
-                srcset="../assets/optimized-v201/core-contact-first-flow-1-v183-229w.png 229w, ../assets/optimized-v201/core-contact-first-flow-1-v183-458w.png 458w"
-                sizes="229px"
-                alt="Шаг 1: пустой список контактов"
-                loading="lazy"
-                decoding="async"
-              />
+              <div class="case-contact-flow__screen case-contact-flow__screen--1 case-animated-screen case-animated-screen--contact-flow">
+                <img
+                  class="case-animated-screen__image"
+                  src="../assets/optimized-v201/core-contact-first-flow-1-v183-458w.png"
+                  srcset="../assets/optimized-v201/core-contact-first-flow-1-v183-229w.png 229w, ../assets/optimized-v201/core-contact-first-flow-1-v183-458w.png 458w"
+                  sizes="229px"
+                  alt="Шаг 1: пустой список контактов"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <video
+                  class="case-animated-screen__video case-animated-screen__video--symbolic"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  preload="auto"
+                  aria-hidden="true"
+                >
+                  <source src="../assets/head-v208.mp4?v=222" type="video/mp4" />
+                </video>
+              </div>
 
               <div class="case-contact-flow__arrow case-contact-flow__arrow--right case-contact-flow__arrow--1">
                 <span class="case-contact-flow__label">Нажал «Add first contact»</span>
@@ -333,15 +346,28 @@
                 <span class="case-contact-flow__line" aria-hidden="true"></span>
               </div>
 
-              <img
-                class="case-contact-flow__screen case-contact-flow__screen--5"
-                src="../assets/optimized-v201/core-contact-first-flow-5-v183-458w.png"
-                srcset="../assets/optimized-v201/core-contact-first-flow-5-v183-229w.png 229w, ../assets/optimized-v201/core-contact-first-flow-5-v183-458w.png 458w"
-                sizes="229px"
-                alt="Шаг 5: ввод локального имени контакта"
-                loading="lazy"
-                decoding="async"
-              />
+              <div class="case-contact-flow__screen case-contact-flow__screen--5 case-animated-screen case-animated-screen--contact-flow">
+                <img
+                  class="case-animated-screen__image"
+                  src="../assets/optimized-v201/core-contact-first-flow-5-v183-458w.png"
+                  srcset="../assets/optimized-v201/core-contact-first-flow-5-v183-229w.png 229w, ../assets/optimized-v201/core-contact-first-flow-5-v183-458w.png 458w"
+                  sizes="229px"
+                  alt="Шаг 5: ввод локального имени контакта"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <video
+                  class="case-animated-screen__video case-animated-screen__video--symbolic"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  preload="auto"
+                  aria-hidden="true"
+                >
+                  <source src="../assets/head-v208.mp4?v=222" type="video/mp4" />
+                </video>
+              </div>
 
               <div class="case-contact-flow__arrow case-contact-flow__arrow--left case-contact-flow__arrow--5">
                 <span class="case-contact-flow__label">Нажал «Create contact»</span>
@@ -660,15 +686,28 @@
           </div>
 
           <div class="case-scenario-gallery" aria-label="Онбординг приложения CORE">
-              <img
-                class="case-scenario-gallery__image"
-                src="../assets/optimized-v201/core-onboarding-step-1-v66-458w.png"
-                srcset="../assets/optimized-v201/core-onboarding-step-1-v66-229w.png 229w, ../assets/optimized-v201/core-onboarding-step-1-v66-458w.png 458w"
-                sizes="229px"
-                alt="Онбординг CORE, экран 1"
-                loading="lazy"
-                decoding="async"
-              />
+              <div class="case-scenario-gallery__item case-scenario-gallery__item--animated case-scenario-gallery__item--onboarding">
+                <img
+                  class="case-scenario-gallery__image"
+                  src="../assets/optimized-v201/core-onboarding-step-1-v66-458w.png"
+                  srcset="../assets/optimized-v201/core-onboarding-step-1-v66-229w.png 229w, ../assets/optimized-v201/core-onboarding-step-1-v66-458w.png 458w"
+                  sizes="229px"
+                  alt="Онбординг CORE, экран 1"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <video
+                  class="case-animated-screen__video case-animated-screen__video--symbolic"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  preload="auto"
+                  aria-hidden="true"
+                >
+                  <source src="../assets/head-v208.mp4?v=222" type="video/mp4" />
+                </video>
+              </div>
               <img
                 class="case-scenario-gallery__image"
                 src="../assets/optimized-v201/core-onboarding-step-2-v66-458w.png"
@@ -1077,6 +1116,7 @@
           <div
             class="case-branding-graphics-placeholder"
             aria-label="Две анимированные символьные иллюстрации"
+            hidden
           >
             <video
               class="case-branding-graphics-video"
