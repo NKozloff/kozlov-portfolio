@@ -3089,7 +3089,10 @@ a:focus-visible {
 }
 
 .core-page #scenarios .case-animated-screen--contact-flow .case-animated-screen__video {
-  transform: translateY(22px);
+  left: 3.75%;
+  top: 40.5%;
+  width: 92.5%;
+  transform: translateY(8px);
 }
 
 .core-page #scenarios .case-scenario-gallery__item {
@@ -3106,4 +3109,9 @@ a:focus-visible {
 
 .core-page #scenarios .case-scenario-gallery__item--onboarding .case-animated-screen__video {
   transform: translateY(22px);
+}
+
+/* v224: keep the branding illustration block in markup, but hide it for now */
+.core-page #branding .case-branding-graphics-placeholder[hidden] {
+  display: none !important;
 }
