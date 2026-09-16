@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=241" />
+<link rel="stylesheet" href="../styles.css?v=242" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -74,7 +74,7 @@
 
     <div class="case-body">
       <section class="case-section" id="task" data-case-section>
-        <div class="case-block case-block--section-start">
+        <div class="case-block case-block--section-start" id="anchor-task" data-nav-anchor="task">
           <p class="case-section__label">Задача</p>
           <h2 class="case-heading">«Хочу отдельное приложение для общения со своим кругом — и чтобы оно было максимально безопасным»</h2>
 
@@ -90,7 +90,7 @@
       </section>
 
       <section class="case-section" id="discovery" data-case-section>
-        <div class="case-block case-block--section-start">
+        <div class="case-block case-block--section-start" id="anchor-discovery" data-nav-anchor="discovery">
           <p class="case-section__label">Discovery</p>
           <h2 class="case-heading">Как превратить приватность в требование к продукту?</h2>
 
@@ -229,7 +229,7 @@
 
       </section>
 
-      <section class="case-section" id="scenarios" data-case-section>
+      <section class="case-section" id="scenarios">
         <div class="case-block case-block--contact case-block--section-start">
           <h2 class="case-heading">Итак, как добавить контакт</h2>
 
@@ -1033,7 +1033,7 @@
       </section>
 
       <section class="case-section" id="branding" data-case-section>
-        <div class="case-block case-block--section-start">
+        <div class="case-block case-block--section-start" id="anchor-branding" data-nav-anchor="branding">
           <p class="case-section__label">Брендинг</p>
           <h2 class="case-heading">Сначала — 4 ограничения от клиента</h2>
           <p class="case-lead case-lead--wide">
@@ -1186,7 +1186,7 @@
         </section>
 
       <section class="case-section" id="launch" data-case-section>
-        <div class="case-block case-block--section-start">
+        <div class="case-block case-block--section-start" id="anchor-launch" data-nav-anchor="launch">
           <p class="case-section__label">Запуск</p>
           <h2 class="case-heading">Продукт закончился раньше, чем начались метрики</h2>
           <p class="case-copy">
@@ -1199,10 +1199,10 @@
 
     <nav class="core-nav" aria-label="Разделы кейса" aria-hidden="true" inert>
       <ul class="core-nav__list">
-        <li><a class="core-nav__link" href="#task" aria-current="location">Задача</a></li>
-        <li><a class="core-nav__link" href="#discovery">Discovery</a></li>
-        <li><a class="core-nav__link" href="#branding">Брендинг</a></li>
-        <li><a class="core-nav__link" href="#launch">Запуск</a></li>
+        <li><a class="core-nav__link" href="#anchor-task" data-nav-key="task" aria-current="location">Задача</a></li>
+        <li><a class="core-nav__link" href="#anchor-discovery" data-nav-key="discovery">Discovery</a></li>
+        <li><a class="core-nav__link" href="#anchor-branding" data-nav-key="branding">Брендинг</a></li>
+        <li><a class="core-nav__link" href="#anchor-launch" data-nav-key="launch">Запуск</a></li>
       </ul>
     </nav>
 
@@ -1217,8 +1217,15 @@
       (() => {
         const intro = document.querySelector(".core-intro");
         const nav = document.querySelector(".core-nav");
-        const sections = [...document.querySelectorAll("[data-case-section]")];
         const links = [...nav.querySelectorAll(".core-nav__link")];
+        const anchors = links
+          .map((link) => {
+            const href = link.getAttribute("href");
+            const target = href ? document.querySelector(href) : null;
+            return target ? { link, target, key: link.dataset.navKey } : null;
+          })
+          .filter(Boolean);
+
         let frameId = 0;
 
         const updateNavigation = () => {
@@ -1227,26 +1234,30 @@
           nav.setAttribute("aria-hidden", String(!isVisible));
           nav.inert = !isVisible;
 
-          let currentSection = sections[0].id;
-          for (const section of sections) {
-            if (section.getBoundingClientRect().top <= nav.offsetHeight + 8) {
-              currentSection = section.id;
+          const activationLine = 8;
+          let currentKey = anchors[0]?.key || "task";
+
+          for (const item of anchors) {
+            if (item.target.getBoundingClientRect().top <= activationLine) {
+              currentKey = item.key;
             }
           }
 
+          // The final section is shorter than the viewport and cannot naturally
+          // reach the activation line. At the end of the case, treat it as active.
           const reachedCaseEnd =
             window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4;
 
           if (reachedCaseEnd) {
-            currentSection = "launch";
+            currentKey = "launch";
           }
 
-          const navigationSection = currentSection === "scenarios" ? "discovery" : currentSection;
-
-          for (const link of links) {
-            const isCurrent = link.getAttribute("href") === `#${navigationSection}`;
-            if (isCurrent) link.setAttribute("aria-current", "location");
-            else link.removeAttribute("aria-current");
+          for (const item of anchors) {
+            if (item.key === currentKey) {
+              item.link.setAttribute("aria-current", "location");
+            } else {
+              item.link.removeAttribute("aria-current");
+            }
           }
 
           frameId = 0;
@@ -1257,21 +1268,19 @@
           frameId = window.requestAnimationFrame(updateNavigation);
         };
 
-        for (const link of links) {
-          link.addEventListener("click", (event) => {
-            const href = link.getAttribute("href");
-            const target = href ? document.querySelector(href) : null;
-            if (!target) return;
-
+        for (const item of anchors) {
+          item.link.addEventListener("click", (event) => {
             event.preventDefault();
 
             const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-            target.scrollIntoView({
+            const top = item.target.getBoundingClientRect().top + window.scrollY;
+
+            window.scrollTo({
+              top,
               behavior: reduceMotion ? "auto" : "smooth",
-              block: "start",
             });
 
-            window.history.replaceState(null, "", href);
+            window.history.replaceState(null, "", `#${item.target.id}`);
           });
         }
 

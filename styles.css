@@ -3212,3 +3212,33 @@ a:focus-visible {
 .core-page #launch > .case-block:last-child {
   margin-bottom: 6.912rem;
 }
+
+
+/* v242: four explicit anchor targets + symmetric compact anchor menu */
+.core-nav {
+  width: max-content;
+  max-width: calc(100% - 48px);
+}
+
+.core-nav__list {
+  display: inline-flex;
+  width: max-content;
+  max-width: 100%;
+  justify-content: flex-start;
+  gap: 0;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+.core-nav__list li {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 0;
+}
+
+.core-nav__link {
+  width: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+}
