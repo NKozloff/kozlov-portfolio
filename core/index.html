@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=243" />
+<link rel="stylesheet" href="../styles.css?v=244" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -1234,7 +1234,7 @@
           nav.setAttribute("aria-hidden", String(!isVisible));
           nav.inert = !isVisible;
 
-          const activationLine = 8;
+          const activationLine = parseFloat(getComputedStyle(document.documentElement).fontSize) * 6.912;
           let currentKey = anchors[0]?.key || "task";
 
           for (const item of anchors) {
@@ -1273,10 +1273,9 @@
             event.preventDefault();
 
             const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-            const top = item.target.getBoundingClientRect().top + window.scrollY;
 
-            window.scrollTo({
-              top,
+            item.target.scrollIntoView({
+              block: "start",
               behavior: reduceMotion ? "auto" : "smooth",
             });
 

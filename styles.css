@@ -3253,3 +3253,11 @@ a:focus-visible {
 .core-page #scenarios + #branding {
   margin-top: 6.912rem;
 }
+
+
+/* v244: keep the standard block gap above scroll targets.
+   This preserves the visual rhythm and prevents anchored headings
+   from sticking to the browser's top edge. */
+.core-page .case-block {
+  scroll-margin-top: 6.912rem;
+}
