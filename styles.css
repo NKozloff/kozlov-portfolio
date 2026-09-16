@@ -3089,10 +3089,16 @@ a:focus-visible {
 }
 
 .core-page #scenarios .case-animated-screen--contact-flow .case-animated-screen__video {
-  left: 3.75%;
-  top: 40.5%;
-  width: 92.5%;
-  transform: translateY(8px);
+  width: 129.8%;
+  left: -19.4%;
+}
+
+.core-page #scenarios .case-contact-flow__screen--1.case-animated-screen--contact-flow .case-animated-screen__video {
+  top: 27.7%;
+}
+
+.core-page #scenarios .case-contact-flow__screen--5.case-animated-screen--contact-flow .case-animated-screen__video {
+  top: 25.6%;
 }
 
 .core-page #scenarios .case-scenario-gallery__item {
@@ -3114,4 +3120,11 @@ a:focus-visible {
 /* v224: keep the branding illustration block in markup, but hide it for now */
 .core-page #branding .case-branding-graphics-placeholder[hidden] {
   display: none !important;
+}
+
+
+/* v226: leave the standard block gap after the final Branding block
+   so the fixed anchor navigation does not cover the ending content. */
+.core-page #branding > .case-block:last-child {
+  margin-bottom: 6.912rem;
 }
