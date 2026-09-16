@@ -8,11 +8,11 @@
       content="CORE — закрытый мессенджер для приватной коммуникации. Кейс продуктового дизайнера Никиты Козлова."
     />
     <title>CORE — мессенджер без пользователя</title>
-    <link rel="icon" href="../favicon.ico?v=237" sizes="any" />
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=237" />
-    <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=237" />
-    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=237" />
-<link rel="stylesheet" href="../styles.css?v=239" />
+    <link rel="icon" href="../favicon.ico?v=240" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
+    <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
+<link rel="stylesheet" href="../styles.css?v=241" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -33,14 +33,7 @@
         </div>
 
         <div class="core-intro__video-presentation" aria-label="Презентация кейса">
-          <img
-            class="core-intro__video-avatar"
-            src="../assets/core-case-presentation-avatar-v238.png"
-            alt="Портрет Никиты Козлова"
-            width="128"
-            height="128"
-            decoding="async"
-          />
+          <div class="core-intro__video-avatar" aria-hidden="true"></div>
           <div class="core-intro__video-copy">
             <p class="core-intro__video-title">Презентация кейса на 2 мин.</p>
           </div>
@@ -1239,6 +1232,13 @@
             if (section.getBoundingClientRect().top <= nav.offsetHeight + 8) {
               currentSection = section.id;
             }
+          }
+
+          const reachedCaseEnd =
+            window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4;
+
+          if (reachedCaseEnd) {
+            currentSection = "launch";
           }
 
           const navigationSection = currentSection === "scenarios" ? "discovery" : currentSection;
