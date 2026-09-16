@@ -1740,10 +1740,10 @@ a:focus-visible {
   display: block;
   object-fit: cover;
   filter:
-    brightness(0.93)
+    brightness(0.94)
     contrast(1.10);
   pointer-events: none;
-  transform: translateY(24px);
+  transform: translateY(26px);
 }
 
 /* v118: white page, structural dividers, softer table descriptors */
@@ -3054,8 +3054,8 @@ a:focus-visible {
   display: block;
   object-fit: cover;
   filter:
-    brightness(0.93)
+    brightness(0.94)
     contrast(1.10);
   pointer-events: none;
-  transform: translateY(10.33%);
+  transform: translateY(11.2%);
 }
