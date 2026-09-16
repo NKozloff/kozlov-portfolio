@@ -3269,9 +3269,9 @@ a:focus-visible {
 }
 
 
-/* v246: enlarge the onboarding planet animation by 16px in width, keep it centered in the phone, and move it 15px lower than before. */
+/* v247: keep the enlarged onboarding planet centered and move it 15px back up. */
 .core-page #scenarios .case-scenario-gallery__item--onboarding-planet .case-animated-screen__video {
   width: calc(88.372093% + 16px);
   left: 50%;
-  transform: translate(-50%, 37px);
+  transform: translate(-50%, 22px);
 }
