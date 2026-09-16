@@ -1761,10 +1761,6 @@ a:focus-visible {
   box-sizing: border-box;
 }
 
-/* Keep the animation in markup/assets, but hide it for now */
-.core-intro__phone-video {
-  display: none;
-}
 
 /* Table descriptor/header background now uses the former case-body gray */
 .core-page #discovery .case-outline-table th {
@@ -3024,7 +3020,7 @@ a:focus-visible {
 
 .core-nav__link {
   width: auto;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 16px;
+  padding-right: 16px;
   white-space: nowrap;
 }
