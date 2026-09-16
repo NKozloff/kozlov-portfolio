@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=247" />
+<link rel="stylesheet" href="../styles.css?v=248" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -1247,7 +1247,10 @@
           nav.setAttribute("aria-hidden", String(!isVisible));
           nav.inert = !isVisible;
 
-          const activationLine = parseFloat(getComputedStyle(document.documentElement).fontSize) * 6.912;
+          // Add a tiny tolerance for subpixel rounding: scroll-margin-top can land
+          // the target a fraction of a pixel below the computed activation line.
+          const activationLine =
+            parseFloat(getComputedStyle(document.documentElement).fontSize) * 6.912 + 2;
           let currentKey = anchors[0]?.key || "task";
 
           for (const item of anchors) {
