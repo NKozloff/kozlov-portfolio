@@ -3501,12 +3501,12 @@ a:focus-visible {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: center;
   justify-items: center;
-  gap: clamp(20px, 2.4vw, 44px);
+  gap: 0;
   width: auto;
   margin-top: 48px;
   margin-left: calc(0px - var(--page-space));
   margin-right: calc(0px - var(--page-space));
-  padding: clamp(32px, 4vw, 64px);
+  padding: clamp(64px, 8vw, 128px) clamp(32px, 4vw, 64px);
   background: #f4f4f4;
   box-sizing: border-box;
   overflow: hidden;
@@ -3522,7 +3522,7 @@ a:focus-visible {
 
 .core-page .case-block--echo-registration .echo-desktop-gallery__image {
   display: block;
-  width: 85%;
+  width: 89.25%;
   height: auto;
   max-width: none;
   object-fit: contain;
@@ -3533,7 +3533,7 @@ a:focus-visible {
   .core-page .case-block--echo-registration .echo-desktop-gallery {
     grid-template-columns: 1fr;
     gap: 24px;
-    padding: 24px var(--page-space);
+    padding: 48px var(--page-space);
   }
 }
 
