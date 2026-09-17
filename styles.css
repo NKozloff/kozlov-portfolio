@@ -3493,3 +3493,46 @@ a:focus-visible {
 .core-page .case-block--value-path .echo-value-path__conclusion {
   margin-top: 32px !important;
 }
+
+
+/* v277: ECHO — two full-resolution desktop screens in one wide visual field. */
+.core-page .case-block--echo-registration .echo-desktop-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  justify-items: center;
+  gap: clamp(20px, 2.4vw, 44px);
+  width: auto;
+  margin-top: 48px;
+  margin-left: calc(0px - var(--page-space));
+  margin-right: calc(0px - var(--page-space));
+  padding: clamp(32px, 4vw, 64px);
+  background: #ffffff;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.core-page .case-block--echo-registration .echo-desktop-gallery__item {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.core-page .case-block--echo-registration .echo-desktop-gallery__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  object-fit: contain;
+  image-rendering: auto;
+}
+
+@media (max-width: 900px) {
+  .core-page .case-block--echo-registration .echo-desktop-gallery {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px var(--page-space);
+  }
+}
