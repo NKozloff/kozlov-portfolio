@@ -3483,3 +3483,13 @@ a:focus-visible {
 .core-page .case-block--success-metrics .case-outline-table__intro + .case-outline-table-wrap {
   margin-top: 16px !important;
 }
+
+
+/* v273: ECHO value paths before pricing. */
+.core-page .case-block--value-path .case-outline-table__intro + .case-outline-table-wrap {
+  margin-top: 16px !important;
+}
+
+.core-page .case-block--value-path .echo-value-path__conclusion {
+  margin-top: 32px !important;
+}
