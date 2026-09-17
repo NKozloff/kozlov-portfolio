@@ -3451,3 +3451,35 @@ a:focus-visible {
 .bio__socials-trigger {
   text-decoration: none !important;
 }
+
+
+/* v271: ECHO success block — compact side column, equal Context/Value columns. */
+.core-page .case-body .echo-success-table {
+  table-layout: auto !important;
+}
+
+.core-page .case-body .echo-success-table th:first-child,
+.core-page .case-body .echo-success-table td:first-child {
+  width: 1% !important;
+  white-space: nowrap;
+}
+
+.core-page .case-body .echo-success-table--context th:nth-child(2),
+.core-page .case-body .echo-success-table--context td:nth-child(2),
+.core-page .case-body .echo-success-table--context th:nth-child(3),
+.core-page .case-body .echo-success-table--context td:nth-child(3) {
+  width: 49.5% !important;
+}
+
+.core-page .case-body .echo-success-table--metrics th:last-child,
+.core-page .case-body .echo-success-table--metrics td:last-child {
+  width: auto !important;
+}
+
+.core-page .case-block--success-metrics .echo-success-table__bridge {
+  margin-top: 32px !important;
+}
+
+.core-page .case-block--success-metrics .case-outline-table__intro + .case-outline-table-wrap {
+  margin-top: 16px !important;
+}

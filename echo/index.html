@@ -13,7 +13,7 @@
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
     <link rel="preload" as="image" href="../assets/case-echo-v138.png" />
-<link rel="stylesheet" href="../styles.css?v=261" />
+<link rel="stylesheet" href="../styles.css?v=271" />
   </head>
   <body class="core-page echo-page typography-only">
     <main class="core-intro" id="cover">
@@ -129,6 +129,81 @@
           </div>
         </div>
 
+        <div class="case-block case-block--success-metrics">
+          <h2 class="case-heading">Определили, что считать успехом</h2>
+
+          <p class="case-outline-table__intro">
+            Сначала зафиксировали контекст, в котором находится каждая сторона, и из него — ценность продукта.
+          </p>
+
+          <div class="case-outline-table-wrap">
+            <table class="case-outline-table echo-success-table echo-success-table--context">
+              <colgroup>
+                <col class="echo-success-table__side" />
+                <col class="echo-success-table__main" />
+                <col class="echo-success-table__main" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Сторона</th>
+                  <th>Контекст</th>
+                  <th>Ценность</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Бизнес</td>
+                  <td>Менеджер уже занят операционной работой и не может постоянно искать блогеров и вести согласования</td>
+                  <td>Получать готовые публикации с минимумом ручной работы</td>
+                </tr>
+                <tr>
+                  <td>Блогер</td>
+                  <td>Бартер — дополнительная выгода, а не основная работа, поэтому тратить много времени на поиск предложений он не будет</td>
+                  <td>Быстро получать подходящие предложения и вознаграждение</td>
+                </tr>
+                <tr>
+                  <td>Платформа</td>
+                  <td>Чем больше коллабораций, тем дороже становится ручное сопровождение</td>
+                  <td>Расти без пропорционального увеличения нагрузки на поддержку</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="case-outline-table__intro echo-success-table__bridge">
+            Дальше определили, через какие метрики будем проверять, что продукт действительно даёт эту ценность каждой стороне.
+          </p>
+
+          <div class="case-outline-table-wrap">
+            <table class="case-outline-table echo-success-table echo-success-table--metrics">
+              <colgroup>
+                <col class="echo-success-table__side" />
+                <col />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Сторона</th>
+                  <th>Как проверяем ценность</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Бизнес</td>
+                  <td>Суммарное число коллабораций, дошедших до публикации</td>
+                </tr>
+                <tr>
+                  <td>Блогер</td>
+                  <td>Принятые предложения, использованные депозиты, повторные коллаборации и публикации в срок</td>
+                </tr>
+                <tr>
+                  <td>Платформа</td>
+                  <td>Доля коллабораций, прошедших весь цикл без обращения в поддержку</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
         <div class="case-block">
           <h2 class="case-heading">Определили бизнес-модель</h2>
 
@@ -136,8 +211,8 @@
             <p>
               У одного бизнеса может быть один ресторан, а у другого — целая сеть. Поэтому привязывать стоимость подписки к количеству точек оказалось не самым показательным ограничением.
             </p>
-            <p>
-              Подписку решили привязать к лимиту завершённых коллабораций в месяц, с возможностью докупить дополнительные после исчерпания лимита.
+            <p class="case-highlight">
+              <span class="case-conclusion-mark">Подписку решили привязать к лимиту завершённых коллабораций в месяц, с возможностью докупить дополнительные после исчерпания лимита.</span>
             </p>
           </div>
         </div>
