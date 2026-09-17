@@ -3507,7 +3507,7 @@ a:focus-visible {
   margin-left: calc(0px - var(--page-space));
   margin-right: calc(0px - var(--page-space));
   padding: clamp(32px, 4vw, 64px);
-  background: #ffffff;
+  background: #f4f4f4;
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -3522,7 +3522,7 @@ a:focus-visible {
 
 .core-page .case-block--echo-registration .echo-desktop-gallery__image {
   display: block;
-  width: 100%;
+  width: 85%;
   height: auto;
   max-width: none;
   object-fit: contain;
@@ -3535,4 +3535,29 @@ a:focus-visible {
     gap: 24px;
     padding: 24px var(--page-space);
   }
+}
+
+
+/* v279: ECHO platform sides — same table language as the rest of Discovery. */
+.core-page .case-body .echo-platform-sides-table {
+  table-layout: auto !important;
+}
+
+.core-page .case-body .echo-platform-sides-table th:first-child,
+.core-page .case-body .echo-platform-sides-table td:first-child {
+  width: 1% !important;
+  white-space: nowrap;
+}
+
+.core-page .case-body .echo-platform-sides-table th:last-child,
+.core-page .case-body .echo-platform-sides-table td:last-child {
+  width: auto !important;
+}
+
+.core-page .case-body .echo-platform-sides-table td p {
+  margin: 0;
+}
+
+.core-page .case-body .echo-platform-sides-table td p + p {
+  margin-top: 16px;
 }
