@@ -3594,7 +3594,15 @@ a:focus-visible {
 }
 
 .core-page .case-block--echo-campaign-live .echo-desktop-gallery__image {
-  width: 89.25%;
+  width: 44.625%;
   height: auto;
   margin: auto;
+  object-fit: contain;
+  image-rendering: auto;
+}
+
+@media (max-width: 900px) {
+  .core-page .case-block--echo-campaign-live .echo-desktop-gallery__image {
+    width: 89.25%;
+  }
 }
