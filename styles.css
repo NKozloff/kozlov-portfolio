@@ -3522,7 +3522,7 @@ a:focus-visible {
 
 .core-page .case-block--echo-registration .echo-desktop-gallery__image {
   display: block;
-  width: 89.25%;
+  width: 93.7125%;
   height: auto;
   max-width: none;
   object-fit: contain;
@@ -3594,7 +3594,7 @@ a:focus-visible {
 }
 
 .core-page .case-block--echo-campaign-live .echo-desktop-gallery__image {
-  width: 44.625%;
+  width: 46.85625%;
   height: auto;
   margin: auto;
   object-fit: contain;
@@ -3603,6 +3603,6 @@ a:focus-visible {
 
 @media (max-width: 900px) {
   .core-page .case-block--echo-campaign-live .echo-desktop-gallery__image {
-    width: 89.25%;
+    width: 93.7125%;
   }
 }
