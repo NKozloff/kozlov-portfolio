@@ -3606,3 +3606,16 @@ a:focus-visible {
     width: 93.7125%;
   }
 }
+
+
+/* v290: enlarge the active-campaign and company-page desktop screenshots by 10%. */
+.core-page .case-block--echo-campaign-live .echo-desktop-gallery__image {
+  width: 51.541875% !important;
+  height: auto !important;
+}
+
+@media (max-width: 900px) {
+  .core-page .case-block--echo-campaign-live .echo-desktop-gallery__image {
+    width: 100% !important;
+  }
+}
