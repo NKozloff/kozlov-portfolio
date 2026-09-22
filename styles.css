@@ -3654,3 +3654,14 @@ a:focus-visible {
     padding: 48px var(--page-space);
   }
 }
+
+
+/* v294: ECHO architecture block with a full-width placeholder for the future structure diagram. */
+.core-page .case-block--echo-architecture .echo-architecture-frame {
+  grid-template-columns: 1fr;
+}
+
+.core-page .case-block--echo-architecture .echo-architecture-frame__placeholder {
+  width: 100%;
+  min-height: clamp(360px, 36vw, 620px);
+}
