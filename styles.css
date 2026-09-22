@@ -3710,3 +3710,34 @@ a:focus-visible {
 .core-page .case-block--echo-architecture .echo-desktop-gallery__image {
   width: 70.284375%;
 }
+
+
+/* v304: ECHO — hidden draft block for the collaboration-limit interface. */
+.core-page .case-block--collaboration-limit .echo-collaboration-limit-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-height: clamp(320px, 36vw, 560px);
+  margin-top: 48px;
+  margin-left: calc(0px - var(--page-space));
+  margin-right: calc(0px - var(--page-space));
+  padding: clamp(64px, 8vw, 128px) clamp(32px, 4vw, 64px);
+  background: #f4f4f4;
+  box-sizing: border-box;
+}
+
+.core-page .case-block--collaboration-limit .echo-collaboration-limit-visual__placeholder {
+  color: #9a9a9a;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.35;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .core-page .case-block--collaboration-limit .echo-collaboration-limit-visual {
+    min-height: 260px;
+    padding: 48px var(--page-space);
+  }
+}
