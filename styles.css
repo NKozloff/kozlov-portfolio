@@ -3670,5 +3670,43 @@ a:focus-visible {
 /* v299: keep one standard block interval after the final ECHO block
    so the floating anchor navigation does not cover the ending content. */
 .echo-page #discovery {
-  padding-bottom: 6.912rem;
+  padding-bottom: 0;
+}
+
+.echo-page #results > .case-block:last-child {
+  margin-bottom: 6.912rem;
+}
+
+/* v301: ECHO Results is a true case section so its descriptor sits left like Task/Discovery. */
+.echo-page #results .case-heading,
+.echo-page #results .case-article-copy {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.echo-page #results .case-article-copy {
+  margin-top: 48px;
+}
+
+.echo-page #results .case-article-copy p {
+  margin: 0;
+  font-size: var(--text-size);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.echo-page #results .case-article-copy p + p {
+  margin-top: 16px;
+}
+
+
+/* v302: make the ECHO architecture diagram and its gray frame ~25% shorter. */
+.core-page .case-block--echo-architecture .echo-architecture-frame {
+  padding: clamp(48px, 6vw, 96px) clamp(32px, 4vw, 64px);
+}
+
+.core-page .case-block--echo-architecture .echo-desktop-gallery__image {
+  width: 70.284375%;
 }
