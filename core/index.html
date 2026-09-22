@@ -1242,6 +1242,7 @@
         const rootFontSize = () =>
           parseFloat(getComputedStyle(document.documentElement).fontSize);
         const anchorOffset = () => rootFontSize() * 6.912;
+        const clickAnchorOffset = (key) => (key === "branding" ? 0 : anchorOffset());
 
         let frameId = 0;
         let pendingNavigation = null;
@@ -1304,7 +1305,7 @@
 
             const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
             const desiredTop =
-              item.target.getBoundingClientRect().top + window.scrollY - anchorOffset();
+              item.target.getBoundingClientRect().top + window.scrollY - clickAnchorOffset(item.key);
             const maxScroll = Math.max(
               0,
               document.documentElement.scrollHeight - window.innerHeight
