@@ -3665,3 +3665,10 @@ a:focus-visible {
   width: 100%;
   min-height: clamp(360px, 36vw, 620px);
 }
+
+
+/* v299: keep one standard block interval after the final ECHO block
+   so the floating anchor navigation does not cover the ending content. */
+.echo-page #discovery {
+  padding-bottom: 6.912rem;
+}
