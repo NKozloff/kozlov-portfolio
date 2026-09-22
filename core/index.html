@@ -73,8 +73,8 @@
     </a>
 
     <div class="case-body">
-      <section class="case-section" id="task" data-case-section>
-        <div class="case-block case-block--section-start" id="anchor-task" data-nav-anchor="task">
+      <section class="case-section" id="task" data-case-section data-nav-anchor="task">
+        <div class="case-block case-block--section-start">
           <p class="case-section__label">Задача</p>
           <h2 class="case-heading">«Хочу отдельное приложение для общения со своим кругом — и чтобы оно было максимально безопасным»</h2>
 
@@ -89,8 +89,8 @@
         </div>
       </section>
 
-      <section class="case-section" id="discovery" data-case-section>
-        <div class="case-block case-block--section-start" id="anchor-discovery" data-nav-anchor="discovery">
+      <section class="case-section" id="discovery" data-case-section data-nav-anchor="discovery">
+        <div class="case-block case-block--section-start">
           <p class="case-section__label">Discovery</p>
           <h2 class="case-heading">Как превратить приватность в требование к продукту?</h2>
 
@@ -1045,8 +1045,8 @@
 
       </section>
 
-      <section class="case-section" id="branding" data-case-section>
-        <div class="case-block case-block--section-start" id="anchor-branding" data-nav-anchor="branding">
+      <section class="case-section" id="branding" data-case-section data-nav-anchor="branding">
+        <div class="case-block case-block--section-start">
           <p class="case-section__label">Брендинг</p>
           <h2 class="case-heading">Сначала — 4 ограничения от клиента</h2>
           <p class="case-lead case-lead--wide">
@@ -1198,8 +1198,8 @@
 
         </section>
 
-      <section class="case-section" id="launch" data-case-section>
-        <div class="case-block case-block--section-start" id="anchor-launch" data-nav-anchor="launch">
+      <section class="case-section" id="launch" data-case-section data-nav-anchor="launch">
+        <div class="case-block case-block--section-start">
           <p class="case-section__label">Запуск</p>
           <h2 class="case-heading">Продукт закончился раньше, чем начались метрики</h2>
           <p class="case-copy">
@@ -1212,10 +1212,10 @@
 
     <nav class="core-nav" aria-label="Разделы кейса" aria-hidden="true" inert>
       <ul class="core-nav__list">
-        <li><a class="core-nav__link" href="#anchor-task" data-nav-key="task" aria-current="location">Задача</a></li>
-        <li><a class="core-nav__link" href="#anchor-discovery" data-nav-key="discovery">Discovery</a></li>
-        <li><a class="core-nav__link" href="#anchor-branding" data-nav-key="branding">Брендинг</a></li>
-        <li><a class="core-nav__link" href="#anchor-launch" data-nav-key="launch">Запуск</a></li>
+        <li><a class="core-nav__link" href="#task" data-nav-key="task" aria-current="location">Задача</a></li>
+        <li><a class="core-nav__link" href="#discovery" data-nav-key="discovery">Discovery</a></li>
+        <li><a class="core-nav__link" href="#branding" data-nav-key="branding">Брендинг</a></li>
+        <li><a class="core-nav__link" href="#launch" data-nav-key="launch">Запуск</a></li>
       </ul>
     </nav>
 
@@ -1234,15 +1234,17 @@
         const anchors = links
           .map((link) => {
             const href = link.getAttribute("href");
-            const target = href ? document.querySelector(href) : null;
-            return target ? { link, target, key: link.dataset.navKey } : null;
+            const section = href ? document.querySelector(href) : null;
+            const target = section?.querySelector(":scope > .case-block--section-start") || section;
+            return section && target
+              ? { link, section, target, key: link.dataset.navKey }
+              : null;
           })
           .filter(Boolean);
 
         const rootFontSize = () =>
           parseFloat(getComputedStyle(document.documentElement).fontSize);
         const anchorOffset = () => rootFontSize() * 6.912;
-        const clickAnchorOffset = (key) => (key === "branding" ? 0 : anchorOffset());
 
         let frameId = 0;
         let pendingNavigation = null;
@@ -1305,7 +1307,7 @@
 
             const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
             const desiredTop =
-              item.target.getBoundingClientRect().top + window.scrollY - clickAnchorOffset(item.key);
+              item.target.getBoundingClientRect().top + window.scrollY - anchorOffset();
             const maxScroll = Math.max(
               0,
               document.documentElement.scrollHeight - window.innerHeight
@@ -1320,7 +1322,7 @@
               behavior: reduceMotion ? "auto" : "smooth",
             });
 
-            window.history.replaceState(null, "", `#${item.target.id}`);
+            window.history.replaceState(null, "", `#${item.section.id}`);
           });
         }
 
@@ -1333,6 +1335,18 @@
         window.addEventListener("touchstart", cancelPendingNavigation, { passive: true });
         window.addEventListener("scroll", scheduleUpdate, { passive: true });
         window.addEventListener("resize", scheduleUpdate);
+
+        const initialSectionId = window.location.hash.slice(1);
+        const initialAnchor = anchors.find((item) => item.section.id === initialSectionId);
+        if (initialAnchor) {
+          window.requestAnimationFrame(() => {
+            const desiredTop =
+              initialAnchor.target.getBoundingClientRect().top + window.scrollY - anchorOffset();
+            window.scrollTo({ top: Math.max(0, desiredTop), behavior: "auto" });
+            setActive(initialAnchor.key);
+          });
+        }
+
         updateNavigation();
       })();
     </script>
