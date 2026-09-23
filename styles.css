@@ -3882,12 +3882,8 @@ a:focus-visible {
 
 .core-intro__video-play {
   display: inline-block;
-  width: 0;
-  height: 0;
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  border-left: 10px solid #111111;
   flex: 0 0 auto;
+  color: #111111;
 }
 
 .presentation-modal__close {
@@ -3898,4 +3894,26 @@ a:focus-visible {
   height: 45px;
   padding: 0;
   font-size: 30px;
+}
+
+
+/* v316: case video presentations are temporarily hidden but kept in markup. */
+.core-page .core-intro__video-presentation {
+  display: none;
+}
+
+
+/* v317: real project links on the ECHO cover keep the existing visual style. */
+a.core-intro__project-link {
+  color: inherit;
+  cursor: pointer;
+}
+
+
+/* v318: inline reference link inside the first ECHO Discovery heading. */
+.case-heading__link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.12em;
 }
