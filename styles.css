@@ -3917,3 +3917,11 @@ a.core-intro__project-link {
   text-decoration-thickness: 1px;
   text-underline-offset: 0.12em;
 }
+
+
+/* v319: ECHO project links stay on one line; comma is not underlined. */
+.echo-page .core-intro__project-separator {
+  display: inline-block;
+  margin-right: 8px;
+  text-decoration: none;
+}
