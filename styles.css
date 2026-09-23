@@ -3871,3 +3871,31 @@ a:focus-visible {
     max-height: calc(100vh - 48px);
   }
 }
+
+
+/* v314: play icon in the self-presentation teaser and larger close button in the modal. */
+.hero__video-presentation .core-intro__video-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.core-intro__video-play {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 10px solid #111111;
+  flex: 0 0 auto;
+}
+
+.presentation-modal__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  font-size: 30px;
+}
