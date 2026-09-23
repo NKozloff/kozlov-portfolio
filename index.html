@@ -18,7 +18,7 @@
     <script>
       document.documentElement.classList.add("is-loading");
     </script>
-    <link rel="stylesheet" href="styles.css?v=302" />
+    <link rel="stylesheet" href="styles.css?v=312" />
   </head>
   <body>
     <div class="site-loader" role="status" aria-live="polite">
@@ -72,12 +72,18 @@
           </div>
         </div>
 
-        <div class="core-intro__video-presentation hero__video-presentation" aria-label="Самопрезентация">
-          <div class="core-intro__video-avatar" aria-hidden="true"></div>
-          <div class="core-intro__video-copy">
-            <p class="core-intro__video-title">Самопрезентация на 1 мин.</p>
-          </div>
-        </div>
+        <button
+          class="core-intro__video-presentation hero__video-presentation"
+          type="button"
+          aria-label="Открыть самопрезентацию"
+          aria-haspopup="dialog"
+          data-presentation-open
+        >
+          <img class="core-intro__video-avatar" src="assets/self-presentation-avatar-v313.jpg" alt="" width="96" height="96" loading="lazy" decoding="async" aria-hidden="true" />
+          <span class="core-intro__video-copy">
+            <span class="core-intro__video-title">Самопрезентация на 1 мин.</span>
+          </span>
+        </button>
       </section>
 
       <figure class="hero__portrait">
@@ -94,6 +100,21 @@
         />
       </figure>
     </main>
+
+    <dialog class="presentation-modal" aria-label="Самопрезентация Никиты Козлова" data-presentation-modal>
+      <div class="presentation-modal__frame">
+        <button class="presentation-modal__close" type="button" aria-label="Закрыть видео" data-presentation-close>×</button>
+        <video
+          class="presentation-modal__video"
+          controls
+          playsinline
+          preload="none"
+          data-presentation-video
+        >
+          <source src="assets/self-presentation-v312.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </dialog>
 
     <section class="portfolio" id="projects" aria-label="Проекты">
       <div class="portfolio__grid">
@@ -207,6 +228,40 @@
 
         Promise.all(images.map(waitForImage)).then(revealSite);
         window.setTimeout(revealSite, 12000);
+      })();
+    </script>
+
+    <script>
+      (() => {
+        const openButton = document.querySelector("[data-presentation-open]");
+        const modal = document.querySelector("[data-presentation-modal]");
+        const closeButton = document.querySelector("[data-presentation-close]");
+        const video = document.querySelector("[data-presentation-video]");
+
+        if (!openButton || !modal || !closeButton || !video) return;
+
+        const openModal = () => {
+          modal.showModal();
+          document.documentElement.classList.add("presentation-open");
+          video.play().catch(() => {});
+        };
+
+        const closeModal = () => {
+          if (modal.open) modal.close();
+        };
+
+        openButton.addEventListener("click", openModal);
+        closeButton.addEventListener("click", closeModal);
+
+        modal.addEventListener("click", (event) => {
+          if (event.target === modal) closeModal();
+        });
+
+        modal.addEventListener("close", () => {
+          document.documentElement.classList.remove("presentation-open");
+          video.pause();
+          video.currentTime = 0;
+        });
       })();
     </script>
   </body>
