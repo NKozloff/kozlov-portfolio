@@ -3951,3 +3951,21 @@ a.core-intro__project-link {
   text-decoration: underline;
   text-underline-offset: 0.12em;
 }
+
+
+/* v324: socials popover uses the same underline treatment as Activities / Article. */
+.bio__socials-tooltip > a,
+.bio__socials-tooltip > span {
+  color: inherit;
+  text-decoration-line: underline !important;
+  text-decoration-color: rgba(16, 16, 16, 0.35) !important;
+  text-decoration-thickness: 1px !important;
+  text-underline-offset: 0.12em !important;
+  transition: text-decoration-color 160ms ease;
+}
+
+.bio__socials-tooltip > a:hover,
+.bio__socials-tooltip > a:focus-visible,
+.bio__socials-tooltip > span:hover {
+  text-decoration-color: currentColor !important;
+}
