@@ -3922,6 +3922,32 @@ a.core-intro__project-link {
 /* v319: ECHO project links stay on one line; comma is not underlined. */
 .echo-page .core-intro__project-separator {
   display: inline-block;
-  margin-right: 8px;
+  margin-right: 4px;
   text-decoration: none;
+}
+
+
+/* v322: interactive socials popover stays open while moving onto its links. */
+.bio__socials-tooltip {
+  pointer-events: auto;
+}
+
+.bio__socials-tooltip::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -8px;
+  height: 8px;
+}
+
+.bio__socials-tooltip a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.bio__socials-tooltip a:hover,
+.bio__socials-tooltip a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
 }
