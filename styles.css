@@ -4001,10 +4001,7 @@ a.core-intro__project-link {
   line-height: 1.4;
   font-weight: 700;
   letter-spacing: 0.02em;
-  background: linear-gradient(90deg, #7b61ff 0%, #ff4fb3 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #111111;
   white-space: nowrap;
 }
 
@@ -4047,10 +4044,7 @@ a.core-intro__project-link {
   line-height: 1.4;
   font-weight: 700;
   letter-spacing: 0.02em;
-  background: linear-gradient(90deg, #7b61ff 0%, #ff4fb3 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #111111;
   white-space: nowrap;
 }
 
@@ -4104,10 +4098,7 @@ a.core-intro__project-link {
 }
 
 .ai-site-credit__vibe p {
-  background: linear-gradient(90deg, #7b61ff 0%, #ff4fb3 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #111111;
 }
 
 @media (max-device-width: 1023px) {
