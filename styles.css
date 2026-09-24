@@ -3983,3 +3983,43 @@ a.core-intro__project-link {
 .bio__socials-tooltip > span:hover {
   text-decoration-color: currentColor !important;
 }
+
+
+/* v332: Core AI callout in the discovery risk block */
+.core-page .case-ai-callout {
+  position: relative;
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin: 24px auto 0;
+}
+
+.core-page .case-ai-callout__text {
+  margin: 0;
+  color: #121212;
+  font-size: var(--text-size);
+  line-height: 1.6;
+}
+
+.core-page .case-ai-callout__label {
+  position: absolute;
+  top: 0;
+  left: clamp(-132px, -10vw, -88px);
+  font-family: "Arial Cyrillic", "Arial", sans-serif;
+  font-size: var(--text-size);
+  line-height: 1.4;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: linear-gradient(90deg, #7b61ff 0%, #ff4fb3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  white-space: nowrap;
+}
+
+@media (max-width: 1023px) {
+  .core-page .case-ai-callout__label {
+    position: static;
+    display: block;
+    margin-bottom: 8px;
+  }
+}
