@@ -4061,3 +4061,13 @@ a.core-intro__project-link {
     margin-bottom: 8px;
   }
 }
+
+
+/* v338: usability check after the second call visual. */
+.core-page #scenarios .case-call-story--usability {
+  margin-top: 39.6px;
+}
+
+.core-page #scenarios .case-highlight--usability-result {
+  margin-top: 11px;
+}
