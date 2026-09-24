@@ -4073,12 +4073,11 @@ a.core-intro__project-link {
 }
 
 
-/* v343: homepage closing row with centered motto and right-aligned vibe-coding note. */
+/* v344: homepage closing row with left/right copy and AI sparkle. */
 .ai-site-credit {
-  position: relative;
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   padding: 96px 24px 32px;
   border-top: 1px solid #d9d9d9;
@@ -4095,14 +4094,21 @@ a.core-intro__project-link {
 }
 
 .ai-site-credit__motto {
-  text-align: center;
+  text-align: left;
 }
 
 .ai-site-credit__vibe {
-  position: absolute;
-  top: 96px;
-  right: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   text-align: right;
+}
+
+.ai-site-credit__sparkle {
+  display: block;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
 }
 
 @media (max-device-width: 1023px) {
