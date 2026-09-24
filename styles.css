@@ -3996,11 +3996,11 @@ a.core-intro__project-link {
   right: calc(100% + 40px);
   left: auto;
   margin: 0;
-  font-family: "Arial Cyrillic", "Arial", sans-serif;
+  font-family: "Arial Portfolio", Arial, sans-serif;
   font-size: var(--text-size);
   line-height: 1.4;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  font-weight: 400;
+  letter-spacing: normal;
   color: #111111;
   white-space: nowrap;
 }
@@ -4039,11 +4039,11 @@ a.core-intro__project-link {
   right: calc(100% + 40px);
   left: auto;
   margin: 0;
-  font-family: "Arial Cyrillic", "Arial", sans-serif;
+  font-family: "Arial Portfolio", Arial, sans-serif;
   font-size: var(--text-size);
   line-height: 1.4;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  font-weight: 400;
+  letter-spacing: normal;
   color: #111111;
   white-space: nowrap;
 }
