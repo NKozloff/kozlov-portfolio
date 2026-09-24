@@ -3985,25 +3985,30 @@ a.core-intro__project-link {
 }
 
 
-/* v332: Core AI callout in the discovery risk block */
-.core-page .case-ai-callout {
+/* v333: Core AI callout follows the same 720px editorial grid. */
+.core-page #discovery .case-ai-callout {
   position: relative;
-  width: min(100%, 720px);
-  max-width: 720px;
-  margin: 24px auto 0;
+  width: min(100%, 720px) !important;
+  max-width: 720px !important;
+  margin: 24px auto 0 !important;
+  box-sizing: border-box;
 }
 
-.core-page .case-ai-callout__text {
+.core-page #discovery .case-ai-callout__text {
+  width: 100%;
+  max-width: 720px;
   margin: 0;
   color: #121212;
   font-size: var(--text-size);
   line-height: 1.6;
 }
 
-.core-page .case-ai-callout__label {
+.core-page #discovery .case-ai-callout__label {
   position: absolute;
   top: 0;
-  left: clamp(-132px, -10vw, -88px);
+  right: calc(100% + 40px);
+  left: auto;
+  margin: 0;
   font-family: "Arial Cyrillic", "Arial", sans-serif;
   font-size: var(--text-size);
   line-height: 1.4;
@@ -4017,7 +4022,7 @@ a.core-intro__project-link {
 }
 
 @media (max-width: 1023px) {
-  .core-page .case-ai-callout__label {
+  .core-page #discovery .case-ai-callout__label {
     position: static;
     display: block;
     margin-bottom: 8px;
