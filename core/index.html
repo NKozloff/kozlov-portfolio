@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=334" />
+<link rel="stylesheet" href="../styles.css?v=336" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -693,11 +693,15 @@
               <p>
                 Отдельно продумал негативный сценарий. При потере защищённого соединения пользователь может продолжать ходить по приложению и читать уже доступные данные, но сетевые действия блокируются: нельзя отправлять сообщения, звонить и передавать файлы.
               </p>
+              <p>
+                Лучше остановить передачу данных, чем незаметно отправить их в обход защищённого соединения.
+              </p>
             </div>
 
-            <p class="case-highlight case-highlight--proxy">
-              <span class="case-conclusion-mark">Лучше остановить передачу данных, чем незаметно отправить их в обход защищённого соединения.</span>
-            </p>
+            <div class="case-ai-callout case-ai-callout--proxy">
+              <div class="case-ai-callout__label" aria-hidden="true">AI</div>
+              <p class="case-ai-callout__text">Готовую схему передал ChatGPT на проверку: он помог пройти её по граничным сценариям и не выявил пропущенных веток в логике восстановления защищённого соединения.</p>
+            </div>
 
             <div class="case-proxy-flow-placeholder">
               <img
