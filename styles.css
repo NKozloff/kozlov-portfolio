@@ -4100,15 +4100,14 @@ a.core-intro__project-link {
 .ai-site-credit__vibe {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
   text-align: right;
 }
 
-.ai-site-credit__sparkle {
-  display: block;
-  width: 16px;
-  height: 16px;
-  flex: 0 0 16px;
+.ai-site-credit__vibe p {
+  background: linear-gradient(90deg, #7b61ff 0%, #ff4fb3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 @media (max-device-width: 1023px) {
