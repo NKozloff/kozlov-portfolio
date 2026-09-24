@@ -3315,7 +3315,7 @@ a:focus-visible {
 /* v254: double the vertical breathing room before the year on homepage case cards.
    The metadata panel grows by the previous standard gap, so CORE and ECHO years stay aligned. */
 .case-card__meta {
-  min-height: 11.066667rem;
+  min-height: 9rem;
 }
 
 
@@ -4079,7 +4079,7 @@ a.core-intro__project-link {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 96px 24px 32px;
+  padding: 64px 24px 32px;
   border-top: 1px solid #d9d9d9;
   background: #ffffff;
   box-sizing: border-box;
