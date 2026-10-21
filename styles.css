@@ -4106,3 +4106,16 @@ a.core-intro__project-link {
     display: none;
   }
 }
+
+
+/* v350: compact two-line metadata on homepage cards (title + year).
+   Remove the reserved third-row height and keep years along the bottom edge. */
+.portfolio .case-card__meta {
+  min-height: 0;
+  flex: 1 0 auto;
+}
+
+.portfolio .case-card__description {
+  margin-top: auto;
+  padding-top: 0.333333rem;
+}
