@@ -4123,3 +4123,15 @@ a.core-intro__project-link {
   vertical-align: -2px;
   color: #111111;
 }
+
+/* v352: HH resume is a separate underlined link in the contact row. */
+.bio__contacts--inline a.bio__hh-link {
+  text-decoration-line: underline !important;
+  text-decoration-color: rgba(16, 16, 16, 0.35) !important;
+  text-decoration-thickness: 1px !important;
+  text-underline-offset: 0.12em !important;
+}
+.bio__contacts--inline a.bio__hh-link:hover,
+.bio__contacts--inline a.bio__hh-link:focus-visible {
+  text-decoration-color: currentColor !important;
+}
