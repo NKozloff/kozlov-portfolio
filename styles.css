@@ -4110,20 +4110,6 @@ a.core-intro__project-link {
   padding-top: 0.666666rem;
 }
 
-/* v351: four-point sparkle beside AI-enthusiast, same visual scale as the video Play icon. */
-.bio__ai-tag {
-  white-space: nowrap;
-}
-
-.bio__ai-sparkle {
-  display: inline-block;
-  width: 12px;
-  height: 14px;
-  margin-right: 6px;
-  vertical-align: -2px;
-  color: #111111;
-}
-
 /* v352: HH resume is a separate underlined link in the contact row. */
 .bio__contacts--inline a.bio__hh-link {
   text-decoration-line: underline !important;
@@ -4134,4 +4120,11 @@ a.core-intro__project-link {
 .bio__contacts--inline a.bio__hh-link:hover,
 .bio__contacts--inline a.bio__hh-link:focus-visible {
   text-decoration-color: currentColor !important;
+}
+
+/* v354: CORE cover — bare year at bottom of text column; no status/meta grid. */
+.core-page .core-intro__copy > .core-intro__year {
+  margin-top: auto;
+  padding-top: 24px;
+  flex-shrink: 0;
 }
