@@ -4305,3 +4305,56 @@ a.core-intro__project-link {
   color: #d72727;
   font-weight: 400;
 }
+
+
+/* v361: CORE opening: three separate editorial descriptors and aligned text.
+   Keep the existing visual system, but make Client/Problem/Task rhythm consistent. */
+.core-page .case-body > .case-section:is(#client, #problem, #task, #discovery) {
+  padding-top: 0;
+}
+.core-page .case-body > .case-section:is(#client, #problem, #task) {
+  margin-top: 0;
+}
+.core-page .case-body > .case-section:is(#client, #problem, #task, #discovery):not(#client) {
+  margin-top: 6.912rem;
+}
+.core-page .case-body > .case-section:is(#client, #problem, #task) > .case-block--section-start,
+.core-page .case-body > #discovery > .case-block--section-start:first-of-type {
+  position: relative;
+  margin-top: 0;
+}
+.core-page .case-body > .case-section:is(#client, #problem, #task) > .case-block--section-start > .case-section__label,
+.core-page .case-body > #discovery > .case-block--section-start:first-of-type > .case-section__label {
+  position: absolute;
+  top: 0;
+  left: calc(24px - var(--page-space));
+  display: block;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  color: #8a8a8a;
+  font-family: "Arial Portfolio", Arial, sans-serif;
+  font-size: var(--text-size);
+  font-weight: 400;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.core-page .case-body .case-opening-text {
+  display: block;
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin: 0 auto;
+  color: #111111;
+  font-family: "Arial Portfolio", Arial, sans-serif;
+  font-size: var(--text-size);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: normal;
+}
+.core-page .case-body .case-opening-text--task {
+  font-weight: 700;
+}
+/* Avoid inherited old introductory Discovery margin after removing its prior blocks. */
+.core-page #discovery > .case-block--section-start.case-block--discovery-risk-map {
+  margin-top: 0;
+}

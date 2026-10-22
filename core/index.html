@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=360" />
+<link rel="stylesheet" href="../styles.css?v=361" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -62,21 +62,25 @@
     </a>
 
     <div class="case-body">
-      <section class="case-section" id="problem" data-case-section data-nav-anchor="problem">
-        <div class="case-block case-block--section-start">
-          <p class="case-section__label">Проблема</p>
-          <h2 class="case-heading">Заказчик не мог полноценно вести рабочие коммуникации в личном мессенджере из-за риска утечки данных со стороны собеседников</h2>
+      <!-- CORE — начало кейса: три самостоятельных раздела -->
+      <section class="case-section" id="client" data-case-section>
+        <div class="case-block case-block--section-start case-block--intro-text">
+          <p class="case-section__label">Клиент</p>
+          <p class="case-opening-text">В работу поступил закрытый мессенджер, которым заказчик пользовался для конфиденциального общения с бизнес-партнёрами и ближайшим кругом сотрудников.</p>
+        </div>
+      </section>
 
-          <div class="case-task-copy">
-            <p>Он хотел контролировать действия собеседников и обеспечить максимальную конфиденциальность данных.</p>
-          </div>
+      <section class="case-section" id="problem" data-case-section data-nav-anchor="problem">
+        <div class="case-block case-block--section-start case-block--intro-text">
+          <p class="case-section__label">Проблема</p>
+          <p class="case-opening-text">На встрече с командой заказчика выяснил, что владелец мессенджера не мог полноценно вести рабочие коммуникации из-за риска раскрытия конфиденциальных данных собеседниками.</p>
         </div>
       </section>
 
       <section class="case-section" id="task" data-case-section data-nav-anchor="task">
-        <div class="case-block case-block--section-start">
+        <div class="case-block case-block--section-start case-block--intro-text">
           <p class="case-section__label">Задача</p>
-          <h2 class="case-heading">Выявить каналы утечки данных и спроектировать механики их предотвращения.</h2>
+          <h2 class="case-opening-text case-opening-text--task">Выявить сценарии раскрытия данных и спроектировать механизмы их предотвращения</h2>
         </div>
       </section>
 
@@ -116,49 +120,6 @@
       </template>
 
       <section class="case-section" id="discovery" data-case-section data-nav-anchor="discovery">
-        <!-- Новое вступление к Discovery. Ранее существовавшие блоки оставлены в HTML без изменений. -->
-        <div class="case-block case-block--section-start case-block--discovery-audience">
-          <p class="case-section__label">Discovery</p>
-          <h2 class="case-heading">Определил, для кого проектируем: заказчик и&nbsp;его ближайшее окружение</h2>
-          <p class="case-lead case-lead--wide">Требования и&nbsp;обратную связь заказчика получал через бизнес-ассистента. Для&nbsp;проверки решений были доступны три человека из&nbsp;его круга общения.</p>
-        </div>
-
-        <div class="case-block case-block--section-start">
-          <p class="case-section__label">Discovery</p>
-          <h2 class="case-heading">Как превратить приватность в требование к продукту?</h2>
-
-          <p class="case-outline-table__intro">Перевёл запрос клиента в продуктовые требования</p>
-
-          <div class="case-outline-table-wrap">
-            <table class="case-outline-table">
-              <thead>
-                <tr>
-                  <th>Запрос клиента</th>
-                  <th>Требование к продукту</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Не знает, кто я</td>
-                  <td>Без регистрации, телефона, имени и email</td>
-                </tr>
-                <tr>
-                  <td>Не знает, о чём я говорю</td>
-                  <td>Без доступа к содержимому чатов и файлов</td>
-                </tr>
-                <tr>
-                  <td>Хочу контролировать безопасность общения</td>
-                  <td>Видны действия собеседника в чате и звонке</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p class="case-outline-table__conclusion">
-            <span class="case-conclusion-mark">В итоге получился привычный мессенджер с надстройкой в виде усиленной безопасности.</span>
-          </p>
-        </div>
-
         <!-- Блок «Почему не взять готовое приложение?» временно скрыт. Оригинал сохранён для возможного возврата. -->
         <template id="core-ready-app-backup">
         <div class="case-block case-block--reference">
@@ -179,7 +140,8 @@
         </template>
 
         <!-- Discovery: зоны и точки раскрытия данных (6 уникальных точек) -->
-        <div class="case-block case-block--discovery-risk-map">
+        <div class="case-block case-block--section-start case-block--discovery-risk-map">
+          <p class="case-section__label">Discovery</p>
           <h2 class="case-heading">Изучил архитектуру мессенджера и выделил 4 источника риска раскрытия данных и 6 точек риска приватности</h2>
           <p class="discovery-evidence-copy">Разобрал, как устроены передача, отображение и хранение информации, а также действия участников общения.</p>
           <div class="case-outline-table-wrap discovery-wide-table-wrap">
