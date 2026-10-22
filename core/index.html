@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=357" />
+<link rel="stylesheet" href="../styles.css?v=359" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -271,7 +271,161 @@
       </section>
 
       <section class="case-section" id="scenarios">
-        <div class="case-block case-block--contact case-block--section-start">
+        <!-- Новая история о прокси: первый приоритет после Discovery. -->
+        <div class="case-block case-block--proxy-new case-block--section-start" id="proxy">
+          <p class="case-section__label">Проектирование</p>
+          <h2 class="case-heading">Выявил отсутствие контроля над состоянием защищённого подключения</h2>
+          <p class="proxy-copy">
+            Выяснил, что прокси уже используется, но никак не представлен в интерфейсе. Здесь даже не понадобилось строить CJM: искать проблемы в существующем сценарии было бессмысленно — самого сценария взаимодействия с прокси просто не было.
+          </p>
+
+        <div class="case-outline-table-wrap proxy-table-wrap ">
+                  <table class="case-outline-table proxy-table" aria-label="Проблема: К чему приводит">
+                    <thead><tr><th scope="col">Проблема</th><th scope="col">К чему приводит</th></tr></thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Не отображается статус подключения</strong></td><td>Пользователь не понимает, активно ли защищённое соединение и не прервалось ли оно.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Не отображаются данные сервера</strong></td><td>Невозможно узнать, к какому прокси подключено приложение и в какой стране он находится.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Нет управления подключением</strong></td><td>Пользователь не может самостоятельно сменить сервер при сбое или ухудшении связи.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+        </div>
+
+        <div class="case-block case-block--proxy-new">
+          <h2 class="case-heading">Разработал систему из четырёх статусов подключения</h2>
+          <p class="proxy-copy">Чтобы пользователь понимал состояние соединения и мог реагировать на сбои, предусмотрел четыре статуса.</p>
+        <div class="case-outline-table-wrap proxy-table-wrap ">
+                  <table class="case-outline-table proxy-table" aria-label="Статус: Что видит и понимает пользователь">
+                    <thead><tr><th scope="col">Статус</th><th scope="col">Что видит и понимает пользователь</th></tr></thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Подключение</strong></td><td>Приложение устанавливает защищённое соединение.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Подключено</strong></td><td>Защищённое соединение установлено и активно.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Переподключение</strong></td><td>Текущий сервер недоступен, приложение переключается на резервный.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Нет подключения</strong></td><td>Защищённое соединение отсутствует, передача данных приостановлена.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+          <div class="proxy-visual proxy-visual--states" data-asset-slot="proxy-states" aria-hidden="true"></div>
+        </div>
+
+        <div class="case-block case-block--proxy-new">
+          <h2 class="case-heading">Продумал резервные маршруты и поведение приложения при потере соединения</h2>
+          <p class="proxy-copy">Одних статусов было недостаточно: нужно было обеспечить автоматическое восстановление подключения и исключить передачу данных в обход прокси.</p>
+          <p class="proxy-copy">Для этого разработал схему переходов между серверами и предусмотрел fallback-сценарии.</p>
+        <div class="case-outline-table-wrap proxy-table-wrap ">
+                  <table class="case-outline-table proxy-table" aria-label="Сценарий: Поведение приложения">
+                    <thead><tr><th scope="col">Сценарий</th><th scope="col">Поведение приложения</th></tr></thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Прокси работает</strong></td><td>Соединение активно, коммуникации доступны.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Прокси отключился</strong></td><td>Передача приостанавливается, запускается поиск резервного сервера.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Резервный прокси найден</strong></td><td>Приложение автоматически восстанавливает подключение.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Все прокси недоступны</strong></td><td>Сообщения, звонки и передача файлов блокируются; локальные данные остаются доступны.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Ручной выбор сервера</strong></td><td>При сбое приложение предлагает сменить сервер или включить автовыбор.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+          <p class="proxy-conclusion"><strong>Вывод.</strong> Приоритет отдал конфиденциальности: если восстановить защищённое соединение невозможно, приложение прекращает сетевую передачу, но остаётся доступным для просмотра локальных данных.</p>
+          <div class="proxy-visual proxy-visual--flow" data-asset-slot="proxy-fallback-flow" aria-hidden="true"></div>
+        </div>
+
+        <div class="case-block case-block--proxy-new">
+          <h2 class="case-heading">Сравнил три подхода к управлению подключением</h2>
+          <p class="proxy-copy">Нужно было найти баланс между автоматической защитой и возможностью пользователя контролировать соединение.</p>
+        <div class="case-outline-table-wrap proxy-table-wrap proxy-table-wrap--three">
+                  <table class="case-outline-table proxy-table" aria-label="Подход: Недостаток">
+                    <thead><tr><th scope="col">Подход</th><th scope="col">Преимущество</th><th scope="col">Недостаток</th></tr></thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Только статусы</strong></td><td>Простое взаимодействие.</td><td>Нет управления подключением.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Ручной выбор сервера</strong></td><td>Полный контроль выбора.</td><td>Требует постоянного участия пользователя.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Автоматическое подключение + ручной выбор</strong></td><td>Не отвлекает от общения, сохраняет возможность управления.</td><td>Более сложная логика состояний.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+          <p class="proxy-conclusion"><strong>Решение.</strong> Выбрал автоматическое подключение с возможностью ручного выбора сервера. Приложение самостоятельно восстанавливает соединение, пользователь видит его состояние и при необходимости может вмешаться.</p>
+          <p class="proxy-copy">Если все защищённые маршруты недоступны, сетевая передача останавливается.</p>
+          <div class="proxy-visual proxy-visual--prototype" data-asset-slot="proxy-interactive-prototype" aria-hidden="true"></div>
+        </div>
+
+        <div class="case-block case-block--proxy-new">
+          <h2 class="case-heading">Проверил понятность интерфейса на сценарном Usability Testing</h2>
+          <p class="proxy-copy">Провёл тестирование кликабельного прототипа с <strong>тремя представителями команды заказчика</strong>, знакомыми с мессенджером. Проверял, как они понимают состояния подключения и реагируют на сбои без подсказок.</p>
+        <div class="case-outline-table-wrap proxy-table-wrap ">
+                  <table class="case-outline-table proxy-table" aria-label="Что проверял: На что обращал внимание">
+                    <thead><tr><th scope="col">Что проверял</th><th scope="col">На что обращал внимание</th></tr></thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Статусы подключения</strong></td><td>Понимает ли пользователь текущее состояние соединения.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Переподключение</strong></td><td>Понимает ли, что приложение ищет резервный сервер.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Автовыбор</strong></td><td>Замечает ли, что ручной выбор серверов недоступен.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Потеря связи</strong></td><td>Понимает ли, почему сообщения и звонки заблокированы.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Ручное управление</strong></td><td>Может ли самостоятельно сменить сервер.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+        </div>
+
+        <div class="case-block case-block--proxy-new">
+          <h2 class="case-heading">Выявил и исправил проблему с визуальным состоянием серверов</h2>
+        <div class="case-outline-table-wrap proxy-table-wrap ">
+                  <table class="case-outline-table proxy-table" aria-label="Этап: Результат">
+                    <thead><tr><th scope="col">Этап</th><th scope="col">Результат</th></tr></thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Было</strong></td><td>При включённом автовыборе блокировал нажатия и делал серыми только элементы выбора серверов.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Выявил</strong></td><td>Участники не понимали, что оба сервера недоступны для ручного выбора.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Исправил</strong></td><td>Сделал неактивными визуально целые строки: названия, описания и элементы выбора серверов.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+          <p class="proxy-conclusion"><strong>Результат.</strong> Тестирование с тремя участниками помогло выявить недостаточно понятное состояние недоступных элементов. После проверки доработал UI, чтобы ограничение ручного выбора было заметно без попытки нажатия.</p>
+          <div class="proxy-visual proxy-visual--before-after" data-asset-slot="proxy-before-after" aria-hidden="true"></div>
+        </div>
+
+        <div class="case-block case-block--contact">
           <h2 class="case-heading">Итак, как добавить контакт</h2>
 
           <div class="case-discovery-article">
@@ -687,87 +841,6 @@
         </div>
 
 
-        <div class="case-block">
-          <h2 class="case-heading">Как не потерять защищённое соединение?</h2>
-
-          <div class="case-subblock">
-            <div class="case-proxy-story">
-              <p>
-                Прокси был базовым слоем сетевой приватности: трафик приложения должен проходить через защищённую точку подключения, а не напрямую с устройства пользователя. Иначе сервис на другой стороне соединения сможет увидеть его реальный IP и часть сетевых метаданных.
-              </p>
-              <p>
-                Поэтому заложил правило: приложение не должно незаметно переключаться на обычное соединение. Пока прокси работает — пользователь общается как обычно. Если соединение теряется, приложение пытается восстановить его и явно показывает текущее состояние.
-              </p>
-            </div>
-
-            <div class="case-proxy-status-placeholder" aria-label="Четыре состояния прокси-соединения">
-              <img
-                class="case-scenario-gallery__image"
-                src="../assets/optimized-v201/core-proxy-state-1-v69-458w.png"
-                srcset="../assets/optimized-v201/core-proxy-state-1-v69-229w.png 229w, ../assets/optimized-v201/core-proxy-state-1-v69-458w.png 458w"
-                sizes="229px"
-                alt="Состояние прокси-соединения CORE, экран 1"
-                loading="lazy"
-                decoding="async"
-              />
-              <img
-                class="case-scenario-gallery__image"
-                src="../assets/optimized-v201/core-proxy-state-2-v69-458w.png"
-                srcset="../assets/optimized-v201/core-proxy-state-2-v69-229w.png 229w, ../assets/optimized-v201/core-proxy-state-2-v69-458w.png 458w"
-                sizes="229px"
-                alt="Состояние прокси-соединения CORE, экран 2"
-                loading="lazy"
-                decoding="async"
-              />
-              <img
-                class="case-scenario-gallery__image"
-                src="../assets/optimized-v201/core-proxy-state-3-v69-458w.png"
-                srcset="../assets/optimized-v201/core-proxy-state-3-v69-229w.png 229w, ../assets/optimized-v201/core-proxy-state-3-v69-458w.png 458w"
-                sizes="229px"
-                alt="Состояние прокси-соединения CORE, экран 3"
-                loading="lazy"
-                decoding="async"
-              />
-              <img
-                class="case-scenario-gallery__image"
-                src="../assets/optimized-v201/core-proxy-state-4-v69-458w.png"
-                srcset="../assets/optimized-v201/core-proxy-state-4-v69-229w.png 229w, ../assets/optimized-v201/core-proxy-state-4-v69-458w.png 458w"
-                sizes="229px"
-                alt="Состояние прокси-соединения CORE, экран 4"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-          </div>
-
-          <div class="case-subblock">
-            <div class="case-proxy-story">
-              <p>
-                Отдельно продумал негативный сценарий. При потере защищённого соединения пользователь может продолжать ходить по приложению и читать уже доступные данные, но сетевые действия блокируются: нельзя отправлять сообщения, звонить и передавать файлы.
-              </p>
-              <p>
-                Лучше остановить передачу данных, чем незаметно отправить их в обход защищённого соединения.
-              </p>
-            </div>
-
-            <div class="case-ai-callout case-ai-callout--proxy">
-              <div class="case-ai-callout__label" aria-hidden="true">AI</div>
-              <p class="case-ai-callout__text">Готовую схему передал ChatGPT на проверку: он помог пройти её по граничным сценариям и не выявил пропущенных веток в логике восстановления защищённого соединения.</p>
-            </div>
-
-            <div class="case-proxy-flow-placeholder">
-              <img
-                class="case-proxy-flow-image"
-                src="../assets/core-proxy-flow-v128.png"
-                alt="Схема переходов и fallback-сценариев прокси-соединения"
-                width="2047"
-                height="1173"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-          </div>
-        </div>
 
 
         <div class="case-block case-block--onboarding">
