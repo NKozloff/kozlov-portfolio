@@ -4358,3 +4358,103 @@ a.core-intro__project-link {
 .core-page #discovery > .case-block--section-start.case-block--discovery-risk-map {
   margin-top: 0;
 }
+
+/* v363 — CORE, four agreed project scenarios. Keep existing editorial grid and
+   the same text/highlight/table atoms as Proxy, Discovery and the older CORE UI. */
+.core-page #scenarios .case-block--agreed > .case-heading + .case-agreed-copy {
+  margin-top: 38.4px;
+}
+.core-page #scenarios .case-block--agreed .case-agreed-copy,
+.core-page #scenarios .case-block--agreed .case-agreed-conclusion {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin-right: auto;
+  margin-left: auto;
+  color: #111111;
+  font-family: "Arial Portfolio", Arial, sans-serif;
+  font-size: var(--text-size);
+  font-weight: 400;
+  line-height: 1.4;
+  box-sizing: border-box;
+}
+.core-page #scenarios .case-block--agreed .case-agreed-copy + .case-agreed-copy {
+  margin-top: 16px;
+}
+.core-page #scenarios .case-block--agreed .case-agreed-table-wrap,
+.core-page #scenarios .case-block--agreed .case-agreed-conclusion {
+  margin-top: 22px;
+}
+.core-page #scenarios .case-block--agreed .case-agreed-table-wrap {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.core-page #scenarios .case-block--agreed .case-agreed-table {
+  width: 100%;
+  table-layout: auto;
+}
+.core-page #scenarios .case-block--agreed .case-agreed-table th,
+.core-page #scenarios .case-block--agreed .case-agreed-table td {
+  overflow-wrap: break-word;
+}
+.core-page #scenarios .case-block--agreed .case-agreed-table-wrap--three {
+  overflow-x: auto;
+}
+.core-page #scenarios .case-block--agreed .case-agreed-table-wrap--three .case-agreed-table th,
+.core-page #scenarios .case-block--agreed .case-agreed-table-wrap--three .case-agreed-table td {
+  width: 33.333%;
+}
+/* Yellow marker paints only the text fragments, not a full line-wide rectangle. */
+.core-page #scenarios .case-block--proxy-new .proxy-conclusion,
+.core-page #scenarios .case-block--agreed .case-agreed-conclusion {
+  background: transparent;
+  padding: 0;
+}
+.core-page #scenarios .case-block--proxy-new .proxy-conclusion .case-conclusion-mark,
+.core-page #scenarios .case-block--agreed .case-agreed-conclusion .case-conclusion-mark {
+  display: inline;
+  padding: 2px 0;
+  background: #fffdd8;
+  line-height: calc(1em + 4px);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+/* Empty media slots are intentionally inert: prototype assets will be inserted later. */
+.core-page #scenarios .case-block--agreed .case-agreed-visual {
+  display: flex;
+  min-height: clamp(260px, 32vw, 490px);
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 39.6px calc(0px - var(--page-space)) 0;
+  padding: 40px var(--page-space);
+  background: #e6e6e6;
+  color: #818181;
+  text-align: center;
+}
+.core-page #scenarios .case-block--agreed .case-agreed-visual__content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 90%;
+}
+.core-page #scenarios .case-block--agreed .case-agreed-visual__title {
+  font: 400 16px/1.35 "Arial Portfolio", Arial, sans-serif;
+}
+.core-page #scenarios .case-block--agreed .case-agreed-visual__meta {
+  font: 400 13px/1.4 "Arial Portfolio", Arial, sans-serif;
+  opacity: 0.7;
+}
+/* Newly introduced scenario label uses the current descriptor styling at the left. */
+.core-page #scenarios .case-block--agreed.case-block--section-start {
+  position: relative;
+}
+.core-page #scenarios .case-block--agreed.case-block--section-start > .case-section__label {
+  position: absolute;
+  left: calc(24px - var(--page-space));
+  top: 0;
+  color: #8a8a8a;
+  font: 400 var(--text-size)/1.4 "Arial Portfolio", Arial, sans-serif;
+  white-space: nowrap;
+}
