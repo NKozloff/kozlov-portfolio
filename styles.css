@@ -1,6 +1,7 @@
 @font-face {
   font-family: "Singel Portfolio";
-  src: url("./assets/singel-bold.ttf") format("truetype");
+  src: url("./assets/singel-bold.ttf") format("truetype"),
+       url("https://raw.githubusercontent.com/NKozloff/kozlov-portfolio/main/assets/singel-bold.ttf") format("truetype");
   font-style: normal;
   font-weight: 700;
   font-display: swap;
@@ -8,7 +9,8 @@
 
 @font-face {
   font-family: "Arial Portfolio";
-  src: url("./assets/arial-cyrillic.ttf") format("truetype");
+  src: url("./assets/arial-cyrillic.ttf") format("truetype"),
+       url("https://raw.githubusercontent.com/NKozloff/kozlov-portfolio/main/assets/arial-cyrillic.ttf") format("truetype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -16,7 +18,8 @@
 
 @font-face {
   font-family: "Arial Portfolio";
-  src: url("./assets/arial-cyrillic-bold.ttf") format("truetype");
+  src: url("./assets/arial-cyrillic-bold.ttf") format("truetype"),
+       url("https://raw.githubusercontent.com/NKozloff/kozlov-portfolio/main/assets/arial-cyrillic-bold.ttf") format("truetype");
   font-style: normal;
   font-weight: 700;
   font-display: swap;
