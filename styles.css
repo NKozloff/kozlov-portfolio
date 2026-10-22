@@ -4458,3 +4458,16 @@ a.core-intro__project-link {
   font: 400 var(--text-size)/1.4 "Arial Portfolio", Arial, sans-serif;
   white-space: nowrap;
 }
+
+
+/* v364 — CORE: fit the opening screen to the complete desktop viewport.
+   Scope this correction to /core/ so the archived /core2/ remains unchanged. */
+.core-page--condensed > .core-intro {
+  height: 100vh;
+  height: 100svh;
+}
+
+/* The merged Problem is now the very first section, with no preceding Client. */
+.core-page--condensed .case-body > #problem {
+  margin-top: 0 !important;
+}
