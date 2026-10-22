@@ -4155,3 +4155,76 @@ a.core-intro__project-link {
 .core-page #discovery > .case-block--section-start:not(.case-block--discovery-audience) > .case-section__label {
   display: none;
 }
+
+
+/* v358: CORE / Proxy narrative before Contact; preserves established 720px tables
+   and full-bleed, neutral gray visual frames; desktop only. */
+.core-page #scenarios .case-block--proxy-new > .case-heading + .proxy-copy {
+  margin-top: 38.4px;
+}
+
+.core-page #scenarios .case-block--proxy-new .proxy-copy,
+.core-page #scenarios .case-block--proxy-new .proxy-conclusion {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin-right: auto;
+  margin-left: auto;
+  color: #111111;
+  font-size: var(--text-size);
+  font-weight: 400;
+  line-height: 1.4;
+  box-sizing: border-box;
+}
+
+.core-page #scenarios .case-block--proxy-new .proxy-copy + .proxy-copy {
+  margin-top: 16px;
+}
+
+.core-page #scenarios .case-block--proxy-new .proxy-table-wrap {
+  margin-top: 22px;
+}
+
+.core-page #scenarios .case-block--proxy-new .proxy-table th,
+.core-page #scenarios .case-block--proxy-new .proxy-table td {
+  overflow-wrap: break-word;
+}
+
+.core-page #scenarios .case-block--proxy-new .proxy-table-wrap--three {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.core-page #scenarios .case-block--proxy-new .proxy-table-wrap--three .proxy-table th:first-child,
+.core-page #scenarios .case-block--proxy-new .proxy-table-wrap--three .proxy-table td:first-child {
+  width: 33%;
+}
+
+.core-page #scenarios .case-block--proxy-new .proxy-table-wrap--three .proxy-table th:nth-child(2),
+.core-page #scenarios .case-block--proxy-new .proxy-table-wrap--three .proxy-table td:nth-child(2) {
+  width: 34%;
+}
+
+.core-page #scenarios .case-block--proxy-new .proxy-table-wrap--three .proxy-table th:last-child,
+.core-page #scenarios .case-block--proxy-new .proxy-table-wrap--three .proxy-table td:last-child {
+  width: 33%;
+}
+
+.core-page #scenarios .case-block--proxy-new .proxy-conclusion {
+  margin-top: 22px;
+}
+
+.core-page #scenarios .case-block--proxy-new .proxy-conclusion + .proxy-copy {
+  margin-top: 16px;
+}
+
+.core-page #scenarios .case-block--proxy-new .proxy-visual {
+  width: auto;
+  min-height: clamp(340px, 42vw, 640px);
+  margin: 39.6px calc(0px - var(--page-space)) 0;
+  background: #e6e6e6;
+  box-sizing: border-box;
+}
+
+.core-page #scenarios .case-block--proxy-new .proxy-visual--flow {
+  min-height: clamp(300px, 38vw, 570px);
+}
