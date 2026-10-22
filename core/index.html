@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=364" />
+<link rel="stylesheet" href="../styles.css?v=365" />
   </head>
   <body class="core-page core-page--condensed typography-only">
     <main class="core-intro" id="cover">
@@ -308,7 +308,35 @@
                 </div>
           <p class="case-highlight proxy-conclusion"><span class="case-conclusion-mark">Выбрал автоматическое подключение с возможностью ручного выбора сервера. Приложение самостоятельно восстанавливает соединение, пользователь видит его состояние и при необходимости может вмешаться.</span></p>
           <p class="proxy-copy">Если все защищённые маршруты недоступны, сетевая передача останавливается.</p>
-          <div class="proxy-visual proxy-visual--prototype" data-asset-slot="proxy-interactive-prototype" aria-hidden="true"></div>
+          <div class="proxy-visual proxy-visual--prototype proxy-prototype-stage" data-asset-slot="proxy-interactive-prototype" aria-label="Интерактивный прототип экрана Proxy">
+            <div class="proxy-app" role="group" aria-label="Настройки прокси, демонстрационный интерактивный экран">
+              <div class="proxy-app__top-blur" aria-hidden="true"></div>
+              <div class="proxy-app__ios-status" aria-hidden="true">
+                <span class="proxy-app__clock">9:41</span>
+                <span class="proxy-app__island"></span>
+                <span class="proxy-app__ios-symbols">
+                  <svg viewBox="0 0 41 14" fill="none" aria-hidden="true"><rect x="1" y="10" width="3.5" height="4" rx="1" fill="white"/><rect x="6.5" y="7" width="3.5" height="7" rx="1" fill="white"/><rect x="12" y="4" width="3.5" height="10" rx="1" fill="white"/><rect x="17.5" y="1" width="3.5" height="13" rx="1" fill="white"/><path d="M24 4.7C28.3.9 33.8.9 38 4.7M27 8C29.6 5.6 32.8 5.6 35 8M30.4 11.2a2 2 0 0 1 2.7 0" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+                  <svg viewBox="0 0 27 14" fill="none" aria-hidden="true"><rect x=".75" y="1.5" width="22" height="11" rx="3" stroke="white" stroke-width="1.4"/><rect x="3" y="3.7" width="17.5" height="6.6" rx="1.4" fill="white"/><rect x="24" y="4.7" width="2.3" height="5" rx="1.1" fill="white" opacity=".7"/></svg>
+                </span>
+              </div>
+              <div class="proxy-app__nav">
+                <span class="proxy-app__back" aria-hidden="true"><svg viewBox="0 0 28 28" fill="none"><path d="M18 23.5L10 14 18 4.5" stroke="white" stroke-width="2"/></svg></span>
+                <span class="proxy-app__nav-title">Proxy</span>
+              </div>
+              <div class="proxy-app__status"><span class="proxy-app__status-dot"></span><span class="proxy-app__status-text" aria-live="polite">Connected: Local</span></div>
+              <div class="proxy-app__servers" role="radiogroup" aria-label="Выбор прокси-сервера">
+                <button class="proxy-app__server is-current" type="button" role="radio" aria-checked="true" aria-label="Local server" data-server="local" disabled>
+                  <span class="proxy-app__server-text"><strong>Local server</strong><span>Optimized for Russia</span></span><span class="proxy-app__radio" aria-hidden="true"><span></span></span>
+                </button>
+                <button class="proxy-app__server" type="button" role="radio" aria-checked="false" aria-label="Global server" data-server="global" disabled>
+                  <span class="proxy-app__server-text"><strong>Global server</strong><span>Worldwide route</span></span><span class="proxy-app__radio" aria-hidden="true"><span></span></span>
+                </button>
+              </div>
+              <label class="proxy-app__automatic"><input type="checkbox" class="proxy-app__auto-input" checked aria-label="Auto-selection"><span class="proxy-app__switch" aria-hidden="true"><span class="proxy-app__switch-knob"></span></span><span>Auto-selection</span></label>
+              <div class="proxy-app__footer"><span>Proxy — connection point.</span><span>Bypasses blockages</span></div>
+              <div class="proxy-app__home-indicator" aria-hidden="true"></div>
+            </div>
+          </div>
         </div>
 
         <div class="case-block case-block--proxy-new">
@@ -1176,6 +1204,33 @@
         }
 
         updateNavigation();
+      })();
+    </script>
+
+    <script>
+      (() => {
+        const prototype = document.querySelector('.proxy-app');
+        if (!prototype) return;
+        const automatic = prototype.querySelector('.proxy-app__auto-input');
+        const choices = [...prototype.querySelectorAll('.proxy-app__server')];
+        const status = prototype.querySelector('.proxy-app__status-text');
+        let selected = 'local';
+        const update = () => {
+          choices.forEach(button => {
+            const checked = button.dataset.server === selected;
+            button.disabled = automatic.checked;
+            button.classList.toggle('is-current', checked);
+            button.setAttribute('aria-checked', String(checked));
+          });
+          status.textContent = `Connected: ${selected === 'local' ? 'Local' : 'Global'}`;
+        };
+        automatic.addEventListener('change', update);
+        choices.forEach(button => button.addEventListener('click', () => {
+          if (automatic.checked) return;
+          selected = button.dataset.server;
+          update();
+        }));
+        update();
       })();
     </script>
   </body>
