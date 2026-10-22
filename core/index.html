@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=361" />
+<link rel="stylesheet" href="../styles.css?v=360" />
   </head>
   <body class="core-page typography-only">
     <main class="core-intro" id="cover">
@@ -178,57 +178,70 @@
         </div>
         </template>
 
-        <div class="case-block">
-          <h2 class="case-heading">Разобрал, где пользователь рискует потерять контроль над данными</h2>
-          <p class="case-outline-table__intro">
-            Привычные сценарии мессенджера свёл к трём зонам риска
-          </p>
-
-          <div class="case-outline-table-wrap">
-            <table class="case-outline-table">
+        <!-- Discovery: зоны и точки раскрытия данных (6 уникальных точек) -->
+        <div class="case-block case-block--discovery-risk-map">
+          <h2 class="case-heading">Изучил архитектуру мессенджера и выделил 4 источника риска раскрытия данных и 6 точек риска приватности</h2>
+          <p class="discovery-evidence-copy">Разобрал, как устроены передача, отображение и хранение информации, а также действия участников общения.</p>
+          <div class="case-outline-table-wrap discovery-wide-table-wrap">
+            <table class="case-outline-table discovery-risk-table" aria-label="Шесть точек раскрытия данных в четырёх зонах риска">
+              <colgroup><col style="width:21%"><col style="width:27%"><col style="width:52%"></colgroup>
               <thead>
-                <tr>
-                  <th>Зона риска</th>
-                  <th>Что проверяем</th>
-                </tr>
+                <tr><th scope="col">Зона риска</th><th scope="col">Раздел</th><th scope="col">Где раскрываются данные</th></tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Коммуникация</td>
-                  <td>
-                    <div>Добавление контакта</div>
-                    <div>Чаты и файлы</div>
-                    <div>Условия звонка</div>
-                    <div>Системные уведомления</div>
-                  </td>
+                  <td class="discovery-risk-zone" rowspan="3">Коммуникация</td>
+                  <td>Добавление контакта</td>
+                  <td>Раскрытие <strong>имени</strong> и <strong>номера телефона</strong> при обмене контактными данными.</td>
                 </tr>
                 <tr>
-                  <td>Подключение</td>
-                  <td>
-                    <div>Защищённое соединение</div>
-                    <div>Работа из разных стран</div>
-                  </td>
+                  
+                  <td>Чаты</td>
+                  <td><strong>Распространение сообщений и документов</strong> через пересылку, скриншоты и сохранение файлов.</td>
                 </tr>
                 <tr>
-                  <td>Доверие и контроль</td>
-                  <td>
-                    <div>Статус защиты</div>
-                    <div>Принципы безопасности</div>
-                    <div>Локальные данные</div>
-                  </td>
+                  
+                  <td>Звонок</td>
+                  <td><strong>Раскрытие содержания разговора</strong> при включении громкой связи или записи звонка собеседником.</td>
+                </tr>
+                <tr>
+                  <td class="discovery-risk-zone" rowspan="1">Подключение</td>
+                  <td>Прокси</td>
+                  <td><strong>Передача сетевых данных</strong> вне защищённого маршрута.</td>
+                </tr>
+                <tr>
+                  <td class="discovery-risk-zone" rowspan="1">Отображение данных</td>
+                  <td>Системные уведомления</td>
+                  <td><strong>Отображение имени собеседника и текста сообщения</strong> на заблокированном экране.</td>
+                </tr>
+                <tr>
+                  <td class="discovery-risk-zone" rowspan="1">Доступ к устройству</td>
+                  <td>Посторонний доступ к приложению</td>
+                  <td><strong>Раскрытие истории переписки и файлов</strong> при получении посторонним доступа к приложению или его данным.</td>
                 </tr>
               </tbody>
             </table>
           </div>
+        </div>
 
-          <div class="case-ai-callout">
-            <div class="case-ai-callout__label" aria-hidden="true">AI</div>
-            <p class="case-ai-callout__text">Дополнительно подключил ChatGPT как второй слой проверки: с его помощью перебрал негативные сценарии и потенциальные точки утечки данных, которые могли быть пропущены при ручном анализе. Релевантные риски затем проверил и учёл в дальнейшей логике продукта.</p>
+        <!-- Discovery: согласованная матрица приоритизации -->
+        <div class="case-block case-block--discovery-priority">
+          <h2 class="case-heading">Оценил риски, чтобы определить приоритеты защиты</h2>
+          <p class="discovery-evidence-copy">Для приоритизации использовал три критерия: критичность возможной утечки, значимость сценария для заказчика и техническую реализуемость защиты.</p>
+          <div class="case-outline-table-wrap discovery-wide-table-wrap">
+            <table class="case-outline-table discovery-priority-table" aria-label="Приоритеты защиты и реализуемость">
+              <colgroup><col style="width:12%"><col style="width:18%"><col style="width:32%"><col style="width:38%"></colgroup>
+              <thead><tr><th scope="col">Приоритет</th><th scope="col">Точка риска</th><th scope="col">Почему такой приоритет</th><th scope="col">Реализуемость</th></tr></thead>
+              <tbody>
+                <tr><td class="discovery-priority-num">01</td><td>Прокси</td><td>При сбое прокси данные могут передаваться вне защищённого маршрута.</td><td><strong>Средняя</strong> — требуется сеть резервных прокси с автоматическим переключением.</td></tr>
+                <tr><td class="discovery-priority-num">02</td><td>Звонок</td><td>Основной способ коммуникации с партнёрами.</td><td><strong>Частичная</strong> — невозможно исключить запись разговора на другом устройстве.</td></tr>
+                <tr><td class="discovery-priority-num">03</td><td>Чаты</td><td>Через переписку передаются конфиденциальные сообщения и файлы.</td><td><strong>Частичная</strong> — невозможно полностью предотвратить копирование данных вне приложения.</td></tr>
+                <tr><td class="discovery-priority-num">04</td><td>Добавление контакта</td><td>Новые контакты добавляются раз в 1–2 месяца.</td><td><strong>Высокая</strong> — можно устанавливать связь без передачи имени и телефона.</td></tr>
+                <tr><td class="discovery-priority-num">05</td><td>Уведомления</td><td>Данные могут отображаться на заблокированном экране.</td><td><strong>Высокая</strong> — можно скрыть содержание уведомлений.</td></tr>
+                <tr><td class="discovery-priority-num">06</td><td>Доступ к приложению</td><td>Посторонний доступ к телефону — редкий сценарий.</td><td><strong>Частичная</strong> — можно защитить вход, но не исключить физический доступ к устройству.</td></tr>
+              </tbody>
+            </table>
           </div>
-
-          <p class="case-outline-table__conclusion">
-            <span class="case-conclusion-mark">Так определил точки, где привычный сценарий мессенджера требует дополнительной защиты.</span>
-          </p>
         </div>
 
         <div class="case-block">

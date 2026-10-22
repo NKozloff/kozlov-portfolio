@@ -4228,3 +4228,80 @@ a.core-intro__project-link {
 .core-page #scenarios .case-block--proxy-new .proxy-visual--flow {
   min-height: clamp(300px, 38vw, 570px);
 }
+
+
+/* v360 — CORE Discovery: risk zones and prioritization in the existing
+   editorial layout. Only the two new tables are affected. Desktop-first. */
+.core-page #discovery .case-block--discovery-risk-map .discovery-evidence-copy,
+.core-page #discovery .case-block--discovery-priority .discovery-evidence-copy {
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin: 38.4px auto 0;
+  font-size: var(--text-size);
+  font-family: "Arial Portfolio", Arial, sans-serif;
+  font-weight: 400;
+  color: #111111;
+  line-height: 1.4;
+}
+.core-page #discovery .discovery-wide-table-wrap {
+  width: min(100%, 1040px);
+  max-width: 1040px;
+  margin: 22px auto 0 !important;
+  overflow: visible;
+}
+.core-page #discovery .case-outline-table.discovery-risk-table,
+.core-page #discovery .case-outline-table.discovery-priority-table {
+  width: 100% !important;
+  max-width: none !important;
+  table-layout: fixed !important;
+  margin: 0 !important;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+}
+.core-page #discovery .case-outline-table.discovery-risk-table th,
+.core-page #discovery .case-outline-table.discovery-risk-table td,
+.core-page #discovery .case-outline-table.discovery-priority-table th,
+.core-page #discovery .case-outline-table.discovery-priority-table td {
+  box-sizing: border-box;
+  width: auto !important;
+  font-size: var(--text-size);
+  font-weight: 400;
+  vertical-align: top;
+  text-align: left;
+  padding: 14px 16px;
+  overflow-wrap: break-word;
+  border-right: 1px solid #dedede;
+  border-bottom: 1px solid #dedede;
+}
+.core-page #discovery .case-outline-table.discovery-risk-table th:last-child,
+.core-page #discovery .case-outline-table.discovery-risk-table td:last-child,
+.core-page #discovery .case-outline-table.discovery-priority-table th:last-child,
+.core-page #discovery .case-outline-table.discovery-priority-table td:last-child {
+  border-right: 0;
+}
+.core-page #discovery .case-outline-table.discovery-risk-table tbody tr:last-child > td,
+.core-page #discovery .case-outline-table.discovery-priority-table tbody tr:last-child > td {
+  border-bottom: 0;
+}
+/* Previous case tables draw inset pseudo-separators; don't double their lines. */
+.core-page #discovery .case-outline-table.discovery-risk-table tbody td::after,
+.core-page #discovery .case-outline-table.discovery-priority-table tbody td::after {
+  display: none !important;
+}
+.core-page #discovery .case-outline-table.discovery-risk-table .discovery-risk-zone {
+  font-weight: 600;
+  vertical-align: top;
+}
+.core-page #discovery .case-outline-table.discovery-priority-table .discovery-priority-num {
+  font-weight: 700;
+  white-space: nowrap;
+}
+.core-page #discovery .case-outline-table.discovery-risk-table strong,
+.core-page #discovery .case-outline-table.discovery-priority-table strong {
+  font-weight: 700;
+}
+.core-page #discovery .case-outline-table.discovery-risk-table tbody td:last-child strong {
+  color: #d72727;
+  font-weight: 400;
+}
