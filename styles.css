@@ -4226,7 +4226,13 @@ a.core-intro__project-link {
 }
 
 .core-page #scenarios .case-block--proxy-new .proxy-visual--flow {
-  min-height: clamp(300px, 38vw, 570px);
+  min-height: 0;
+}
+
+.core-page #scenarios .case-block--proxy-new .proxy-visual__flow-image {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 
@@ -4724,4 +4730,11 @@ a.core-intro__project-link {
 .core-page .proxy-prototype-stage .proxy-app.is-offline .proxy-app__server.is-current .proxy-app__radio { background: #5b5f47; }
 @media (prefers-reduced-motion: reduce) {
   .core-page .proxy-prototype-stage .proxy-demo-bubble { transition: none; }
+}
+
+/* CORE Proxy: temporarily hide the scenario selector, without removing its
+   markup or JavaScript. To restore it, remove the --single-scenario modifier
+   from the prototype stage in core/index.html. The success demo loops on view. */
+.core-page .proxy-prototype-stage--single-scenario > .proxy-scenario-list {
+  display: none !important;
 }

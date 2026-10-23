@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=371-core-proxy-animations" />
+<link rel="stylesheet" href="../styles.css?v=372-core-proxy-flow" />
   </head>
   <body class="core-page core-page--condensed typography-only">
     <main class="core-intro" id="cover">
@@ -254,7 +254,6 @@
                     </tbody>
                   </table>
                 </div>
-          <div class="proxy-visual proxy-visual--states" data-asset-slot="proxy-states" aria-hidden="true"></div>
         </div>
 
         <div class="case-block case-block--proxy-new">
@@ -284,7 +283,17 @@
                   </table>
                 </div>
           <p class="case-highlight proxy-conclusion"><span class="case-conclusion-mark">Приоритет отдал конфиденциальности: если восстановить защищённое соединение невозможно, приложение прекращает сетевую передачу, но остаётся доступным для просмотра локальных данных.</span></p>
-          <div class="proxy-visual proxy-visual--flow" data-asset-slot="proxy-fallback-flow" aria-hidden="true"></div>
+          <div class="proxy-visual proxy-visual--flow" data-asset-slot="proxy-fallback-flow">
+            <img
+              class="proxy-visual__flow-image"
+              src="../assets/core-proxy-fallback-flow-v1.png"
+              width="2047"
+              height="1173"
+              loading="lazy"
+              decoding="async"
+              alt="Схема резервных маршрутов Proxy: переключение серверов, переподключение и действия при отсутствии соединения"
+            />
+          </div>
         </div>
 
         <div class="case-block case-block--proxy-new">
@@ -308,7 +317,7 @@
                 </div>
           <p class="case-highlight proxy-conclusion"><span class="case-conclusion-mark">Выбрал автоматическое подключение с возможностью ручного выбора сервера. Приложение самостоятельно восстанавливает соединение, пользователь видит его состояние и при необходимости может вмешаться.</span></p>
           <p class="proxy-copy">Если все защищённые маршруты недоступны, сетевая передача останавливается.</p>
-          <div class="proxy-visual proxy-visual--prototype proxy-prototype-stage" data-asset-slot="proxy-interactive-prototype" aria-label="Демонстрация сценариев подключения Proxy">
+          <div class="proxy-visual proxy-visual--prototype proxy-prototype-stage proxy-prototype-stage--single-scenario" data-asset-slot="proxy-interactive-prototype" aria-label="Демонстрация успешного подключения Proxy">
             <div class="proxy-scenario-list" role="group" aria-label="Сценарии подключения">
               <button class="proxy-scenario is-active" type="button" data-proxy-scenario="success" aria-pressed="true" title="Остановить демонстрацию">
                 <svg class="proxy-scenario__play" aria-hidden="true" width="12" height="14" viewBox="0 0 12 14"><path d="M1 1.25L11 7L1 12.75V1.25Z" fill="currentColor"/></svg>
