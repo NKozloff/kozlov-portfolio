@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=367-core-ios-status" />
+<link rel="stylesheet" href="../styles.css?v=368-core-proxy-scenarios" />
   </head>
   <body class="core-page core-page--condensed typography-only">
     <main class="core-intro" id="cover">
@@ -308,7 +308,22 @@
                 </div>
           <p class="case-highlight proxy-conclusion"><span class="case-conclusion-mark">Выбрал автоматическое подключение с возможностью ручного выбора сервера. Приложение самостоятельно восстанавливает соединение, пользователь видит его состояние и при необходимости может вмешаться.</span></p>
           <p class="proxy-copy">Если все защищённые маршруты недоступны, сетевая передача останавливается.</p>
-          <div class="proxy-visual proxy-visual--prototype proxy-prototype-stage" data-asset-slot="proxy-interactive-prototype" aria-label="Интерактивный прототип экрана Proxy">
+          <div class="proxy-visual proxy-visual--prototype proxy-prototype-stage" data-asset-slot="proxy-interactive-prototype" aria-label="Демонстрация сценариев подключения Proxy">
+            <div class="proxy-scenario-list" role="group" aria-label="Сценарии подключения">
+              <button class="proxy-scenario is-active" type="button" data-proxy-scenario="success" aria-pressed="true" title="Остановить демонстрацию">
+                <svg class="proxy-scenario__play" aria-hidden="true" width="12" height="14" viewBox="0 0 12 14"><path d="M1 1.25L11 7L1 12.75V1.25Z" fill="currentColor"/></svg>
+                <span>Успешное подключение</span>
+              </button>
+              <button class="proxy-scenario" type="button" data-proxy-scenario="failure" aria-pressed="false" title="Сценарий добавим позднее">
+                <svg class="proxy-scenario__play" aria-hidden="true" width="12" height="14" viewBox="0 0 12 14"><path d="M1 1.25L11 7L1 12.75V1.25Z" fill="currentColor"/></svg>
+                <span>Сбой соединения</span>
+              </button>
+              <button class="proxy-scenario" type="button" data-proxy-scenario="offline" aria-pressed="false" title="Сценарий добавим позднее">
+                <svg class="proxy-scenario__play" aria-hidden="true" width="12" height="14" viewBox="0 0 12 14"><path d="M1 1.25L11 7L1 12.75V1.25Z" fill="currentColor"/></svg>
+                <span>Нет подключения</span>
+              </button>
+              <span class="proxy-scenario-notice" aria-live="polite" hidden>Сценарий добавим позднее</span>
+            </div>
             <div class="proxy-app case-ui-device" role="group" aria-label="Настройки прокси, демонстрационный интерактивный экран">
               <div class="proxy-app__top-blur" aria-hidden="true"></div>
               <div class="proxy-app__ios-status" aria-hidden="true">
@@ -334,6 +349,7 @@
               <label class="proxy-app__automatic"><input type="checkbox" class="proxy-app__auto-input" checked aria-label="Auto-selection"><span class="proxy-app__switch" aria-hidden="true"><span class="proxy-app__switch-knob"></span></span><span>Auto-selection</span></label>
               <div class="proxy-app__footer"><span>Proxy — connection point.</span><span>Bypasses blockages</span></div>
               <div class="proxy-app__home-indicator" aria-hidden="true"></div>
+              <span class="proxy-app__demo-tap" aria-hidden="true"></span>
             </div>
           </div>
         </div>
@@ -1208,28 +1224,130 @@
 
     <script>
       (() => {
-        const prototype = document.querySelector('.proxy-app');
-        if (!prototype) return;
+        const stage = document.querySelector('[data-asset-slot="proxy-interactive-prototype"]');
+        if (!stage) return;
+        const prototype = stage.querySelector('.proxy-app');
         const automatic = prototype.querySelector('.proxy-app__auto-input');
         const choices = [...prototype.querySelectorAll('.proxy-app__server')];
         const status = prototype.querySelector('.proxy-app__status-text');
-        let selected = 'local';
-        const update = () => {
+        const tap = prototype.querySelector('.proxy-app__demo-tap');
+        const scenarios = [...stage.querySelectorAll('[data-proxy-scenario]')];
+        const notice = stage.querySelector('.proxy-scenario-notice');
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        let selectedScenario = 'success';
+        let selectedServer = 'local';
+        let connectionState = 'connected';
+        let playing = false;
+        let inView = false;
+        let timer = null;
+        let step = 0;
+        // One visible tap marker, without easing, points to the actual control.
+        const frames = [
+          { delay: 1350, tap: null, auto: true, server: 'local', status: 'connected' },
+          { delay: 350, tap: 'auto' },
+          { delay: 1100, tap: null, auto: false },
+          { delay: 350, tap: 'global' },
+          { delay: 2000, tap: null, server: 'global', status: 'reconnect' },
+          { delay: 2050, tap: null, status: 'connected' }
+        ];
+        function sync() {
+          prototype.classList.toggle('is-manual', !automatic.checked);
+          prototype.classList.toggle('is-reconnecting', connectionState === 'reconnect');
           choices.forEach(button => {
-            const checked = button.dataset.server === selected;
-            button.disabled = automatic.checked;
-            button.classList.toggle('is-current', checked);
-            button.setAttribute('aria-checked', String(checked));
+            const active = button.dataset.server === selectedServer;
+            button.disabled = automatic.checked || playing;
+            button.classList.toggle('is-current', active);
+            button.setAttribute('aria-checked', String(active));
           });
-          status.textContent = `Connected: ${selected === 'local' ? 'Local' : 'Global'}`;
-        };
-        automatic.addEventListener('change', update);
-        choices.forEach(button => button.addEventListener('click', () => {
-          if (automatic.checked) return;
-          selected = button.dataset.server;
-          update();
+          status.textContent = `${connectionState === 'reconnect' ? 'Reconnect' : 'Connected'}: ${selectedServer === 'local' ? 'Local' : 'Global'}`;
+        }
+        function resetScreen() {
+          automatic.checked = true;
+          selectedServer = 'local';
+          connectionState = 'connected';
+          tap.className = 'proxy-app__demo-tap';
+          sync();
+        }
+        function cancel() {
+          if (timer !== null) window.clearTimeout(timer);
+          timer = null;
+          playing = false;
+          tap.className = 'proxy-app__demo-tap';
+        }
+        function nextFrame() {
+          if (!playing || !inView || document.hidden || selectedScenario !== 'success') return;
+          const frame = frames[step];
+          if (Object.hasOwn(frame, 'auto')) automatic.checked = frame.auto;
+          if (frame.server) selectedServer = frame.server;
+          if (frame.status) connectionState = frame.status;
+          tap.className = 'proxy-app__demo-tap' + (frame.tap ? ` is-visible is-${frame.tap}` : '');
+          sync();
+          step = (step + 1) % frames.length;
+          timer = window.setTimeout(nextFrame, frame.delay);
+        }
+        function start(force = false) {
+          if (playing || selectedScenario !== 'success' || !inView || document.hidden) return;
+          if (reduceMotion.matches && !force) return; // Static first frame unless the user explicitly requests playback.
+          playing = true;
+          step = 0;
+          nextFrame();
+        }
+        function selectScenario(which) {
+          cancel();
+          selectedScenario = which;
+          scenarios.forEach(button => {
+            const active = button.dataset.proxyScenario === which;
+            button.classList.toggle('is-active', active);
+            button.setAttribute('aria-pressed', String(active));
+            button.removeAttribute('aria-label');
+            button.title = which === 'success' && active ? 'Остановить демонстрацию' : 'Запустить сценарий';
+          });
+          notice.hidden = which === 'success';
+          resetScreen();
+          if (which === 'success') start(true);
+        }
+        scenarios.forEach(button => button.addEventListener('click', () => {
+          const which = button.dataset.proxyScenario;
+          if (which === 'success' && which === selectedScenario) {
+            if (playing) {
+              cancel();
+              button.title = 'Продолжить демонстрацию';
+              button.setAttribute('aria-label', 'Продолжить: успешное подключение');
+            } else {
+              button.removeAttribute('aria-label');
+              // Explicit click also plays for reduced-motion preferences.
+              playing = true;
+              step = 0;
+              resetScreen();
+              if (inView && !document.hidden) nextFrame();
+              button.title = 'Остановить демонстрацию';
+            }
+          } else selectScenario(which);
         }));
-        update();
+        automatic.addEventListener('change', () => { if (!playing) sync(); });
+        choices.forEach(button => button.addEventListener('click', () => {
+          if (playing || automatic.checked) return;
+          selectedServer = button.dataset.server;
+          connectionState = 'connected';
+          sync();
+        }));
+        const observer = new IntersectionObserver(entries => {
+          inView = entries[0].isIntersecting;
+          if (!inView) cancel();
+          else if (selectedScenario === 'success' && !reduceMotion.matches) {
+            resetScreen();
+            start();
+          }
+        }, { threshold: 0.18 });
+        observer.observe(stage);
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) cancel();
+          else if (inView && selectedScenario === 'success' && !reduceMotion.matches) {
+            resetScreen();
+            start();
+          }
+        });
+        resetScreen();
       })();
     </script>
   </body>
