@@ -4621,22 +4621,30 @@ a.core-intro__project-link {
 /* The animated walkthrough changes frames instantly, without UI easing. */
 .core-page .proxy-prototype-stage .proxy-app__switch,
 .core-page .proxy-prototype-stage .proxy-app__switch-knob { transition: none !important; }
-.core-page .proxy-app__demo-tap {
+/* Single pointer from the supplied SVG, travelling between real tap targets.
+   SVG canvas is 72×72 in the reference 375×812 phone. */
+.core-page .proxy-app__demo-cursor {
   position: absolute;
   z-index: 15;
-  display: none;
-  width: 6.4cqw;
-  height: 6.4cqw;
-  border: .8cqw solid rgba(255,255,255,.88);
-  background: rgba(15,15,15,.65);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
+  display: block;
+  left: 66.667%;
+  top: 43.842%;
+  width: 19.2cqw;
+  height: 19.2cqw;
+  object-fit: contain;
+  opacity: 0;
   pointer-events: none;
-  box-shadow: 0 0 0 1.25cqw rgba(255,255,255,.2);
+  user-select: none;
+  transition: none;
+  -webkit-user-drag: none;
 }
-.core-page .proxy-app__demo-tap.is-visible {display:block;}
-.core-page .proxy-app__demo-tap.is-auto {left:10.667%;top:41.13%;}
-.core-page .proxy-app__demo-tap.is-global {left:92.533%;top:32.52%;}
+.core-page .proxy-app__demo-cursor.is-visible { opacity: 1; }
+.core-page .proxy-app__demo-cursor.is-moving {
+  transition: left 900ms cubic-bezier(.42,0,.58,1), top 900ms cubic-bezier(.42,0,.58,1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .core-page .proxy-app__demo-cursor.is-moving {transition: none;}
+}
 @media (max-width: 960px) {
   .core-page .proxy-prototype-stage { flex-direction:column; }
   .core-page .proxy-scenario-list {

@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=368-core-proxy-scenarios" />
+<link rel="stylesheet" href="../styles.css?v=369-core-proxy-moving-cursor" />
   </head>
   <body class="core-page core-page--condensed typography-only">
     <main class="core-intro" id="cover">
@@ -349,7 +349,7 @@
               <label class="proxy-app__automatic"><input type="checkbox" class="proxy-app__auto-input" checked aria-label="Auto-selection"><span class="proxy-app__switch" aria-hidden="true"><span class="proxy-app__switch-knob"></span></span><span>Auto-selection</span></label>
               <div class="proxy-app__footer"><span>Proxy — connection point.</span><span>Bypasses blockages</span></div>
               <div class="proxy-app__home-indicator" aria-hidden="true"></div>
-              <span class="proxy-app__demo-tap" aria-hidden="true"></span>
+              <img class="proxy-app__demo-cursor" src="../assets/core-proxy-demo-cursor.svg" alt="" aria-hidden="true" draggable="false" />
             </div>
           </div>
         </div>
@@ -1230,10 +1230,11 @@
         const automatic = prototype.querySelector('.proxy-app__auto-input');
         const choices = [...prototype.querySelectorAll('.proxy-app__server')];
         const status = prototype.querySelector('.proxy-app__status-text');
-        const tap = prototype.querySelector('.proxy-app__demo-tap');
+        const cursor = prototype.querySelector('.proxy-app__demo-cursor');
         const scenarios = [...stage.querySelectorAll('[data-proxy-scenario]')];
         const notice = stage.querySelector('.proxy-scenario-notice');
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
         let selectedScenario = 'success';
         let selectedServer = 'local';
         let connectionState = 'connected';
@@ -1241,15 +1242,23 @@
         let inView = false;
         let timer = null;
         let step = 0;
-        // One visible tap marker, without easing, points to the actual control.
-        const frames = [
-          { delay: 1350, tap: null, auto: true, server: 'local', status: 'connected' },
-          { delay: 350, tap: 'auto' },
-          { delay: 1100, tap: null, auto: false },
-          { delay: 350, tap: 'global' },
-          { delay: 2000, tap: null, server: 'global', status: 'reconnect' },
-          { delay: 2050, tap: null, status: 'connected' }
-        ];
+
+        // Locations refer to the 375 × 812 Figma artboard. The cursor SVG has
+        // a 72 × 72 canvas with its fingertip at approximately (28, 19).
+        // Coordinates are proportional to the phone; CSS scales the whole view.
+        const locations = {
+          rest:   { x: 250, y: 356 }, // Away from the switch, on its right
+          auto:   { x: 10,  y: 315 }, // Fingertip at (38, 334), on switch
+          global: { x: 160, y: 246 }  // Fingertip at (188, 265), row centre
+        };
+
+        function positionCursor(where, moving = false, visible = true) {
+          const point = locations[where];
+          cursor.classList.toggle('is-moving', moving && !reduceMotion.matches);
+          cursor.style.left = `${point.x / 375 * 100}%`;
+          cursor.style.top = `${point.y / 812 * 100}%`;
+          cursor.classList.toggle('is-visible', visible);
+        }
         function sync() {
           prototype.classList.toggle('is-manual', !automatic.checked);
           prototype.classList.toggle('is-reconnecting', connectionState === 'reconnect');
@@ -1265,32 +1274,42 @@
           automatic.checked = true;
           selectedServer = 'local';
           connectionState = 'connected';
-          tap.className = 'proxy-app__demo-tap';
+          positionCursor('rest', false, false);
           sync();
         }
         function cancel() {
           if (timer !== null) window.clearTimeout(timer);
           timer = null;
           playing = false;
-          tap.className = 'proxy-app__demo-tap';
-        }
-        function nextFrame() {
-          if (!playing || !inView || document.hidden || selectedScenario !== 'success') return;
-          const frame = frames[step];
-          if (Object.hasOwn(frame, 'auto')) automatic.checked = frame.auto;
-          if (frame.server) selectedServer = frame.server;
-          if (frame.status) connectionState = frame.status;
-          tap.className = 'proxy-app__demo-tap' + (frame.tap ? ` is-visible is-${frame.tap}` : '');
+          positionCursor('rest', false, false);
           sync();
-          step = (step + 1) % frames.length;
-          timer = window.setTimeout(nextFrame, frame.delay);
+        }
+
+        // Only the cursor travels smoothly. Each interface change is immediate.
+        // Reconnect: Global is shown for exactly 2 seconds.
+        const steps = [
+          { duration: 850, run() { resetScreen(); positionCursor('rest'); } },
+          { duration: 900, run() { positionCursor('auto', true); } },
+          { duration: 380, run() { automatic.checked = false; sync(); } },
+          { duration: 900, run() { positionCursor('global', true); } },
+          { duration: 2000, run() { selectedServer = 'global'; connectionState = 'reconnect'; sync(); } },
+          { duration: 1650, run() { connectionState = 'connected'; sync(); } },
+          { duration: 280, run() { positionCursor('global', false, false); } }
+        ];
+
+        function nextStep() {
+          if (!playing || !inView || document.hidden || selectedScenario !== 'success') return;
+          const frame = steps[step];
+          frame.run();
+          step = (step + 1) % steps.length;
+          timer = window.setTimeout(nextStep, frame.duration);
         }
         function start(force = false) {
           if (playing || selectedScenario !== 'success' || !inView || document.hidden) return;
-          if (reduceMotion.matches && !force) return; // Static first frame unless the user explicitly requests playback.
+          if (reduceMotion.matches && !force) return;
           playing = true;
           step = 0;
-          nextFrame();
+          nextStep();
         }
         function selectScenario(which) {
           cancel();
@@ -1315,11 +1334,9 @@
               button.setAttribute('aria-label', 'Продолжить: успешное подключение');
             } else {
               button.removeAttribute('aria-label');
-              // Explicit click also plays for reduced-motion preferences.
-              playing = true;
               step = 0;
               resetScreen();
-              if (inView && !document.hidden) nextFrame();
+              start(true);
               button.title = 'Остановить демонстрацию';
             }
           } else selectScenario(which);
