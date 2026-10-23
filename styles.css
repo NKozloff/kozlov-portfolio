@@ -4534,3 +4534,35 @@ a.core-intro__project-link {
 .core-page .proxy-app__footer {position:absolute;top:90.15%;left:8%;width:84%;display:flex;flex-direction:column;align-items:center;gap:.533cqw;text-align:center;font-size:4cqw;line-height:1.3;color:#bfc1b7;}
 .core-page .proxy-app__home-indicator {position:absolute;bottom:.985%;left:30.933%;width:38.133%;height:1.2%;border-radius:100cqw;background:white;}
 @media (prefers-reduced-motion:reduce) { .core-page .proxy-app__switch, .core-page .proxy-app__switch-knob { transition:none; } }
+
+/* v366 — Shared viewport-fit dimensions for interactive mobile case screens.
+   Figma reference: 375 × 812. The phone is capped by the available viewport
+   space between its top padding and the fixed bottom case navigation.
+   A single width scales all internal cqw typography, spacing and controls.
+   Apply .case-ui-device to the next interactive phone; change only its
+   aspect-ratio for different reference dimensions. */
+.core-page--condensed {
+  --case-ui-top-space: clamp(24px, 3.2rem, 60px);
+  --case-ui-nav-space: calc(2.533333rem + 24px + 24px);
+  --case-ui-max-width: 25rem;
+}
+.core-page--condensed #scenarios .case-block--proxy-new .proxy-prototype-stage {
+  min-height: 0;
+  padding-block: var(--case-ui-top-space);
+}
+.core-page--condensed .case-ui-device {
+  width: min(
+    100%,
+    var(--case-ui-max-width),
+    calc((100svh - var(--case-ui-top-space) - var(--case-ui-nav-space)) * 0.46182266)
+  );
+}
+@supports (height: 100dvh) {
+  .core-page--condensed .case-ui-device {
+    width: min(
+      100%,
+      var(--case-ui-max-width),
+      calc((100dvh - var(--case-ui-top-space) - var(--case-ui-nav-space)) * 0.46182266)
+    );
+  }
+}
