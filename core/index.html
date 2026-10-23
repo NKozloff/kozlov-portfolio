@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=372-core-proxy-flow" />
+<link rel="stylesheet" href="../styles.css?v=373-core-proxy-flow-padding" />
   </head>
   <body class="core-page core-page--condensed typography-only">
     <main class="core-intro" id="cover">
@@ -365,52 +365,23 @@
         </div>
 
         <div class="case-block case-block--proxy-new">
-          <h2 class="case-heading">Проверил понятность интерфейса на сценарном Usability Testing</h2>
-          <p class="proxy-copy">Провёл тестирование кликабельного прототипа с <strong>тремя представителями команды заказчика</strong>, знакомыми с мессенджером. Проверял, как они понимают состояния подключения и реагируют на сбои без подсказок.</p>
-        <div class="case-outline-table-wrap proxy-table-wrap ">
-                  <table class="case-outline-table proxy-table" aria-label="Что проверял: На что обращал внимание">
-                    <thead><tr><th scope="col">Что проверял</th><th scope="col">На что обращал внимание</th></tr></thead>
-                    <tbody>
-                      <tr>
-                        <td><strong>Статусы подключения</strong></td><td>Понимает ли пользователь текущее состояние соединения.</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Переподключение</strong></td><td>Понимает ли, что приложение ищет резервный сервер.</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Автовыбор</strong></td><td>Замечает ли, что ручной выбор серверов недоступен.</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Потеря связи</strong></td><td>Понимает ли, почему сообщения и звонки заблокированы.</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Ручное управление</strong></td><td>Может ли самостоятельно сменить сервер.</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-        </div>
-
-        <div class="case-block case-block--proxy-new">
-          <h2 class="case-heading">Выявил и исправил проблему с визуальным состоянием серверов</h2>
-        <div class="case-outline-table-wrap proxy-table-wrap ">
-                  <table class="case-outline-table proxy-table" aria-label="Этап: Результат">
-                    <thead><tr><th scope="col">Этап</th><th scope="col">Результат</th></tr></thead>
-                    <tbody>
-                      <tr>
-                        <td><strong>Было</strong></td><td>При включённом автовыборе блокировал нажатия и делал серыми только элементы выбора серверов.</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Выявил</strong></td><td>Участники не понимали, что оба сервера недоступны для ручного выбора.</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Исправил</strong></td><td>Сделал неактивными визуально целые строки: названия, описания и элементы выбора серверов.</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-          <p class="case-highlight proxy-conclusion"><span class="case-conclusion-mark">Тестирование с тремя участниками помогло выявить недостаточно понятное состояние недоступных элементов. После проверки доработал UI, чтобы ограничение ручного выбора было заметно без попытки нажатия.</span></p>
-          <div class="proxy-visual proxy-visual--before-after" data-asset-slot="proxy-before-after" aria-hidden="true"></div>
+          <h2 class="case-heading">Проверил понятность интерфейса на Usability Testing</h2>
+          <p class="proxy-copy">Сформулировал пять UX-гипотез о понятности интерфейса и управлении защищённым соединением. Провёл сценарное Usability Testing с <strong>тремя представителями команды заказчика</strong>.</p>
+          <div class="case-outline-table-wrap proxy-table-wrap">
+            <table class="case-outline-table proxy-table" aria-label="UX-гипотезы по этапам взаимодействия с прокси">
+              <thead>
+                <tr><th scope="col">Этап</th><th scope="col">Гипотеза</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Управление подключением</strong></td><td>Пользователь самостоятельно понимает статусы соединения, автоматическое переключение серверов и возможность ручного выбора.</td></tr>
+                <tr><td><strong>Назначение прокси</strong></td><td>Краткого описания может быть недостаточно, чтобы пользователь понял, что такое прокси и зачем он нужен.</td></tr>
+                <tr><td><strong>Выбор Local server</strong></td><td>Формулировка «Optimized for Russia» может быть неоднозначной: пользователь не понимает, где расположен сервер и в чём заключается оптимизация для России.</td></tr>
+                <tr><td><strong>Выбор Global server</strong></td><td>Пользователю может потребоваться информация о стране расположения сервера для осознанного выбора подключения.</td></tr>
+                <tr><td><strong>Полная потеря соединения</strong></td><td>Пользователь может не понимать, почему приложение перестало работать и какие действия доступны для восстановления подключения.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="case-highlight proxy-conclusion"><span class="case-conclusion-mark"><strong>Результат:</strong> участники успешно справились с основными сценариями управления подключением. Критичных проблем с пониманием статусов не выявили. Остальные гипотезы оставили для дальнейшей проверки.</span></p>
         </div>
 
         <!-- Согласованный раздел: Звонок -->

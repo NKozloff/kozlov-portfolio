@@ -4227,6 +4227,8 @@ a.core-intro__project-link {
 
 .core-page #scenarios .case-block--proxy-new .proxy-visual--flow {
   min-height: 0;
+  padding: clamp(24px, 3vw, 56px);
+  overflow: hidden;
 }
 
 .core-page #scenarios .case-block--proxy-new .proxy-visual__flow-image {
