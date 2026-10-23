@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=370-core-proxy-rows-align" />
+<link rel="stylesheet" href="../styles.css?v=371-core-proxy-animations" />
   </head>
   <body class="core-page core-page--condensed typography-only">
     <main class="core-intro" id="cover">
@@ -314,7 +314,7 @@
                 <svg class="proxy-scenario__play" aria-hidden="true" width="12" height="14" viewBox="0 0 12 14"><path d="M1 1.25L11 7L1 12.75V1.25Z" fill="currentColor"/></svg>
                 <span>Успешное подключение</span>
               </button>
-              <button class="proxy-scenario" type="button" data-proxy-scenario="failure" aria-pressed="false" title="Сценарий добавим позднее">
+              <button class="proxy-scenario" type="button" data-proxy-scenario="failure" aria-pressed="false" title="Запустить сценарий">
                 <svg class="proxy-scenario__play" aria-hidden="true" width="12" height="14" viewBox="0 0 12 14"><path d="M1 1.25L11 7L1 12.75V1.25Z" fill="currentColor"/></svg>
                 <span>Сбой соединения</span>
               </button>
@@ -322,7 +322,7 @@
                 <svg class="proxy-scenario__play" aria-hidden="true" width="12" height="14" viewBox="0 0 12 14"><path d="M1 1.25L11 7L1 12.75V1.25Z" fill="currentColor"/></svg>
                 <span>Нет подключения</span>
               </button>
-              <span class="proxy-scenario-notice" aria-live="polite" hidden>Сценарий добавим позднее</span>
+
             </div>
             <div class="proxy-app case-ui-device" role="group" aria-label="Настройки прокси, демонстрационный интерактивный экран">
               <div class="proxy-app__top-blur" aria-hidden="true"></div>
@@ -340,10 +340,10 @@
               <div class="proxy-app__status"><span class="proxy-app__status-dot"></span><span class="proxy-app__status-text" aria-live="polite">Connected: Local</span></div>
               <div class="proxy-app__servers" role="radiogroup" aria-label="Выбор прокси-сервера">
                 <button class="proxy-app__server is-current" type="button" role="radio" aria-checked="true" aria-label="Local server" data-server="local" disabled>
-                  <span class="proxy-app__server-text"><strong>Local server</strong><span>Optimized for Russia</span><span class="proxy-app__server-note" hidden>No response</span></span><span class="proxy-app__radio" aria-hidden="true"><span></span></span>
+                  <span class="proxy-app__server-text"><strong>Local server</strong><span>Optimized for Russia</span></span><span class="proxy-app__radio" aria-hidden="true"><span></span></span>
                 </button>
                 <button class="proxy-app__server" type="button" role="radio" aria-checked="false" aria-label="Global server" data-server="global" disabled>
-                  <span class="proxy-app__server-text"><strong>Global server</strong><span>Worldwide route</span><span class="proxy-app__server-note" hidden>No response</span></span><span class="proxy-app__radio" aria-hidden="true"><span></span></span>
+                  <span class="proxy-app__server-text"><strong>Global server</strong><span>Worldwide route</span></span><span class="proxy-app__radio" aria-hidden="true"><span></span></span>
                 </button>
               </div>
               <label class="proxy-app__automatic"><input type="checkbox" class="proxy-app__auto-input" checked aria-label="Auto-selection"><span class="proxy-app__switch" aria-hidden="true"><span class="proxy-app__switch-knob"></span></span><span>Auto-selection</span></label>
@@ -351,6 +351,7 @@
               <div class="proxy-app__home-indicator" aria-hidden="true"></div>
               <img class="proxy-app__demo-cursor" src="../assets/core-proxy-demo-cursor.svg" alt="" aria-hidden="true" draggable="false" />
             </div>
+            <div class="proxy-demo-bubble" role="status" aria-live="polite" aria-atomic="true" hidden></div>
           </div>
         </div>
 
@@ -1230,14 +1231,11 @@
         const automatic = prototype.querySelector('.proxy-app__auto-input');
         const choices = [...prototype.querySelectorAll('.proxy-app__server')];
         const status = prototype.querySelector('.proxy-app__status-text');
+        const statusRow = prototype.querySelector('.proxy-app__status');
         const cursor = prototype.querySelector('.proxy-app__demo-cursor');
+        const bubble = stage.querySelector('.proxy-demo-bubble');
         const scenarios = [...stage.querySelectorAll('[data-proxy-scenario]')];
-        const notice = stage.querySelector('.proxy-scenario-notice');
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-        const notes = {
-          local: prototype.querySelector('.proxy-app__server[data-server="local"] .proxy-app__server-note'),
-          global: prototype.querySelector('.proxy-app__server[data-server="global"] .proxy-app__server-note')
-        };
 
         let selectedScenario = 'success';
         let selectedServer = 'local';
@@ -1246,50 +1244,79 @@
         let inView = false;
         let timer = null;
         let step = 0;
-        let noResponse = { local: false, global: false };
+        let unavailable = new Set();
+        let bubbleTarget = null;
 
+        // Cursor positions reproduce the existing 375 × 812 Figma mockup.
         const locations = {
-          rest:   { x: 250, y: 356 },
-          auto:   { x: 10,  y: 315 },
+          rest: { x: 250, y: 356 },
+          auto: { x: 10, y: 315 },
           global: { x: 160, y: 246 }
         };
-
         function positionCursor(where, moving = false, visible = true) {
           const point = locations[where];
           cursor.classList.toggle('is-moving', moving && !reduceMotion.matches);
-          if (point) {
-            cursor.style.left = `${point.x / 375 * 100}%`;
-            cursor.style.top = `${point.y / 812 * 100}%`;
-          }
-          cursor.classList.toggle('is-visible', visible && !!point);
+          cursor.style.left = `${point.x / 375 * 100}%`;
+          cursor.style.top = `${point.y / 812 * 100}%`;
+          cursor.classList.toggle('is-visible', visible);
         }
+        function hideBubble() {
+          bubble.hidden = true;
+          bubble.textContent = '';
+          bubbleTarget = null;
+        }
+        function placeBubble() {
+          if (bubble.hidden || !bubbleTarget) return;
+          const stageRect = stage.getBoundingClientRect();
+          const phoneRect = prototype.getBoundingClientRect();
+          const targetRect = bubbleTarget.getBoundingClientRect();
+          const availableLeft = phoneRect.left - stageRect.left;
+          const targetCenter = targetRect.top - stageRect.top + targetRect.height / 2;
+          bubble.classList.toggle('is-over-phone', availableLeft < 220);
+          if (availableLeft >= 220) {
+            // The right-pointing tail touches the left edge of the phone.
+            const width = Math.min(270, availableLeft - 26);
+            bubble.style.width = `${width}px`;
+            bubble.style.left = `${availableLeft - width - 18}px`;
+            bubble.style.top = `${targetCenter}px`;
+          } else {
+            // Responsive alternative: keep the same bubble attached to its target.
+            bubble.style.width = `${Math.min(260, phoneRect.width - 32)}px`;
+            bubble.style.left = `${phoneRect.left - stageRect.left + (phoneRect.width - parseFloat(bubble.style.width)) / 2}px`;
+            bubble.style.top = `${Math.max(28, targetCenter - 54)}px`;
+          }
+        }
+        function showBubble(text, element) {
+          // Hide the old hint before showing the next; never stack bubbles.
+          hideBubble();
+          bubble.textContent = text;
+          bubbleTarget = element;
+          bubble.hidden = false;
+          placeBubble();
+        }
+        function rowFor(server) { return choices.find(b => b.dataset.server === server); }
         function sync() {
           prototype.classList.toggle('is-manual', !automatic.checked);
-          prototype.classList.toggle('is-reconnecting', connectionState === 'reconnect' || connectionState === 'restoring');
+          prototype.classList.toggle('is-reconnecting', connectionState === 'reconnect');
           prototype.classList.toggle('is-offline', connectionState === 'offline');
           choices.forEach(button => {
-            const active = !!selectedServer && button.dataset.server === selectedServer;
+            const active = button.dataset.server === selectedServer && connectionState !== 'offline';
+            const unavailableHere = unavailable.has(button.dataset.server);
             button.disabled = automatic.checked || playing;
             button.classList.toggle('is-current', active);
+            button.classList.toggle('is-no-response', unavailableHere);
             button.setAttribute('aria-checked', String(active));
           });
-          notes.local.hidden = !noResponse.local;
-          notes.global.hidden = !noResponse.global;
-          if (connectionState === 'reconnect') {
-            status.textContent = `Reconnect: ${selectedServer === 'local' ? 'Local' : 'Global'}`;
-          } else if (connectionState === 'restoring') {
-            status.textContent = 'Restoring connection...';
-          } else if (connectionState === 'offline') {
-            status.textContent = 'Offline';
-          } else {
-            status.textContent = `Connected: ${selectedServer === 'local' ? 'Local' : 'Global'}`;
-          }
+          if (connectionState === 'offline') status.textContent = 'Offline';
+          else if (connectionState === 'reconnect') status.textContent = 'Restoring connection...';
+          else status.textContent = `Connected: ${selectedServer === 'local' ? 'Local' : 'Global'}`;
         }
         function resetScreen() {
           automatic.checked = true;
           selectedServer = 'local';
           connectionState = 'connected';
-          noResponse = { local: false, global: false };
+          unavailable.clear();
+          hideBubble();
           positionCursor('rest', false, false);
           sync();
         }
@@ -1297,104 +1324,102 @@
           if (timer !== null) window.clearTimeout(timer);
           timer = null;
           playing = false;
+          hideBubble();
           positionCursor('rest', false, false);
           sync();
         }
-
-        const sequences = {
-          success: [
-            { duration: 850, run() { resetScreen(); positionCursor('rest'); } },
-            { duration: 900, run() { positionCursor('auto', true); } },
-            { duration: 380, run() { automatic.checked = false; sync(); } },
-            { duration: 900, run() { positionCursor('global', true); } },
-            { duration: 2000, run() { selectedServer = 'global'; connectionState = 'reconnect'; sync(); } },
-            { duration: 1650, run() { connectionState = 'connected'; sync(); } },
-            { duration: 280, run() { positionCursor('global', false, false); } }
-          ],
-          offline: [
-            { duration: 1000, run() { resetScreen(); positionCursor(null, false, false); } },
-            { duration: 1100, run() { selectedServer = 'global'; connectionState = 'reconnect'; sync(); } },
-            { duration: 1300, run() { noResponse.global = true; sync(); } },
-            { duration: 1000, run() { selectedServer = 'local'; connectionState = 'reconnect'; sync(); } },
-            { duration: 1200, run() { noResponse.local = true; sync(); } },
-            { duration: 1000, run() { connectionState = 'restoring'; sync(); } },
-            { duration: 1800, run() { automatic.checked = false; selectedServer = null; connectionState = 'offline'; sync(); } }
-          ]
-        };
-
+        // Successful connection keeps the previous cursor movements and timing.
+        const successSteps = [
+          { duration: 850, run() { resetScreen(); positionCursor('rest'); } },
+          { duration: 900, run() { positionCursor('auto', true); } },
+          { duration: 380, run() { automatic.checked = false; sync(); } },
+          { duration: 900, run() { positionCursor('global', true); } },
+          { duration: 2000, run() { selectedServer = 'global'; connectionState = 'reconnect'; sync(); } },
+          { duration: 1650, run() { connectionState = 'connected'; sync(); } },
+          { duration: 280, run() { positionCursor('global', false, false); } }
+        ];
+        // Failure: Local stops responding and the app restores the connection via Global.
+        const failureSteps = [
+          { duration: 950, run() { resetScreen(); } },
+          { duration: 1750, run() { unavailable.add('local'); connectionState = 'reconnect'; sync(); showBubble('Сервер не ответил', rowFor('local')); } },
+          { duration: 850, run() { hideBubble(); selectedServer = 'global'; sync(); } },
+          { duration: 1750, run() { showBubble('Переключаемся на резервный сервер', statusRow); } },
+          { duration: 1950, run() { hideBubble(); unavailable.clear(); connectionState = 'connected'; sync(); showBubble('Подключение восстановлено', statusRow); } },
+          { duration: 1100, run() { hideBubble(); } }
+        ];
+        // No connection: Global -> Local -> restoration attempts -> Offline.
+        // A single local speech bubble follows each corresponding interface element.
+        const offlineSteps = [
+          { duration: 950, run() { resetScreen(); } },
+          { duration: 1000, run() { selectedServer = 'global'; connectionState = 'reconnect'; sync(); } },
+          { duration: 1950, run() { unavailable.add('global'); sync(); showBubble('Сервер не ответил', rowFor('global')); } },
+          { duration: 700, run() { hideBubble(); selectedServer = 'local'; sync(); } },
+          { duration: 1950, run() { unavailable.add('local'); sync(); showBubble('Сервер не ответил', rowFor('local')); } },
+          { duration: 550, run() { hideBubble(); sync(); } },
+          { duration: 1750, run() { connectionState = 'reconnect'; sync(); showBubble('Ищем доступный сервер', statusRow); } },
+          { duration: 2400, run() { connectionState = 'offline'; sync(); showBubble('Серверы недоступны. Подключения нет', statusRow); } },
+          { duration: 1100, run() { hideBubble(); } }
+        ];
+        const programs = { success: successSteps, failure: failureSteps, offline: offlineSteps };
         function nextStep() {
-          if (!playing || !inView || document.hidden || !sequences[selectedScenario]) return;
-          const frames = sequences[selectedScenario];
+          if (!playing || !inView || document.hidden) return;
+          const frames = programs[selectedScenario];
           const frame = frames[step];
           frame.run();
           step = (step + 1) % frames.length;
           timer = window.setTimeout(nextStep, frame.duration);
         }
         function start(force = false) {
-          if (playing || !sequences[selectedScenario] || !inView || document.hidden) return;
+          if (playing || !inView || document.hidden) return;
           if (reduceMotion.matches && !force) return;
           playing = true;
           step = 0;
           nextStep();
         }
+        function updateScenarioButtons() {
+          scenarios.forEach(button => {
+            const active = button.dataset.proxyScenario === selectedScenario;
+            button.classList.toggle('is-active', active);
+            button.setAttribute('aria-pressed', String(active));
+            button.title = active && playing ? 'Остановить демонстрацию' : 'Запустить сценарий';
+            button.setAttribute('aria-label', `${active && playing ? 'Остановить' : 'Запустить'}: ${button.querySelector('span').textContent}`);
+          });
+        }
         function selectScenario(which) {
           cancel();
           selectedScenario = which;
-          scenarios.forEach(button => {
-            const active = button.dataset.proxyScenario === which;
-            button.classList.toggle('is-active', active);
-            button.setAttribute('aria-pressed', String(active));
-            button.removeAttribute('aria-label');
-            const playable = !!sequences[which];
-            button.title = playable && active ? 'Остановить демонстрацию' : (playable ? 'Запустить сценарий' : 'Сценарий добавим позднее');
-          });
-          notice.hidden = which !== 'failure';
           resetScreen();
-          if (sequences[which]) start(true);
+          start(true);
+          updateScenarioButtons();
         }
         scenarios.forEach(button => button.addEventListener('click', () => {
           const which = button.dataset.proxyScenario;
-          const playable = !!sequences[which];
-          if (playable && which === selectedScenario) {
-            if (playing) {
-              cancel();
-              button.title = 'Продолжить демонстрацию';
-              button.setAttribute('aria-label', `Продолжить: ${button.textContent.trim()}`);
-            } else {
-              button.removeAttribute('aria-label');
-              step = 0;
-              resetScreen();
-              start(true);
-              button.title = 'Остановить демонстрацию';
-            }
-          } else {
-            selectScenario(which);
-          }
+          if (which !== selectedScenario) selectScenario(which);
+          else if (playing) { cancel(); updateScenarioButtons(); }
+          else { resetScreen(); start(true); updateScenarioButtons(); }
         }));
         automatic.addEventListener('change', () => { if (!playing) sync(); });
         choices.forEach(button => button.addEventListener('click', () => {
           if (playing || automatic.checked) return;
           selectedServer = button.dataset.server;
+          unavailable.clear();
           connectionState = 'connected';
+          hideBubble();
           sync();
         }));
+        window.addEventListener('resize', placeBubble, { passive: true });
         const observer = new IntersectionObserver(entries => {
           inView = entries[0].isIntersecting;
-          if (!inView) cancel();
-          else if (sequences[selectedScenario] && !reduceMotion.matches) {
-            resetScreen();
-            start();
-          }
+          if (!inView) { cancel(); updateScenarioButtons(); }
+          else if (!reduceMotion.matches) { resetScreen(); start(); updateScenarioButtons(); }
         }, { threshold: 0.18 });
         observer.observe(stage);
         document.addEventListener('visibilitychange', () => {
-          if (document.hidden) cancel();
-          else if (inView && sequences[selectedScenario] && !reduceMotion.matches) {
-            resetScreen();
-            start();
-          }
+          if (document.hidden) { cancel(); updateScenarioButtons(); }
+          else if (inView && !reduceMotion.matches) { resetScreen(); start(); updateScenarioButtons(); }
         });
         resetScreen();
+        updateScenarioButtons();
       })();
     </script>
   </body>
