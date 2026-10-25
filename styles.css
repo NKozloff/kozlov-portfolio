@@ -4777,13 +4777,9 @@ a.core-intro__project-link {
 @media(prefers-reduced-motion:reduce) {.core-page .notification-app__toast,.core-page .notification-app__switch,.core-page .notification-app__knob {transition:none;}}
 
 
-/* v390 — Figma Quick-inspired spring animation for notifications.
-   Quick is a spring preset, not a cubic-bezier. Approximate its spring
-   dynamics with the damped-oscillator displacement, sampled every 9.8ms.
-   Keep 392ms duration; begin 15px above, peak about 4px below,
-   then settle to exactly 0 with a smooth zero-velocity tail.
-   The spring timing remains one animation (no separate bounce or delays).
-   Values are based on the 375px-wide mockup; cqw retains proportional scaling. */
+/* v391 — Quick-inspired spring: -10px start, +3px maximum landing
+   overshoot, 450ms total, and exact 0px rest. No separate delay.
+   Single 41-keyframe spring animation for a 375px reference frame. */
 .core-page .notification-app__toast {
   transform-origin: 50% 12%;
   backface-visibility: hidden;
@@ -4793,53 +4789,53 @@ a.core-intro__project-link {
   z-index: 2;
 }
 @keyframes core-notification-quick-spring {
-  0% { transform: translate3d(0,-4cqw,0) scale(0.98); }
-  2.5% { transform: translate3d(0,-3.94918cqw,0) scale(0.98025); }
-  5% { transform: translate3d(0,-3.80613cqw,0) scale(0.98097); }
-  7.5% { transform: translate3d(0,-3.58535cqw,0) scale(0.98207); }
-  10% { transform: translate3d(0,-3.30156cqw,0) scale(0.98349); }
-  12.5% { transform: translate3d(0,-2.96931cqw,0) scale(0.98515); }
-  15% { transform: translate3d(0,-2.60262cqw,0) scale(0.98699); }
-  17.5% { transform: translate3d(0,-2.21469cqw,0) scale(0.98893); }
-  20% { transform: translate3d(0,-1.81771cqw,0) scale(0.99091); }
-  22.5% { transform: translate3d(0,-1.42262cqw,0) scale(0.99289); }
-  25% { transform: translate3d(0,-1.03903cqw,0) scale(0.9948); }
-  27.5% { transform: translate3d(0,-0.67513cqw,0) scale(0.99662); }
-  30% { transform: translate3d(0,-0.33763cqw,0) scale(0.99831); }
-  32.5% { transform: translate3d(0,-0.03179cqw,0) scale(0.99984); }
-  35% { transform: translate3d(0,0.23853cqw,0) scale(1.00119); }
-  37.5% { transform: translate3d(0,0.47082cqw,0) scale(1.00235); }
-  40% { transform: translate3d(0,0.66383cqw,0) scale(1.00332); }
-  42.5% { transform: translate3d(0,0.8174cqw,0) scale(1.00409); }
-  45% { transform: translate3d(0,0.9324cqw,0) scale(1.00466); }
-  47.5% { transform: translate3d(0,1.01055cqw,0) scale(1.00505); }
-  50% { transform: translate3d(0,1.05427cqw,0) scale(1.00527); }
-  52.5% { transform: translate3d(0,1.06657cqw,0) scale(1.00533); }
-  55% { transform: translate3d(0,1.05087cqw,0) scale(1.00525); }
-  57.5% { transform: translate3d(0,1.01089cqw,0) scale(1.00505); }
-  60% { transform: translate3d(0,0.95049cqw,0) scale(1.00475); }
-  62.5% { transform: translate3d(0,0.87362cqw,0) scale(1.00437); }
-  65% { transform: translate3d(0,0.78413cqw,0) scale(1.00392); }
-  67.5% { transform: translate3d(0,0.68575cqw,0) scale(1.00343); }
-  70% { transform: translate3d(0,0.58199cqw,0) scale(1.00291); }
-  72.5% { transform: translate3d(0,0.47561cqw,0) scale(1.00238); }
-  75% { transform: translate3d(0,0.35901cqw,0) scale(1.0018); }
-  77.5% { transform: translate3d(0,0.24188cqw,0) scale(1.00121); }
-  80% { transform: translate3d(0,0.13822cqw,0) scale(1.00069); }
-  82.5% { transform: translate3d(0,0.05677cqw,0) scale(1.00028); }
-  85% { transform: translate3d(0,0.00123cqw,0) scale(1.00001); }
-  87.5% { transform: translate3d(0,-0.029cqw,0) scale(0.99986); }
-  90% { transform: translate3d(0,-0.03794cqw,0) scale(0.99981); }
-  92.5% { transform: translate3d(0,-0.03196cqw,0) scale(0.99984); }
-  95% { transform: translate3d(0,-0.01861cqw,0) scale(0.99991); }
-  97.5% { transform: translate3d(0,-0.00564cqw,0) scale(0.99997); }
+  0% { transform: translate3d(0,-2.66667cqw,0) scale(0.98); }
+  2.5% { transform: translate3d(0,-2.63353cqw,0) scale(0.98025); }
+  5% { transform: translate3d(0,-2.53979cqw,0) scale(0.98095); }
+  7.5% { transform: translate3d(0,-2.39432cqw,0) scale(0.98204); }
+  10% { transform: translate3d(0,-2.20629cqw,0) scale(0.98345); }
+  12.5% { transform: translate3d(0,-1.98491cqw,0) scale(0.98511); }
+  15% { transform: translate3d(0,-1.7392cqw,0) scale(0.98696); }
+  17.5% { transform: translate3d(0,-1.47781cqw,0) scale(0.98892); }
+  20% { transform: translate3d(0,-1.20881cqw,0) scale(0.99093); }
+  22.5% { transform: translate3d(0,-0.93958cqw,0) scale(0.99295); }
+  25% { transform: translate3d(0,-0.67672cqw,0) scale(0.99492); }
+  27.5% { transform: translate3d(0,-0.42594cqw,0) scale(0.99681); }
+  30% { transform: translate3d(0,-0.19204cqw,0) scale(0.99856); }
+  32.5% { transform: translate3d(0,0.0211cqw,0) scale(1.00016); }
+  35% { transform: translate3d(0,0.21056cqw,0) scale(1.00158); }
+  37.5% { transform: translate3d(0,0.37428cqw,0) scale(1.00281); }
+  40% { transform: translate3d(0,0.51107cqw,0) scale(1.00383); }
+  42.5% { transform: translate3d(0,0.62053cqw,0) scale(1.00465); }
+  45% { transform: translate3d(0,0.70296cqw,0) scale(1.00527); }
+  47.5% { transform: translate3d(0,0.75929cqw,0) scale(1.00569); }
+  50% { transform: translate3d(0,0.79097cqw,0) scale(1.00593); }
+  52.5% { transform: translate3d(0,0.79993cqw,0) scale(1.006); }
+  55% { transform: translate3d(0,0.78841cqw,0) scale(1.00591); }
+  57.5% { transform: translate3d(0,0.75892cqw,0) scale(1.00569); }
+  60% { transform: translate3d(0,0.71413cqw,0) scale(1.00536); }
+  62.5% { transform: translate3d(0,0.6568cqw,0) scale(1.00493); }
+  65% { transform: translate3d(0,0.58969cqw,0) scale(1.00442); }
+  67.5% { transform: translate3d(0,0.5155cqw,0) scale(1.00387); }
+  70% { transform: translate3d(0,0.43681cqw,0) scale(1.00328); }
+  72.5% { transform: translate3d(0,0.35569cqw,0) scale(1.00267); }
+  75% { transform: translate3d(0,0.26653cqw,0) scale(1.002); }
+  77.5% { transform: translate3d(0,0.17693cqw,0) scale(1.00133); }
+  80% { transform: translate3d(0,0.09769cqw,0) scale(1.00073); }
+  82.5% { transform: translate3d(0,0.03565cqw,0) scale(1.00027); }
+  85% { transform: translate3d(0,-0.00622cqw,0) scale(0.99995); }
+  87.5% { transform: translate3d(0,-0.02834cqw,0) scale(0.99979); }
+  90% { transform: translate3d(0,-0.0338cqw,0) scale(0.99975); }
+  92.5% { transform: translate3d(0,-0.02764cqw,0) scale(0.99979); }
+  95% { transform: translate3d(0,-0.01588cqw,0) scale(0.99988); }
+  97.5% { transform: translate3d(0,-0.00478cqw,0) scale(0.99996); }
   100% { transform: translate3d(0,0cqw,0) scale(1); }
 }
 .core-page .notification-app__toast.is-arriving {
   opacity: 1;
   z-index: 4;
   transition: none;
-  animation: core-notification-quick-spring 392ms linear both;
+  animation: core-notification-quick-spring 450ms linear both;
 }
 @media (prefers-reduced-motion: reduce) {
   .core-page .notification-app__toast.is-arriving { animation: none !important; }
