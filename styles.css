@@ -4749,12 +4749,12 @@ a.core-intro__project-link {
 }
 .core-page .notification-app { background:#494d32; }
 .core-page .notification-app .proxy-app__nav { border-bottom:1px solid rgba(255,255,255,.07); }
-.core-page .notification-app .proxy-app__nav-title {font-size:4cqw;}
+.core-page .notification-app .proxy-app__nav-title {font-size:4cqw;transform:translateY(-1.067cqw);}
 .core-page .notification-app__subhead {position:absolute;left:0;top:13.054%;width:100%;height:5.419%;display:flex;align-items:center;justify-content:center;background:#52563c;color:#bfc1b7;font-size:4cqw;}
 .core-page .notification-app__preview {position:absolute;left:10.667%;top:38.424%;width:78.666%;height:13.3%;color:white;}
 .core-page .notification-app__toast {position:absolute;top:0;left:0;width:100%;height:10.667cqw;min-height:0;box-sizing:content-box;padding:6.4cqw 5.333cqw;display:flex;gap:3.2cqw;align-items:center;border-radius:6.4cqw;background:#646851;box-sizing:border-box;height:23.467cqw;transition:background .2s ease,transform .28s ease;z-index:3;}
-.core-page .notification-app__logo {width:11.733cqw;height:11.733cqw;border-radius:2.133cqw;background:#777a65;flex:0 0 auto;display:grid;place-items:center;}
-.core-page .notification-app__logo img {width:6.933cqw;height:6.933cqw;display:block;object-fit:contain;max-width:none;}
+.core-page .notification-app__logo {width:11.733cqw;height:11.733cqw;border-radius:2.133cqw;background:transparent;flex:0 0 auto;display:grid;place-items:center;}
+.core-page .notification-app__logo img {width:11.733cqw;height:11.733cqw;display:block;object-fit:contain;max-width:none;}
 .core-page .notification-app__message {display:flex; flex-direction:column;gap:.533cqw;min-width:0;line-height:1.3;font-size:4cqw;}
 .core-page .notification-app__message strong {font-weight:700;color:#fff;}
 .core-page .notification-app__message > span {color:#bfc1b7;white-space:nowrap;}
@@ -4776,22 +4776,17 @@ a.core-intro__project-link {
 .core-page .notification-app__message strong,.core-page .notification-app__message > span {transition:opacity .2s ease;}
 @media(prefers-reduced-motion:reduce) {.core-page .notification-app__toast,.core-page .notification-app__switch,.core-page .notification-app__knob {transition:none;}}
 
-/* v375 — New-card arrival inspired by the supplied Figma prototype video.
-   A new notification drops 30 Figma pixels over the prior card and settles
-   with an iOS-like deceleration. Applied to both automated and manual toggles. */
+/* v376 — The previously displayed notification stays entirely stationary,
+   fully opaque and unscaled. Only the new notification animates on top. */
 .core-page .notification-app__toast {
   transform-origin: 50% 12%;
   backface-visibility: hidden;
   will-change: transform, opacity;
   transition:
     transform 560ms cubic-bezier(.18,.88,.27,1),
-    opacity 350ms ease-out,
-    filter 400ms ease-out;
+    opacity 350ms ease-out;
 }
 .core-page .notification-app__toast.is-previous {
-  transform: translateY(2.4cqw) scale(.955);
-  opacity: .42;
-  filter: brightness(.78);
   z-index: 2;
 }
 .core-page .notification-app__toast.is-arriving {
