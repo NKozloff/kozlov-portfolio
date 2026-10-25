@@ -4776,9 +4776,9 @@ a.core-intro__project-link {
 .core-page .notification-app__message strong,.core-page .notification-app__message > span {transition:opacity .2s ease;}
 @media(prefers-reduced-motion:reduce) {.core-page .notification-app__toast,.core-page .notification-app__switch,.core-page .notification-app__knob {transition:none;}}
 
-/* v386 — Restore v384 easing and overshoot; shorten both animation
-   phases by 25% (663ms -> 497ms), keeping their 82.35% / 17.65%
-   proportions. No delay, transparency change or separate bounce timer. */
+/* v387 — Shorten both phases by another 33% (497ms -> 333ms).
+   Preserve the existing 82.35% descent / 17.65% return, cubic-bezier
+   easing, slight downward overshoot, opacity and no-delay behavior. */
 .core-page .notification-app__toast {
   transform-origin: 50% 12%;
   backface-visibility: hidden;
@@ -4804,7 +4804,7 @@ a.core-intro__project-link {
   opacity: 1;
   z-index: 4;
   transition: none;
-  animation: core-notification-arrival-bounce 497ms both;
+  animation: core-notification-arrival-bounce 333ms both;
 }
 @media (prefers-reduced-motion: reduce) {
   .core-page .notification-app__toast.is-arriving { animation: none !important; }
