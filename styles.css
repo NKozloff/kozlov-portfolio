@@ -4803,11 +4803,11 @@ a.core-intro__project-link {
   }
 }
 
-/* v379 — Subtle post-landing rebound: 3px up and back over 220ms.
+/* v380 — Post-landing rebound: 12px up and back over 220ms.
    Preserve the original 560ms descent and keep the lower card motionless. */
 @keyframes core-notification-landing-bounce {
   0%, 100% { transform: translate3d(0,0,0) scale(1); }
-  48% { transform: translate3d(0,-.8cqw,0) scale(1); }
+  48% { transform: translate3d(0,-3.2cqw,0) scale(1); }
 }
 .core-page .notification-app__toast.is-bouncing {
   animation: core-notification-landing-bounce 220ms cubic-bezier(.22,.7,.28,1) both;
