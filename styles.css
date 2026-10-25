@@ -4776,9 +4776,10 @@ a.core-intro__project-link {
 .core-page .notification-app__message strong,.core-page .notification-app__message > span {transition:opacity .2s ease;}
 @media(prefers-reduced-motion:reduce) {.core-page .notification-app__toast,.core-page .notification-app__switch,.core-page .notification-app__knob {transition:none;}}
 
-/* v387 — Shorten both phases by another 33% (497ms -> 333ms).
-   Preserve the existing 82.35% descent / 17.65% return, cubic-bezier
-   easing, slight downward overshoot, opacity and no-delay behavior. */
+/* v388 — Speed both phases up by 25% relative to v386 (497ms -> 373ms);
+   land 4px below the previous card at a 375px reference width before
+   settling into place. Preserve the easing, 82.35%/17.65% timing split,
+   full opacity, and stationary underlying notification. */
 .core-page .notification-app__toast {
   transform-origin: 50% 12%;
   backface-visibility: hidden;
@@ -4793,7 +4794,7 @@ a.core-intro__project-link {
     animation-timing-function: cubic-bezier(.18,.72,.3,1);
   }
   82.35% {
-    transform: translate3d(0,.6cqw,0) scale(1);
+    transform: translate3d(0,1.066667cqw,0) scale(1);
     animation-timing-function: cubic-bezier(.2,.4,.3,1);
   }
   100% {
@@ -4804,7 +4805,7 @@ a.core-intro__project-link {
   opacity: 1;
   z-index: 4;
   transition: none;
-  animation: core-notification-arrival-bounce 333ms both;
+  animation: core-notification-arrival-bounce 373ms both;
 }
 @media (prefers-reduced-motion: reduce) {
   .core-page .notification-app__toast.is-arriving { animation: none !important; }
