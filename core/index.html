@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=377-notifications-instant-reveal" />
+<link rel="stylesheet" href="../styles.css?v=378-notifications-opaque-arrival" />
   </head>
   <body class="core-page core-page--condensed typography-only">
     <main class="core-intro" id="cover">
@@ -1449,7 +1449,7 @@
     {pointer:'content', duration:900, move:true},
     {sender:true, content:true, duration:2100, pointer:'content'}
   ];
-  let timeout=null, arrivalTimer=null, arrivalFrame=null, revealTimer=null;
+  let timeout=null, arrivalTimer=null, arrivalFrame=null;
   let index=0, inView=false, running=false, muted=false;
   let displayedState='11';
 
@@ -1463,17 +1463,15 @@
   function clearArrival() {
     if (arrivalTimer!==null) window.clearTimeout(arrivalTimer);
     if (arrivalFrame!==null) window.cancelAnimationFrame(arrivalFrame);
-    if (revealTimer!==null) window.clearTimeout(revealTimer);
     arrivalTimer=null;
     arrivalFrame=null;
-    revealTimer=null;
     const cards=[...preview.querySelectorAll('.notification-app__toast')];
     const front=cards[cards.length-1];
     cards.forEach(card => {
       if(card!==front) card.remove();
     });
     if(front) {
-      front.classList.remove('is-arriving','is-settled','is-previous','is-revealed');
+      front.classList.remove('is-arriving','is-settled','is-previous');
       front.classList.add('is-front');
       front.removeAttribute('aria-hidden');
     }
@@ -1500,24 +1498,17 @@
     current.classList.add('is-previous');
     current.setAttribute('aria-hidden','true');
     preview.appendChild(incoming);
-    // Movement starts invisibly, exactly as in the Figma prototype.
-    // About 300 ms into the drop the card appears instantly at full opacity,
-    // with no opacity tween, while the transform keeps easing to its end.
+    // The new card is fully opaque from its very first frame.
+    // Only the existing transform animation moves it down over the previous card.
     void incoming.offsetWidth;
     arrivalFrame=window.requestAnimationFrame(() => {
       arrivalFrame=null;
       incoming.classList.add('is-settled');
-      revealTimer=window.setTimeout(() => {
-        revealTimer=null;
-        incoming.classList.add('is-revealed');
-      },300);
     });
     arrivalTimer=window.setTimeout(() => {
       arrivalTimer=null;
-      if (revealTimer!==null) window.clearTimeout(revealTimer);
-      revealTimer=null;
       current.remove();
-      incoming.classList.remove('is-arriving','is-settled','is-revealed');
+      incoming.classList.remove('is-arriving','is-settled');
     },660);
   }
 

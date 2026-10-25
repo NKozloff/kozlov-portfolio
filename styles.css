@@ -4776,9 +4776,8 @@ a.core-intro__project-link {
 .core-page .notification-app__message strong,.core-page .notification-app__message > span {transition:opacity .2s ease;}
 @media(prefers-reduced-motion:reduce) {.core-page .notification-app__toast,.core-page .notification-app__switch,.core-page .notification-app__knob {transition:none;}}
 
-/* v377 — New card starts moving while invisible and becomes fully opaque
-   in one frame 300ms later. Only its transform is animated.
-   The previous notification remains motionless and fully opaque. */
+/* v378 — The incoming card starts fully opaque, moving down over an
+   unchanged previous card. No opacity transitions or reveal delay. */
 .core-page .notification-app__toast {
   transform-origin: 50% 12%;
   backface-visibility: hidden;
@@ -4790,14 +4789,11 @@ a.core-intro__project-link {
 }
 .core-page .notification-app__toast.is-arriving {
   transform: translate3d(0,-8cqw,0) scale(.98);
-  opacity: 0;
+  opacity: 1;
   z-index: 4;
 }
 .core-page .notification-app__toast.is-arriving.is-settled {
   transform: translate3d(0,0,0) scale(1);
-}
-.core-page .notification-app__toast.is-arriving.is-revealed {
-  opacity: 1;
 }
 @media (prefers-reduced-motion: reduce) {
   .core-page .notification-app__toast,
