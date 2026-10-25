@@ -4776,9 +4776,9 @@ a.core-intro__project-link {
 .core-page .notification-app__message strong,.core-page .notification-app__message > span {transition:opacity .2s ease;}
 @media(prefers-reduced-motion:reduce) {.core-page .notification-app__toast,.core-page .notification-app__switch,.core-page .notification-app__knob {transition:none;}}
 
-/* v385 — Uniform-speed notification arrival with a quick 2.25px settle.
-   Linear motion throughout: 468ms descent, 52ms return; no easing,
-   delay, opacity tween or movement of the previous card. */
+/* v386 — Restore v384 easing and overshoot; shorten both animation
+   phases by 25% (663ms -> 497ms), keeping their 82.35% / 17.65%
+   proportions. No delay, transparency change or separate bounce timer. */
 .core-page .notification-app__toast {
   transform-origin: 50% 12%;
   backface-visibility: hidden;
@@ -4790,9 +4790,11 @@ a.core-intro__project-link {
 @keyframes core-notification-arrival-bounce {
   0% {
     transform: translate3d(0,-8cqw,0) scale(.98);
+    animation-timing-function: cubic-bezier(.18,.72,.3,1);
   }
-  90% {
+  82.35% {
     transform: translate3d(0,.6cqw,0) scale(1);
+    animation-timing-function: cubic-bezier(.2,.4,.3,1);
   }
   100% {
     transform: translate3d(0,0,0) scale(1);
@@ -4802,7 +4804,7 @@ a.core-intro__project-link {
   opacity: 1;
   z-index: 4;
   transition: none;
-  animation: core-notification-arrival-bounce 520ms linear both;
+  animation: core-notification-arrival-bounce 497ms both;
 }
 @media (prefers-reduced-motion: reduce) {
   .core-page .notification-app__toast.is-arriving { animation: none !important; }
