@@ -4776,42 +4776,40 @@ a.core-intro__project-link {
 .core-page .notification-app__message strong,.core-page .notification-app__message > span {transition:opacity .2s ease;}
 @media(prefers-reduced-motion:reduce) {.core-page .notification-app__toast,.core-page .notification-app__switch,.core-page .notification-app__knob {transition:none;}}
 
-/* v378 — The incoming card starts fully opaque, moving down over an
-   unchanged previous card. No opacity transitions or reveal delay. */
+/* v381 — One continuous notification arrival with an integrated 12px rebound.
+   No separate bounce step, JS timer or delay. The old card stays stationary.
+   New cards are fully opaque from the first animation frame. */
 .core-page .notification-app__toast {
   transform-origin: 50% 12%;
   backface-visibility: hidden;
   will-change: transform;
-  transition: transform 560ms cubic-bezier(.18,.88,.27,1);
 }
 .core-page .notification-app__toast.is-previous {
   z-index: 2;
 }
-.core-page .notification-app__toast.is-arriving {
-  transform: translate3d(0,-8cqw,0) scale(.98);
-  opacity: 1;
-  z-index: 4;
-}
-.core-page .notification-app__toast.is-arriving.is-settled {
-  transform: translate3d(0,0,0) scale(1);
-}
-@media (prefers-reduced-motion: reduce) {
-  .core-page .notification-app__toast,
-  .core-page .notification-app__toast.is-arriving,
-  .core-page .notification-app__toast.is-previous {
-    transition: none !important;
+@keyframes core-notification-arrival-bounce {
+  0% {
+    transform: translate3d(0,-8cqw,0) scale(.98);
+    animation-timing-function: cubic-bezier(.18,.72,.3,1);
+  }
+  70% {
+    transform: translate3d(0,.6cqw,0) scale(1);
+    animation-timing-function: cubic-bezier(.3,0,.3,1);
+  }
+  84% {
+    transform: translate3d(0,-3.2cqw,0) scale(1);
+    animation-timing-function: cubic-bezier(.2,.4,.3,1);
+  }
+  100% {
+    transform: translate3d(0,0,0) scale(1);
   }
 }
-
-/* v380 — Post-landing rebound: 12px up and back over 220ms.
-   Preserve the original 560ms descent and keep the lower card motionless. */
-@keyframes core-notification-landing-bounce {
-  0%, 100% { transform: translate3d(0,0,0) scale(1); }
-  48% { transform: translate3d(0,-3.2cqw,0) scale(1); }
-}
-.core-page .notification-app__toast.is-bouncing {
-  animation: core-notification-landing-bounce 220ms cubic-bezier(.22,.7,.28,1) both;
+.core-page .notification-app__toast.is-arriving {
+  opacity: 1;
+  z-index: 4;
+  transition: none;
+  animation: core-notification-arrival-bounce 780ms both;
 }
 @media (prefers-reduced-motion: reduce) {
-  .core-page .notification-app__toast.is-bouncing { animation: none !important; }
+  .core-page .notification-app__toast.is-arriving { animation: none !important; }
 }

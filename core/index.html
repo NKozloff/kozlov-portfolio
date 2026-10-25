@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=380-notifications-12px-bounce" />
+<link rel="stylesheet" href="../styles.css?v=381-notifications-unified-spring" />
   </head>
   <body class="core-page core-page--condensed typography-only">
     <main class="core-intro" id="cover">
@@ -1449,7 +1449,7 @@
     {pointer:'content', duration:900, move:true},
     {sender:true, content:true, duration:2100, pointer:'content'}
   ];
-  let timeout=null, arrivalTimer=null, arrivalFrame=null, bounceTimer=null;
+  let timeout=null;
   let index=0, inView=false, running=false, muted=false;
   let displayedState='11';
 
@@ -1458,22 +1458,16 @@
     toast.querySelector('.notification-app__content').textContent = visibleContent ? 'Hi, how are you?' : 'New message';
   }
 
-  // At most two cards exist during an arrival: the previous card sinks into
-  // the existing iOS-style stack while a freshly cloned card slides on top.
+  // Keep only the latest notification when the user switches controls rapidly.
+  // No animation-step timers: a single CSS keyframe animation handles the entire arrival and bounce.
   function clearArrival() {
-    if (arrivalTimer!==null) window.clearTimeout(arrivalTimer);
-    if (arrivalFrame!==null) window.cancelAnimationFrame(arrivalFrame);
-    if (bounceTimer!==null) window.clearTimeout(bounceTimer);
-    arrivalTimer=null;
-    arrivalFrame=null;
-    bounceTimer=null;
     const cards=[...preview.querySelectorAll('.notification-app__toast')];
     const front=cards[cards.length-1];
     cards.forEach(card => {
       if(card!==front) card.remove();
     });
     if(front) {
-      front.classList.remove('is-arriving','is-settled','is-previous','is-bouncing');
+      front.classList.remove('is-arriving','is-previous');
       front.classList.add('is-front');
       front.removeAttribute('aria-hidden');
     }
@@ -1500,25 +1494,13 @@
     current.classList.add('is-previous');
     current.setAttribute('aria-hidden','true');
     preview.appendChild(incoming);
-    // The new card is fully opaque from its very first frame.
-    // Only the existing transform animation moves it down over the previous card.
-    void incoming.offsetWidth;
-    arrivalFrame=window.requestAnimationFrame(() => {
-      arrivalFrame=null;
-      incoming.classList.add('is-settled');
-      // Let the existing 560ms descent finish before a small upward rebound.
-      bounceTimer=window.setTimeout(() => {
-        bounceTimer=null;
-        incoming.classList.add('is-bouncing');
-      },570);
-    });
-    arrivalTimer=window.setTimeout(() => {
-      arrivalTimer=null;
-      if (bounceTimer!==null) window.clearTimeout(bounceTimer);
-      bounceTimer=null;
+    // The incoming card begins its single descent-and-bounce animation immediately,
+    // fully opaque. Cleanup runs on animationend instead of a delayed second phase.
+    incoming.addEventListener('animationend', event => {
+      if(event.target!==incoming || event.animationName!=='core-notification-arrival-bounce') return;
       current.remove();
-      incoming.classList.remove('is-arriving','is-settled','is-bouncing');
-    },880);
+      incoming.classList.remove('is-arriving');
+    }, {once:true});
   }
 
   function render(animateNotification=false) {
