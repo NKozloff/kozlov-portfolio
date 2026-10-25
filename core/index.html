@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=373-core-proxy-flow-padding" />
+<link rel="stylesheet" href="../styles.css?v=374-core-notifications" />
   </head>
   <body class="core-page core-page--condensed typography-only">
     <main class="core-intro" id="cover">
@@ -896,12 +896,36 @@
           <p class="case-highlight case-agreed-conclusion"><span class="case-conclusion-mark">Выбрал Live Preview: разместил рядом с настройками пример системного уведомления, который изменяется при переключении параметров.</span></p>
           <p class="case-agreed-copy">Добавил плавную анимацию изменения состояния, чтобы пользователь замечал, какой именно элемент уведомления был скрыт или появился.</p>
           <p class="case-agreed-copy">Так можно сразу увидеть разницу между уведомлением без имени собеседника, без текста сообщения и без обоих элементов.</p>
-          <div class="case-agreed-visual" data-asset-slot="notifications-live-preview" aria-label="Интерактивный Live Preview уведомлений">
-            <span class="case-agreed-visual__content">
-              <span class="case-agreed-visual__title">Интерактивный Live Preview уведомлений</span>
-              <span class="case-agreed-visual__meta">Место для прототипа</span>
-            </span>
-          </div>
+          <div class="proxy-visual proxy-visual--prototype proxy-prototype-stage notification-prototype-stage" data-asset-slot="notifications-live-preview" aria-label="Анимированный интерактивный прототип настроек уведомлений CORE">
+  <div class="proxy-app case-ui-device notification-app" role="group" aria-label="Notifications, interactive preview">
+    <div class="proxy-app__top-blur" aria-hidden="true"></div>
+    <div class="proxy-app__ios-status" aria-hidden="true">
+      <img class="proxy-app__ios-time" src="../assets/core-proxy-ios-time-v1.svg" alt="" />
+      <span class="proxy-app__island"></span>
+      <img class="proxy-app__ios-cell" src="../assets/core-proxy-ios-cell-v1.svg" alt="" />
+      <img class="proxy-app__ios-wifi" src="../assets/core-proxy-ios-wifi-v1.svg" alt="" />
+      <img class="proxy-app__ios-battery" src="../assets/core-proxy-ios-battery-v1.svg" alt="" />
+    </div>
+    <div class="proxy-app__nav">
+      <span class="proxy-app__back" aria-hidden="true"><img src="../assets/core-proxy-ios-back-v1.svg" alt="" /></span>
+      <span class="proxy-app__nav-title">Notifications</span>
+    </div>
+    <div class="notification-app__subhead">Only message &amp; system</div>
+    <div class="notification-app__preview" aria-live="polite" aria-atomic="true">
+      <div class="notification-app__stack notification-app__stack--one" aria-hidden="true"></div>
+      <div class="notification-app__stack notification-app__stack--two" aria-hidden="true"></div>
+      <div class="notification-app__toast">
+        <span class="notification-app__logo"><img src="../assets/core-notification-logo.png" alt="" /></span>
+        <span class="notification-app__message"><strong class="notification-app__sender">Anna</strong><span class="notification-app__content">Hi, how are you?</span></span>
+      </div>
+    </div>
+    <label class="notification-app__setting notification-app__setting--sender"><input class="notification-app__checkbox notification-app__checkbox--sender" type="checkbox" checked aria-label="Show sender"><span class="notification-app__switch" aria-hidden="true"><span class="notification-app__knob"></span></span><span>Show sender</span></label>
+    <label class="notification-app__setting notification-app__setting--content"><input class="notification-app__checkbox notification-app__checkbox--content" type="checkbox" checked aria-label="Show message content"><span class="notification-app__switch" aria-hidden="true"><span class="notification-app__knob"></span></span><span>Show message content</span></label>
+    <button class="notification-app__disable" type="button">Turn off notifications</button>
+    <div class="proxy-app__home-indicator" aria-hidden="true"></div>
+    <img class="proxy-app__demo-cursor" src="../assets/core-proxy-demo-cursor.svg" alt="" aria-hidden="true" draggable="false" />
+  </div>
+</div>
           <p class="case-agreed-copy"><em>Интерактивный экран настроек с переключателями «Показывать имя» и «Показывать текст», отключением уведомлений и анимированным предпросмотром. При изменении параметров пользователь сразу видит соответствующее состояние уведомления.</em></p>
         </div>
       </section>
@@ -1402,5 +1426,74 @@
         updateScenarioButtons();
       })();
     </script>
-  </body>
+  <script>
+(() => {
+  const stage = document.querySelector('[data-asset-slot="notifications-live-preview"]');
+  if (!stage) return;
+  const device = stage.querySelector('.notification-app');
+  const sender = device.querySelector('.notification-app__checkbox--sender');
+  const content = device.querySelector('.notification-app__checkbox--content');
+  const senderLabel = device.querySelector('.notification-app__sender');
+  const contentLabel = device.querySelector('.notification-app__content');
+  const cursor = device.querySelector('.proxy-app__demo-cursor');
+  const disable = device.querySelector('.notification-app__disable');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const positions = {rest:{x:240,y:377},sender:{x:31,y:480},content:{x:31,y:532}};
+  const frames = [
+    {sender:true, content:true, duration:1450, pointer:'rest'},
+    {pointer:'sender', duration:900, move:true},
+    {sender:false, content:true, duration:1550, pointer:'sender'},
+    {pointer:'content', duration:900, move:true},
+    {sender:false, content:false, duration:1550, pointer:'content'},
+    {pointer:'sender', duration:900, move:true},
+    {sender:true, content:false, duration:1750, pointer:'sender'},
+    {pointer:'content', duration:900, move:true},
+    {sender:true, content:true, duration:2100, pointer:'content'}
+  ];
+  let timeout, index=0, inView=false, running=false, muted=false;
+  function render() {
+    senderLabel.textContent = sender.checked ? 'Anna' : 'CORE';
+    contentLabel.textContent = content.checked ? 'Hi, how are you?' : 'New message';
+    device.classList.toggle('notification-app--disabled', muted);
+    stage.dataset.state = String(Number(sender.checked))+String(Number(content.checked));
+  }
+  function point(where, move=false, visible=true) {
+    const p=positions[where];
+    cursor.classList.toggle('is-moving', move && !reduced.matches);
+    cursor.style.left=(p.x/375*100)+'%';
+    cursor.style.top=(p.y/812*100)+'%';
+    cursor.classList.toggle('is-visible',visible);
+  }
+  function stop() {running=false;window.clearTimeout(timeout);point('rest',false,false);}
+  function tick(){
+    if(!running||!inView||document.hidden)return;
+    const f=frames[index];
+    if(typeof f.sender==='boolean')sender.checked=f.sender;
+    if(typeof f.content==='boolean')content.checked=f.content;
+    muted=false;render();
+    point(f.pointer,Boolean(f.move));
+    index=(index+1)%frames.length;
+    timeout=window.setTimeout(tick,f.duration);
+  }
+  function start(){
+    if(running||!inView||document.hidden||reduced.matches)return;
+    running=true;index=0;tick();
+  }
+  const observer=new IntersectionObserver(entries=>{
+    inView=entries[0].isIntersecting;
+    if(!inView)stop();else start();
+  },{threshold:0.18});
+  observer.observe(stage);
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden)stop();else start();
+  });
+  [sender,content].forEach(input=>input.addEventListener('change',()=>{stop();muted=false;render();}));
+  disable.addEventListener('click',()=>{
+    stop();muted=!muted;render();
+  });
+  reduced.addEventListener('change',()=>{stop();if(!reduced.matches)start();});
+  render();point('rest',false,false);
+})();
+</script>
+</body>
 </html>
