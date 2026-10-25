@@ -4776,7 +4776,7 @@ a.core-intro__project-link {
 .core-page .notification-app__message strong,.core-page .notification-app__message > span {transition:opacity .2s ease;}
 @media(prefers-reduced-motion:reduce) {.core-page .notification-app__toast,.core-page .notification-app__switch,.core-page .notification-app__knob {transition:none;}}
 
-/* v381 — One continuous notification arrival with an integrated 12px rebound.
+/* v382 — Single notification arrival with an 8px upward bounce; no downward overshoot.
    No separate bounce step, JS timer or delay. The old card stays stationary.
    New cards are fully opaque from the first animation frame. */
 .core-page .notification-app__toast {
@@ -4793,11 +4793,11 @@ a.core-intro__project-link {
     animation-timing-function: cubic-bezier(.18,.72,.3,1);
   }
   70% {
-    transform: translate3d(0,.6cqw,0) scale(1);
+    transform: translate3d(0,0,0) scale(1);
     animation-timing-function: cubic-bezier(.3,0,.3,1);
   }
   84% {
-    transform: translate3d(0,-3.2cqw,0) scale(1);
+    transform: translate3d(0,-2.133333cqw,0) scale(1);
     animation-timing-function: cubic-bezier(.2,.4,.3,1);
   }
   100% {
