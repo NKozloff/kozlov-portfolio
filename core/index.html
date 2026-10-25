@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=374-core-notifications" />
+<link rel="stylesheet" href="../styles.css?v=375-notifications-arrival" />
   </head>
   <body class="core-page core-page--condensed typography-only">
     <main class="core-intro" id="cover">
@@ -1431,10 +1431,9 @@
   const stage = document.querySelector('[data-asset-slot="notifications-live-preview"]');
   if (!stage) return;
   const device = stage.querySelector('.notification-app');
+  const preview = device.querySelector('.notification-app__preview');
   const sender = device.querySelector('.notification-app__checkbox--sender');
   const content = device.querySelector('.notification-app__checkbox--content');
-  const senderLabel = device.querySelector('.notification-app__sender');
-  const contentLabel = device.querySelector('.notification-app__content');
   const cursor = device.querySelector('.proxy-app__demo-cursor');
   const disable = device.querySelector('.notification-app__disable');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -1450,49 +1449,138 @@
     {pointer:'content', duration:900, move:true},
     {sender:true, content:true, duration:2100, pointer:'content'}
   ];
-  let timeout, index=0, inView=false, running=false, muted=false;
-  function render() {
-    senderLabel.textContent = sender.checked ? 'Anna' : 'CORE';
-    contentLabel.textContent = content.checked ? 'Hi, how are you?' : 'New message';
-    device.classList.toggle('notification-app--disabled', muted);
-    stage.dataset.state = String(Number(sender.checked))+String(Number(content.checked));
+  let timeout=null, arrivalTimer=null, arrivalFrame=null;
+  let index=0, inView=false, running=false, muted=false;
+  let displayedState='11';
+
+  function putText(toast, visibleSender, visibleContent) {
+    toast.querySelector('.notification-app__sender').textContent = visibleSender ? 'Anna' : 'CORE';
+    toast.querySelector('.notification-app__content').textContent = visibleContent ? 'Hi, how are you?' : 'New message';
   }
-  function point(where, move=false, visible=true) {
+
+  // At most two cards exist during an arrival: the previous card sinks into
+  // the existing iOS-style stack while a freshly cloned card slides on top.
+  function clearArrival() {
+    if (arrivalTimer!==null) window.clearTimeout(arrivalTimer);
+    if (arrivalFrame!==null) window.cancelAnimationFrame(arrivalFrame);
+    arrivalTimer=null;
+    arrivalFrame=null;
+    const cards=[...preview.querySelectorAll('.notification-app__toast')];
+    const front=cards[cards.length-1];
+    cards.forEach(card => {
+      if(card!==front) card.remove();
+    });
+    if(front) {
+      front.classList.remove('is-arriving','is-settled','is-previous');
+      front.classList.add('is-front');
+      front.removeAttribute('aria-hidden');
+    }
+    return front;
+  }
+
+  function updateCard(animated) {
+    const key=String(Number(sender.checked))+String(Number(content.checked));
+    if(key===displayedState) return;
+    displayedState=key;
+    const current=clearArrival();
+    if(!current) return;
+    if(!animated || reduced.matches) {
+      putText(current,sender.checked,content.checked);
+      return;
+    }
+
+    const incoming=current.cloneNode(true);
+    incoming.className='notification-app__toast is-front is-arriving';
+    incoming.removeAttribute('aria-hidden');
+    putText(incoming,sender.checked,content.checked);
+
+    current.classList.remove('is-front');
+    current.classList.add('is-previous');
+    current.setAttribute('aria-hidden','true');
+    preview.appendChild(incoming);
+    // The first frame must render 30px higher and transparent so the new
+    // notification visibly arrives instead of merely changing the text.
+    void incoming.offsetWidth;
+    arrivalFrame=window.requestAnimationFrame(() => {
+      arrivalFrame=null;
+      incoming.classList.add('is-settled');
+    });
+    arrivalTimer=window.setTimeout(() => {
+      arrivalTimer=null;
+      current.remove();
+      incoming.classList.remove('is-arriving','is-settled');
+    },660);
+  }
+
+  function render(animateNotification=false) {
+    updateCard(animateNotification);
+    device.classList.toggle('notification-app--disabled',muted);
+    stage.dataset.state=String(Number(sender.checked))+String(Number(content.checked));
+  }
+
+  function point(where,move=false,visible=true) {
     const p=positions[where];
-    cursor.classList.toggle('is-moving', move && !reduced.matches);
+    cursor.classList.toggle('is-moving',move&&!reduced.matches);
     cursor.style.left=(p.x/375*100)+'%';
     cursor.style.top=(p.y/812*100)+'%';
     cursor.classList.toggle('is-visible',visible);
   }
-  function stop() {running=false;window.clearTimeout(timeout);point('rest',false,false);}
-  function tick(){
-    if(!running||!inView||document.hidden)return;
-    const f=frames[index];
-    if(typeof f.sender==='boolean')sender.checked=f.sender;
-    if(typeof f.content==='boolean')content.checked=f.content;
-    muted=false;render();
-    point(f.pointer,Boolean(f.move));
+  function stop() {
+    running=false;
+    window.clearTimeout(timeout);
+    timeout=null;
+    point('rest',false,false);
+  }
+  function tick() {
+    if(!running||!inView||document.hidden) return;
+    const frame=frames[index];
+    const oldState=String(Number(sender.checked))+String(Number(content.checked));
+    if(typeof frame.sender==='boolean') sender.checked=frame.sender;
+    if(typeof frame.content==='boolean') content.checked=frame.content;
+    muted=false;
+    const nextState=String(Number(sender.checked))+String(Number(content.checked));
+    render(oldState!==nextState);
+    point(frame.pointer,Boolean(frame.move));
     index=(index+1)%frames.length;
-    timeout=window.setTimeout(tick,f.duration);
+    timeout=window.setTimeout(tick,frame.duration);
   }
-  function start(){
-    if(running||!inView||document.hidden||reduced.matches)return;
-    running=true;index=0;tick();
+  function start() {
+    if(running||!inView||document.hidden||reduced.matches) return;
+    running=true;
+    index=0;
+    tick();
   }
-  const observer=new IntersectionObserver(entries=>{
+
+  const observer=new IntersectionObserver(entries => {
     inView=entries[0].isIntersecting;
-    if(!inView)stop();else start();
+    if(!inView) stop();
+    else start();
   },{threshold:0.18});
   observer.observe(stage);
-  document.addEventListener('visibilitychange',()=>{
-    if(document.hidden)stop();else start();
+  document.addEventListener('visibilitychange',() => {
+    if(document.hidden) stop();
+    else start();
   });
-  [sender,content].forEach(input=>input.addEventListener('change',()=>{stop();muted=false;render();}));
-  disable.addEventListener('click',()=>{
-    stop();muted=!muted;render();
+
+  // A real click uses exactly the same incoming notification animation as
+  // the automatic walkthrough, then leaves the toggles available for use.
+  [sender,content].forEach(input => input.addEventListener('change',() => {
+    stop();
+    muted=false;
+    render(true);
+  }));
+  disable.addEventListener('click',() => {
+    stop();
+    muted=!muted;
+    render();
   });
-  reduced.addEventListener('change',()=>{stop();if(!reduced.matches)start();});
-  render();point('rest',false,false);
+  reduced.addEventListener('change',() => {
+    stop();
+    if(!reduced.matches) start();
+  });
+
+  render();
+  point('rest',false,false);
 })();
 </script>
 </body>
