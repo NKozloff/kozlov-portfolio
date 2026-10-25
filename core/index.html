@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=378-notifications-opaque-arrival" />
+<link rel="stylesheet" href="../styles.css?v=379-notifications-landing-bounce" />
   </head>
   <body class="core-page core-page--condensed typography-only">
     <main class="core-intro" id="cover">
@@ -1449,7 +1449,7 @@
     {pointer:'content', duration:900, move:true},
     {sender:true, content:true, duration:2100, pointer:'content'}
   ];
-  let timeout=null, arrivalTimer=null, arrivalFrame=null;
+  let timeout=null, arrivalTimer=null, arrivalFrame=null, bounceTimer=null;
   let index=0, inView=false, running=false, muted=false;
   let displayedState='11';
 
@@ -1463,15 +1463,17 @@
   function clearArrival() {
     if (arrivalTimer!==null) window.clearTimeout(arrivalTimer);
     if (arrivalFrame!==null) window.cancelAnimationFrame(arrivalFrame);
+    if (bounceTimer!==null) window.clearTimeout(bounceTimer);
     arrivalTimer=null;
     arrivalFrame=null;
+    bounceTimer=null;
     const cards=[...preview.querySelectorAll('.notification-app__toast')];
     const front=cards[cards.length-1];
     cards.forEach(card => {
       if(card!==front) card.remove();
     });
     if(front) {
-      front.classList.remove('is-arriving','is-settled','is-previous');
+      front.classList.remove('is-arriving','is-settled','is-previous','is-bouncing');
       front.classList.add('is-front');
       front.removeAttribute('aria-hidden');
     }
@@ -1504,12 +1506,19 @@
     arrivalFrame=window.requestAnimationFrame(() => {
       arrivalFrame=null;
       incoming.classList.add('is-settled');
+      // Let the existing 560ms descent finish before a small upward rebound.
+      bounceTimer=window.setTimeout(() => {
+        bounceTimer=null;
+        incoming.classList.add('is-bouncing');
+      },570);
     });
     arrivalTimer=window.setTimeout(() => {
       arrivalTimer=null;
+      if (bounceTimer!==null) window.clearTimeout(bounceTimer);
+      bounceTimer=null;
       current.remove();
-      incoming.classList.remove('is-arriving','is-settled');
-    },660);
+      incoming.classList.remove('is-arriving','is-settled','is-bouncing');
+    },880);
   }
 
   function render(animateNotification=false) {
