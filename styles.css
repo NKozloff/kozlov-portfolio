@@ -4776,9 +4776,9 @@ a.core-intro__project-link {
 .core-page .notification-app__message strong,.core-page .notification-app__message > span {transition:opacity .2s ease;}
 @media(prefers-reduced-motion:reduce) {.core-page .notification-app__toast,.core-page .notification-app__switch,.core-page .notification-app__knob {transition:none;}}
 
-/* v382 — Single notification arrival with an 8px upward bounce; no downward overshoot.
-   No separate bounce step, JS timer or delay. The old card stays stationary.
-   New cards are fully opaque from the first animation frame. */
+/* v383 — Continuous arrival: preserve the original 546ms descent,
+   halve the rebound from 234ms to 117ms and reduce its height to 4px.
+   No overshoot below rest position, delay, opacity tween or separate timer. */
 .core-page .notification-app__toast {
   transform-origin: 50% 12%;
   backface-visibility: hidden;
@@ -4792,12 +4792,12 @@ a.core-intro__project-link {
     transform: translate3d(0,-8cqw,0) scale(.98);
     animation-timing-function: cubic-bezier(.18,.72,.3,1);
   }
-  70% {
+  82.35% {
     transform: translate3d(0,0,0) scale(1);
     animation-timing-function: cubic-bezier(.3,0,.3,1);
   }
-  84% {
-    transform: translate3d(0,-2.133333cqw,0) scale(1);
+  90.59% {
+    transform: translate3d(0,-1.066667cqw,0) scale(1);
     animation-timing-function: cubic-bezier(.2,.4,.3,1);
   }
   100% {
@@ -4808,7 +4808,7 @@ a.core-intro__project-link {
   opacity: 1;
   z-index: 4;
   transition: none;
-  animation: core-notification-arrival-bounce 780ms both;
+  animation: core-notification-arrival-bounce 663ms both;
 }
 @media (prefers-reduced-motion: reduce) {
   .core-page .notification-app__toast.is-arriving { animation: none !important; }
