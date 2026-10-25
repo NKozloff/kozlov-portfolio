@@ -4776,9 +4776,9 @@ a.core-intro__project-link {
 .core-page .notification-app__message strong,.core-page .notification-app__message > span {transition:opacity .2s ease;}
 @media(prefers-reduced-motion:reduce) {.core-page .notification-app__toast,.core-page .notification-app__switch,.core-page .notification-app__knob {transition:none;}}
 
-/* v383 — Continuous arrival: preserve the original 546ms descent,
-   halve the rebound from 234ms to 117ms and reduce its height to 4px.
-   No overshoot below rest position, delay, opacity tween or separate timer. */
+/* v384 — One continuous arrival: the new card drops slightly past the
+   previous card (+0.6cqw ≈ 2.25px at 375px), then settles upward into
+   the exact shared position. No upward rebound, delay or opacity tween. */
 .core-page .notification-app__toast {
   transform-origin: 50% 12%;
   backface-visibility: hidden;
@@ -4793,11 +4793,7 @@ a.core-intro__project-link {
     animation-timing-function: cubic-bezier(.18,.72,.3,1);
   }
   82.35% {
-    transform: translate3d(0,0,0) scale(1);
-    animation-timing-function: cubic-bezier(.3,0,.3,1);
-  }
-  90.59% {
-    transform: translate3d(0,-1.066667cqw,0) scale(1);
+    transform: translate3d(0,.6cqw,0) scale(1);
     animation-timing-function: cubic-bezier(.2,.4,.3,1);
   }
   100% {
