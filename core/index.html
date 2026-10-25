@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=389-notifications-15px-start-5percent-slower" />
+<link rel="stylesheet" href="../styles.css?v=390-notifications-quick-spring" />
   </head>
   <body class="core-page core-page--condensed typography-only">
     <main class="core-intro" id="cover">
@@ -1497,7 +1497,7 @@
     // The incoming card begins its single descent-and-bounce animation immediately,
     // fully opaque. Cleanup runs on animationend instead of a delayed second phase.
     incoming.addEventListener('animationend', event => {
-      if(event.target!==incoming || event.animationName!=='core-notification-arrival-bounce') return;
+      if(event.target!==incoming || event.animationName!=='core-notification-quick-spring') return;
       current.remove();
       incoming.classList.remove('is-arriving');
     }, {once:true});
