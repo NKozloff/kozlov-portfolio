@@ -4775,3 +4775,38 @@ a.core-intro__project-link {
 .core-page .notification-app--disabled .notification-app__toast {opacity:.35;}
 .core-page .notification-app__message strong,.core-page .notification-app__message > span {transition:opacity .2s ease;}
 @media(prefers-reduced-motion:reduce) {.core-page .notification-app__toast,.core-page .notification-app__switch,.core-page .notification-app__knob {transition:none;}}
+
+/* v375 — New-card arrival inspired by the supplied Figma prototype video.
+   A new notification drops 30 Figma pixels over the prior card and settles
+   with an iOS-like deceleration. Applied to both automated and manual toggles. */
+.core-page .notification-app__toast {
+  transform-origin: 50% 12%;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+  transition:
+    transform 560ms cubic-bezier(.18,.88,.27,1),
+    opacity 350ms ease-out,
+    filter 400ms ease-out;
+}
+.core-page .notification-app__toast.is-previous {
+  transform: translateY(2.4cqw) scale(.955);
+  opacity: .42;
+  filter: brightness(.78);
+  z-index: 2;
+}
+.core-page .notification-app__toast.is-arriving {
+  transform: translate3d(0,-8cqw,0) scale(.98);
+  opacity: 0;
+  z-index: 4;
+}
+.core-page .notification-app__toast.is-arriving.is-settled {
+  transform: translate3d(0,0,0) scale(1);
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .core-page .notification-app__toast,
+  .core-page .notification-app__toast.is-arriving,
+  .core-page .notification-app__toast.is-previous {
+    transition: none !important;
+  }
+}
