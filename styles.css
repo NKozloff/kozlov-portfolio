@@ -4899,3 +4899,18 @@ a.core-intro__project-link {
 .core-page .contact-app__list {
   bottom:10.345%;
 }
+
+/* v396 — Exact Figma SVG tab icons, sized 28px on the reference screen;
+   compensate the Local indicator width (6px) and gap (8px) on the right
+   so the word Local, not the combined group, is horizontally centered. */
+.core-page .contact-app__tab img {
+  display:block;
+  width:7.466667cqw;
+  height:7.466667cqw;
+  max-width:none;
+  object-fit:contain;
+  flex:none;
+}
+.core-page .contact-app__local {
+  padding-right:3.733333cqw;
+}
