@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#5c5c5c" />
+  <title>CORE — Scan QR</title>
+  <style>
+    /* Use the same local Arial Portfolio fonts as the main website. */
+    @font-face {
+      font-family: "Arial Portfolio";
+      src: url("../../assets/arial-cyrillic.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Arial Portfolio";
+      src: url("../../assets/arial-cyrillic-bold.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+    }
+    :root { color-scheme: dark; font-family: "Arial Portfolio", Arial, sans-serif; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      background: #242424;
+      display: grid;
+      place-items: center;
+    }
+
+    .scan-screen {
+      position: relative;
+      width: min(393px, 100vw, calc((100dvh - 36px) * 0.4612676));
+      aspect-ratio: 393 / 852;
+      background: #5c5c5c;
+      overflow: hidden;
+      container-type: inline-size;
+      isolation: isolate;
+      color: #fff;
+    }
+    .status-bar { position: absolute; inset: 0 0 auto; height: 12cqw; pointer-events: none; }
+    .time {
+      position: absolute;
+      top: 5.38cqw;
+      left: 13.6cqw;
+      font-size: 4.10cqw;
+      line-height: 5.1cqw;
+      font-weight: 600;
+      letter-spacing: -0.035em;
+    }
+    .dynamic-island {
+      position: absolute;
+      top: 3.4cqw;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 33.3cqw;
+      height: 9.72cqw;
+      border-radius: 999px;
+      background: #000;
+    }
+    .status-icons {
+      position: absolute;
+      top: 6.15cqw;
+      right: 7.75cqw;
+      display: flex;
+      align-items: center;
+      gap: 1.45cqw;
+      height: 5.4cqw;
+    }
+    .status-icons svg { display: block; overflow: visible; }
+    .cellular { width: 4.85cqw; height: 3.85cqw; }
+    .wifi { width: 5.2cqw; height: 3.85cqw; }
+    .battery { width: 7.45cqw; height: 3.85cqw; }
+
+    .heading {
+      position: absolute;
+      top: 19.3cqw;
+      left: 4.42cqw;
+      margin: 0;
+      font-size: 6.16cqw;
+      font-weight: 700;
+      line-height: 1.17;
+      letter-spacing: -0.038em;
+    }
+
+    /* Placeholder for a future camera view: corners are individual open strokes. */
+    .scanner {
+      position: absolute;
+      width: 81.7cqw;
+      aspect-ratio: 1;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: #e5e5e5;
+      border-radius: 20%;
+    }
+    .scanner-corners {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      fill: none;
+      stroke: #fff;
+      stroke-width: 5.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      pointer-events: none;
+    }
+    .cancel {
+      position: absolute;
+      left: 4.35cqw;
+      right: 4.35cqw;
+      bottom: 11.2cqw;
+      height: 10.72cqw;
+      padding: 0;
+      border: 0;
+      border-radius: 2.05cqw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      background: rgb(255 255 255 / 20%);
+      color: #fff;
+      font-family: inherit;
+      font-size: 4.13cqw;
+      line-height: 1;
+      font-weight: 400;
+      text-align: center;
+      cursor: pointer;
+    }
+    .cancel:focus-visible { outline: 2px solid white; outline-offset: 3px; }
+    .cancel:active { background: rgb(255 255 255 / 27%); }
+    .home-indicator {
+      position: absolute;
+      left: 50%;
+      bottom: 2.15cqw;
+      width: 38.4cqw;
+      height: 1.25cqw;
+      border-radius: 100px;
+      background: #fff;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+    @media (max-width: 600px) {
+      body { display: block; }
+      .scan-screen { width: 100vw; height: 100dvh; aspect-ratio: auto; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="scan-screen" aria-label="CORE QR code scanning screen">
+    <div class="status-bar" aria-hidden="true">
+      <div class="time">9:41</div>
+      <div class="dynamic-island"></div>
+      <div class="status-icons">
+        <svg class="cellular" viewBox="0 0 20 16" aria-hidden="true">
+          <rect x="0" y="10" width="4" height="6" rx="1.7" fill="white" />
+          <rect x="5.5" y="7" width="4" height="9" rx="1.7" fill="white" />
+          <rect x="11" y="3.5" width="4" height="12.5" rx="1.7" fill="white" />
+          <rect x="16.5" y="0" width="3.5" height="16" rx="1.7" fill="white" />
+        </svg>
+        <svg class="wifi" viewBox="0 0 22 17" aria-hidden="true">
+          <path d="M1.3 5.7C7.6.1 14.3.1 20.7 5.7" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" />
+          <path d="M4.8 9C9 5.3 13 5.3 17.2 9" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" />
+          <path d="M8.3 12.4C10 11 12 11 13.7 12.4L11 15.6Z" fill="white" />
+        </svg>
+        <svg class="battery" viewBox="0 0 30 17" aria-hidden="true">
+          <rect x=".8" y="1" width="25" height="15" rx="4.2" fill="none" stroke="white" stroke-opacity=".85" stroke-width="1.25"/>
+          <rect x="2.8" y="3" width="21" height="11" rx="2.35" fill="white"/>
+          <path d="M27.1 5.8c1.2.5 1.8 1.5 1.8 2.7s-.6 2.2-1.8 2.7" fill="white" opacity=".75"/>
+        </svg>
+      </div>
+    </div>
+
+    <h1 class="heading">Scan QR</h1>
+    <div class="scanner" role="img" aria-label="Empty square QR-scanning viewfinder">
+      <svg class="scanner-corners" viewBox="0 0 320 320" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M76 3 H67 A64 64 0 0 0 3 67 V76" />
+        <path d="M244 3 H253 A64 64 0 0 1 317 67 V76" />
+        <path d="M3 244 V253 A64 64 0 0 0 67 317 H76" />
+        <path d="M244 317 H253 A64 64 0 0 0 317 253 V244" />
+      </svg>
+    </div>
+    <a class="cancel" href="../" aria-label="Cancel scanning">Cancel</a>
+    <div class="home-indicator" aria-hidden="true"></div>
+  </main>
+</body>
+</html>
