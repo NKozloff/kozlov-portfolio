@@ -4883,7 +4883,7 @@ a.core-intro__project-link {
   top:31.15%;
   width:81.6%;
   aspect-ratio:1;
-  background:#e5e5e5;
+  background:transparent;
   border-radius:20.5%;
 }
 .core-page .contact-app__camera-heading{position:absolute;left:4.267%;top:8.6%;font-size:5.6cqw;font-weight:700;line-height:1.2;color:#fff;margin:0;}
@@ -4907,12 +4907,13 @@ a.core-intro__project-link {
 .core-page .contact-app__sheet ~ .proxy-app__home-indicator{z-index:22;}
 .core-page .contact-app__camera .proxy-app__home-indicator{z-index:5;}
 
-/* v400 — scanning animation under translucent camera viewfinder */
+/* v402 — Keep the QR viewfinder perfectly clear: darken only the area
+   *outside* the rounded square, without a translucent layer over the photo.
+   Align the incoming handset's QR with the middle of the viewfinder. */
 .core-page .contact-app__camera-scene{position:absolute;inset:0;overflow:hidden;z-index:0;background:#5c5c5c;pointer-events:none}
-.core-page .contact-app__camera-scene:after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.1)}
-.core-page .contact-app__camera-actor{position:absolute;top:0;left:26.2%;height:100%;width:auto;max-width:none;object-fit:contain;opacity:0;transform:translateX(45%) scale(1.015);filter:blur(8px);will-change:opacity,transform,filter;transition:transform 1100ms cubic-bezier(.22,.61,.36,1),opacity 320ms ease,filter 780ms ease}
-.core-page .contact-app__camera.is-entering .contact-app__camera-actor,.core-page .contact-app__camera.is-locked .contact-app__camera-actor{opacity:1;transform:translateX(0) scale(1);filter:blur(0)}
-.core-page .contact-app__camera-window{background:rgba(229,229,229,.68);z-index:3}
+.core-page .contact-app__camera-actor{position:absolute;top:-3%;left:-46%;height:100%;width:auto;max-width:none;object-fit:contain;opacity:0;transform:translateX(45%) scale(1.015);will-change:opacity,transform;transition:transform 1100ms cubic-bezier(.22,.61,.36,1),opacity 320ms ease}
+.core-page .contact-app__camera.is-entering .contact-app__camera-actor,.core-page .contact-app__camera.is-locked .contact-app__camera-actor{opacity:1;transform:translateX(0) scale(1)}
+.core-page .contact-app__camera-window{background:transparent;box-shadow:0 0 0 100vmax rgba(0,0,0,.1);z-index:3;pointer-events:none}
 .core-page .contact-app__scan-frame{z-index:4}
 .core-page .contact-app__camera-heading,.core-page .contact-app__cancel{z-index:5}
 @media(prefers-reduced-motion:reduce){.core-page .contact-app__camera-actor{transition:none!important}}
