@@ -2089,13 +2089,15 @@
     startDemo();
   }
 
-  // Natural interaction also clears the transient New confirmation.
-  contactList.addEventListener('pointerdown', () => {
+  // Touching anywhere on Contacts dismisses New; a real user's gesture
+  // always takes priority over the self-running portfolio walkthrough.
+  function interruptContactDemo() {
     clearNewHighlight();
     if (demoRunning) takeManualControl();
-  });
-  contactList.addEventListener('touchstart', clearNewHighlight, { passive: true });
-  contactList.addEventListener('wheel', clearNewHighlight, { passive: true });
+  }
+  contacts.addEventListener('pointerdown', interruptContactDemo);
+  contactList.addEventListener('touchstart', interruptContactDemo, { passive: true });
+  contactList.addEventListener('wheel', interruptContactDemo, { passive: true });
 
   // Real pointer/keyboard interaction wins over the automatic walkthrough.
   add.addEventListener('click', () => {
