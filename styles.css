@@ -4840,3 +4840,46 @@ a.core-intro__project-link {
 @media (prefers-reduced-motion: reduce) {
   .core-page .notification-app__toast.is-arriving { animation: none !important; }
 }
+
+/* v394 — Contact QR flow: fixed 375×812 Figma scale, instant transitions. */
+.core-page #scenarios .contact-prototype-stage {
+  width:auto; margin-left:calc(0px - var(--page-space));margin-right:calc(0px - var(--page-space));
+  padding:var(--case-ui-top-space,clamp(24px,3.2rem,60px)) 20px;min-height:0;background:#e6e6e6;
+  display:flex;align-items:center;justify-content:center;
+}
+.core-page .contact-app{background:#494d32;color:#f5f5f5;}
+.core-page .contact-app [hidden]{display:none!important;}
+.core-page .contact-app__contacts,.core-page .contact-app__camera{position:absolute;inset:0;overflow:hidden;}
+.core-page .contact-app__local{position:absolute;top:7.635%;left:0;width:100%;height:2.956%;background:#52563c;font-size:4cqw;display:flex;align-items:center;justify-content:center;gap:2.133cqw;}
+.core-page .contact-app__local-dot{width:1.6cqw;height:1.6cqw;border-radius:50%;background:#a0d821;}
+.core-page .contact-app__title{position:absolute;top:13.55%;left:3.2%;font-size:5.6cqw;font-weight:700;line-height:1.2;}
+.core-page .contact-app__plus{position:absolute;right:3.2%;top:13.3%;width:6.933cqw;height:6.933cqw;border:0;padding:0;background:transparent;color:white;cursor:pointer;}
+.core-page .contact-app__plus::before,.core-page .contact-app__plus::after{content:"";display:block;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:currentColor;}
+.core-page .contact-app__plus::before{width:5.333cqw;height:.533cqw;}
+.core-page .contact-app__plus::after{height:5.333cqw;width:.533cqw;}
+.core-page .contact-app__list{position:absolute;top:18.72%;bottom:9.5%;left:0;right:0;overflow:hidden;}
+.core-page .contact-app__letter{height:10.667cqw;padding:3cqw 3.2cqw 0;color:#b6b8ad;font-size:3.2cqw;font-weight:500;}
+.core-page .contact-app__name{height:10.667cqw;padding:3.2cqw;display:flex;align-items:center;color:#f5f5f5;font-size:4cqw;font-weight:700;}
+.core-page .contact-app__tabs{position:absolute;bottom:4.2%;height:10.345%;width:100%;display:flex;align-items:flex-start;background:rgba(82,86,60,.73);backdrop-filter:blur(16px);padding:1.6cqw 2.133cqw 0;}
+.core-page .contact-app__tab{flex:1;display:flex;justify-content:center;align-items:center;height:12.8cqw;}
+.core-page .contact-app__tab svg{width:7.467cqw;height:7.467cqw;fill:none;stroke:#b9bbad;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.core-page .contact-app__tab.is-active svg{stroke:#f5f5f5;}
+.core-page .contact-app__scrim{position:absolute;inset:0;background:rgba(0,0,0,.3);backdrop-filter:blur(3px);z-index:20;}
+.core-page .contact-app__sheet{position:absolute;z-index:21;left:0;right:0;top:38.177%;bottom:0;background:#494d32;border-radius:4.267cqw 4.267cqw 0 0;padding:0 3.2cqw;}
+.core-page .contact-app__sheet-handle{position:absolute;top:1.6cqw;left:calc(50% - 2.667cqw);width:5.333cqw;height:1.067cqw;border-radius:4cqw;background:#8e917e;}
+.core-page .contact-app__sheet h3{position:absolute;top:6.4cqw;left:3.2cqw;margin:0;color:#f5f5f5;font-size:5.6cqw;line-height:1.2;font-weight:700;}
+.core-page .contact-app__qr-art{position:absolute;width:70.4cqw;height:70.4cqw;top:25.867cqw;left:calc(50% - 35.2cqw);display:block;shape-rendering:crispEdges;}
+.core-page .contact-app__qr-caption{position:absolute;top:100.533cqw;left:0;width:100%;text-align:center;color:#bfc1b7;font-size:4cqw;}
+.core-page .contact-app__scan-button{position:absolute;left:3.2cqw;right:3.2cqw;bottom:11.2cqw;width:calc(100% - 6.4cqw);height:10.667cqw;background:#959923;border:0;border-radius:2.133cqw;color:white;font:inherit;font-size:4cqw;display:flex;align-items:center;justify-content:center;gap:2.4cqw;cursor:pointer;}
+.core-page .contact-app__scan-button svg{height:5.333cqw;width:5.333cqw;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;}
+.core-page .contact-app__camera{background:#555653;}
+.core-page .contact-app__camera-scene{position:absolute;inset:0;background:linear-gradient(110deg,#858582 0%,#757573 43%,#535552 43%,#494d4c 100%);}
+.core-page .contact-app__camera-wall{position:absolute;inset:0 0 20%;background:linear-gradient(90deg,rgba(20,25,24,.17),transparent 40%,rgba(20,24,21,.3));}
+.core-page .contact-app__camera-object{position:absolute;left:8%;top:20%;height:53%;width:38%;border-radius:3% 5% 0 0;background:linear-gradient(90deg,#60635c,#86887e 70%,#73776b);filter:blur(3px);}
+.core-page .contact-app__camera-surface{position:absolute;bottom:0;left:0;right:0;height:20%;background:#464a46;}
+.core-page .contact-app__camera-tint{position:absolute;inset:0;background:rgba(0,0,0,.28);}
+.core-page .contact-app__camera-heading{position:absolute;left:4.267%;top:8.6%;font-size:5.6cqw;font-weight:700;line-height:1.2;color:#fff;margin:0;}
+.core-page .contact-app__scan-frame{position:absolute;width:81.6%;height:auto;left:9.2%;top:31.15%;}
+.core-page .contact-app__cancel{position:absolute;bottom:5.17%;left:4.267%;right:4.267%;width:91.466%;height:4.926%;background:rgba(33,33,33,.48);border:0;border-radius:2.133cqw;color:#fff;font:inherit;font-size:3.733cqw;cursor:pointer;}
+.core-page .contact-app__sheet ~ .proxy-app__home-indicator{z-index:22;}
+.core-page .contact-app__camera .proxy-app__home-indicator{z-index:5;}
