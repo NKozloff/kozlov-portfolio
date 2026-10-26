@@ -2052,10 +2052,12 @@
     const targetTop = contactList.scrollTop +
       targetBounds.top + targetBounds.height / 2 -
       deviceBounds.top - deviceBounds.height / 2;
+    // Highlight before scrolling: Sasha is already marked New the first
+    // moment its row enters the visible viewport, not only at the end.
+    clearNewHighlight();
+    highlightedRow = row;
+    row.classList.add('is-highlighted');
     animateListScroll(targetTop, 700, () => {
-      clearNewHighlight();
-      highlightedRow = row;
-      row.classList.add('is-highlighted');
       if (!auto || !demoRunning || manual || !inView || document.hidden) return;
       demoTimer = window.setTimeout(() => {
         pointCursor('createdContact', true);
