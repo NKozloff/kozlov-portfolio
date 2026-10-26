@@ -5031,3 +5031,95 @@ a.core-intro__project-link {
 .core-page .contact-app__found .proxy-app__home-indicator {
   z-index:3;
 }
+
+/* v414 — Animated iOS dark keyboard for the Contact found walkthrough. */
+.core-page .contact-app__found-name {
+  caret-color:#959923;
+}
+.core-page .contact-app__found-form {
+  z-index:5;
+  transition:transform 270ms cubic-bezier(.22,.72,.26,1);
+}
+.core-page .contact-app__found.is-keyboard-open .contact-app__found-form {
+  transform:translateY(-58cqw);
+}
+.core-page .contact-app__found.is-keyboard-open .contact-app__create-button {
+  opacity:0;
+  pointer-events:none;
+}
+.core-page .contact-app__create-button {
+  transition:opacity 180ms ease;
+}
+.core-page .contact-app__keyboard {
+  position:absolute;left:0;right:0;bottom:0;
+  height:76cqw;
+  z-index:6;
+  display:flex;flex-direction:column;
+  gap:1.73cqw;
+  background:#25262c;
+  padding:0 1.6cqw 6.667cqw;
+  box-sizing:border-box;
+  transform:translateY(100%);
+  visibility:hidden;
+  pointer-events:none;
+  transition:transform 270ms cubic-bezier(.22,.72,.26,1),visibility 0s linear 270ms;
+}
+.core-page .contact-app__found.is-keyboard-open .contact-app__keyboard {
+  transform:translateY(0);
+  visibility:visible;
+  transition:transform 270ms cubic-bezier(.22,.72,.26,1),visibility 0s;
+}
+.core-page .contact-app__keyboard-toolbar {
+  flex:none;height:9.333cqw;
+  display:flex;align-items:center;justify-content:space-between;
+  color:#b9bbc3;padding:0 3.2cqw;
+  font-size:4.267cqw;
+}
+.core-page .contact-app__keyboard-toolbar-icon {min-width:8cqw;text-align:center;}
+.core-page .contact-app__keyboard-suggestion {
+  align-self:center;width:1.067cqw;height:1.067cqw;
+  border-radius:50%;background:#747681;
+}
+.core-page .contact-app__keyboard-row {
+  display:flex;flex:none;gap:1.067cqw;
+  justify-content:center;height:10.667cqw;
+}
+.core-page .contact-app__keyboard-row--offset {padding:0 3.733cqw;}
+.core-page .contact-app__key {
+  flex:1;min-width:0;max-width:10.133cqw;
+  display:flex;align-items:center;justify-content:center;
+  height:100%;border-radius:1.333cqw;
+  color:#fff;background:#60626b;
+  box-shadow:0 1px 0 #111319;
+  font-size:5.6cqw;line-height:1;
+  font-weight:400;user-select:none;
+}
+.core-page .contact-app__key.is-tapped {
+  background:#d5d6dc;color:#202127;
+}
+.core-page .contact-app__key--control,
+.core-page .contact-app__key--special {
+  background:#3d3f49;color:#fff;
+}
+.core-page .contact-app__key--control {max-width:11.2cqw;}
+.core-page .contact-app__keyboard-row--bottom {margin-top:1.067cqw;}
+.core-page .contact-app__key--special {
+  font-size:3.733cqw;max-width:12.8cqw;
+}
+.core-page .contact-app__key--space {
+  max-width:none;flex:4;
+  background:#60626b;font-size:3.733cqw;
+}
+.core-page .contact-app__key--done {
+  flex:1.5;max-width:17.6cqw;background:#69718b;
+  font-size:3.467cqw;
+}
+.core-page .contact-app__found .proxy-app__home-indicator {z-index:7;}
+.core-page .contact-app > .proxy-app__demo-cursor.is-moving.is-typing {
+  transition:left 110ms ease-out,top 110ms ease-out;
+}
+@media (prefers-reduced-motion:reduce) {
+  .core-page .contact-app__found-form,
+  .core-page .contact-app__keyboard,
+  .core-page .contact-app__create-button {transition:none!important}
+}
