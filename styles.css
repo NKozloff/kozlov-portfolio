@@ -4969,11 +4969,11 @@ a.core-intro__project-link {
 .core-page .contact-app__sheet-surface {
   background:#494d32; border-radius:4.267cqw 4.267cqw 0 0;
   transition:transform 430ms cubic-bezier(.22,.72,.26,1),
-    top 560ms cubic-bezier(.22,.72,.26,1), border-radius 560ms ease;
+    top 860ms cubic-bezier(.22,.72,.26,1), border-radius 860ms ease;
 }
 .core-page .contact-app__sheet-content {
   padding:0 3.2cqw; opacity:1; pointer-events:auto;
-  transition:transform 430ms cubic-bezier(.22,.72,.26,1), opacity 190ms ease;
+  transition:transform 430ms cubic-bezier(.22,.72,.26,1), opacity 250ms ease;
 }
 .core-page .contact-app__sheet.is-open .contact-app__sheet-surface,
 .core-page .contact-app__sheet.is-open .contact-app__sheet-content { transform:translateY(0); }

@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=409-static-sheet-content" />
+<link rel="stylesheet" href="../styles.css?v=410-handle-860ms" />
   </head>
   <body class="core-page core-page--condensed typography-only">
     <main class="core-intro" id="cover">
@@ -766,9 +766,10 @@
       </div>
       <div class="contact-app__scrim" hidden></div>
       <div class="contact-app__sheet" data-contact-sheet role="dialog" aria-modal="true" aria-label="Add contact by scanning each other's QR" hidden>
-        <div class="contact-app__sheet-surface" aria-hidden="true"></div>
+        <div class="contact-app__sheet-surface" aria-hidden="true">
+          <div class="contact-app__sheet-handle"></div>
+        </div>
         <div class="contact-app__sheet-content">
-          <div class="contact-app__sheet-handle" aria-hidden="true"></div>
         <h3>Add contact by scanning<br>each other’s QR</h3>
         <img class="contact-app__qr-art" src="../assets/core-contact-qr-v398.svg" width="264" height="264" alt="QR-код для добавления контакта" draggable="false" />
         <div class="contact-app__qr-caption">Your QR-code</div>
@@ -1759,8 +1760,9 @@
     // Only the background expands: QR content fades at its fixed position.
     contacts.classList.add('is-switching');
     sheet.classList.add('is-expanding');
-    // The transitionend signal is exact; timer handles interrupted CSS events.
-    transitionTimer = window.setTimeout(finishCamera, 650);
+    // Transitionend at 860ms reveals the scanner at the top edge; the
+    // 960ms fallback handles browsers that suppress this event.
+    transitionTimer = window.setTimeout(finishCamera, 960);
   }
 
   sheetSurface.addEventListener('transitionend', event => {
