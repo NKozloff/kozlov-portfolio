@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=413-contact-video-color" />
+<link rel="stylesheet" href="../styles.css?v=414-contact-keyboard-demo" />
   </head>
   <body class="core-page core-page--condensed typography-only">
     <main class="core-intro" id="cover">
@@ -809,6 +809,29 @@
         <input class="contact-app__found-name" type="text" name="contactName" placeholder="Name" aria-label="Contact name" maxlength="70" required />
         <button class="contact-app__create-button" type="submit">Create contact</button>
       </form>
+      <div class="contact-app__keyboard" aria-hidden="true">
+        <div class="contact-app__keyboard-toolbar">
+          <span class="contact-app__keyboard-toolbar-icon">‹</span>
+          <span class="contact-app__keyboard-suggestion"></span>
+          <span class="contact-app__keyboard-toolbar-icon">•••</span>
+        </div>
+        <div class="contact-app__keyboard-row">
+          <span class="contact-app__key" data-key="q">Q</span><span class="contact-app__key" data-key="w">W</span><span class="contact-app__key" data-key="e">E</span><span class="contact-app__key" data-key="r">R</span><span class="contact-app__key" data-key="t">T</span><span class="contact-app__key" data-key="y">Y</span><span class="contact-app__key" data-key="u">U</span><span class="contact-app__key" data-key="i">I</span><span class="contact-app__key" data-key="o">O</span><span class="contact-app__key" data-key="p">P</span>
+        </div>
+        <div class="contact-app__keyboard-row contact-app__keyboard-row--offset">
+          <span class="contact-app__key" data-key="a">A</span><span class="contact-app__key" data-key="s">S</span><span class="contact-app__key" data-key="d">D</span><span class="contact-app__key" data-key="f">F</span><span class="contact-app__key" data-key="g">G</span><span class="contact-app__key" data-key="h">H</span><span class="contact-app__key" data-key="j">J</span><span class="contact-app__key" data-key="k">K</span><span class="contact-app__key" data-key="l">L</span>
+        </div>
+        <div class="contact-app__keyboard-row">
+          <span class="contact-app__key contact-app__key--control">⇧</span><span class="contact-app__key" data-key="z">Z</span><span class="contact-app__key" data-key="x">X</span><span class="contact-app__key" data-key="c">C</span><span class="contact-app__key" data-key="v">V</span><span class="contact-app__key" data-key="b">B</span><span class="contact-app__key" data-key="n">N</span><span class="contact-app__key" data-key="m">M</span><span class="contact-app__key contact-app__key--control">⌫</span>
+        </div>
+        <div class="contact-app__keyboard-row contact-app__keyboard-row--bottom">
+          <span class="contact-app__key contact-app__key--special">123</span>
+          <span class="contact-app__key contact-app__key--special">☻</span>
+          <span class="contact-app__key contact-app__key--space">space</span>
+          <span class="contact-app__key contact-app__key--special">.</span>
+          <span class="contact-app__key contact-app__key--done">done</span>
+        </div>
+      </div>
       <div class="proxy-app__home-indicator" aria-hidden="true"></div>
     </section>
     <img class="proxy-app__demo-cursor" src="../assets/core-proxy-demo-cursor.svg" alt="" aria-hidden="true" draggable="false" />
@@ -1655,6 +1678,8 @@
   const foundVideo = stage.querySelector('.contact-app__found-video');
   const foundForm = stage.querySelector('.contact-app__found-form');
   const foundName = stage.querySelector('.contact-app__found-name');
+  const createButton = stage.querySelector('.contact-app__create-button');
+  const keyboard = stage.querySelector('.contact-app__keyboard');
   const add = stage.querySelector('.contact-app__plus');
   const sheet = stage.querySelector('[data-contact-sheet]');
   const scrim = stage.querySelector('.contact-app__scrim');
@@ -1668,6 +1693,8 @@
   let foundTimer = null;
   let demoTimer = null;
   let demoIndex = 0;
+  let foundDemoIndex = 0;
+  let demoSubmitting = false;
   let demoRunning = false;
   let inView = false;
   let manual = false;
@@ -1677,7 +1704,14 @@
   const cursorPositions = {
     rest: { x: 218, y: 350 },
     plus: { x: 321, y: 101 },
-    scan: { x: 159, y: 729 }
+    scan: { x: 159, y: 729 },
+    foundRest: { x: 218, y: 350 },
+    name: { x: 174, y: 693 },
+    s: { x: 74, y: 636 },
+    a: { x: 37, y: 636 },
+    h: { x: 225, y: 636 },
+    dismiss: { x: 288, y: 326 },
+    create: { x: 183, y: 748 }
   };
 
   function pointCursor(where, moving = false, visible = true) {
@@ -1712,6 +1746,9 @@
     foundVideo.currentTime = 0;
     const playback = foundVideo.play();
     if (playback && typeof playback.catch === 'function') playback.catch(() => {});
+    if (demoRunning && !manual && inView && !document.hidden && !reducedMotion.matches) {
+      startFoundDemo();
+    }
   }
 
   // The handset motion remains 1100ms. Its actual transform completion,
@@ -1772,6 +1809,7 @@
     if (!camera.hidden) return;
     contacts.hidden = true;
     found.hidden = true;
+    hideKeyboard();
     foundVideo.pause();
     hideSheet();
     camera.hidden = false;
@@ -1782,6 +1820,7 @@
   function backToContacts(focus = true) {
     stopScan();
     foundVideo.pause();
+    hideKeyboard();
     camera.hidden = true;
     found.hidden = true;
     contacts.hidden = false;
@@ -1789,10 +1828,23 @@
     showSheet(false, focus);
   }
 
+  function hideKeyboard() {
+    found.classList.remove('is-keyboard-open');
+    keyboard.querySelectorAll('.contact-app__key.is-tapped').forEach(key => key.classList.remove('is-tapped'));
+    foundName.blur();
+    cursor.classList.remove('is-typing');
+  }
+
+  function showKeyboard() {
+    found.classList.add('is-keyboard-open');
+    foundName.focus({ preventScroll: true });
+  }
+
   function stopDemo() {
     demoRunning = false;
     window.clearTimeout(demoTimer);
     demoTimer = null;
+    hideKeyboard();
     pointCursor('rest', false, false);
   }
 
@@ -1801,26 +1853,80 @@
     stopDemo();
   }
 
-  // Each step starts immediately, then waits for its duration before the next.
-  // The cursor disappears immediately after Scan and stays hidden throughout
-  // the existing camera animation; the completed sequence then loops.
+  const typingName = 'Sasha';
+  const nameDemoKeys = ['S', 'a', 's', 'h', 'a'];
+
+  function pressDemoKey(letter) {
+    keyboard.querySelectorAll('.contact-app__key.is-tapped').forEach(key => key.classList.remove('is-tapped'));
+    const key = keyboard.querySelector('[data-key="' + letter.toLowerCase() + '"]');
+    if (key) key.classList.add('is-tapped');
+    pointCursor(letter.toLowerCase(), true);
+    foundName.value += letter;
+    foundName.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+
+  // The iOS-styled keyboard is a visual simulation for the timed walkthrough;
+  // actual user focus still uses the visitor's native keyboard.
+  const foundDemoFrames = [
+    { duration: 260, run() { pointCursor('foundRest'); } },
+    { duration: 940, run() { pointCursor('name', true); } },
+    { duration: 320, run() { showKeyboard(); } },
+    { duration: 150, run() { cursor.classList.add('is-typing'); } },
+    ...nameDemoKeys.map(letter => ({
+      duration: 155,
+      run() { pressDemoKey(letter); }
+    })),
+    { duration: 140, run() {
+      keyboard.querySelectorAll('.contact-app__key.is-tapped').forEach(key => key.classList.remove('is-tapped'));
+      cursor.classList.remove('is-typing');
+      pointCursor('dismiss', true);
+    } },
+    { duration: 950, run() { hideKeyboard(); } },
+    { duration: 980, run() { pointCursor('create', true); } },
+    { duration: null, run() {
+      demoSubmitting = true;
+      createButton.click();
+      demoSubmitting = false;
+      if (demoRunning) stopDemo();
+    } }
+  ];
+
+  function nextFoundDemoFrame() {
+    if (!demoRunning || manual || !inView || document.hidden || found.hidden) return;
+    const frame = foundDemoFrames[foundDemoIndex++];
+    if (!frame) return;
+    frame.run();
+    if (frame.duration !== null) {
+      demoTimer = window.setTimeout(nextFoundDemoFrame, frame.duration);
+    }
+  }
+
+  function startFoundDemo() {
+    foundName.value = '';
+    foundDemoIndex = 0;
+    nextFoundDemoFrame();
+  }
+
+  // The first four steps keep their established timings. After Scan, the
+  // resulting animation hands control to the name-entry sequence once.
   const demoFrames = [
     { duration: 800, run() { backToContacts(false); pointCursor('rest'); } },
     { duration: 950, run() { pointCursor('plus', true); } },
     { duration: 750, run() { showSheet(true, false); } },
     { duration: 950, run() { pointCursor('scan', true); } },
-    { duration: 5200, run() {
+    { duration: null, run() {
       enterCamera(false);
       pointCursor('scan', false, false);
     } }
   ];
 
   function nextDemoFrame() {
-    if (!demoRunning || !inView || document.hidden) return;
-    const frame = demoFrames[demoIndex];
+    if (!demoRunning || !inView || document.hidden || demoIndex >= demoFrames.length) return;
+    const frame = demoFrames[demoIndex++];
     frame.run();
-    demoIndex = (demoIndex + 1) % demoFrames.length;
-    demoTimer = window.setTimeout(nextDemoFrame, frame.duration);
+    if (frame.duration !== null) {
+      demoTimer = window.setTimeout(nextDemoFrame, frame.duration);
+    }
   }
 
   function startDemo() {
@@ -1854,8 +1960,24 @@
     backToContacts();
   });
 
+  foundName.addEventListener('pointerdown', () => {
+    if (demoRunning) takeManualControl();
+  });
+  createButton.addEventListener('pointerdown', () => {
+    if (demoRunning) takeManualControl();
+  });
+  found.addEventListener('click', event => {
+    if (event.target === found) foundName.blur();
+  });
+
   foundForm.addEventListener('submit', event => {
     event.preventDefault();
+    if (demoSubmitting) {
+      // Stop at the Create contact tap. The following success screen is
+      // intentionally left for the next iteration of this prototype.
+      stopDemo();
+      return;
+    }
     const name = foundName.value.trim();
     if (!name) {
       foundName.focus({ preventScroll: true });
