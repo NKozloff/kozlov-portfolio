@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=408-contact-sheet-morph" />
+<link rel="stylesheet" href="../styles.css?v=409-static-sheet-content" />
   </head>
   <body class="core-page core-page--condensed typography-only">
     <main class="core-intro" id="cover">
@@ -766,11 +766,14 @@
       </div>
       <div class="contact-app__scrim" hidden></div>
       <div class="contact-app__sheet" data-contact-sheet role="dialog" aria-modal="true" aria-label="Add contact by scanning each other's QR" hidden>
-        <div class="contact-app__sheet-handle" aria-hidden="true"></div>
+        <div class="contact-app__sheet-surface" aria-hidden="true"></div>
+        <div class="contact-app__sheet-content">
+          <div class="contact-app__sheet-handle" aria-hidden="true"></div>
         <h3>Add contact by scanning<br>each other’s QR</h3>
         <img class="contact-app__qr-art" src="../assets/core-contact-qr-v398.svg" width="264" height="264" alt="QR-код для добавления контакта" draggable="false" />
         <div class="contact-app__qr-caption">Your QR-code</div>
         <button class="contact-app__scan-button" type="button"><img class="contact-app__scan-icon" src="../assets/core-contact-scan-icon-v398.svg" alt="" width="22" height="22" draggable="false" />Scan</button>
+        </div>
       </div>
       <div class="proxy-app__home-indicator" aria-hidden="true"></div>
     </section>
@@ -1630,6 +1633,7 @@
   const camera = stage.querySelector('[data-contact-state="scan"]');
   const add = stage.querySelector('.contact-app__plus');
   const sheet = stage.querySelector('[data-contact-sheet]');
+  const sheetSurface = sheet.querySelector('.contact-app__sheet-surface');
   const scrim = stage.querySelector('.contact-app__scrim');
   const scan = stage.querySelector('.contact-app__scan-button');
   const cancel = stage.querySelector('.contact-app__cancel');
@@ -1671,21 +1675,26 @@
   }
 
   // Keep the previously approved handset/QR approach animation unchanged.
-  function playScan() {
+  function playScan(immediate = false) {
     stopScan();
     if (reducedMotion.matches) {
       camera.classList.add('is-entering', 'is-locked');
       return;
     }
     void camera.offsetWidth;
-    enterTimer = window.setTimeout(() => camera.classList.add('is-entering'), 650);
-    lockTimer = window.setTimeout(() => camera.classList.add('is-locked'), 1700);
+    if (immediate) {
+      camera.classList.add('is-entering');
+      lockTimer = window.setTimeout(() => camera.classList.add('is-locked'), 1100);
+    } else {
+      enterTimer = window.setTimeout(() => camera.classList.add('is-entering'), 650);
+      lockTimer = window.setTimeout(() => camera.classList.add('is-locked'), 1700);
+    }
   }
 
   // The QR sheet uses the same element for its initial slide-up and
   // its second, full-screen expansion into the scanner.
   function hideSheet() {
-    sheet.classList.remove('is-open', 'is-expanding', 'is-revealing');
+    sheet.classList.remove('is-open', 'is-expanding');
     scrim.classList.remove('is-open');
     sheet.hidden = true;
     scrim.hidden = true;
@@ -1695,6 +1704,7 @@
 
   function showSheet(visible, focus = true) {
     if (!visible) {
+      stopTransition();
       hideSheet();
       if (focus) add.focus({ preventScroll: true });
       return;
@@ -1703,7 +1713,7 @@
       sheet.hidden = false;
       scrim.hidden = false;
       // Establish the translated starting point before easing the sheet in.
-      void sheet.offsetHeight;
+      void sheetSurface.offsetHeight;
       sheet.classList.add('is-open');
       scrim.classList.add('is-open');
     }
@@ -1711,26 +1721,25 @@
     if (focus) scan.focus({ preventScroll: true });
   }
 
+  let focusOnCamera = true;
+
   function stopTransition() {
     window.clearTimeout(transitionTimer);
     transitionTimer = null;
     transitioning = false;
-    camera.classList.remove('is-preparing');
-    camera.inert = false;
     contacts.classList.remove('is-switching');
     scan.disabled = false;
   }
 
-  function finishCamera(focus) {
+  function finishCamera() {
+    if (!transitioning) return;
+    stopTransition();
+    // Nothing from Scan QR is visible until the curtain reaches the top.
     contacts.hidden = true;
     hideSheet();
-    contacts.classList.remove('is-switching');
-    camera.classList.remove('is-preparing');
-    camera.inert = false;
-    transitioning = false;
-    transitionTimer = null;
-    playScan();
-    if (focus) cancel.focus({ preventScroll: true });
+    camera.hidden = false;
+    playScan(true);
+    if (focusOnCamera) cancel.focus({ preventScroll: true });
   }
 
   function enterCamera(focus = true) {
@@ -1740,26 +1749,25 @@
       contacts.hidden = true;
       hideSheet();
       camera.hidden = false;
-      playScan();
+      playScan(true);
       if (focus) cancel.focus({ preventScroll: true });
       return;
     }
-
     transitioning = true;
+    focusOnCamera = focus;
     scan.disabled = true;
-    // Prepare Scan QR underneath, while the original sheet still covers it.
-    camera.hidden = false;
-    camera.inert = true;
-    camera.classList.add('is-preparing');
+    // Only the background expands: QR content fades at its fixed position.
     contacts.classList.add('is-switching');
     sheet.classList.add('is-expanding');
-
-    // 560ms to reach the top; only then dissolve the expanded sheet.
-    transitionTimer = window.setTimeout(() => {
-      sheet.classList.add('is-revealing');
-      transitionTimer = window.setTimeout(() => finishCamera(focus), 220);
-    }, 560);
+    // The transitionend signal is exact; timer handles interrupted CSS events.
+    transitionTimer = window.setTimeout(finishCamera, 650);
   }
+
+  sheetSurface.addEventListener('transitionend', event => {
+    if (event.target === sheetSurface && event.propertyName === 'top') {
+      finishCamera();
+    }
+  });
 
   function backToContacts(focus = true) {
     stopTransition();
