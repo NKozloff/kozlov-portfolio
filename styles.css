@@ -4871,7 +4871,8 @@ a.core-intro__project-link {
 .core-page .contact-app__qr-art{position:absolute;width:70.4cqw;height:70.4cqw;top:25.867cqw;left:calc(50% - 35.2cqw);display:block;shape-rendering:crispEdges;}
 .core-page .contact-app__qr-caption{position:absolute;top:100.533cqw;left:0;width:100%;text-align:center;color:#bfc1b7;font-size:4cqw;}
 .core-page .contact-app__scan-button{position:absolute;left:3.2cqw;right:3.2cqw;bottom:11.2cqw;width:calc(100% - 6.4cqw);height:10.667cqw;background:#959923;border:0;border-radius:2.133cqw;color:white;font:inherit;font-size:4cqw;display:flex;align-items:center;justify-content:center;gap:2.4cqw;cursor:pointer;}
-.core-page .contact-app__scan-button svg{height:5.333cqw;width:5.333cqw;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;}
+/* v398 — Use the supplied original scan icon at 22px on a 375px screen. */
+.core-page .contact-app__scan-icon{display:block;width:5.866667cqw;height:5.866667cqw;object-fit:contain;max-width:none;flex:none;}
 .core-page .contact-app__camera{background:#555653;}
 .core-page .contact-app__camera-scene{position:absolute;inset:0;background:linear-gradient(110deg,#858582 0%,#757573 43%,#535552 43%,#494d4c 100%);}
 .core-page .contact-app__camera-wall{position:absolute;inset:0 0 20%;background:linear-gradient(90deg,rgba(20,25,24,.17),transparent 40%,rgba(20,24,21,.3));}
