@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=407-contact-statusbar" />
+<link rel="stylesheet" href="../styles.css?v=408-contact-sheet-morph" />
   </head>
   <body class="core-page core-page--condensed typography-only">
     <main class="core-intro" id="cover">
@@ -1638,6 +1638,8 @@
 
   let enterTimer = null;
   let lockTimer = null;
+  let transitionTimer = null;
+  let transitioning = false;
   let demoTimer = null;
   let demoIndex = 0;
   let demoRunning = false;
@@ -1680,26 +1682,87 @@
     lockTimer = window.setTimeout(() => camera.classList.add('is-locked'), 1700);
   }
 
-  function showSheet(visible, focus = true) {
-    sheet.hidden = !visible;
-    scrim.hidden = !visible;
-    add.setAttribute('aria-expanded', String(visible));
-    if (focus) {
-      (visible ? scan : add).focus({ preventScroll: true });
-    }
-  }
-
-  function enterCamera(focus = true) {
+  // The QR sheet uses the same element for its initial slide-up and
+  // its second, full-screen expansion into the scanner.
+  function hideSheet() {
+    sheet.classList.remove('is-open', 'is-expanding', 'is-revealing');
+    scrim.classList.remove('is-open');
     sheet.hidden = true;
     scrim.hidden = true;
-    contacts.hidden = true;
-    camera.hidden = false;
+    scan.disabled = false;
     add.setAttribute('aria-expanded', 'false');
+  }
+
+  function showSheet(visible, focus = true) {
+    if (!visible) {
+      hideSheet();
+      if (focus) add.focus({ preventScroll: true });
+      return;
+    }
+    if (sheet.hidden) {
+      sheet.hidden = false;
+      scrim.hidden = false;
+      // Establish the translated starting point before easing the sheet in.
+      void sheet.offsetHeight;
+      sheet.classList.add('is-open');
+      scrim.classList.add('is-open');
+    }
+    add.setAttribute('aria-expanded', 'true');
+    if (focus) scan.focus({ preventScroll: true });
+  }
+
+  function stopTransition() {
+    window.clearTimeout(transitionTimer);
+    transitionTimer = null;
+    transitioning = false;
+    camera.classList.remove('is-preparing');
+    camera.inert = false;
+    contacts.classList.remove('is-switching');
+    scan.disabled = false;
+  }
+
+  function finishCamera(focus) {
+    contacts.hidden = true;
+    hideSheet();
+    contacts.classList.remove('is-switching');
+    camera.classList.remove('is-preparing');
+    camera.inert = false;
+    transitioning = false;
+    transitionTimer = null;
     playScan();
     if (focus) cancel.focus({ preventScroll: true });
   }
 
+  function enterCamera(focus = true) {
+    if (transitioning || !camera.hidden) return;
+    add.setAttribute('aria-expanded', 'false');
+    if (reducedMotion.matches) {
+      contacts.hidden = true;
+      hideSheet();
+      camera.hidden = false;
+      playScan();
+      if (focus) cancel.focus({ preventScroll: true });
+      return;
+    }
+
+    transitioning = true;
+    scan.disabled = true;
+    // Prepare Scan QR underneath, while the original sheet still covers it.
+    camera.hidden = false;
+    camera.inert = true;
+    camera.classList.add('is-preparing');
+    contacts.classList.add('is-switching');
+    sheet.classList.add('is-expanding');
+
+    // 560ms to reach the top; only then dissolve the expanded sheet.
+    transitionTimer = window.setTimeout(() => {
+      sheet.classList.add('is-revealing');
+      transitionTimer = window.setTimeout(() => finishCamera(focus), 220);
+    }, 560);
+  }
+
   function backToContacts(focus = true) {
+    stopTransition();
     stopScan();
     camera.hidden = true;
     contacts.hidden = false;
