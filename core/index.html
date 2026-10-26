@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=414-contact-keyboard-demo" />
+<link rel="stylesheet" href="../styles.css?v=415-keyboard-input-spacing" />
   </head>
   <body class="core-page core-page--condensed typography-only">
     <main class="core-intro" id="cover">
@@ -1692,6 +1692,7 @@
   let lockTimer = null;
   let foundTimer = null;
   let demoTimer = null;
+  let keyTimer = null;
   let demoIndex = 0;
   let foundDemoIndex = 0;
   let demoSubmitting = false;
@@ -1843,7 +1844,9 @@
   function stopDemo() {
     demoRunning = false;
     window.clearTimeout(demoTimer);
+    window.clearTimeout(keyTimer);
     demoTimer = null;
+    keyTimer = null;
     hideKeyboard();
     pointCursor('rest', false, false);
   }
@@ -1857,11 +1860,17 @@
 
   function pressDemoKey(letter) {
     keyboard.querySelectorAll('.contact-app__key.is-tapped').forEach(key => key.classList.remove('is-tapped'));
-    const key = keyboard.querySelector('[data-key="' + letter.toLowerCase() + '"]');
-    if (key) key.classList.add('is-tapped');
+    // Move first; only press/insert after the 110ms cursor travel completes.
     pointCursor(letter.toLowerCase(), true);
-    foundName.value += letter;
-    foundName.dispatchEvent(new Event('input', { bubbles: true }));
+    window.clearTimeout(keyTimer);
+    keyTimer = window.setTimeout(() => {
+      keyTimer = null;
+      if (!demoRunning || manual || document.hidden || found.hidden) return;
+      const key = keyboard.querySelector('[data-key="' + letter.toLowerCase() + '"]');
+      if (key) key.classList.add('is-tapped');
+      foundName.value += letter;
+      foundName.dispatchEvent(new Event('input', { bubbles: true }));
+    }, 140);
   }
 
   // The iOS-styled keyboard is a visual simulation for the timed walkthrough;
@@ -1872,7 +1881,7 @@
     { duration: 320, run() { showKeyboard(); } },
     { duration: 150, run() { cursor.classList.add('is-typing'); } },
     ...nameDemoKeys.map(letter => ({
-      duration: 155,
+      duration: 235,
       run() { pressDemoKey(letter); }
     })),
     { duration: 140, run() {

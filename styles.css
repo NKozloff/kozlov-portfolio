@@ -5018,8 +5018,11 @@ a.core-intro__project-link {
 .core-page .contact-app__found-name::placeholder {
   color:#b9bca5;opacity:1;
 }
+.core-page .contact-app__found-name:focus,
 .core-page .contact-app__found-name:focus-visible {
-  outline:2px solid #f5f5f5;outline-offset:2px;
+  /* Keep only the lime caret on focus; no highlighted input stroke. */
+  outline:none;
+  box-shadow:none;
 }
 .core-page .contact-app__create-button {
   background:#959923;color:#fff;cursor:pointer;
@@ -5041,7 +5044,7 @@ a.core-intro__project-link {
   transition:transform 270ms cubic-bezier(.22,.72,.26,1);
 }
 .core-page .contact-app__found.is-keyboard-open .contact-app__found-form {
-  transform:translateY(-58cqw);
+  transform:translateY(-54cqw);
 }
 .core-page .contact-app__found.is-keyboard-open .contact-app__create-button {
   opacity:0;
