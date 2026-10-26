@@ -4996,6 +4996,10 @@ a.core-intro__project-link {
   position:absolute;top:27.7%;left:4.267%;width:91.466%;
   aspect-ratio:1 / 1;height:auto;max-width:none;display:block;
   object-fit:cover;pointer-events:none;
+  /* Match the exact color correction already approved for the cover video. */
+  filter:
+    brightness(0.94)
+    contrast(1.10);
 }
 .core-page .contact-app__found-form {
   position:absolute;left:4.267%;right:4.267%;bottom:5.17%;
