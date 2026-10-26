@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=411-direct-scan" />
+<link rel="stylesheet" href="../styles.css?v=412-contact-found" />
   </head>
   <body class="core-page core-page--condensed typography-only">
     <main class="core-intro" id="cover">
@@ -791,6 +791,24 @@
       <h3 class="contact-app__camera-heading">Scan QR</h3>
       <svg class="contact-app__scan-frame" viewBox="0 0 306 306" fill="none" aria-hidden="true"><path d="M2.5 70V62C2.5 29.1 29.1 2.5 62 2.5h9M235 2.5h9c32.9 0 59.5 26.6 59.5 59.5v8M303.5 235v9c0 32.9-26.6 59.5-59.5 59.5h-9M71 303.5h-9c-32.9 0-59.5-26.6-59.5-59.5v-9" stroke="#fff" stroke-width="5" stroke-linecap="round"/></svg>
       <button class="contact-app__cancel" type="button">Cancel</button>
+      <div class="proxy-app__home-indicator" aria-hidden="true"></div>
+    </section>
+    <section class="contact-app__found" data-contact-state="found" aria-label="Contact found. Name it" hidden>
+      <div class="proxy-app__ios-status" aria-hidden="true">
+        <img class="proxy-app__ios-time" src="../assets/core-proxy-ios-time-v1.svg" alt="" />
+        <span class="proxy-app__island"></span>
+        <img class="proxy-app__ios-cell" src="../assets/core-proxy-ios-cell-v1.svg" alt="" />
+        <img class="proxy-app__ios-wifi" src="../assets/core-proxy-ios-wifi-v1.svg" alt="" />
+        <img class="proxy-app__ios-battery" src="../assets/core-proxy-ios-battery-v1.svg" alt="" />
+      </div>
+      <h3 class="contact-app__found-heading">Contact found.<br>Name it</h3>
+      <video class="contact-app__found-video" loop muted playsinline preload="metadata" disablepictureinpicture aria-hidden="true" tabindex="-1">
+        <source src="../assets/head-v208.mp4?v=221" type="video/mp4" />
+      </video>
+      <form class="contact-app__found-form" autocomplete="off">
+        <input class="contact-app__found-name" type="text" name="contactName" placeholder="Name" aria-label="Contact name" maxlength="70" required />
+        <button class="contact-app__create-button" type="submit">Create contact</button>
+      </form>
       <div class="proxy-app__home-indicator" aria-hidden="true"></div>
     </section>
     <img class="proxy-app__demo-cursor" src="../assets/core-proxy-demo-cursor.svg" alt="" aria-hidden="true" draggable="false" />
@@ -1632,6 +1650,11 @@
 
   const contacts = stage.querySelector('[data-contact-state="contacts"]');
   const camera = stage.querySelector('[data-contact-state="scan"]');
+  const found = stage.querySelector('[data-contact-state="found"]');
+  const cameraActor = stage.querySelector('.contact-app__camera-actor');
+  const foundVideo = stage.querySelector('.contact-app__found-video');
+  const foundForm = stage.querySelector('.contact-app__found-form');
+  const foundName = stage.querySelector('.contact-app__found-name');
   const add = stage.querySelector('.contact-app__plus');
   const sheet = stage.querySelector('[data-contact-sheet]');
   const scrim = stage.querySelector('.contact-app__scrim');
@@ -1642,6 +1665,7 @@
 
   let enterTimer = null;
   let lockTimer = null;
+  let foundTimer = null;
   let demoTimer = null;
   let demoIndex = 0;
   let demoRunning = false;
@@ -1667,27 +1691,53 @@
   function stopScan() {
     window.clearTimeout(enterTimer);
     window.clearTimeout(lockTimer);
+    window.clearTimeout(foundTimer);
     enterTimer = null;
     lockTimer = null;
+    foundTimer = null;
     camera.classList.remove('is-entering', 'is-locked');
   }
 
-  // Keep the previously approved handset/QR approach animation unchanged.
+  function showFound() {
+    if (camera.hidden || !found.hidden) return;
+    window.clearTimeout(enterTimer);
+    window.clearTimeout(lockTimer);
+    window.clearTimeout(foundTimer);
+    enterTimer = null;
+    lockTimer = null;
+    foundTimer = null;
+    camera.classList.add('is-locked');
+    camera.hidden = true;
+    found.hidden = false;
+    foundVideo.currentTime = 0;
+    const playback = foundVideo.play();
+    if (playback && typeof playback.catch === 'function') playback.catch(() => {});
+  }
+
+  // The handset motion remains 1100ms. Its actual transform completion,
+  // not an arbitrary pause, switches the prototype to Contact found.
   function playScan(immediate = false) {
     stopScan();
     if (reducedMotion.matches) {
       camera.classList.add('is-entering', 'is-locked');
+      showFound();
       return;
     }
     void camera.offsetWidth;
     if (immediate) {
       camera.classList.add('is-entering');
       lockTimer = window.setTimeout(() => camera.classList.add('is-locked'), 1100);
+      foundTimer = window.setTimeout(showFound, 1250);
     } else {
       enterTimer = window.setTimeout(() => camera.classList.add('is-entering'), 650);
       lockTimer = window.setTimeout(() => camera.classList.add('is-locked'), 1700);
+      foundTimer = window.setTimeout(showFound, 1850);
     }
   }
+
+  cameraActor.addEventListener('transitionend', event => {
+    if (event.target === cameraActor && event.propertyName === 'transform') showFound();
+  });
 
   // The QR sheet uses the same element for its initial slide-up and
   // its second, full-screen expansion into the scanner.
@@ -1721,16 +1771,21 @@
   function enterCamera(focus = true) {
     if (!camera.hidden) return;
     contacts.hidden = true;
+    found.hidden = true;
+    foundVideo.pause();
     hideSheet();
     camera.hidden = false;
     playScan(true);
-    if (focus) cancel.focus({ preventScroll: true });
+    if (focus && !camera.hidden) cancel.focus({ preventScroll: true });
   }
 
   function backToContacts(focus = true) {
     stopScan();
+    foundVideo.pause();
     camera.hidden = true;
+    found.hidden = true;
     contacts.hidden = false;
+    foundName.value = '';
     showSheet(false, focus);
   }
 
@@ -1754,7 +1809,7 @@
     { duration: 950, run() { pointCursor('plus', true); } },
     { duration: 750, run() { showSheet(true, false); } },
     { duration: 950, run() { pointCursor('scan', true); } },
-    { duration: 4000, run() {
+    { duration: 5200, run() {
       enterCamera(false);
       pointCursor('scan', false, false);
     } }
@@ -1799,9 +1854,26 @@
     backToContacts();
   });
 
+  foundForm.addEventListener('submit', event => {
+    event.preventDefault();
+    const name = foundName.value.trim();
+    if (!name) {
+      foundName.focus({ preventScroll: true });
+      return;
+    }
+    takeManualControl();
+    // Local prototype only: add the named contact to the on-screen list.
+    const row = document.createElement('div');
+    row.className = 'contact-app__name';
+    row.textContent = name;
+    contacts.querySelector('.contact-app__list').appendChild(row);
+    backToContacts(false);
+    add.focus({ preventScroll: true });
+  });
+
   document.addEventListener('keydown', event => {
     if (event.key !== 'Escape' || !stage.isConnected) return;
-    if (!camera.hidden) {
+    if (!camera.hidden || !found.hidden) {
       takeManualControl();
       backToContacts();
     } else if (!sheet.hidden) {
