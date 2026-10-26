@@ -43,9 +43,8 @@
     }
     /* Camera scene: the QR-bearing phone enters from the right. */
     .camera-scene{position:absolute;inset:0;overflow:hidden;z-index:0;background:#5c5c5c;pointer-events:none}
-    .camera-scene__actor{position:absolute;top:0;left:26.2%;height:100%;width:auto;max-width:none;object-fit:contain;opacity:0;transform:translateX(45%) scale(1.015);filter:blur(8px);will-change:opacity,transform,filter;transition:transform 1100ms cubic-bezier(.22,.61,.36,1),opacity 320ms ease,filter 780ms ease}
-    .scan-screen.is-entering .camera-scene__actor,.scan-screen.is-locked .camera-scene__actor{opacity:1;transform:translateX(0) scale(1);filter:blur(0)}
-    .camera-scene:after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.1)}
+    .camera-scene__actor{position:absolute;top:-3%;left:-46%;height:100%;width:auto;max-width:none;object-fit:contain;opacity:0;transform:translateX(45%) scale(1.015);will-change:opacity,transform;transition:transform 1100ms cubic-bezier(.22,.61,.36,1),opacity 320ms ease}
+    .scan-screen.is-entering .camera-scene__actor,.scan-screen.is-locked .camera-scene__actor{opacity:1;transform:translateX(0) scale(1)}
     .status-bar { position: absolute; inset: 0 0 auto; height: 12cqw; pointer-events: none; z-index:5; }
     .time {
       position: absolute;
@@ -92,7 +91,7 @@
       z-index:5;
     }
 
-    /* Translucent scan target reveals the animated camera scene. */
+    /* The scan target is a true clear camera window, with dimming outside only. */
     .scanner {
       position: absolute;
       width: 81.7cqw;
@@ -100,9 +99,11 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      background: rgba(229,229,229,.68);
+      background: transparent;
       border-radius: 20%;
+      box-shadow: 0 0 0 100vmax rgba(0,0,0,.1);
       z-index:3;
+      pointer-events:none;
     }
     .scanner-corners {
       position: absolute;
@@ -191,7 +192,7 @@
     </div>
 
     <h1 class="heading">Scan QR</h1>
-    <div class="scanner" role="img" aria-label="Empty square QR-scanning viewfinder">
+    <div class="scanner" role="img" aria-label="QR-scanning viewfinder">
       <svg class="scanner-corners" viewBox="0 0 320 320" preserveAspectRatio="none" aria-hidden="true">
         <path d="M76 3 H67 A64 64 0 0 0 3 67 V76" />
         <path d="M244 3 H253 A64 64 0 0 1 317 67 V76" />
