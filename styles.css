@@ -4955,51 +4955,27 @@ a.core-intro__project-link {
 .core-page .contact-app > .proxy-app__demo-cursor {
   z-index: 30;
 }
-/* v409 — Surface moves independently; QR content fades at fixed coordinates. */
-.core-page .contact-app__scrim { opacity:0; transition:opacity 280ms ease; }
-.core-page .contact-app__scrim.is-open { opacity:1; }
-.core-page .contact-app__sheet {
-  inset:0; background:transparent; border-radius:0; padding:0; pointer-events:none;
-}
-.core-page .contact-app__sheet-surface,
-.core-page .contact-app__sheet-content {
-  position:absolute; top:38.177%; bottom:0; left:0; right:0;
-  transform:translateY(100%);
+/* v411 — QR sheet opens from below; Scan switches immediately to the camera. */
+.core-page .contact-app__scrim {opacity:0;transition:opacity 280ms ease}
+.core-page .contact-app__scrim.is-open {opacity:1}
+.core-page .contact-app__sheet {inset:0;background:transparent;border-radius:0;padding:0;pointer-events:none}
+.core-page .contact-app__sheet-surface,.core-page .contact-app__sheet-content {
+ position:absolute;top:38.177%;bottom:0;left:0;right:0;transform:translateY(100%)
 }
 .core-page .contact-app__sheet-surface {
-  background:#494d32; border-radius:4.267cqw 4.267cqw 0 0;
-  transition:transform 430ms cubic-bezier(.22,.72,.26,1),
-    top 860ms cubic-bezier(.22,.72,.26,1), border-radius 860ms ease;
+ background:#494d32;border-radius:4.267cqw 4.267cqw 0 0;
+ transition:transform 430ms cubic-bezier(.22,.72,.26,1)
 }
 .core-page .contact-app__sheet-content {
-  padding:0 3.2cqw; opacity:1; pointer-events:auto;
-  transition:transform 430ms cubic-bezier(.22,.72,.26,1), opacity 250ms ease;
+ padding:0 3.2cqw;pointer-events:auto;
+ transition:transform 430ms cubic-bezier(.22,.72,.26,1)
 }
 .core-page .contact-app__sheet.is-open .contact-app__sheet-surface,
-.core-page .contact-app__sheet.is-open .contact-app__sheet-content { transform:translateY(0); }
-.core-page .contact-app__sheet.is-expanding .contact-app__sheet-surface { top:0; border-radius:0; }
-.core-page .contact-app__sheet.is-expanding .contact-app__sheet-content {
-  opacity:0; pointer-events:none;
-}
-.core-page .contact-app__camera { z-index:0; }
-.core-page .contact-app__contacts { z-index:1; }
-.core-page .contact-app__contacts > :is(
-  .contact-app__local,.contact-app__title,.contact-app__plus,
-  .contact-app__list,.contact-app__tabs) { transition:opacity 190ms ease; }
-.core-page .contact-app__contacts.is-switching > :is(
-  .contact-app__local,.contact-app__title,.contact-app__plus,
-  .contact-app__list,.contact-app__tabs) { opacity:0; }
-.core-page .contact-app__contacts.is-switching .contact-app__scrim { opacity:0; }
-.core-page .contact-app__contacts > .proxy-app__ios-status { z-index:24; }
-.core-page .contact-app__camera > .proxy-app__ios-status { z-index:6; }
-.core-page .contact-app__plus:focus-visible,
-.core-page .contact-app__scan-button:focus-visible,
-.core-page .contact-app__cancel:focus-visible { outline:2px solid white; outline-offset:3px; }
-@media (prefers-reduced-motion:reduce) {
- .core-page .contact-app__scrim,
- .core-page .contact-app__sheet-surface,
- .core-page .contact-app__sheet-content,
- .core-page .contact-app__contacts > :is(
-   .contact-app__local,.contact-app__title,.contact-app__plus,
-   .contact-app__list,.contact-app__tabs) { transition:none!important; }
+.core-page .contact-app__sheet.is-open .contact-app__sheet-content {transform:translateY(0)}
+.core-page .contact-app__camera > .proxy-app__ios-status {z-index:6}
+.core-page .contact-app__plus:focus-visible,.core-page .contact-app__scan-button:focus-visible,
+.core-page .contact-app__cancel:focus-visible {outline:2px solid white;outline-offset:3px}
+@media(prefers-reduced-motion:reduce) {
+ .core-page .contact-app__scrim,.core-page .contact-app__sheet-surface,
+ .core-page .contact-app__sheet-content {transition:none!important}
 }
