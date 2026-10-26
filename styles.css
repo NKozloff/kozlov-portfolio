@@ -4955,25 +4955,11 @@ a.core-intro__project-link {
 .core-page .contact-app > .proxy-app__demo-cursor {
   z-index: 30;
 }
-.core-page .contact-app__plus,
-.core-page .contact-app__scan-button {
-  transition: transform 140ms ease, filter 140ms ease;
-}
-.core-page .contact-app__plus.is-demo-pressed {
-  transform: scale(.82);
-}
-.core-page .contact-app__scan-button.is-demo-pressed {
-  transform: scale(.985);
-  filter: brightness(1.12);
-}
 .core-page .contact-app__scrim:not([hidden]) {
   animation: core-contact-scrim-enter 320ms ease both;
 }
 .core-page .contact-app__sheet:not([hidden]) {
   animation: core-contact-sheet-enter 430ms cubic-bezier(.2,.7,.2,1) both;
-}
-.core-page .contact-app__camera:not([hidden]) {
-  animation: core-contact-camera-enter 400ms ease-out both;
 }
 @keyframes core-contact-scrim-enter {
   from { opacity: 0; }
@@ -4983,9 +4969,10 @@ a.core-intro__project-link {
   from { transform: translateY(100%); }
   to { transform: translateY(0); }
 }
-@keyframes core-contact-camera-enter {
-  from { opacity: .6; transform: translateX(8%); }
-  to { opacity: 1; transform: translateX(0); }
+.core-page .contact-app__camera > .proxy-app__ios-status {
+  /* Keep time, Dynamic Island, cellular, Wi-Fi and battery above the
+     viewfinder shadow (.contact-app__camera-window, z-index: 3). */
+  z-index: 6;
 }
 .core-page .contact-app__plus:focus-visible,
 .core-page .contact-app__scan-button:focus-visible,
@@ -4995,12 +4982,7 @@ a.core-intro__project-link {
 }
 @media (prefers-reduced-motion: reduce) {
   .core-page .contact-app__scrim:not([hidden]),
-  .core-page .contact-app__sheet:not([hidden]),
-  .core-page .contact-app__camera:not([hidden]) {
+  .core-page .contact-app__sheet:not([hidden]) {
     animation: none !important;
-  }
-  .core-page .contact-app__plus,
-  .core-page .contact-app__scan-button {
-    transition: none !important;
   }
 }
