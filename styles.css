@@ -4742,9 +4742,14 @@ a.core-intro__project-link {
 }
 
 
-/* CORE Notifications Live Preview — Figma 375x812. Reuses the proxy phone, iOS status assets and cursor. */
+/* v393 — CORE Notifications Live Preview fills the viewport width, outside
+   the scenario section's horizontal padding; the phone remains centered.
+   Other prototype and editorial blocks keep their existing gutters. */
 .core-page #scenarios .notification-prototype-stage {
   display:flex; align-items:center; justify-content:center; background:#e6e6e6;
+  width:auto;
+  margin-left:calc(0px - var(--page-space));
+  margin-right:calc(0px - var(--page-space));
   padding:var(--case-ui-top-space,clamp(24px,3.2rem,60px)) 20px; min-height:0;
 }
 .core-page .notification-app { background:#494d32; }
