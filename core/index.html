@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=406-contact-guided-demo" />
+<link rel="stylesheet" href="../styles.css?v=407-contact-statusbar" />
   </head>
   <body class="core-page core-page--condensed typography-only">
     <main class="core-intro" id="cover">
@@ -1706,16 +1706,10 @@
     showSheet(false, focus);
   }
 
-  function clearDemoPress() {
-    add.classList.remove('is-demo-pressed');
-    scan.classList.remove('is-demo-pressed');
-  }
-
   function stopDemo() {
     demoRunning = false;
     window.clearTimeout(demoTimer);
     demoTimer = null;
-    clearDemoPress();
     pointCursor('rest', false, false);
   }
 
@@ -1730,12 +1724,9 @@
   const demoFrames = [
     { duration: 800, run() { backToContacts(false); pointCursor('rest'); } },
     { duration: 950, run() { pointCursor('plus', true); } },
-    { duration: 220, run() { add.classList.add('is-demo-pressed'); } },
-    { duration: 750, run() { add.classList.remove('is-demo-pressed'); showSheet(true, false); } },
+    { duration: 750, run() { showSheet(true, false); } },
     { duration: 950, run() { pointCursor('scan', true); } },
-    { duration: 220, run() { scan.classList.add('is-demo-pressed'); } },
     { duration: 4000, run() {
-      scan.classList.remove('is-demo-pressed');
       enterCamera(false);
       pointCursor('scan', false, false);
     } }
