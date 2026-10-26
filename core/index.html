@@ -789,6 +789,7 @@
       <button class="contact-app__cancel" type="button">Cancel</button>
       <div class="proxy-app__home-indicator" aria-hidden="true"></div>
     </section>
+    <img class="proxy-app__demo-cursor" src="../assets/core-proxy-demo-cursor.svg" alt="" aria-hidden="true" draggable="false" />
   </div>
 </div>
         </div>
@@ -1622,52 +1623,204 @@
 </script>
 <script>
 (() => {
-  const stage=document.querySelector('[data-asset-slot="contact-prototype"]');
-  if(!stage)return;
-  const contacts=stage.querySelector('[data-contact-state="contacts"]');
-  const camera=stage.querySelector('[data-contact-state="scan"]');
-  const add=stage.querySelector('.contact-app__plus');
-  const sheet=stage.querySelector('[data-contact-sheet]');
-  const scrim=stage.querySelector('.contact-app__scrim');
-  const scan=stage.querySelector('.contact-app__scan-button');
-  const cancel=stage.querySelector('.contact-app__cancel');
-  let enterTimer=null,lockTimer=null;
-  const stopScan=()=>{
-    clearTimeout(enterTimer);clearTimeout(lockTimer);
-    camera.classList.remove('is-entering','is-locked');
+  const stage = document.querySelector('[data-asset-slot="contact-prototype"]');
+  if (!stage) return;
+
+  const contacts = stage.querySelector('[data-contact-state="contacts"]');
+  const camera = stage.querySelector('[data-contact-state="scan"]');
+  const add = stage.querySelector('.contact-app__plus');
+  const sheet = stage.querySelector('[data-contact-sheet]');
+  const scrim = stage.querySelector('.contact-app__scrim');
+  const scan = stage.querySelector('.contact-app__scan-button');
+  const cancel = stage.querySelector('.contact-app__cancel');
+  const cursor = stage.querySelector('.contact-app > .proxy-app__demo-cursor');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  let enterTimer = null;
+  let lockTimer = null;
+  let demoTimer = null;
+  let demoIndex = 0;
+  let demoRunning = false;
+  let inView = false;
+  let manual = false;
+
+  // The SVG is 72px wide; its pointing fingertip sits around (28px, 20px).
+  // Coordinates are based on the same 375 × 812 phone as the proxy demo.
+  const cursorPositions = {
+    rest: { x: 218, y: 350 },
+    plus: { x: 321, y: 101 },
+    scan: { x: 159, y: 729 }
   };
-  const playScan=()=>{
+
+  function pointCursor(where, moving = false, visible = true) {
+    const point = cursorPositions[where];
+    cursor.classList.toggle('is-moving', moving && !reducedMotion.matches);
+    cursor.style.left = (point.x / 375 * 100) + '%';
+    cursor.style.top = (point.y / 812 * 100) + '%';
+    cursor.classList.toggle('is-visible', visible);
+  }
+
+  function stopScan() {
+    window.clearTimeout(enterTimer);
+    window.clearTimeout(lockTimer);
+    enterTimer = null;
+    lockTimer = null;
+    camera.classList.remove('is-entering', 'is-locked');
+  }
+
+  // Keep the previously approved handset/QR approach animation unchanged.
+  function playScan() {
     stopScan();
-    if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){
-      camera.classList.add('is-entering','is-locked');return;
+    if (reducedMotion.matches) {
+      camera.classList.add('is-entering', 'is-locked');
+      return;
     }
     void camera.offsetWidth;
-    enterTimer=setTimeout(()=>camera.classList.add('is-entering'),650);
-    lockTimer=setTimeout(()=>camera.classList.add('is-locked'),1700);
-  };
-  const showSheet=visible=>{
-    sheet.hidden=!visible;scrim.hidden=!visible;
-    add.setAttribute('aria-expanded',String(visible));
-    if(visible)scan.focus({preventScroll:true});else add.focus({preventScroll:true});
-  };
-  add.addEventListener('click',()=>showSheet(true));
-  scrim.addEventListener('click',()=>showSheet(false));
-  scan.addEventListener('click',()=>{
-    sheet.hidden=true;scrim.hidden=true;
-    contacts.hidden=true;camera.hidden=false;
-    add.setAttribute('aria-expanded','false');
+    enterTimer = window.setTimeout(() => camera.classList.add('is-entering'), 650);
+    lockTimer = window.setTimeout(() => camera.classList.add('is-locked'), 1700);
+  }
+
+  function showSheet(visible, focus = true) {
+    sheet.hidden = !visible;
+    scrim.hidden = !visible;
+    add.setAttribute('aria-expanded', String(visible));
+    if (focus) {
+      (visible ? scan : add).focus({ preventScroll: true });
+    }
+  }
+
+  function enterCamera(focus = true) {
+    sheet.hidden = true;
+    scrim.hidden = true;
+    contacts.hidden = true;
+    camera.hidden = false;
+    add.setAttribute('aria-expanded', 'false');
     playScan();
-    cancel.focus({preventScroll:true});
+    if (focus) cancel.focus({ preventScroll: true });
+  }
+
+  function backToContacts(focus = true) {
+    stopScan();
+    camera.hidden = true;
+    contacts.hidden = false;
+    showSheet(false, focus);
+  }
+
+  function clearDemoPress() {
+    add.classList.remove('is-demo-pressed');
+    scan.classList.remove('is-demo-pressed');
+  }
+
+  function stopDemo() {
+    demoRunning = false;
+    window.clearTimeout(demoTimer);
+    demoTimer = null;
+    clearDemoPress();
+    pointCursor('rest', false, false);
+  }
+
+  function takeManualControl() {
+    manual = true;
+    stopDemo();
+  }
+
+  // Each step starts immediately, then waits for its duration before the next.
+  // The cursor disappears immediately after Scan and stays hidden throughout
+  // the existing camera animation; the completed sequence then loops.
+  const demoFrames = [
+    { duration: 800, run() { backToContacts(false); pointCursor('rest'); } },
+    { duration: 950, run() { pointCursor('plus', true); } },
+    { duration: 220, run() { add.classList.add('is-demo-pressed'); } },
+    { duration: 750, run() { add.classList.remove('is-demo-pressed'); showSheet(true, false); } },
+    { duration: 950, run() { pointCursor('scan', true); } },
+    { duration: 220, run() { scan.classList.add('is-demo-pressed'); } },
+    { duration: 4000, run() {
+      scan.classList.remove('is-demo-pressed');
+      enterCamera(false);
+      pointCursor('scan', false, false);
+    } }
+  ];
+
+  function nextDemoFrame() {
+    if (!demoRunning || !inView || document.hidden) return;
+    const frame = demoFrames[demoIndex];
+    frame.run();
+    demoIndex = (demoIndex + 1) % demoFrames.length;
+    demoTimer = window.setTimeout(nextDemoFrame, frame.duration);
+  }
+
+  function startDemo() {
+    if (demoRunning || manual || !inView || document.hidden || reducedMotion.matches) return;
+    demoRunning = true;
+    demoIndex = 0;
+    nextDemoFrame();
+  }
+
+  // Real pointer/keyboard interaction wins over the automatic walkthrough.
+  add.addEventListener('click', () => {
+    takeManualControl();
+    showSheet(true);
   });
-  camera.addEventListener('click',e=>{if(!e.target.closest('.contact-app__cancel'))playScan();});
-  cancel.addEventListener('click',()=>{
-    stopScan();camera.hidden=true;contacts.hidden=false;showSheet(false);
+  scrim.addEventListener('click', () => {
+    takeManualControl();
+    showSheet(false);
   });
-  document.addEventListener('keydown',e=>{
-    if(e.key!=='Escape'||!stage.isConnected)return;
-    if(!camera.hidden){stopScan();camera.hidden=true;contacts.hidden=false;showSheet(false);}
-    else if(!sheet.hidden)showSheet(false);
+  scan.addEventListener('click', () => {
+    takeManualControl();
+    enterCamera();
   });
+  camera.addEventListener('click', event => {
+    if (!event.target.closest('.contact-app__cancel')) {
+      takeManualControl();
+      playScan();
+    }
+  });
+  cancel.addEventListener('click', () => {
+    takeManualControl();
+    backToContacts();
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape' || !stage.isConnected) return;
+    if (!camera.hidden) {
+      takeManualControl();
+      backToContacts();
+    } else if (!sheet.hidden) {
+      takeManualControl();
+      showSheet(false);
+    }
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    inView = entries[0].isIntersecting;
+    if (!inView) {
+      stopDemo();
+      backToContacts(false);
+      manual = false;
+    } else {
+      startDemo();
+    }
+  }, { threshold: 0.18 });
+  observer.observe(stage);
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stopDemo();
+    } else if (inView && !manual) {
+      backToContacts(false);
+      startDemo();
+    }
+  });
+
+  reducedMotion.addEventListener('change', () => {
+    stopDemo();
+    if (!reducedMotion.matches && inView && !manual) {
+      backToContacts(false);
+      startDemo();
+    }
+  });
+
+  pointCursor('rest', false, false);
 })();
 </script>
 </body>
