@@ -4873,15 +4873,37 @@ a.core-intro__project-link {
 .core-page .contact-app__scan-button{position:absolute;left:3.2cqw;right:3.2cqw;bottom:11.2cqw;width:calc(100% - 6.4cqw);height:10.667cqw;background:#959923;border:0;border-radius:2.133cqw;color:white;font:inherit;font-size:4cqw;display:flex;align-items:center;justify-content:center;gap:2.4cqw;cursor:pointer;}
 /* v398 — Use the supplied original scan icon at 22px on a 375px screen. */
 .core-page .contact-app__scan-icon{display:block;width:5.866667cqw;height:5.866667cqw;object-fit:contain;max-width:none;flex:none;}
-.core-page .contact-app__camera{background:#555653;}
-.core-page .contact-app__camera-scene{position:absolute;inset:0;background:linear-gradient(110deg,#858582 0%,#757573 43%,#535552 43%,#494d4c 100%);}
-.core-page .contact-app__camera-wall{position:absolute;inset:0 0 20%;background:linear-gradient(90deg,rgba(20,25,24,.17),transparent 40%,rgba(20,24,21,.3));}
-.core-page .contact-app__camera-object{position:absolute;left:8%;top:20%;height:53%;width:38%;border-radius:3% 5% 0 0;background:linear-gradient(90deg,#60635c,#86887e 70%,#73776b);filter:blur(3px);}
-.core-page .contact-app__camera-surface{position:absolute;bottom:0;left:0;right:0;height:20%;background:#464a46;}
-.core-page .contact-app__camera-tint{position:absolute;inset:0;background:rgba(0,0,0,.28);}
+/* v399 — Scan QR: reproduce the approved empty iPhone camera mockup
+   inside the existing Contacts → + → Scan clickable prototype (375 × 812).
+   Preserve the same local SF-style app typography and iOS status assets. */
+.core-page .contact-app__camera{background:#5c5c5c;}
+.core-page .contact-app__camera-window{
+  position:absolute;
+  left:9.2%;
+  top:31.15%;
+  width:81.6%;
+  aspect-ratio:1;
+  background:#e5e5e5;
+  border-radius:20.5%;
+}
 .core-page .contact-app__camera-heading{position:absolute;left:4.267%;top:8.6%;font-size:5.6cqw;font-weight:700;line-height:1.2;color:#fff;margin:0;}
 .core-page .contact-app__scan-frame{position:absolute;width:81.6%;height:auto;left:9.2%;top:31.15%;}
-.core-page .contact-app__cancel{position:absolute;bottom:5.17%;left:4.267%;right:4.267%;width:91.466%;height:4.926%;background:rgba(33,33,33,.48);border:0;border-radius:2.133cqw;color:#fff;font:inherit;font-size:3.733cqw;cursor:pointer;}
+.core-page .contact-app__cancel{
+  position:absolute;
+  bottom:5.17%;
+  left:4.267%;
+  right:4.267%;
+  width:91.466%;
+  height:4.926%;
+  background:rgba(255,255,255,.20);
+  border:0;
+  border-radius:2.133cqw;
+  color:#fff;
+  font:inherit;
+  font-size:4cqw;
+  font-weight:400;
+  cursor:pointer;
+}
 .core-page .contact-app__sheet ~ .proxy-app__home-indicator{z-index:22;}
 .core-page .contact-app__camera .proxy-app__home-indicator{z-index:5;}
 
