@@ -4777,59 +4777,54 @@ a.core-intro__project-link {
 @media(prefers-reduced-motion:reduce) {.core-page .notification-app__toast,.core-page .notification-app__switch,.core-page .notification-app__knob {transition:none;}}
 
 
-/* v391 — Quick-inspired spring: -10px start, +3px maximum landing
-   overshoot, 450ms total, and exact 0px rest. No separate delay.
-   Single 41-keyframe spring animation for a 375px reference frame. */
-.core-page .notification-app__toast {
-  transform-origin: 50% 12%;
-  backface-visibility: hidden;
-  will-change: transform;
-}
+/* v392 — Text-crisp Quick-inspired spring. Retain the 450ms / -10px / +3px
+   motion curve; animate only vertical position, never scale text or the SVG.
+   Avoid permanent GPU-layer promotion / backface rendering on resting cards. */
 .core-page .notification-app__toast.is-previous {
   z-index: 2;
 }
 @keyframes core-notification-quick-spring {
-  0% { transform: translate3d(0,-2.66667cqw,0) scale(0.98); }
-  2.5% { transform: translate3d(0,-2.63353cqw,0) scale(0.98025); }
-  5% { transform: translate3d(0,-2.53979cqw,0) scale(0.98095); }
-  7.5% { transform: translate3d(0,-2.39432cqw,0) scale(0.98204); }
-  10% { transform: translate3d(0,-2.20629cqw,0) scale(0.98345); }
-  12.5% { transform: translate3d(0,-1.98491cqw,0) scale(0.98511); }
-  15% { transform: translate3d(0,-1.7392cqw,0) scale(0.98696); }
-  17.5% { transform: translate3d(0,-1.47781cqw,0) scale(0.98892); }
-  20% { transform: translate3d(0,-1.20881cqw,0) scale(0.99093); }
-  22.5% { transform: translate3d(0,-0.93958cqw,0) scale(0.99295); }
-  25% { transform: translate3d(0,-0.67672cqw,0) scale(0.99492); }
-  27.5% { transform: translate3d(0,-0.42594cqw,0) scale(0.99681); }
-  30% { transform: translate3d(0,-0.19204cqw,0) scale(0.99856); }
-  32.5% { transform: translate3d(0,0.0211cqw,0) scale(1.00016); }
-  35% { transform: translate3d(0,0.21056cqw,0) scale(1.00158); }
-  37.5% { transform: translate3d(0,0.37428cqw,0) scale(1.00281); }
-  40% { transform: translate3d(0,0.51107cqw,0) scale(1.00383); }
-  42.5% { transform: translate3d(0,0.62053cqw,0) scale(1.00465); }
-  45% { transform: translate3d(0,0.70296cqw,0) scale(1.00527); }
-  47.5% { transform: translate3d(0,0.75929cqw,0) scale(1.00569); }
-  50% { transform: translate3d(0,0.79097cqw,0) scale(1.00593); }
-  52.5% { transform: translate3d(0,0.79993cqw,0) scale(1.006); }
-  55% { transform: translate3d(0,0.78841cqw,0) scale(1.00591); }
-  57.5% { transform: translate3d(0,0.75892cqw,0) scale(1.00569); }
-  60% { transform: translate3d(0,0.71413cqw,0) scale(1.00536); }
-  62.5% { transform: translate3d(0,0.6568cqw,0) scale(1.00493); }
-  65% { transform: translate3d(0,0.58969cqw,0) scale(1.00442); }
-  67.5% { transform: translate3d(0,0.5155cqw,0) scale(1.00387); }
-  70% { transform: translate3d(0,0.43681cqw,0) scale(1.00328); }
-  72.5% { transform: translate3d(0,0.35569cqw,0) scale(1.00267); }
-  75% { transform: translate3d(0,0.26653cqw,0) scale(1.002); }
-  77.5% { transform: translate3d(0,0.17693cqw,0) scale(1.00133); }
-  80% { transform: translate3d(0,0.09769cqw,0) scale(1.00073); }
-  82.5% { transform: translate3d(0,0.03565cqw,0) scale(1.00027); }
-  85% { transform: translate3d(0,-0.00622cqw,0) scale(0.99995); }
-  87.5% { transform: translate3d(0,-0.02834cqw,0) scale(0.99979); }
-  90% { transform: translate3d(0,-0.0338cqw,0) scale(0.99975); }
-  92.5% { transform: translate3d(0,-0.02764cqw,0) scale(0.99979); }
-  95% { transform: translate3d(0,-0.01588cqw,0) scale(0.99988); }
-  97.5% { transform: translate3d(0,-0.00478cqw,0) scale(0.99996); }
-  100% { transform: translate3d(0,0cqw,0) scale(1); }
+  0% { transform: translateY(-2.66667cqw); }
+  2.5% { transform: translateY(-2.63353cqw); }
+  5% { transform: translateY(-2.53979cqw); }
+  7.5% { transform: translateY(-2.39432cqw); }
+  10% { transform: translateY(-2.20629cqw); }
+  12.5% { transform: translateY(-1.98491cqw); }
+  15% { transform: translateY(-1.7392cqw); }
+  17.5% { transform: translateY(-1.47781cqw); }
+  20% { transform: translateY(-1.20881cqw); }
+  22.5% { transform: translateY(-0.93958cqw); }
+  25% { transform: translateY(-0.67672cqw); }
+  27.5% { transform: translateY(-0.42594cqw); }
+  30% { transform: translateY(-0.19204cqw); }
+  32.5% { transform: translateY(0.0211cqw); }
+  35% { transform: translateY(0.21056cqw); }
+  37.5% { transform: translateY(0.37428cqw); }
+  40% { transform: translateY(0.51107cqw); }
+  42.5% { transform: translateY(0.62053cqw); }
+  45% { transform: translateY(0.70296cqw); }
+  47.5% { transform: translateY(0.75929cqw); }
+  50% { transform: translateY(0.79097cqw); }
+  52.5% { transform: translateY(0.79993cqw); }
+  55% { transform: translateY(0.78841cqw); }
+  57.5% { transform: translateY(0.75892cqw); }
+  60% { transform: translateY(0.71413cqw); }
+  62.5% { transform: translateY(0.6568cqw); }
+  65% { transform: translateY(0.58969cqw); }
+  67.5% { transform: translateY(0.5155cqw); }
+  70% { transform: translateY(0.43681cqw); }
+  72.5% { transform: translateY(0.35569cqw); }
+  75% { transform: translateY(0.26653cqw); }
+  77.5% { transform: translateY(0.17693cqw); }
+  80% { transform: translateY(0.09769cqw); }
+  82.5% { transform: translateY(0.03565cqw); }
+  85% { transform: translateY(-0.00622cqw); }
+  87.5% { transform: translateY(-0.02834cqw); }
+  90% { transform: translateY(-0.0338cqw); }
+  92.5% { transform: translateY(-0.02764cqw); }
+  95% { transform: translateY(-0.01588cqw); }
+  97.5% { transform: translateY(-0.00478cqw); }
+  100% { transform: translateY(0cqw); }
 }
 .core-page .notification-app__toast.is-arriving {
   opacity: 1;
