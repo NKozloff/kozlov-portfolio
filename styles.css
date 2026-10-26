@@ -4955,106 +4955,51 @@ a.core-intro__project-link {
 .core-page .contact-app > .proxy-app__demo-cursor {
   z-index: 30;
 }
-/* v408 — A single bottom sheet moves up twice: open QR, then expand to Scan QR.
-   The second motion changes top without swapping screens under the user. */
-.core-page .contact-app__scrim {
-  opacity: 0;
-  transition: opacity 280ms ease;
-}
-.core-page .contact-app__scrim.is-open {
-  opacity: 1;
-}
+/* v409 — Surface moves independently; QR content fades at fixed coordinates. */
+.core-page .contact-app__scrim { opacity:0; transition:opacity 280ms ease; }
+.core-page .contact-app__scrim.is-open { opacity:1; }
 .core-page .contact-app__sheet {
-  transform: translateY(100%);
-  transition:
-    transform 430ms cubic-bezier(.22,.72,.26,1),
-    top 560ms cubic-bezier(.22,.72,.26,1),
-    border-radius 560ms ease,
-    opacity 220ms ease;
-  opacity: 1;
-  will-change: transform, top;
+  inset:0; background:transparent; border-radius:0; padding:0; pointer-events:none;
 }
-.core-page .contact-app__sheet.is-open {
-  transform: translateY(0);
+.core-page .contact-app__sheet-surface,
+.core-page .contact-app__sheet-content {
+  position:absolute; top:38.177%; bottom:0; left:0; right:0;
+  transform:translateY(100%);
 }
-.core-page .contact-app__sheet.is-expanding {
-  top: 0;
-  border-radius: 0;
+.core-page .contact-app__sheet-surface {
+  background:#494d32; border-radius:4.267cqw 4.267cqw 0 0;
+  transition:transform 430ms cubic-bezier(.22,.72,.26,1),
+    top 560ms cubic-bezier(.22,.72,.26,1), border-radius 560ms ease;
 }
-.core-page .contact-app__sheet.is-revealing {
-  opacity: 0;
-  pointer-events: none;
+.core-page .contact-app__sheet-content {
+  padding:0 3.2cqw; opacity:1; pointer-events:auto;
+  transition:transform 430ms cubic-bezier(.22,.72,.26,1), opacity 190ms ease;
 }
-.core-page .contact-app__sheet > :is(
-  .contact-app__sheet-handle,
-  h3,
-  .contact-app__qr-art,
-  .contact-app__qr-caption,
-  .contact-app__scan-button
-) {
-  transition: opacity 190ms ease;
+.core-page .contact-app__sheet.is-open .contact-app__sheet-surface,
+.core-page .contact-app__sheet.is-open .contact-app__sheet-content { transform:translateY(0); }
+.core-page .contact-app__sheet.is-expanding .contact-app__sheet-surface { top:0; border-radius:0; }
+.core-page .contact-app__sheet.is-expanding .contact-app__sheet-content {
+  opacity:0; pointer-events:none;
 }
-.core-page .contact-app__sheet.is-expanding > :is(
-  .contact-app__sheet-handle,
-  h3,
-  .contact-app__qr-art,
-  .contact-app__qr-caption,
-  .contact-app__scan-button
-) {
-  opacity: 0;
-  pointer-events: none;
-}
-/* The scanner is already mounted behind the expanding sheet.
-   The Contacts artwork fades out, but iOS chrome stays above the curtain. */
-.core-page .contact-app__camera {
-  z-index: 0;
-}
-.core-page .contact-app__contacts {
-  z-index: 1;
-}
+.core-page .contact-app__camera { z-index:0; }
+.core-page .contact-app__contacts { z-index:1; }
 .core-page .contact-app__contacts > :is(
-  .contact-app__local,
-  .contact-app__title,
-  .contact-app__plus,
-  .contact-app__list,
-  .contact-app__tabs
-) {
-  transition: opacity 190ms ease;
-}
+  .contact-app__local,.contact-app__title,.contact-app__plus,
+  .contact-app__list,.contact-app__tabs) { transition:opacity 190ms ease; }
 .core-page .contact-app__contacts.is-switching > :is(
-  .contact-app__local,
-  .contact-app__title,
-  .contact-app__plus,
-  .contact-app__list,
-  .contact-app__tabs
-) {
-  opacity: 0;
-}
-.core-page .contact-app__contacts.is-switching .contact-app__scrim {
-  opacity: 0;
-}
-.core-page .contact-app__contacts > .proxy-app__ios-status {
-  z-index: 24;
-}
-.core-page .contact-app__camera.is-preparing {
-  pointer-events: none;
-}
-.core-page .contact-app__camera > .proxy-app__ios-status {
-  /* Keep time, Dynamic Island, cellular, Wi-Fi and battery above the
-     viewfinder shadow (.contact-app__camera-window, z-index: 3). */
-  z-index: 6;
-}
+  .contact-app__local,.contact-app__title,.contact-app__plus,
+  .contact-app__list,.contact-app__tabs) { opacity:0; }
+.core-page .contact-app__contacts.is-switching .contact-app__scrim { opacity:0; }
+.core-page .contact-app__contacts > .proxy-app__ios-status { z-index:24; }
+.core-page .contact-app__camera > .proxy-app__ios-status { z-index:6; }
 .core-page .contact-app__plus:focus-visible,
 .core-page .contact-app__scan-button:focus-visible,
-.core-page .contact-app__cancel:focus-visible {
-  outline: 2px solid white;
-  outline-offset: 3px;
-}
-@media (prefers-reduced-motion: reduce) {
-  .core-page .contact-app__scrim,
-  .core-page .contact-app__sheet,
-  .core-page .contact-app__sheet > :is(.contact-app__sheet-handle, h3, .contact-app__qr-art, .contact-app__qr-caption, .contact-app__scan-button),
-  .core-page .contact-app__contacts > :is(.contact-app__local, .contact-app__title, .contact-app__plus, .contact-app__list, .contact-app__tabs) {
-    transition: none !important;
-  }
+.core-page .contact-app__cancel:focus-visible { outline:2px solid white; outline-offset:3px; }
+@media (prefers-reduced-motion:reduce) {
+ .core-page .contact-app__scrim,
+ .core-page .contact-app__sheet-surface,
+ .core-page .contact-app__sheet-content,
+ .core-page .contact-app__contacts > :is(
+   .contact-app__local,.contact-app__title,.contact-app__plus,
+   .contact-app__list,.contact-app__tabs) { transition:none!important; }
 }
