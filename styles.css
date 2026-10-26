@@ -5126,3 +5126,28 @@ a.core-intro__project-link {
   .core-page .contact-app__keyboard,
   .core-page .contact-app__create-button {transition:none!important}
 }
+
+/* v416 — The new contact scrolls to the center of the list. */
+.core-page .contact-app__list {
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+  touch-action:pan-y;
+}
+.core-page .contact-app__list::-webkit-scrollbar {display:none;}
+.core-page .contact-app__name--created {
+  display:flex;align-items:center;justify-content:space-between;gap:3.2cqw;
+}
+.core-page .contact-app__name--created.is-highlighted {background:#676d56;}
+.core-page .contact-app__new-label {
+  visibility:hidden;margin-left:auto;color:#f5f5f5;
+  font-size:4cqw;line-height:1;font-weight:400;
+}
+.core-page .contact-app__name--created.is-highlighted .contact-app__new-label {visibility:visible;}
+.core-page .contact-app > .proxy-app__demo-cursor.is-moving.is-dragging {
+  transition:left 430ms cubic-bezier(.4,0,.2,1),top 430ms cubic-bezier(.4,0,.2,1);
+}
+@media(prefers-reduced-motion:reduce) {
+  .core-page .contact-app > .proxy-app__demo-cursor.is-moving.is-dragging {transition:none!important;}
+}
