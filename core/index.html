@@ -1692,6 +1692,8 @@
   if (!stage) return;
 
   const contacts = stage.querySelector('[data-contact-state="contacts"]');
+  const device = stage.querySelector('.contact-app');
+  const contactList = stage.querySelector('.contact-app__list');
   const camera = stage.querySelector('[data-contact-state="scan"]');
   const found = stage.querySelector('[data-contact-state="found"]');
   const cameraActor = stage.querySelector('.contact-app__camera-actor');
@@ -1713,6 +1715,9 @@
   let foundTimer = null;
   let demoTimer = null;
   let keyTimer = null;
+  let scrollFrame = null;
+  let demoCreatedRow = null;
+  let highlightedRow = null;
   let demoIndex = 0;
   let foundDemoIndex = 0;
   let demoSubmitting = false;
@@ -1732,7 +1737,9 @@
     a: { x: 37, y: 636 },
     h: { x: 225, y: 636 },
     dismiss: { x: 288, y: 326 },
-    create: { x: 183, y: 748 }
+    create: { x: 183, y: 748 },
+    createdContact: { x: 204, y: 406 },
+    swipeEnd: { x: 204, y: 356 }
   };
 
   function pointCursor(where, moving = false, visible = true) {
@@ -1865,6 +1872,9 @@
     demoRunning = false;
     window.clearTimeout(demoTimer);
     window.clearTimeout(keyTimer);
+    window.cancelAnimationFrame(scrollFrame);
+    scrollFrame = null;
+    cursor.classList.remove('is-dragging');
     demoTimer = null;
     keyTimer = null;
     hideKeyboard();
@@ -1918,7 +1928,6 @@
       demoSubmitting = true;
       createButton.click();
       demoSubmitting = false;
-      if (demoRunning) stopDemo();
     } }
   ];
 
@@ -1962,10 +1971,131 @@
 
   function startDemo() {
     if (demoRunning || manual || !inView || document.hidden || reducedMotion.matches) return;
+    if (demoCreatedRow) {
+      demoCreatedRow.remove();
+      demoCreatedRow = null;
+    }
+    clearNewHighlight();
+    contactList.scrollTop = 0;
     demoRunning = true;
     demoIndex = 0;
     nextDemoFrame();
   }
+
+
+  function clearNewHighlight() {
+    if (highlightedRow) highlightedRow.classList.remove('is-highlighted');
+    highlightedRow = null;
+  }
+
+  function animateListScroll(targetTop, duration, finished) {
+    window.cancelAnimationFrame(scrollFrame);
+    scrollFrame = null;
+    const from = contactList.scrollTop;
+    const to = Math.max(0, Math.min(
+      Math.max(0, contactList.scrollHeight - contactList.clientHeight), targetTop
+    ));
+    let startTime = null;
+    function tick(timestamp) {
+      if (startTime === null) startTime = timestamp;
+      const t = Math.min(1, (timestamp - startTime) / duration);
+      const easing = t < .5 ? 4 * t * t * t : 1 - Math.pow(2 - 2 * t, 3) / 2;
+      contactList.scrollTop = from + (to - from) * easing;
+      if (t < 1) scrollFrame = window.requestAnimationFrame(tick);
+      else {
+        scrollFrame = null;
+        if (finished) finished();
+      }
+    }
+    scrollFrame = window.requestAnimationFrame(tick);
+  }
+
+  function insertSortedContact(name) {
+    const initial = name.charAt(0).toLocaleUpperCase();
+    const groups = Array.from(contactList.querySelectorAll('.contact-app__letter'));
+    let group = groups.find(node => node.textContent === initial);
+    if (!group) {
+      group = document.createElement('div');
+      group.className = 'contact-app__letter';
+      group.textContent = initial;
+      const nextGroup = groups.find(node =>
+        node.textContent.localeCompare(initial, 'en', { sensitivity: 'base' }) > 0
+      );
+      contactList.insertBefore(group, nextGroup || null);
+    }
+    const row = document.createElement('div');
+    row.className = 'contact-app__name contact-app__name--created';
+    const label = document.createElement('span');
+    label.className = 'contact-app__contact-label';
+    label.textContent = name;
+    const tag = document.createElement('span');
+    tag.className = 'contact-app__new-label';
+    tag.textContent = 'New';
+    row.appendChild(label);
+    row.appendChild(tag);
+    let next = group.nextElementSibling;
+    while (next && !next.classList.contains('contact-app__letter')) {
+      const other = next.querySelector('.contact-app__contact-label');
+      const otherName = other ? other.textContent : next.textContent;
+      if (otherName.localeCompare(name, 'en', { sensitivity: 'base' }) > 0) break;
+      next = next.nextElementSibling;
+    }
+    contactList.insertBefore(row, next || null);
+    return row;
+  }
+
+  function scrollToCreated(row, auto) {
+    const targetBounds = row.getBoundingClientRect();
+    const deviceBounds = device.getBoundingClientRect();
+    const targetTop = contactList.scrollTop +
+      targetBounds.top + targetBounds.height / 2 -
+      deviceBounds.top - deviceBounds.height / 2;
+    animateListScroll(targetTop, 700, () => {
+      clearNewHighlight();
+      highlightedRow = row;
+      row.classList.add('is-highlighted');
+      if (!auto || !demoRunning || manual || !inView || document.hidden) return;
+      demoTimer = window.setTimeout(() => {
+        pointCursor('createdContact', true);
+        demoTimer = window.setTimeout(() => {
+          // New disappears as soon as the pointer touches the list.
+          clearNewHighlight();
+          cursor.classList.add('is-dragging');
+          pointCursor('swipeEnd', true);
+          const swipeDistance = 50 * deviceBounds.height / 812;
+          animateListScroll(contactList.scrollTop + swipeDistance, 430, () => {
+            cursor.classList.remove('is-dragging');
+            demoTimer = window.setTimeout(restartDemo, 500);
+          });
+        }, 950);
+      }, 300);
+    });
+  }
+
+  function completeContactCreation(name, auto) {
+    const row = insertSortedContact(name);
+    if (auto) demoCreatedRow = row;
+    // First show A/B/C from the top, then smoothly center the new contact.
+    backToContacts(false);
+    contactList.scrollTop = 0;
+    pointCursor('create', false, false);
+    demoTimer = window.setTimeout(() => scrollToCreated(row, auto), 180);
+  }
+
+  function restartDemo() {
+    if (!demoRunning || manual || !inView || document.hidden || reducedMotion.matches) return;
+    stopDemo();
+    backToContacts(false);
+    startDemo();
+  }
+
+  // Natural interaction also clears the transient New confirmation.
+  contactList.addEventListener('pointerdown', () => {
+    clearNewHighlight();
+    if (demoRunning) takeManualControl();
+  });
+  contactList.addEventListener('touchstart', clearNewHighlight, { passive: true });
+  contactList.addEventListener('wheel', clearNewHighlight, { passive: true });
 
   // Real pointer/keyboard interaction wins over the automatic walkthrough.
   add.addEventListener('click', () => {
@@ -2007,9 +2137,8 @@
   foundForm.addEventListener('submit', event => {
     event.preventDefault();
     if (demoSubmitting) {
-      // Stop at the Create contact tap. The following success screen is
-      // intentionally left for the next iteration of this prototype.
-      stopDemo();
+      const savedName = foundName.value.trim();
+      if (savedName) completeContactCreation(savedName, true);
       return;
     }
     const name = foundName.value.trim();
@@ -2018,12 +2147,7 @@
       return;
     }
     takeManualControl();
-    // Local prototype only: add the named contact to the on-screen list.
-    const row = document.createElement('div');
-    row.className = 'contact-app__name';
-    row.textContent = name;
-    contacts.querySelector('.contact-app__list').appendChild(row);
-    backToContacts(false);
+    completeContactCreation(name, false);
     add.focus({ preventScroll: true });
   });
 
@@ -2042,7 +2166,9 @@
     inView = entries[0].isIntersecting;
     if (!inView) {
       stopDemo();
+      clearNewHighlight();
       backToContacts(false);
+      contactList.scrollTop = 0;
       manual = false;
     } else {
       startDemo();
