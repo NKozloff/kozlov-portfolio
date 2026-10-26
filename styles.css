@@ -5044,7 +5044,7 @@ a.core-intro__project-link {
   transition:transform 270ms cubic-bezier(.22,.72,.26,1);
 }
 .core-page .contact-app__found.is-keyboard-open .contact-app__found-form {
-  transform:translateY(-54cqw);
+  transform:translateY(-52cqw);
 }
 .core-page .contact-app__found.is-keyboard-open .contact-app__create-button {
   opacity:0;
@@ -5119,7 +5119,7 @@ a.core-intro__project-link {
 }
 .core-page .contact-app__found .proxy-app__home-indicator {z-index:7;}
 .core-page .contact-app > .proxy-app__demo-cursor.is-moving.is-typing {
-  transition:left 110ms ease-out,top 110ms ease-out;
+  transition:left 138ms ease-out,top 138ms ease-out;
 }
 @media (prefers-reduced-motion:reduce) {
   .core-page .contact-app__found-form,
@@ -5150,4 +5150,35 @@ a.core-intro__project-link {
 }
 @media(prefers-reduced-motion:reduce) {
   .core-page .contact-app > .proxy-app__demo-cursor.is-moving.is-dragging {transition:none!important;}
+}
+
+/* v417 — The Local strip, Contacts title and + belong to the scrolling
+   content, not a fixed header. Only the iOS system chrome stays stationary.
+   At 375×812: scroll starts at y=62, header takes 90px, A starts at y=152. */
+.core-page .contact-app__list {
+  top:7.635%;
+  bottom:0;
+  padding-bottom:22.4cqw;
+}
+.core-page .contact-app__list-header {
+  position:relative;
+  height:24cqw;
+}
+.core-page .contact-app__list-header .contact-app__local {
+  top:0;
+  height:6.4cqw;
+}
+.core-page .contact-app__list-header .contact-app__title {
+  top:12.8cqw;
+}
+.core-page .contact-app__list-header .contact-app__plus {
+  top:12.4cqw;
+}
+/* The contact rows run beneath the frosted tab bar, so the 30px blur
+   visibly samples the scrolling content rather than a flat backdrop. */
+.core-page .contact-app__tabs {
+  z-index:2;
+  background:rgba(82,86,60,.5);
+  backdrop-filter:blur(30px);
+  -webkit-backdrop-filter:blur(30px);
 }
