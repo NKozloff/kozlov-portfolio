@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=416-contact-created-scroll-loop" />
+<link rel="stylesheet" href="../styles.css?v=417-scrollable-header-glass-tabs" />
   </head>
   <body class="core-page core-page--condensed typography-only">
     <main class="core-intro" id="cover">
@@ -749,10 +749,12 @@
         <img class="proxy-app__ios-wifi" src="../assets/core-proxy-ios-wifi-v1.svg" alt="" />
         <img class="proxy-app__ios-battery" src="../assets/core-proxy-ios-battery-v1.svg" alt="" />
       </div>
-      <div class="contact-app__local"><span class="contact-app__local-dot"></span><span class="contact-app__local-label">Local</span></div>
-      <div class="contact-app__title">Contacts</div>
-      <button class="contact-app__plus" type="button" aria-label="Add contact" aria-haspopup="dialog" aria-expanded="false"><span aria-hidden="true"></span></button>
       <div class="contact-app__list" aria-label="Contact list">
+        <div class="contact-app__list-header">
+          <div class="contact-app__local"><span class="contact-app__local-dot"></span><span class="contact-app__local-label">Local</span></div>
+          <div class="contact-app__title">Contacts</div>
+          <button class="contact-app__plus" type="button" aria-label="Add contact" aria-haspopup="dialog" aria-expanded="false"><span aria-hidden="true"></span></button>
+        </div>
         <div class="contact-app__letter">A</div><div class="contact-app__name">Alexander</div><div class="contact-app__name">Alice</div><div class="contact-app__name">Andrew</div>
         <div class="contact-app__letter">B</div><div class="contact-app__name">Benjamin</div><div class="contact-app__name">Brian</div><div class="contact-app__name">Борис</div><div class="contact-app__name">Богдан</div>
         <div class="contact-app__letter">C</div><div class="contact-app__name">Charlotte</div><div class="contact-app__name">Christopher</div><div class="contact-app__name">Claire</div><div class="contact-app__name">Сергей</div>
@@ -1890,7 +1892,7 @@
 
   function pressDemoKey(letter) {
     keyboard.querySelectorAll('.contact-app__key.is-tapped').forEach(key => key.classList.remove('is-tapped'));
-    // Move first; only press/insert after the 110ms cursor travel completes.
+    // Move first; only press/insert after the 138ms cursor travel completes.
     pointCursor(letter.toLowerCase(), true);
     window.clearTimeout(keyTimer);
     keyTimer = window.setTimeout(() => {
@@ -1900,7 +1902,7 @@
       if (key) key.classList.add('is-tapped');
       foundName.value += letter;
       foundName.dispatchEvent(new Event('input', { bubbles: true }));
-    }, 140);
+    }, 175);
   }
 
   // The iOS-styled keyboard is a visual simulation for the timed walkthrough;
@@ -1911,7 +1913,7 @@
     { duration: 320, run() { showKeyboard(); } },
     { duration: 150, run() { cursor.classList.add('is-typing'); } },
     ...nameDemoKeys.map(letter => ({
-      duration: 235,
+      duration: 294,
       run() { pressDemoKey(letter); }
     })),
     { duration: 140, run() {
