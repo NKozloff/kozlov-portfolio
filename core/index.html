@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=399-contact-scan-viewfinder" />
+<link rel="stylesheet" href="../styles.css?v=400-contact-scan-animation" />
   </head>
   <body class="core-page core-page--condensed typography-only">
     <main class="core-intro" id="cover">
@@ -775,7 +775,7 @@
       <div class="proxy-app__home-indicator" aria-hidden="true"></div>
     </section>
     <section class="contact-app__camera" data-contact-state="scan" aria-label="Scan QR camera preview" hidden>
-      <!-- Empty camera placeholder. The QR-bearing phone will be added in a later iteration. -->
+      <div class="contact-app__camera-scene" aria-hidden="true"><img class="contact-app__camera-actor" src="../assets/core-scan-hand-v400.webp" alt="" draggable="false" decoding="async" /></div>
       <div class="contact-app__camera-window" aria-hidden="true"></div>
       <div class="proxy-app__ios-status" aria-hidden="true">
         <img class="proxy-app__ios-time" src="../assets/core-proxy-ios-time-v1.svg" alt="" />
@@ -1631,6 +1631,20 @@
   const scrim=stage.querySelector('.contact-app__scrim');
   const scan=stage.querySelector('.contact-app__scan-button');
   const cancel=stage.querySelector('.contact-app__cancel');
+  let enterTimer=null,lockTimer=null;
+  const stopScan=()=>{
+    clearTimeout(enterTimer);clearTimeout(lockTimer);
+    camera.classList.remove('is-entering','is-locked');
+  };
+  const playScan=()=>{
+    stopScan();
+    if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+      camera.classList.add('is-entering','is-locked');return;
+    }
+    void camera.offsetWidth;
+    enterTimer=setTimeout(()=>camera.classList.add('is-entering'),650);
+    lockTimer=setTimeout(()=>camera.classList.add('is-locked'),1700);
+  };
   const showSheet=visible=>{
     sheet.hidden=!visible;scrim.hidden=!visible;
     add.setAttribute('aria-expanded',String(visible));
@@ -1642,14 +1656,16 @@
     sheet.hidden=true;scrim.hidden=true;
     contacts.hidden=true;camera.hidden=false;
     add.setAttribute('aria-expanded','false');
+    playScan();
     cancel.focus({preventScroll:true});
   });
+  camera.addEventListener('click',e=>{if(!e.target.closest('.contact-app__cancel'))playScan();});
   cancel.addEventListener('click',()=>{
-    camera.hidden=true;contacts.hidden=false;showSheet(false);
+    stopScan();camera.hidden=true;contacts.hidden=false;showSheet(false);
   });
   document.addEventListener('keydown',e=>{
     if(e.key!=='Escape'||!stage.isConnected)return;
-    if(!camera.hidden){camera.hidden=true;contacts.hidden=false;showSheet(false);}
+    if(!camera.hidden){stopScan();camera.hidden=true;contacts.hidden=false;showSheet(false);}
     else if(!sheet.hidden)showSheet(false);
   });
 })();

@@ -41,7 +41,12 @@
       isolation: isolate;
       color: #fff;
     }
-    .status-bar { position: absolute; inset: 0 0 auto; height: 12cqw; pointer-events: none; }
+    /* Camera scene: the QR-bearing phone enters from the right. */
+    .camera-scene{position:absolute;inset:0;overflow:hidden;z-index:0;background:#5c5c5c;pointer-events:none}
+    .camera-scene__actor{position:absolute;top:0;left:26.2%;height:100%;width:auto;max-width:none;object-fit:contain;opacity:0;transform:translateX(45%) scale(1.015);filter:blur(8px);will-change:opacity,transform,filter;transition:transform 1100ms cubic-bezier(.22,.61,.36,1),opacity 320ms ease,filter 780ms ease}
+    .scan-screen.is-entering .camera-scene__actor,.scan-screen.is-locked .camera-scene__actor{opacity:1;transform:translateX(0) scale(1);filter:blur(0)}
+    .camera-scene:after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.1)}
+    .status-bar { position: absolute; inset: 0 0 auto; height: 12cqw; pointer-events: none; z-index:5; }
     .time {
       position: absolute;
       top: 5.38cqw;
@@ -84,9 +89,10 @@
       font-weight: 700;
       line-height: 1.17;
       letter-spacing: -0.038em;
+      z-index:5;
     }
 
-    /* Placeholder for a future camera view: corners are individual open strokes. */
+    /* Translucent scan target reveals the animated camera scene. */
     .scanner {
       position: absolute;
       width: 81.7cqw;
@@ -94,8 +100,9 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      background: #e5e5e5;
+      background: rgba(229,229,229,.68);
       border-radius: 20%;
+      z-index:3;
     }
     .scanner-corners {
       position: absolute;
@@ -131,6 +138,7 @@
       font-weight: 400;
       text-align: center;
       cursor: pointer;
+      z-index:5;
     }
     .cancel:focus-visible { outline: 2px solid white; outline-offset: 3px; }
     .cancel:active { background: rgb(255 255 255 / 27%); }
@@ -144,6 +152,7 @@
       background: #fff;
       transform: translateX(-50%);
       pointer-events: none;
+      z-index:5;
     }
     @media (max-width: 600px) {
       body { display: block; }
@@ -151,11 +160,13 @@
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; }
+      .camera-scene__actor{transition:none!important}
     }
   </style>
 </head>
 <body>
   <main class="scan-screen" aria-label="CORE QR code scanning screen">
+    <div class="camera-scene" aria-hidden="true"><img class="camera-scene__actor" src="../../assets/core-scan-hand-v400.webp" alt="" draggable="false" decoding="async" /></div>
     <div class="status-bar" aria-hidden="true">
       <div class="time">9:41</div>
       <div class="dynamic-island"></div>
@@ -191,5 +202,26 @@
     <a class="cancel" href="../" aria-label="Cancel scanning">Cancel</a>
     <div class="home-indicator" aria-hidden="true"></div>
   </main>
+  <script>
+  (() => {
+    const screen = document.querySelector('.scan-screen');
+    const cancel = screen.querySelector('.cancel');
+    let enterTimer = null, lockTimer = null;
+    const replay = () => {
+      clearTimeout(enterTimer); clearTimeout(lockTimer);
+      screen.classList.remove('is-entering','is-locked');
+      if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+        screen.classList.add('is-entering','is-locked');return;
+      }
+      void screen.offsetWidth;
+      enterTimer=setTimeout(()=>screen.classList.add('is-entering'),650);
+      lockTimer=setTimeout(()=>screen.classList.add('is-locked'),1700);
+    };
+    screen.addEventListener('click',e=>{if(!e.target.closest('.cancel'))replay();});
+    cancel.addEventListener('click',()=>{clearTimeout(enterTimer);clearTimeout(lockTimer);});
+    document.addEventListener('visibilitychange',()=>{if(!document.hidden)replay();});
+    replay();
+  })();
+  </script>
 </body>
 </html>

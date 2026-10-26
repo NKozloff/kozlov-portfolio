@@ -4907,6 +4907,16 @@ a.core-intro__project-link {
 .core-page .contact-app__sheet ~ .proxy-app__home-indicator{z-index:22;}
 .core-page .contact-app__camera .proxy-app__home-indicator{z-index:5;}
 
+/* v400 — scanning animation under translucent camera viewfinder */
+.core-page .contact-app__camera-scene{position:absolute;inset:0;overflow:hidden;z-index:0;background:#5c5c5c;pointer-events:none}
+.core-page .contact-app__camera-scene:after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.1)}
+.core-page .contact-app__camera-actor{position:absolute;top:0;left:26.2%;height:100%;width:auto;max-width:none;object-fit:contain;opacity:0;transform:translateX(45%) scale(1.015);filter:blur(8px);will-change:opacity,transform,filter;transition:transform 1100ms cubic-bezier(.22,.61,.36,1),opacity 320ms ease,filter 780ms ease}
+.core-page .contact-app__camera.is-entering .contact-app__camera-actor,.core-page .contact-app__camera.is-locked .contact-app__camera-actor{opacity:1;transform:translateX(0) scale(1);filter:blur(0)}
+.core-page .contact-app__camera-window{background:rgba(229,229,229,.68);z-index:3}
+.core-page .contact-app__scan-frame{z-index:4}
+.core-page .contact-app__camera-heading,.core-page .contact-app__cancel{z-index:5}
+@media(prefers-reduced-motion:reduce){.core-page .contact-app__camera-actor{transition:none!important}}
+
 /* v395 — Figma Contacts screen: only Local receives the 24px status stripe.
    Remove the inherited proxy header background, and attach the 84px tab bar
    to the bottom edge (including the iOS home-indicator area). */
