@@ -1853,7 +1853,6 @@
     stopDemo();
   }
 
-  const typingName = 'Sasha';
   const nameDemoKeys = ['S', 'a', 's', 'h', 'a'];
 
   function pressDemoKey(letter) {
@@ -1881,7 +1880,10 @@
       cursor.classList.remove('is-typing');
       pointCursor('dismiss', true);
     } },
-    { duration: 950, run() { hideKeyboard(); } },
+    { duration: 950, run() {
+      found.click();
+      hideKeyboard();
+    } },
     { duration: 980, run() { pointCursor('create', true); } },
     { duration: null, run() {
       demoSubmitting = true;
@@ -1964,6 +1966,9 @@
     if (demoRunning) takeManualControl();
   });
   createButton.addEventListener('pointerdown', () => {
+    if (demoRunning) takeManualControl();
+  });
+  found.addEventListener('pointerdown', () => {
     if (demoRunning) takeManualControl();
   });
   found.addEventListener('click', event => {
