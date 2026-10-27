@@ -2156,6 +2156,13 @@ a:focus-visible {
   object-position: right center;
 }
 
+/* X5 homepage cover: same centered, contained treatment as existing case previews. */
+.case-card__preview--x5 img {
+  width: auto;
+  height: 80%;
+  object-fit: contain;
+}
+
 /* v140: cleaner homepage titles + matching CORE hero media background */
 .case-card__title {
   text-decoration: none;
