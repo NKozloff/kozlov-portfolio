@@ -2156,7 +2156,7 @@ a:focus-visible {
   object-position: right center;
 }
 
-/* X5: center the folder itself; place the Singel caption just beneath it. */
+/* X5: center the folder; place the Arial caption just beneath it. */
 .case-card__preview--x5 {
   position: relative;
   container-type: inline-size;
@@ -2180,9 +2180,9 @@ a:focus-visible {
   transform: translateX(-50%);
   margin: 0;
   color: #171717;
-  font-family: "Singel Portfolio", sans-serif;
+  font-family: "Arial Portfolio", Arial, sans-serif;
   font-size: 3.9cqw;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.2;
   white-space: nowrap;
 }
