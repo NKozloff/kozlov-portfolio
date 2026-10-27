@@ -1249,11 +1249,12 @@
         const scenarioContainer = nav.querySelector(".core-nav__scenarios");
         const scenarioSubmenu = nav.querySelector(".core-nav__submenu");
         const scenarioKeys = new Set(["proxy", "agreed-call", "agreed-chats", "agreed-contact", "agreed-notifications"]);
-        let menuManuallyClosed = false;
         const setScenarioMenuOpen = (open) => {
           scenarioSubmenu.hidden = !open;
           scenarioToggle.setAttribute("aria-expanded", String(open));
         };
+        setScenarioMenuOpen(false);
+        window.addEventListener("pageshow", () => setScenarioMenuOpen(false));
         const anchors = links
           .map((link) => {
             const href = link.getAttribute("href");
@@ -1280,14 +1281,7 @@
               item.link.removeAttribute("aria-current");
             }
           }
-          const isScenario = scenarioKeys.has(key);
-          scenarioToggle.classList.toggle("is-current", isScenario);
-          if (isScenario && !menuManuallyClosed) {
-            setScenarioMenuOpen(true);
-          } else if (!isScenario) {
-            menuManuallyClosed = false;
-            setScenarioMenuOpen(false);
-          }
+          scenarioToggle.classList.toggle("is-current", scenarioKeys.has(key));
         };
 
         const updateNavigation = () => {
@@ -1333,21 +1327,17 @@
         };
 
         scenarioToggle.addEventListener("click", () => {
-          const isOpen = scenarioToggle.getAttribute("aria-expanded") === "true";
-          menuManuallyClosed = isOpen;
-          setScenarioMenuOpen(!isOpen);
+          setScenarioMenuOpen(scenarioSubmenu.hidden);
         });
 
         document.addEventListener("pointerdown", (event) => {
           if (!scenarioContainer.contains(event.target) && !scenarioSubmenu.hidden) {
-            menuManuallyClosed = true;
             setScenarioMenuOpen(false);
           }
         });
 
         scenarioContainer.addEventListener("keydown", (event) => {
           if (event.key === "Escape" && !scenarioSubmenu.hidden) {
-            menuManuallyClosed = true;
             setScenarioMenuOpen(false);
             scenarioToggle.focus();
           }
@@ -1356,6 +1346,7 @@
         for (const item of anchors) {
           item.link.addEventListener("click", (event) => {
             event.preventDefault();
+            setScenarioMenuOpen(false);
 
             const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
             const desiredTop =
