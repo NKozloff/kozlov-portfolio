@@ -5316,3 +5316,62 @@ a.core-intro__project-link {
 @media (prefers-reduced-motion: reduce) {
   .core-page .core-nav__chevron { transition: none; }
 }
+
+
+/* v425 — CORE chats: responsive screenshot trio. Follow the same viewport-fit
+   budget as interactive phone prototypes, while allowing space for captions.
+   Only the current /core/ case is affected; the archived /core2/ is untouched. */
+.core-page--condensed #scenarios .case-block--agreed .case-agreed-visual--chats-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  justify-content: center;
+  column-gap: clamp(20px, 2.5vw, 40px);
+  row-gap: 40px;
+  min-height: 0;
+  padding: 24px clamp(24px, 4vw, 64px);
+  color: #111;
+  text-align: center;
+}
+.core-page--condensed #scenarios .case-agreed-visual--chats-gallery .chats-gallery__item {
+  display: flex;
+  min-width: 0;
+  width: 100%;
+  margin: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.core-page--condensed #scenarios .case-agreed-visual--chats-gallery .chats-gallery__caption {
+  margin: 0;
+  color: #111;
+  font-family: "Arial Portfolio", Arial, sans-serif;
+  font-size: var(--text-size);
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: center;
+}
+.core-page--condensed #scenarios .case-agreed-visual--chats-gallery .chats-gallery__image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(100svh - var(--case-ui-top-space) - var(--case-ui-nav-space) - 96px);
+  object-fit: contain;
+  image-rendering: auto;
+}
+@supports (height: 100dvh) {
+  .core-page--condensed #scenarios .case-agreed-visual--chats-gallery .chats-gallery__image {
+    max-height: calc(100dvh - var(--case-ui-top-space) - var(--case-ui-nav-space) - 96px);
+  }
+}
+@media (max-width: 920px) {
+  .core-page--condensed #scenarios .case-block--agreed .case-agreed-visual--chats-gallery {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 40px;
+  }
+  .core-page--condensed #scenarios .case-agreed-visual--chats-gallery .chats-gallery__item {
+    max-width: 400px;
+    margin-inline: auto;
+  }
+}
