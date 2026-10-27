@@ -5372,3 +5372,9 @@ a.core-intro__project-link {
     margin-inline: auto;
   }
 }
+
+/* CORE Branding: preserve one standard 6.912rem rhythm unit after the final
+   content block, keeping it clear of the fixed floating anchor navigation. */
+.core-page .case-body > #branding {
+  padding-bottom: 6.912rem;
+}
