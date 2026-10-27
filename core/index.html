@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=419-new-highlight-dot-scan-delay" />
+<link rel="stylesheet" href="../styles.css?v=420-scenario-navigation" />
   </head>
   <body class="core-page core-page--condensed typography-only">
     <main class="core-intro" id="cover">
@@ -208,7 +208,7 @@
       <section class="case-section" id="scenarios">
         <!-- Новая история о прокси: первый приоритет после Discovery. -->
         <div class="case-block case-block--proxy-new case-block--section-start" id="proxy">
-          <p class="case-section__label">Проектирование</p>
+          <p class="case-section__label">Соединение</p>
           <h2 class="case-heading">Выявил отсутствие контроля над состоянием защищённого подключения</h2>
           <p class="proxy-copy">
             Выяснил, что прокси уже используется, но никак не представлен в интерфейсе. Здесь даже не понадобилось строить CJM: искать проблемы в существующем сценарии было бессмысленно — самого сценария взаимодействия с прокси просто не было.
@@ -386,7 +386,7 @@
 
         <!-- Согласованный раздел: Звонок -->
         <div class="case-block case-block--agreed case-block--section-start" id="agreed-call">
-          <p class="case-section__label">Проектирование</p>
+          <p class="case-section__label">Звонки</p>
           <h2 class="case-heading">Звонок — был 2-м приоритетом</h2>
           <p class="case-agreed-copy">На брифинге выяснил, что заказчик чаще общается с бизнес-партнёрами голосом. Во время разговора ему было важно видеть, какие инструменты активны на стороне собеседника, чтобы понимать, не изменились ли условия конфиденциальности звонка.</p>
         </div>
@@ -561,7 +561,7 @@
 
         <!-- Согласованный раздел: Чаты -->
         <div class="case-block case-block--agreed case-block--section-start" id="agreed-chats">
-          <p class="case-section__label">Проектирование</p>
+          <p class="case-section__label">Чаты</p>
           <h2 class="case-heading">Чаты — были 3-м приоритетом</h2>
           <p class="case-agreed-copy">Помимо звонков, заказчик использовал мессенджер для обмена конфиденциальными сообщениями и документами. Ему было важно понимать, если собеседник сохраняет или распространяет содержимое переписки.</p>
         </div>
@@ -663,7 +663,7 @@
 
         <!-- Согласованный раздел: Добавление контакта -->
         <div class="case-block case-block--agreed case-block--section-start" id="agreed-contact">
-          <p class="case-section__label">Проектирование</p>
+          <p class="case-section__label">Контакты</p>
           <h2 class="case-heading">Добавление контакта — было 4-м приоритетом</h2>
           <p class="case-agreed-copy">На брифинге выяснил, что заказчик добавляет новых собеседников примерно раз в 1–2 месяца. При этом он хотел устанавливать контакт исключительно при личной встрече, без обмена номером телефона, почтой или другими персональными данными.</p>
           <p class="case-agreed-copy">У заказчика уже была идея использовать QR-код. Предстояло проверить, насколько этот способ соответствует требованиям приватности.</p>
@@ -914,7 +914,7 @@
 
         <!-- Согласованный раздел: Уведомления -->
         <div class="case-block case-block--agreed case-block--section-start" id="agreed-notifications">
-          <p class="case-section__label">Проектирование</p>
+          <p class="case-section__label">Уведомления</p>
           <h2 class="case-heading">Уведомления — были 5-м приоритетом</h2>
           <p class="case-agreed-copy">Даже если переписка защищена внутри мессенджера, системные уведомления могут раскрывать конфиденциальную информацию на заблокированном экране устройства.</p>
           <p class="case-agreed-copy">Поэтому нужно было дать заказчику возможность самостоятельно управлять тем, какие данные отображаются в уведомлениях.</p>
@@ -1207,6 +1207,18 @@
         <li><a class="core-nav__link" href="#problem" data-nav-key="problem" aria-current="location">Проблема</a></li>
         <li><a class="core-nav__link" href="#task" data-nav-key="task">Задача</a></li>
         <li><a class="core-nav__link" href="#discovery" data-nav-key="discovery">Discovery</a></li>
+        <li class="core-nav__scenarios">
+          <button class="core-nav__toggle" type="button" aria-expanded="false" aria-controls="core-nav-scenario-links">
+            Сценарии <span class="core-nav__chevron" aria-hidden="true"></span>
+          </button>
+          <ul class="core-nav__submenu" id="core-nav-scenario-links" aria-label="Сценарии" hidden>
+            <li><a class="core-nav__link core-nav__sublink" href="#proxy" data-nav-key="proxy">Соединение</a></li>
+            <li><a class="core-nav__link core-nav__sublink" href="#agreed-call" data-nav-key="agreed-call">Звонки</a></li>
+            <li><a class="core-nav__link core-nav__sublink" href="#agreed-chats" data-nav-key="agreed-chats">Чаты</a></li>
+            <li><a class="core-nav__link core-nav__sublink" href="#agreed-contact" data-nav-key="agreed-contact">Контакты</a></li>
+            <li><a class="core-nav__link core-nav__sublink" href="#agreed-notifications" data-nav-key="agreed-notifications">Уведомления</a></li>
+          </ul>
+        </li>
         <li><a class="core-nav__link" href="#branding" data-nav-key="branding">Брендинг</a></li>
       </ul>
     </nav>
@@ -1223,6 +1235,15 @@
         const intro = document.querySelector(".core-intro");
         const nav = document.querySelector(".core-nav");
         const links = [...nav.querySelectorAll(".core-nav__link")];
+        const scenarioToggle = nav.querySelector(".core-nav__toggle");
+        const scenarioContainer = nav.querySelector(".core-nav__scenarios");
+        const scenarioSubmenu = nav.querySelector(".core-nav__submenu");
+        const scenarioKeys = new Set(["proxy", "agreed-call", "agreed-chats", "agreed-contact", "agreed-notifications"]);
+        let menuManuallyClosed = false;
+        const setScenarioMenuOpen = (open) => {
+          scenarioSubmenu.hidden = !open;
+          scenarioToggle.setAttribute("aria-expanded", String(open));
+        };
         const anchors = links
           .map((link) => {
             const href = link.getAttribute("href");
@@ -1248,6 +1269,14 @@
             } else {
               item.link.removeAttribute("aria-current");
             }
+          }
+          const isScenario = scenarioKeys.has(key);
+          scenarioToggle.classList.toggle("is-current", isScenario);
+          if (isScenario && !menuManuallyClosed) {
+            setScenarioMenuOpen(true);
+          } else if (!isScenario) {
+            menuManuallyClosed = false;
+            setScenarioMenuOpen(false);
           }
         };
 
@@ -1292,6 +1321,27 @@
           if (frameId) return;
           frameId = window.requestAnimationFrame(updateNavigation);
         };
+
+        scenarioToggle.addEventListener("click", () => {
+          const isOpen = scenarioToggle.getAttribute("aria-expanded") === "true";
+          menuManuallyClosed = isOpen;
+          setScenarioMenuOpen(!isOpen);
+        });
+
+        document.addEventListener("pointerdown", (event) => {
+          if (!scenarioContainer.contains(event.target) && !scenarioSubmenu.hidden) {
+            menuManuallyClosed = true;
+            setScenarioMenuOpen(false);
+          }
+        });
+
+        scenarioContainer.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && !scenarioSubmenu.hidden) {
+            menuManuallyClosed = true;
+            setScenarioMenuOpen(false);
+            scenarioToggle.focus();
+          }
+        });
 
         for (const item of anchors) {
           item.link.addEventListener("click", (event) => {
