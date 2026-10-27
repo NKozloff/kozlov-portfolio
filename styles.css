@@ -2156,6 +2156,31 @@ a:focus-visible {
   object-position: right center;
 }
 
+/* X5: native Singel label and compact system folder at 2/3 original scale. */
+.case-card__preview--x5 {
+  container-type: inline-size;
+  flex-direction: column;
+  gap: 4cqw;
+}
+
+.case-card__preview--x5 img {
+  display: block;
+  width: 36.7cqw;
+  height: auto;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
+.case-card__x5-label {
+  margin: 0;
+  color: #171717;
+  font-family: "Singel Portfolio", sans-serif;
+  font-size: 3.9cqw;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
 /* v140: cleaner homepage titles + matching CORE hero media background */
 .case-card__title {
   text-decoration: none;
