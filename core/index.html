@@ -1794,9 +1794,11 @@
     }
     void camera.offsetWidth;
     if (immediate) {
-      camera.classList.add('is-entering');
-      lockTimer = window.setTimeout(() => camera.classList.add('is-locked'), 1100);
-      foundTimer = window.setTimeout(showFound, 1250);
+      // Open Scan QR immediately, then let the user orient for one second
+      // before the existing 1100ms handset/QR approach begins.
+      enterTimer = window.setTimeout(() => camera.classList.add('is-entering'), 1000);
+      lockTimer = window.setTimeout(() => camera.classList.add('is-locked'), 2100);
+      foundTimer = window.setTimeout(showFound, 2250);
     } else {
       enterTimer = window.setTimeout(() => camera.classList.add('is-entering'), 650);
       lockTimer = window.setTimeout(() => camera.classList.add('is-locked'), 1700);
