@@ -4776,9 +4776,7 @@ a.core-intro__project-link {
 .core-page .notification-app__checkbox:checked+.notification-app__switch {background:#959923;}
 .core-page .notification-app__checkbox:checked+.notification-app__switch .notification-app__knob {transform:translateX(5.333cqw);}
 .core-page .notification-app__checkbox:focus-visible+.notification-app__switch {outline:2px solid white;outline-offset:2px;}
-.core-page .notification-app__disable {position:absolute;bottom:5.172%;left:5.6%;width:87.2%;height:4.926%;border:0;border-radius:2.133cqw;background:#52563c;color:#f5f5f5;font:inherit;font-size:4cqw;cursor:pointer;}
-.core-page .notification-app__disable:focus-visible {outline:2px solid white;outline-offset:2px;}
-.core-page .notification-app--disabled .notification-app__toast {opacity:.35;}
+.core-page .notification-app__disable {position:absolute;bottom:5.172%;left:5.6%;width:87.2%;height:4.926%;border:0;border-radius:2.133cqw;background:#52563c;color:#f5f5f5;font:inherit;font-size:4cqw;display:flex;align-items:center;justify-content:center;cursor:default;}
 .core-page .notification-app__message strong,.core-page .notification-app__message > span {transition:opacity .2s ease;}
 @media(prefers-reduced-motion:reduce) {.core-page .notification-app__toast,.core-page .notification-app__switch,.core-page .notification-app__knob {transition:none;}}
 
