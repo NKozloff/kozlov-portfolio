@@ -2156,22 +2156,28 @@ a:focus-visible {
   object-position: right center;
 }
 
-/* X5: native Singel label and compact system folder at 2/3 original scale. */
+/* X5: center the folder itself; place the Singel caption just beneath it. */
 .case-card__preview--x5 {
+  position: relative;
   container-type: inline-size;
-  flex-direction: column;
-  gap: 4cqw;
 }
 
 .case-card__preview--x5 img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   display: block;
   width: 36.7cqw;
   height: auto;
-  flex: 0 0 auto;
   object-fit: contain;
+  transform: translate(-50%, -50%);
 }
 
 .case-card__x5-label {
+  position: absolute;
+  top: calc(50% + 16cqw);
+  left: 50%;
+  transform: translateX(-50%);
   margin: 0;
   color: #171717;
   font-family: "Singel Portfolio", sans-serif;
