@@ -1054,6 +1054,85 @@
   </div>
 </div>
         </div>
+
+        <div class="case-block case-block--onboarding case-block--section-start" id="onboarding">
+          <p class="case-section__label">Онбординг</p>
+          <h2 class="case-heading">Как я не отговорил клиента от онбординга</h2>
+
+          <div class="case-onboarding-story">
+            <p>
+              Я изначально не хотел добавлять онбординг в MVP. Основной сценарий начинался с личной встречи: один человек предлагает продолжить общение в приложении, второй устанавливает его и сразу подключается. В такой ситуации новый пользователь скорее захочет быстрее добавить контакт, чем читать несколько вводных экранов.
+            </p>
+            <p class="case-highlight">
+              <span class="case-conclusion-mark">Я собрал структуру, отталкиваясь от того, что пользователю нужно понять о продукте при первом знакомстве. Выделил три зоны: сначала — что здесь есть чаты и звонки; затем — чем приложение отличается от обычного мессенджера; в конце — как защита работает в основных сценариях.</span>
+            </p>
+          </div>
+
+          <div class="case-scenario-gallery" aria-label="Онбординг приложения CORE">
+              <div class="case-scenario-gallery__item case-scenario-gallery__item--animated case-scenario-gallery__item--onboarding">
+                <img
+                  class="case-scenario-gallery__image"
+                  src="../assets/optimized-v201/core-onboarding-step-1-v66-458w.png"
+                  srcset="../assets/optimized-v201/core-onboarding-step-1-v66-229w.png 229w, ../assets/optimized-v201/core-onboarding-step-1-v66-458w.png 458w"
+                  sizes="229px"
+                  alt="Онбординг CORE, экран 1"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <video
+                  class="case-animated-screen__video case-animated-screen__video--symbolic"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  preload="auto"
+                  aria-hidden="true"
+                >
+                  <source src="../assets/head-v208.mp4?v=223" type="video/mp4" />
+                </video>
+              </div>
+              <div class="case-scenario-gallery__item case-scenario-gallery__item--animated case-scenario-gallery__item--onboarding case-scenario-gallery__item--onboarding-planet">
+                <img
+                  class="case-scenario-gallery__image"
+                  src="../assets/optimized-v201/core-onboarding-step-2-v66-458w.png"
+                  srcset="../assets/optimized-v201/core-onboarding-step-2-v66-229w.png 229w, ../assets/optimized-v201/core-onboarding-step-2-v66-458w.png 458w"
+                  sizes="229px"
+                  alt="Онбординг CORE, экран 2"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <video
+                  class="case-animated-screen__video case-animated-screen__video--symbolic"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  preload="auto"
+                  aria-hidden="true"
+                >
+                  <source src="../assets/planet-v245.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <img
+                class="case-scenario-gallery__image"
+                src="../assets/optimized-v201/core-onboarding-step-3-v51-458w.png"
+                srcset="../assets/optimized-v201/core-onboarding-step-3-v51-229w.png 229w, ../assets/optimized-v201/core-onboarding-step-3-v51-458w.png 458w"
+                sizes="229px"
+                alt="Онбординг CORE, экран 3"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                class="case-scenario-gallery__image"
+                src="../assets/optimized-v201/core-onboarding-step-4-v51-458w.png"
+                srcset="../assets/optimized-v201/core-onboarding-step-4-v51-229w.png 229w, ../assets/optimized-v201/core-onboarding-step-4-v51-458w.png 458w"
+                sizes="229px"
+                alt="Онбординг CORE, экран 4"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+        </div>
       </section>
 
       <section class="case-section" id="branding" data-case-section data-nav-anchor="branding">
@@ -1227,6 +1306,7 @@
             <li><a class="core-nav__link core-nav__sublink" href="#agreed-chats" data-nav-key="agreed-chats">Чаты</a></li>
             <li><a class="core-nav__link core-nav__sublink" href="#agreed-contact" data-nav-key="agreed-contact">Контакты</a></li>
             <li><a class="core-nav__link core-nav__sublink" href="#agreed-notifications" data-nav-key="agreed-notifications">Уведомления</a></li>
+            <li><a class="core-nav__link core-nav__sublink" href="#onboarding" data-nav-key="onboarding">Онбординг</a></li>
           </ul>
         </li>
         <li><a class="core-nav__link" href="#branding" data-nav-key="branding">Дизайн-система</a></li>
@@ -1248,7 +1328,7 @@
         const scenarioToggle = nav.querySelector(".core-nav__toggle");
         const scenarioContainer = nav.querySelector(".core-nav__scenarios");
         const scenarioSubmenu = nav.querySelector(".core-nav__submenu");
-        const scenarioKeys = new Set(["proxy", "agreed-call", "agreed-chats", "agreed-contact", "agreed-notifications"]);
+        const scenarioKeys = new Set(["proxy", "agreed-call", "agreed-chats", "agreed-contact", "agreed-notifications", "onboarding"]);
         const setScenarioMenuOpen = (open) => {
           scenarioSubmenu.hidden = !open;
           scenarioToggle.setAttribute("aria-expanded", String(open));
