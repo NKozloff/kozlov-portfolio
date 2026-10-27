@@ -5318,9 +5318,7 @@ a.core-intro__project-link {
 }
 
 
-/* v425 — CORE chats: responsive screenshot trio. Follow the same viewport-fit
-   budget as interactive phone prototypes, while allowing space for captions.
-   Only the current /core/ case is affected; the archived /core2/ is untouched. */
+/* v426 — CORE chats: align screenshot gallery with viewport-fit phone prototypes. */
 .core-page--condensed #scenarios .case-block--agreed .case-agreed-visual--chats-gallery {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -5329,7 +5327,7 @@ a.core-intro__project-link {
   column-gap: clamp(20px, 2.5vw, 40px);
   row-gap: 40px;
   min-height: 0;
-  padding: 24px clamp(24px, 4vw, 64px);
+  padding: var(--case-ui-top-space) 20px;
   color: #111;
   text-align: center;
 }
@@ -5342,27 +5340,26 @@ a.core-intro__project-link {
   align-items: center;
   gap: 16px;
 }
-.core-page--condensed #scenarios .case-agreed-visual--chats-gallery .chats-gallery__caption {
+.core-page--condensed.typography-only .case-body #scenarios .case-agreed-visual--chats-gallery .chats-gallery__caption {
+  display: block;
+  flex: none;
   margin: 0;
   color: #111;
-  font-family: "Arial Portfolio", Arial, sans-serif;
-  font-size: var(--text-size);
-  font-weight: 400;
-  line-height: 1.4;
+  font: 400 var(--text-size)/1.4 "Arial Portfolio", Arial, sans-serif;
   text-align: center;
 }
 .core-page--condensed #scenarios .case-agreed-visual--chats-gallery .chats-gallery__image {
   display: block;
-  width: auto;
+  width: min(100%, var(--case-ui-max-width), calc((100svh - var(--case-ui-top-space) - var(--case-ui-nav-space) - 44px) * 0.46182266));
   height: auto;
   max-width: 100%;
-  max-height: calc(100svh - var(--case-ui-top-space) - var(--case-ui-nav-space) - 96px);
+  max-height: none;
   object-fit: contain;
   image-rendering: auto;
 }
 @supports (height: 100dvh) {
   .core-page--condensed #scenarios .case-agreed-visual--chats-gallery .chats-gallery__image {
-    max-height: calc(100dvh - var(--case-ui-top-space) - var(--case-ui-nav-space) - 96px);
+    width: min(100%, var(--case-ui-max-width), calc((100dvh - var(--case-ui-top-space) - var(--case-ui-nav-space) - 44px) * 0.46182266));
   }
 }
 @media (max-width: 920px) {
