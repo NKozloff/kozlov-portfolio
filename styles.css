@@ -2156,14 +2156,6 @@ a:focus-visible {
   object-position: right center;
 }
 
-/* X5: fill the entire case preview while preserving image proportions. */
-.case-card__preview--x5 img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
 /* v140: cleaner homepage titles + matching CORE hero media background */
 .case-card__title {
   text-decoration: none;
