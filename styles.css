@@ -5215,3 +5215,104 @@ a.core-intro__project-link {
 }
 .core-page .contact-app__list-header .contact-app__title {top:6.4cqw;}
 .core-page .contact-app__list-header .contact-app__plus {top:6cqw;}
+
+/* CORE: all visible section descriptors match the neutral type of Task. */
+.core-page .case-body .case-block--section-start > .case-section__label {
+  color: #8a8a8a !important;
+  font: 400 var(--text-size)/1.4 "Arial Portfolio", Arial, sans-serif;
+}
+.core-page #scenarios > .case-block--section-start > .case-section__label {
+  position: absolute;
+  top: 0;
+  left: calc(24px - var(--page-space));
+  width: auto;
+  max-width: none;
+  margin: 0;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* CORE: expandable second level above the existing floating anchor bar. */
+.core-page .core-nav { overflow: visible; }
+.core-page .core-nav__scenarios { position: relative; }
+.core-page .core-nav__toggle {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: auto;
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.76);
+  font: 400 0.933333rem/1.4 "Arial Portfolio", Arial, sans-serif;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.core-page .core-nav__toggle:hover,
+.core-page .core-nav__toggle:focus-visible { color: #fff; }
+.core-page .core-nav__toggle.is-current {
+  background: #343434;
+  color: #fff;
+}
+.core-page .core-nav__toggle:focus-visible,
+.core-page .core-nav__sublink:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: -2px;
+}
+.core-page .core-nav__chevron {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 150ms ease, margin-top 150ms ease;
+}
+.core-page .core-nav__toggle[aria-expanded="true"] .core-nav__chevron {
+  margin-top: 3px;
+  transform: rotate(225deg);
+}
+.core-page .core-nav__submenu {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 12px);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 196px;
+  margin: 0;
+  padding: 4px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  background: #111;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  list-style: none;
+}
+.core-page .core-nav__submenu[hidden] { display: none; }
+.core-page .core-nav__submenu li {
+  display: block;
+  flex: none;
+  width: 100%;
+  height: auto;
+}
+.core-page .core-nav__submenu .core-nav__sublink {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  min-height: 36px;
+  justify-content: flex-start;
+  padding: 8px 12px;
+  font-size: 0.933333rem;
+  text-align: left;
+}
+@media (prefers-reduced-motion: reduce) {
+  .core-page .core-nav__chevron { transition: none; }
+}
