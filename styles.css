@@ -5182,3 +5182,32 @@ a.core-intro__project-link {
   backdrop-filter:blur(30px);
   -webkit-backdrop-filter:blur(30px);
 }
+
+/* v418 — A solid, fixed iOS status + Local header.
+   The scrolling region begins below Local: no contacts bleed through the
+   green gap between the Dynamic Island and the Local status stripe. */
+.core-page .contact-app__contacts > .contact-app__fixed-header {
+  position:absolute;
+  top:0;left:0;right:0;
+  height:22.933333cqw; /* 86px on the 375px reference device */
+  background:#494d32;
+  z-index:5;
+}
+.core-page .contact-app__fixed-header > .proxy-app__ios-status {
+  z-index:1;
+}
+.core-page .contact-app__fixed-header > .contact-app__local {
+  top:16.533333cqw; /* immediately below the 62px iOS status */
+  height:6.4cqw;
+}
+/* Keep Contacts and + in the scroll flow with exactly the previous
+   initial positions: scroll begins at 86px and A still begins at 152px. */
+.core-page .contact-app__list {
+  top:22.933333cqw;
+  z-index:1;
+}
+.core-page .contact-app__list-header {
+  height:17.6cqw;
+}
+.core-page .contact-app__list-header .contact-app__title {top:6.4cqw;}
+.core-page .contact-app__list-header .contact-app__plus {top:6cqw;}
