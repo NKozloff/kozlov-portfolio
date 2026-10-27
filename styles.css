@@ -5281,7 +5281,8 @@ a.core-intro__project-link {
 }
 .core-page .core-nav__submenu {
   position: absolute;
-  right: 0;
+  left: 0;
+  right: auto;
   bottom: calc(100% + 12px);
   z-index: 1;
   display: flex;
