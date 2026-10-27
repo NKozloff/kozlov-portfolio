@@ -863,16 +863,26 @@
 </div>
         </div>
         <div class="case-block case-block--agreed">
-          <h2 class="case-heading">Продумал fallback-сценарии при прерывании подключения</h2>
-          <p class="case-agreed-copy">Поскольку подключение требует действий 2 пользователей, необходимо было предусмотреть ситуации, когда процесс прерывается или не завершается.</p>
-          <p class="case-agreed-copy">Для каждого такого случая определил поведение приложения и возможность повторного подключения.</p>
-          <div class="case-agreed-visual" data-asset-slot="contact-fallback-flow" aria-label="User Flow · fallback-сценарии">
-            <span class="case-agreed-visual__content">
-              <span class="case-agreed-visual__title">User Flow · fallback-сценарии</span>
-              <span class="case-agreed-visual__meta">Место для схемы</span>
-            </span>
+          <h2 class="case-heading">Продумал 2 fallback-сценария при прерывании добавления контакта</h2>
+          <p class="case-agreed-copy">Разделил прерывания по ключевому моменту: успели ли пользователи установить взаимную связь через QR-коды.</p>
+          <div class="case-outline-table-wrap case-agreed-table-wrap">
+            <table class="case-outline-table case-agreed-table" aria-label="Прерывание добавления контакта: два сценария">
+              <thead>
+                <tr><th scope="col">Когда пользователь выходит</th><th scope="col">Поведение приложения</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>До установления связи</strong></td>
+                  <td>Обмен QR-кодами не завершён, поэтому контакт не создаётся. Подключение можно начать заново.</td>
+                </tr>
+                <tr>
+                  <td><strong>После установления связи, но до ввода имени</strong></td>
+                  <td>Контакт уже сохранён у обоих пользователей под системным названием «Без имени». Его можно переименовать позже, без дополнительного поп-апа.</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <p class="case-highlight case-agreed-conclusion"><span class="case-conclusion-mark">Контакт должен появляться только после успешного прохождения всех обязательных этапов. Незавершённая попытка не должна приводить к частичному добавлению контакта.</span></p>
+          <p class="case-highlight case-agreed-conclusion"><span class="case-conclusion-mark">Создание контакта зависит от подтверждённого взаимного подключения, а не от ввода имени. Даже если пользователь выйдет на последнем шаге, установленная связь сохранится.</span></p>
         </div>
         <div class="case-block case-block--agreed">
           <h2 class="case-heading">Проверил сценарий добавления контакта на Usability Testing</h2>
