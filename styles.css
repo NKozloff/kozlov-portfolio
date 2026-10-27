@@ -5288,7 +5288,7 @@ a.core-intro__project-link {
   display: flex;
   flex-direction: column;
   gap: 0;
-  width: 196px;
+  width: max-content;
   margin: 0;
   padding: 4px;
   box-sizing: border-box;
