@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=418-fixed-status-local" />
+<link rel="stylesheet" href="../styles.css?v=419-new-highlight-dot-scan-delay" />
   </head>
   <body class="core-page core-page--condensed typography-only">
     <main class="core-intro" id="cover">
@@ -1794,11 +1794,11 @@
     }
     void camera.offsetWidth;
     if (immediate) {
-      // Open Scan QR immediately, then let the user orient for one second
-      // before the existing 1100ms handset/QR approach begins.
-      enterTimer = window.setTimeout(() => camera.classList.add('is-entering'), 1000);
-      lockTimer = window.setTimeout(() => camera.classList.add('is-locked'), 2100);
-      foundTimer = window.setTimeout(showFound, 2250);
+      // Open Scan QR immediately, then hold for 500ms before the
+      // unchanged 1100ms handset/QR approach animation begins.
+      enterTimer = window.setTimeout(() => camera.classList.add('is-entering'), 500);
+      lockTimer = window.setTimeout(() => camera.classList.add('is-locked'), 1600);
+      foundTimer = window.setTimeout(showFound, 1750);
     } else {
       enterTimer = window.setTimeout(() => camera.classList.add('is-entering'), 650);
       lockTimer = window.setTimeout(() => camera.classList.add('is-locked'), 1700);
@@ -2036,7 +2036,13 @@
     label.textContent = name;
     const tag = document.createElement('span');
     tag.className = 'contact-app__new-label';
-    tag.textContent = 'New';
+    const dot = document.createElement('span');
+    dot.className = 'contact-app__local-dot';
+    dot.setAttribute('aria-hidden', 'true');
+    const tagText = document.createElement('span');
+    tagText.textContent = 'New';
+    tag.appendChild(dot);
+    tag.appendChild(tagText);
     row.appendChild(label);
     row.appendChild(tag);
     let next = group.nextElementSibling;
