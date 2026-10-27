@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240" />
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240" />
-<link rel="stylesheet" href="../styles.css?v=423-proxy-title-alignment" />
+<link rel="stylesheet" href="../styles.css?v=424-notifications-static-button" />
   </head>
   <body class="core-page core-page--condensed typography-only">
     <main class="core-intro" id="cover">
@@ -1048,7 +1048,7 @@
     </div>
     <label class="notification-app__setting notification-app__setting--sender"><input class="notification-app__checkbox notification-app__checkbox--sender" type="checkbox" checked aria-label="Show sender"><span class="notification-app__switch" aria-hidden="true"><span class="notification-app__knob"></span></span><span>Show sender</span></label>
     <label class="notification-app__setting notification-app__setting--content"><input class="notification-app__checkbox notification-app__checkbox--content" type="checkbox" checked aria-label="Show message content"><span class="notification-app__switch" aria-hidden="true"><span class="notification-app__knob"></span></span><span>Show message content</span></label>
-    <button class="notification-app__disable" type="button">Turn off notifications</button>
+    <div class="notification-app__disable">Turn off notifications</div>
     <div class="proxy-app__home-indicator" aria-hidden="true"></div>
     <img class="proxy-app__demo-cursor" src="../assets/core-proxy-demo-cursor.svg" alt="" aria-hidden="true" draggable="false" />
   </div>
@@ -1602,7 +1602,6 @@
   const sender = device.querySelector('.notification-app__checkbox--sender');
   const content = device.querySelector('.notification-app__checkbox--content');
   const cursor = device.querySelector('.proxy-app__demo-cursor');
-  const disable = device.querySelector('.notification-app__disable');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const positions = {rest:{x:240,y:377},sender:{x:31,y:480},content:{x:31,y:532}};
   const frames = [
@@ -1617,7 +1616,7 @@
     {sender:true, content:true, duration:2100, pointer:'content'}
   ];
   let timeout=null;
-  let index=0, inView=false, running=false, muted=false;
+  let index=0, inView=false, running=false;
   let displayedState='11';
 
   function putText(toast, visibleSender, visibleContent) {
@@ -1672,7 +1671,6 @@
 
   function render(animateNotification=false) {
     updateCard(animateNotification);
-    device.classList.toggle('notification-app--disabled',muted);
     stage.dataset.state=String(Number(sender.checked))+String(Number(content.checked));
   }
 
@@ -1695,7 +1693,6 @@
     const oldState=String(Number(sender.checked))+String(Number(content.checked));
     if(typeof frame.sender==='boolean') sender.checked=frame.sender;
     if(typeof frame.content==='boolean') content.checked=frame.content;
-    muted=false;
     const nextState=String(Number(sender.checked))+String(Number(content.checked));
     render(oldState!==nextState);
     point(frame.pointer,Boolean(frame.move));
@@ -1724,14 +1721,8 @@
   // the automatic walkthrough, then leaves the toggles available for use.
   [sender,content].forEach(input => input.addEventListener('change',() => {
     stop();
-    muted=false;
     render(true);
   }));
-  disable.addEventListener('click',() => {
-    stop();
-    muted=!muted;
-    render();
-  });
   reduced.addEventListener('change',() => {
     stop();
     if(!reduced.matches) start();
