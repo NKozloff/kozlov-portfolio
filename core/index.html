@@ -384,6 +384,8 @@
           <p class="case-highlight proxy-conclusion"><span class="case-conclusion-mark"><strong>Результат:</strong> участники успешно справились с основными сценариями управления подключением. Критичных проблем с пониманием статусов не выявили. Остальные гипотезы оставили для дальнейшей проверки.</span></p>
         </div>
 
+        <!-- TEMPORARILY HIDDEN: Call scenario; restore by removing the surrounding template. -->
+        <template id="core-hidden-call-scenario">
         <!-- Согласованный раздел: Звонок -->
         <div class="case-block case-block--agreed case-block--section-start" id="agreed-call">
           <p class="case-section__label">Звонки</p>
@@ -558,6 +560,8 @@
           </div>
           <p class="case-highlight case-agreed-conclusion"><span class="case-conclusion-mark">Участники правильно считывали основную концепцию: понимали, что звонок продолжается, а виджет показывает его состояние внутри приложения. Поэтому принцип решения оставил без изменений.</span></p>
         </div>
+
+        </template>
 
         <!-- Согласованный раздел: Чаты -->
         <div class="case-block case-block--agreed case-block--section-start" id="agreed-chats">
@@ -1340,7 +1344,10 @@
           </button>
           <ul class="core-nav__submenu" id="core-nav-scenario-links" aria-label="Сценарии" hidden>
             <li><a class="core-nav__link core-nav__sublink" href="#proxy" data-nav-key="proxy">Соединение</a></li>
+            <!-- TEMPORARILY HIDDEN: Calls anchor link -->
+            <template id="core-hidden-call-nav-link">
             <li><a class="core-nav__link core-nav__sublink" href="#agreed-call" data-nav-key="agreed-call">Звонки</a></li>
+            </template>
             <li><a class="core-nav__link core-nav__sublink" href="#agreed-chats" data-nav-key="agreed-chats">Чаты</a></li>
             <li><a class="core-nav__link core-nav__sublink" href="#agreed-contact" data-nav-key="agreed-contact">Контакты</a></li>
             <li><a class="core-nav__link core-nav__sublink" href="#agreed-notifications" data-nav-key="agreed-notifications">Уведомления</a></li>
@@ -1366,7 +1373,7 @@
         const scenarioToggle = nav.querySelector(".core-nav__toggle");
         const scenarioContainer = nav.querySelector(".core-nav__scenarios");
         const scenarioSubmenu = nav.querySelector(".core-nav__submenu");
-        const scenarioKeys = new Set(["proxy", "agreed-call", "agreed-chats", "agreed-contact", "agreed-notifications", "onboarding"]);
+        const scenarioKeys = new Set(["proxy", "agreed-chats", "agreed-contact", "agreed-notifications", "onboarding"]);
         const setScenarioMenuOpen = (open) => {
           scenarioSubmenu.hidden = !open;
           scenarioToggle.setAttribute("aria-expanded", String(open));
