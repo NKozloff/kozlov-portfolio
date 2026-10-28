@@ -57,15 +57,19 @@
 .core-page.echo-page .case-body .case-outline-table.echo2-priority-rank td:nth-child(2) {
   width: 34% !important;
 }
-.core-page.echo-page .case-body .case-outline-table.echo2-page-priorities th:last-child,
-.core-page.echo-page .case-body .case-outline-table.echo2-page-priorities td:last-child {
-  width: 13% !important;
-  text-align: center !important;
+/* Page priorities: rank first, then section, then its UX reasoning. */
+.core-page.echo-page .case-body .case-outline-table.echo2-page-priorities th:nth-child(1),
+.core-page.echo-page .case-body .case-outline-table.echo2-page-priorities td:nth-child(1) {
+  width: 21% !important;
   white-space: nowrap !important;
 }
-.core-page.echo-page .case-body .case-outline-table.echo2-page-priorities th:first-child,
-.core-page.echo-page .case-body .case-outline-table.echo2-page-priorities td:first-child {
+.core-page.echo-page .case-body .case-outline-table.echo2-page-priorities th:nth-child(2),
+.core-page.echo-page .case-body .case-outline-table.echo2-page-priorities td:nth-child(2) {
   width: 29% !important;
+}
+.core-page.echo-page .case-body .case-outline-table.echo2-page-priorities th:nth-child(3),
+.core-page.echo-page .case-body .case-outline-table.echo2-page-priorities td:nth-child(3) {
+  width: 50% !important;
 }
 .core-page.echo-page .case-body .case-outline-table-wrap::-webkit-scrollbar { height: 7px; }
 .core-page.echo-page .case-body .case-outline-table-wrap::-webkit-scrollbar-thumb { background: #c2c2c2; border-radius: 6px; }
@@ -116,6 +120,17 @@
 .core-page.echo-page .case-body .case-outline-table.echo2-metrics-table th:nth-child(3),
 .core-page.echo-page .case-body .case-outline-table.echo2-metrics-table td:nth-child(3) {
   width: 38% !important;
+}
+
+/* ECHO 2: the content of every table cell starts at its top-left edge. */
+body.core-page.echo-page .case-body table th,
+body.core-page.echo-page .case-body table td {
+  text-align: left !important;
+  vertical-align: top !important;
+}
+body.core-page.echo-page .case-body table th > *,
+body.core-page.echo-page .case-body table td > * {
+  text-align: left !important;
 }
 </style>
   <meta name="robots" content="noindex,nofollow" />
@@ -332,9 +347,9 @@
 <tr><td><strong>Пояснение причин нулевого результата помогает исправлять условия.</strong></td><td>Сравнить пустое состояние с подсказкой и без неё.</td><td>Task Success Rate; Time on Task</td></tr></tbody></table></div>
 <p class="case-highlight"><span class="case-conclusion-mark"><strong>Неочевидная гипотеза.</strong> Точное число подходящих профилей может восприниматься как обещание будущих согласий. Стоит проверить, понятнее ли формулировка «Подходят по критериям» и пояснение, что приглашение не гарантирует участия.</span></p></div></div>
 <div class="case-block case-block--echo-registration case-block--echo-campaign-live"><h2 class="case-heading">Приоритизировал информацию на странице рекламной кампании</h2><div class="case-article-copy"><p>При проектировании учитывал, что менеджеру важно быстро оценить состояние кампании и перейти к задачам, требующим его внимания. Поэтому разделил информацию по значимости.</p>
-<div class="case-outline-table-wrap"><table class="case-outline-table echo2-page-priorities"><thead><tr><th scope="col">Элемент страницы</th><th scope="col">UX-решение</th><th scope="col">Приоритет</th></tr></thead><tbody><tr><td><strong>Состояние кампании</strong></td><td>Объединил статус подбора с количеством найденных блогеров, чтобы сразу показывать ход процесса.</td><td><strong>1</strong></td></tr>
-<tr><td><strong>Быстрый доступ к коллаборациям</strong></td><td>Разделил коллаборации по статусам и показал их количество. Задачи, требующие внимания менеджера, дополнительно выделил оранжевыми индикаторами.</td><td><strong>2</strong></td></tr>
-<tr><td><strong>Дополнительная информация</strong></td><td>Условия кампании, депозит, ресторанные точки и площадки публикации разместил ниже, поскольку к ним обращаются реже.</td><td><strong>3</strong></td></tr></tbody></table></div>
+<div class="case-outline-table-wrap"><table class="case-outline-table echo2-page-priorities"><thead><tr><th scope="col">Приоритет</th><th scope="col">Элемент страницы</th><th scope="col">UX-решение</th></tr></thead><tbody><tr><td><strong>1</strong></td><td><strong>Состояние кампании</strong></td><td>Объединил статус подбора с количеством найденных блогеров, чтобы сразу показывать ход процесса.</td></tr>
+<tr><td><strong>2</strong></td><td><strong>Быстрый доступ к коллаборациям</strong></td><td>Разделил коллаборации по статусам и показал их количество. Задачи, требующие внимания менеджера, дополнительно выделил оранжевыми индикаторами.</td></tr>
+<tr><td><strong>3</strong></td><td><strong>Дополнительная информация</strong></td><td>Условия кампании, депозит, ресторанные точки и площадки публикации разместил ниже, поскольку к ним обращаются реже.</td></tr></tbody></table></div>
 <p class="case-highlight"><span class="case-conclusion-mark">менеджер сразу видит состояние кампании, понимает, какие задачи требуют внимания, и может перейти к нужным коллаборациям без лишней навигации.</span></p></div>
 <div class="echo-desktop-gallery" aria-label="Страница компании и коллаборации в ECHO">
             <div class="echo-desktop-gallery__item">
