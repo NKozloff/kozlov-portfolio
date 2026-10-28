@@ -174,6 +174,71 @@ body.core-page.echo-page .case-body :is(
 ) {
   line-height: 1.5 !important;
 }
+
+/* ECHO 2 — viewport-fit screenshots, following CORE's svh/dvh prototype
+   sizing. A screenshot is limited by both browser height (minus the
+   neutral frame padding and fixed navigation) and its available width.
+   Paired desktop screenshots share the row with a minimum 40px gap. */
+body.core-page.echo-page .case-body .echo-desktop-gallery {
+  --echo2-frame-pad-block: clamp(24px, 3.2rem, 60px);
+  --echo2-nav-space: calc(2.533333rem + 24px + 24px);
+  --echo2-label-space: 0px;
+  --echo2-viewport-media-height: max(
+    120px,
+    calc(100svh - var(--echo2-frame-pad-block) - var(--echo2-frame-pad-block) - var(--echo2-nav-space) - var(--echo2-label-space))
+  );
+  padding-top: var(--echo2-frame-pad-block) !important;
+  padding-bottom: var(--echo2-frame-pad-block) !important;
+  column-gap: 40px !important;
+  row-gap: 40px !important;
+  align-items: center;
+  justify-items: center;
+}
+@supports (height: 100dvh) {
+  body.core-page.echo-page .case-body .echo-desktop-gallery {
+    --echo2-viewport-media-height: max(
+      120px,
+      calc(100dvh - var(--echo2-frame-pad-block) - var(--echo2-frame-pad-block) - var(--echo2-nav-space) - var(--echo2-label-space))
+    );
+  }
+}
+body.core-page.echo-page .case-body .echo-desktop-gallery.echo2-gallery--single {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+body.core-page.echo-page .case-body .echo-desktop-gallery.echo2-gallery--pair {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+body.core-page.echo-page .case-body .echo-desktop-gallery.echo2-gallery--pair-with-labels {
+  --echo2-label-space: 48px;
+}
+body.core-page.echo-page .case-body .echo-desktop-gallery .echo-desktop-gallery__item {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: auto;
+}
+body.core-page.echo-page .case-body .echo-desktop-gallery .echo-desktop-gallery__image {
+  display: block;
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: var(--echo2-viewport-media-height) !important;
+  object-fit: contain !important;
+  margin-inline: auto !important;
+}
+body.core-page.echo-page .case-body .echo-desktop-gallery .echo-desktop-gallery__item > a {
+  display: flex;
+  min-width: 0;
+  max-width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 900px) {
+  body.core-page.echo-page .case-body .echo-desktop-gallery.echo2-gallery--pair {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
 </style>
   <meta name="robots" content="noindex,nofollow" />
   </head>
@@ -271,7 +336,7 @@ body.core-page.echo-page .case-body :is(
 <tr><td><strong>По центру — видео</strong></td><td>Главный элемент, которому отведена большая часть доступной высоты.</td></tr>
 <tr><td><strong>Справа — дополнительные инструменты</strong></td><td>Чат и история взаимодействия, которые нужны только в отдельных случаях.</td></tr></tbody></table></div>
 <p class="case-highlight"><span class="case-conclusion-mark">Менеджер видит всё необходимое для согласования на одном экране, а второстепенные инструменты не отвлекают от основной задачи.</span></p></div>
-<div class="echo-desktop-gallery" aria-label="Рабочий режим коллаборации в ECHO">
+<div class="echo-desktop-gallery echo2-gallery--single" aria-label="Рабочий режим коллаборации в ECHO">
             <div class="echo-desktop-gallery__item">
               <img
                 class="echo-desktop-gallery__image"
@@ -312,7 +377,7 @@ body.core-page.echo-page .case-body :is(
 <tr><td><strong>2. Настройка условий</strong></td><td>Уточняет задачу, описание, депозит, ресторанные точки и площадки для публикации.</td></tr></tbody></table></div>
 <p>На втором шаге менеджер видит количество блогеров, подходящих под заданные условия, перед запуском подбора.</p>
 <p class="case-highlight"><span class="case-conclusion-mark">Пользователь начинает с понятной рекламной задачи и последовательно уточняет условия, не сталкиваясь сразу со сложной формой.</span></p></div>
-<div class="echo-desktop-gallery" aria-label="Создание рекламной кампании в ECHO">
+<div class="echo-desktop-gallery echo2-gallery--pair echo2-gallery--pair-with-labels" aria-label="Создание рекламной кампании в ECHO">
             <div class="echo-desktop-gallery__item">
               <div class="echo-desktop-gallery__label">Шаг 1</div>
               <img
@@ -352,11 +417,11 @@ body.core-page.echo-page .case-body :is(
 <tr><td><strong>Автоматический подбор</strong></td><td>Система отбирает подходящих блогеров и отправляет им предложения.</td><td>Требуется заранее задать критерии отбора и предусмотреть состояния процесса.</td></tr></tbody></table></div>
 <p class="case-highlight"><span class="case-conclusion-mark">Для ECHO заказчик предусмотрел автоматический подбор, чтобы менеджеру не приходилось вручную обрабатывать поток заявок. При проектировании я учитывал особенности этой механики.</span></p></div></div>
 <div class="case-block case-block--echo-registration case-block--echo-architecture"><h2 class="case-heading">Разобрал механику автоматического подбора блогеров</h2><div class="case-article-copy"><p>Подбор строится на сопоставлении условий кампании с характеристиками профилей блогеров: социальными сетями, количеством подписчиков и показателем IR. Если блогер соответствует условиям, платформа автоматически отправляет ему предложение о сотрудничестве.</p></div>
-<div class="echo-desktop-gallery echo-architecture-frame"><div class="echo-desktop-gallery__item"><a href="./matching.svg" target="_blank" rel="noopener noreferrer" aria-label="Открыть схему подбора блогеров"><img class="echo-desktop-gallery__image" src="./matching.svg" width="1160" height="620" loading="lazy" decoding="async" alt="Механика подбора блогеров: условия кампании и профиль сопоставляются, подходящие получают предложение, после принятия создаётся коллаборация"/></a></div></div>
+<div class="echo-desktop-gallery echo2-gallery--single echo-architecture-frame"><div class="echo-desktop-gallery__item"><a href="./matching.svg" target="_blank" rel="noopener noreferrer" aria-label="Открыть схему подбора блогеров"><img class="echo-desktop-gallery__image" src="./matching.svg" width="1160" height="620" loading="lazy" decoding="async" alt="Механика подбора блогеров: условия кампании и профиль сопоставляются, подходящие получают предложение, после принятия создаётся коллаборация"/></a></div></div>
 </div>
 <div class="case-block case-block--echo-registration case-block--echo-campaign-live"><h2 class="case-heading">Сделал автоматический подбор прозрачным для менеджера</h2><div class="case-article-copy"><p>После запуска кампании менеджеру важно понимать, что происходит без его участия. Поэтому информацию о состоянии подбора и количестве участников вынес непосредственно в список рекламных кампаний.</p>
 <p class="case-highlight"><span class="case-conclusion-mark">Менеджер видит ход подбора, не открывая каждую кампанию и не вмешиваясь в автоматический процесс.</span></p></div>
-<div class="echo-desktop-gallery" aria-label="Запущенная кампания и процесс подбора блогеров в ECHO">
+<div class="echo-desktop-gallery echo2-gallery--single" aria-label="Запущенная кампания и процесс подбора блогеров в ECHO">
             <div class="echo-desktop-gallery__item">
               <img
                 class="echo-desktop-gallery__image"
@@ -383,7 +448,7 @@ body.core-page.echo-page .case-body :is(
 <tr><td><strong>2</strong></td><td><strong>Быстрый доступ к коллаборациям</strong></td><td>Разделил коллаборации по статусам и показал их количество. Задачи, требующие внимания менеджера, дополнительно выделил оранжевыми индикаторами.</td></tr>
 <tr><td><strong>3</strong></td><td><strong>Дополнительная информация</strong></td><td>Условия кампании, депозит, ресторанные точки и площадки публикации разместил ниже, поскольку к ним обращаются реже.</td></tr></tbody></table></div>
 <p class="case-highlight"><span class="case-conclusion-mark">Менеджер сразу видит состояние кампании, понимает, какие задачи требуют внимания, и может перейти к нужным коллаборациям без лишней навигации.</span></p></div>
-<div class="echo-desktop-gallery" aria-label="Страница компании и коллаборации в ECHO">
+<div class="echo-desktop-gallery echo2-gallery--single" aria-label="Страница компании и коллаборации в ECHO">
             <div class="echo-desktop-gallery__item">
               <img
                 class="echo-desktop-gallery__image"
@@ -410,7 +475,7 @@ body.core-page.echo-page .case-body :is(
 <tr><td><strong>Два шага на одном экране</strong></td><td>Меньше информации на каждом шаге, сохраняется единый процесс.</td><td>Регистрация и заполнение профиля воспринимаются как одна задача, хотя решают разные цели.</td></tr>
 <tr><td><strong>Два отдельных экрана</strong></td><td>Чёткое разделение регистрации и настройки профиля, возможность адаптировать второй экран под роль.</td><td>Дополнительный переход между экранами.</td></tr></tbody></table></div>
 <p class="case-highlight"><span class="case-conclusion-mark">Выбрал третий вариант: сначала пользователь регистрируется и выбирает роль, затем переходит к созданию профиля компании или блогера. Это позволяет разделить две самостоятельные задачи и не перегружать первый вход.</span></p></div>
-<div class="echo-desktop-gallery" aria-label="Регистрация бизнеса и добавление компании в ECHO">
+<div class="echo-desktop-gallery echo2-gallery--pair" aria-label="Регистрация бизнеса и добавление компании в ECHO">
             <div class="echo-desktop-gallery__item">
               <img
                 class="echo-desktop-gallery__image"
