@@ -15,15 +15,63 @@
     <link rel="preload" as="image" href="../assets/echo-cover-v298.png" />
 <link rel="stylesheet" href="../styles.css?v=361" />
   <style>
-/* ECHO 2 — supplemental typography for the existing native case elements */
-.case-body .case-outline-table-wrap{overflow-x:auto;max-width:100%;}
-.case-body .case-outline-table{min-width:620px;width:100%;border-collapse:collapse;}
-.case-body .case-outline-table th,.case-body .case-outline-table td{vertical-align:top;text-align:left;}
-.case-body .case-outline-table td{overflow-wrap:anywhere;}
-.case-body .case-article-copy p{white-space:normal;}
-.case-body .case-highlight{margin-top:20px;}
-.case-body .echo-desktop-gallery{margin-top:24px;}
-@media(max-width:760px){.case-body .case-outline-table{min-width:620px;}}
+/* ECHO 2: tables in the existing case design, with safe column sizing */
+.core-page.echo-page .case-body .case-outline-table-wrap {
+  width: min(100%, 720px) !important;
+  max-width: 720px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  overflow-x: auto !important;
+  overflow-y: hidden;
+}
+.core-page.echo-page .case-body .case-outline-table {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 620px;
+  table-layout: auto !important;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 0 !important;
+}
+.core-page.echo-page .case-body .case-outline-table th,
+.core-page.echo-page .case-body .case-outline-table td {
+  box-sizing: border-box;
+  width: auto !important;
+  min-width: 0;
+  max-width: none;
+  text-align: left !important;
+  vertical-align: top !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+}
+.core-page.echo-page .case-body .case-outline-table.echo2-priority-rank th:nth-child(1),
+.core-page.echo-page .case-body .case-outline-table.echo2-priority-rank td:nth-child(1) {
+  width: 12% !important;
+}
+.core-page.echo-page .case-body .case-outline-table.echo2-priority-rank th:nth-child(2),
+.core-page.echo-page .case-body .case-outline-table.echo2-priority-rank td:nth-child(2) {
+  width: 34% !important;
+}
+.core-page.echo-page .case-body .case-outline-table.echo2-page-priorities th:last-child,
+.core-page.echo-page .case-body .case-outline-table.echo2-page-priorities td:last-child {
+  width: 13% !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+.core-page.echo-page .case-body .case-outline-table.echo2-page-priorities th:first-child,
+.core-page.echo-page .case-body .case-outline-table.echo2-page-priorities td:first-child {
+  width: 29% !important;
+}
+.core-page.echo-page .case-body .case-outline-table-wrap::-webkit-scrollbar { height: 7px; }
+.core-page.echo-page .case-body .case-outline-table-wrap::-webkit-scrollbar-thumb { background: #c2c2c2; border-radius: 6px; }
+.core-page.echo-page .case-body .case-article-copy p { white-space: normal; }
+.core-page.echo-page .case-body .case-highlight { margin-top: 20px; }
+.core-page.echo-page .case-body .echo-desktop-gallery { margin-top: 24px; }
+@media (max-width: 760px) {
+  .core-page.echo-page .case-body .case-outline-table { min-width: 620px; }
+  .core-page.echo-page .case-body .case-outline-table-wrap { width: 100% !important; }
+}
 </style>
   <meta name="robots" content="noindex,nofollow" />
   </head>
@@ -95,7 +143,7 @@
 <p class="case-highlight"><span class="case-conclusion-mark">Основной фокус UX — помочь пользователям быстрее выполнять задачи и доводить коллаборации до результата. Это должно положительно влиять на ценность продукта для бизнеса, а в перспективе — на удержание платящих клиентов.</span></p></div></div><div class="case-block"><h2 class="case-heading">Ограничил первую версию ключевыми сценариями</h2><div class="case-article-copy"><p>На основе JTBD отделил обязательные возможности от второстепенных. В первую версию включили только сценарии, необходимые для полного цикла коллаборации — от создания кампании до согласования публикации, с учётом сроков и бюджета проекта.</p></div></div><div class="case-block"><h2 class="case-heading">Спроектировал информационную архитектуру для повседневной работы</h2><div class="case-article-copy"><p>После определения состава первой версии я продумал структуру разделов и навигацию для обеих сторон платформы. Было важно сократить лишние клики в повседневных сценариях, но при этом сохранить контекст работы. В бизнес-части одним из ключевых решений стало расположение коллабораций: вынести их в главное меню или разместить внутри рекламных кампаний.</p>
 <div class="case-outline-table-wrap"><table class="case-outline-table"><thead><tr><th scope="col">Вариант</th><th scope="col">Плюсы</th><th scope="col">Минусы</th></tr></thead><tbody><tr><td><strong>Отдельный раздел «Коллаборации» в главном меню</strong></td><td>Быстрый доступ из любой точки продукта и общий список всех коллабораций.</td><td>Коллаборации разных компаний и кампаний оказываются вперемешку. Нужны фильтры или переключатели, а при большом количестве кампаний легко потерять контекст и перепутать условия.</td></tr>
 <tr><td><strong>Коллаборации внутри каждой рекламной кампании</strong></td><td>Менеджер сразу видит, к какой кампании относится работа, и может свериться с её условиями.</td><td>Появляется дополнительный уровень навигации; сложнее одним взглядом охватить коллаборации сразу по всем кампаниям.</td></tr></tbody></table></div>
-<div class="echo-desktop-gallery"><div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/echo-architecture-v297.png" width="1886" height="872" loading="lazy" decoding="async" alt="Информационная архитектура ECHO"/></div></div><p class="case-highlight"><span class="case-conclusion-mark">выбрал второй вариант — работа с коллаборациями начинается в контексте конкретной кампании. Чтобы дополнительная вложенность не замедляла менеджера, на странице компании предусмотрел быстрый переход к коллаборациям.</span></p></div></div><div class="case-block"><h2 class="case-heading">Приоритизировал сценарии</h2><div class="case-article-copy"><div class="case-outline-table-wrap"><table class="case-outline-table"><thead><tr><th scope="col">Приоритет</th><th scope="col">Сценарий</th><th scope="col">Почему такой приоритет</th></tr></thead><tbody><tr><td><strong>1</strong></td><td><strong>Работа с коллаборациями</strong></td><td>Основная ценность для бизнеса: проверка материалов, согласование, доработка и контроль статусов. Самый насыщенный UX-сценарий.</td></tr>
+<div class="echo-desktop-gallery"><div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/echo-architecture-v297.png" width="1886" height="872" loading="lazy" decoding="async" alt="Информационная архитектура ECHO"/></div></div><p class="case-highlight"><span class="case-conclusion-mark">выбрал второй вариант — работа с коллаборациями начинается в контексте конкретной кампании. Чтобы дополнительная вложенность не замедляла менеджера, на странице компании предусмотрел быстрый переход к коллаборациям.</span></p></div></div><div class="case-block"><h2 class="case-heading">Приоритизировал сценарии</h2><div class="case-article-copy"><div class="case-outline-table-wrap"><table class="case-outline-table echo2-priority-rank"><thead><tr><th scope="col">Приоритет</th><th scope="col">Сценарий</th><th scope="col">Почему такой приоритет</th></tr></thead><tbody><tr><td><strong>1</strong></td><td><strong>Работа с коллаборациями</strong></td><td>Основная ценность для бизнеса: проверка материалов, согласование, доработка и контроль статусов. Самый насыщенный UX-сценарий.</td></tr>
 <tr><td><strong>2</strong></td><td><strong>Создание рекламной кампании</strong></td><td>Здесь задаются условия, от которых зависят подбор блогеров и дальнейшие коллаборации.</td></tr>
 <tr><td><strong>3</strong></td><td><strong>Подбор блогеров</strong></td><td>Нужно показать ход автоматического подбора, найденных участников и состояние кампании.</td></tr>
 <tr><td><strong>4</strong></td><td><strong>Компании и навигация</strong></td><td>Важно быстро находить нужную кампанию и коллаборацию, не теряя контекст компании.</td></tr>
@@ -111,9 +159,9 @@
 <tr><td><strong>Непрерывное согласование</strong></td><td>После согласования автоматически подгружается следующее видео с данными другого блогера, без открытия новых карточек или модальных окон.</td></tr></tbody></table></div>
 <p class="case-highlight"><span class="case-conclusion-mark">менеджер может проверить все материалы в одном рабочем пространстве, не тратя время на лишние переходы.</span></p></div></div>
 <div class="case-block"><h2 class="case-heading">Распределил информацию по приоритетности для пользователя</h2><div class="case-article-copy"><p>При проектировании учитывал, что менеджер чаще всего работает с самим видео и его контекстом, а к дополнительным инструментам обращается значительно реже. Поэтому разделил экран на три зоны:</p>
-<div class="case-outline-table-wrap"><table class="case-outline-table"><thead><tr><th scope="col">Зона экрана</th><th scope="col">Назначение</th></tr></thead><tbody><tr><td>**Слева — контекст</td><td>** информация о блогере, публикации и социальной сети.</td></tr>
-<tr><td>**По центру — видео</td><td>** главный элемент, которому отведена большая часть доступной высоты.</td></tr>
-<tr><td>**Справа — дополнительные инструменты</td><td>** чат и история взаимодействия, которые нужны только в отдельных случаях.</td></tr></tbody></table></div>
+<div class="case-outline-table-wrap"><table class="case-outline-table"><thead><tr><th scope="col">Зона экрана</th><th scope="col">Назначение</th></tr></thead><tbody><tr><td><strong>Слева — контекст</strong></td><td>Информация о блогере, публикации и социальной сети.</td></tr>
+<tr><td><strong>По центру — видео</strong></td><td>Главный элемент, которому отведена большая часть доступной высоты.</td></tr>
+<tr><td><strong>Справа — дополнительные инструменты</strong></td><td>Чат и история взаимодействия, которые нужны только в отдельных случаях.</td></tr></tbody></table></div>
 <div class="echo-desktop-gallery"><div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/echo-collaboration-review-v300.png" width="2048" height="1200" loading="lazy" decoding="async" alt="Рабочий режим согласования Reels"/></div></div><p class="case-highlight"><span class="case-conclusion-mark">менеджер видит всё необходимое для согласования на одном экране, а второстепенные инструменты не отвлекают от основной задачи.</span></p></div></div>
 <div class="case-block"><h2 class="case-heading">Определил, как оценить скорость и точность согласования</h2><div class="case-article-copy"><div class="case-outline-table-wrap"><table class="case-outline-table"><thead><tr><th scope="col">Ключевые UX-метрики</th><th scope="col">Что хотим понять</th><th scope="col">Способ проверки</th></tr></thead><tbody><tr><td>1. <strong>Время проверки серии материалов</strong> (Time on Task)<br>2. <strong>Успешность решений по публикациям</strong> (Task Success Rate)<br>3. <strong>Частота ошибочных согласований</strong> (Error Rate)</td><td>Может ли менеджер последовательно проверить несколько Reels, правильно согласовать подходящие материалы и отправить остальные на доработку — без путаницы между блогерами?</td><td>Сценарный юзабилити-тест: дать серию видео с заранее определёнными критериями согласования. Измерить общее время, долю верных решений и число ошибок.</td></tr></tbody></table></div></div></div>
 <div class="case-block"><h2 class="case-heading">Выдвинул гипотезы о согласовании материалов</h2><div class="case-article-copy"><p>Проверить, помогает ли рабочий режим быстрее и точнее согласовывать публикации.</p>
@@ -160,7 +208,7 @@
 <tr><td><strong>Пояснение причин нулевого результата помогает исправлять условия.</strong></td><td>Сравнить пустое состояние с подсказкой и без неё.</td><td>Task Success Rate; Time on Task</td></tr></tbody></table></div>
 <p><strong>Неочевидная гипотеза.</strong> Точное число подходящих профилей может восприниматься как обещание будущих согласий. Стоит проверить, понятнее ли формулировка «Подходят по критериям» и пояснение, что приглашение не гарантирует участия.</p></div></div>
 <div class="case-block"><h2 class="case-heading">Приоритизировал информацию на странице рекламной кампании</h2><div class="case-article-copy"><p>При проектировании учитывал, что менеджеру важно быстро оценить состояние кампании и перейти к задачам, требующим его внимания. Поэтому разделил информацию по значимости.</p>
-<div class="case-outline-table-wrap"><table class="case-outline-table"><thead><tr><th scope="col">Элемент страницы</th><th scope="col">UX-решение</th><th scope="col">Приоритет</th></tr></thead><tbody><tr><td><strong>Состояние кампании</strong></td><td>Объединил статус подбора с количеством найденных блогеров, чтобы сразу показывать ход процесса.</td><td><strong>1</strong></td></tr>
+<div class="case-outline-table-wrap"><table class="case-outline-table echo2-page-priorities"><thead><tr><th scope="col">Элемент страницы</th><th scope="col">UX-решение</th><th scope="col">Приоритет</th></tr></thead><tbody><tr><td><strong>Состояние кампании</strong></td><td>Объединил статус подбора с количеством найденных блогеров, чтобы сразу показывать ход процесса.</td><td><strong>1</strong></td></tr>
 <tr><td><strong>Быстрый доступ к коллаборациям</strong></td><td>Разделил коллаборации по статусам и показал их количество. Задачи, требующие внимания менеджера, дополнительно выделил оранжевыми индикаторами.</td><td><strong>2</strong></td></tr>
 <tr><td><strong>Дополнительная информация</strong></td><td>Условия кампании, депозит, ресторанные точки и площадки публикации разместил ниже, поскольку к ним обращаются реже.</td><td><strong>3</strong></td></tr></tbody></table></div>
 <div class="echo-desktop-gallery"><div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/echo-company-page-v288.png" width="2048" height="1216" loading="lazy" decoding="async" alt="Страница рекламной кампании с группировкой коллабораций"/></div></div><p class="case-highlight"><span class="case-conclusion-mark">менеджер сразу видит состояние кампании, понимает, какие задачи требуют внимания, и может перейти к нужным коллаборациям без лишней навигации.</span></p></div></div>
