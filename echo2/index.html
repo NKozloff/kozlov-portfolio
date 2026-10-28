@@ -152,6 +152,13 @@ body.core-page.echo-page .case-body table td > * {
 .core-page.echo-page .case-body .case-outline-table.echo2-jtbd-table tbody tr:not(:last-child) > :first-child {
   border-bottom: 1px solid #d8d8d8 !important;
 }
+
+/* ECHO 2 — one standard 6.912rem gap from cover to first case block,
+   matching CORE: case-body already provides that top padding. */
+body.core-page.echo-page .case-body > #task:first-child {
+  margin-top: 0 !important;
+}
+
 </style>
   <meta name="robots" content="noindex,nofollow" />
   </head>
