@@ -243,6 +243,46 @@ body.core-page.echo-page .case-body .echo-desktop-gallery .echo-desktop-gallery_
   }
 }
 
+
+/* ECHO 2 — high-density screenshot sharpness.
+   All seven interface PNGs are 2048px wide. Preserve their original
+   high-resolution sources and cap the CSS width to the pixel budget
+   for each device pixel ratio, as in CORE's ~2x source strategy.
+   The separate viewport-height cap and paired-gallery gaps remain. */
+body.core-page.echo-page .case-body .echo-desktop-gallery img.echo-desktop-gallery__image[src$=".png"] {
+  max-width: min(100%, 2048px) !important;
+  image-rendering: auto !important;
+}
+@media (min-resolution: 1.25dppx) {
+  body.core-page.echo-page .case-body .echo-desktop-gallery img.echo-desktop-gallery__image[src$=".png"] {
+    max-width: min(100%, 1638px) !important;
+  }
+}
+@media (min-resolution: 1.5dppx) {
+  body.core-page.echo-page .case-body .echo-desktop-gallery img.echo-desktop-gallery__image[src$=".png"] {
+    max-width: min(100%, 1365px) !important;
+  }
+}
+@media (min-resolution: 1.75dppx) {
+  body.core-page.echo-page .case-body .echo-desktop-gallery img.echo-desktop-gallery__image[src$=".png"] {
+    max-width: min(100%, 1170px) !important;
+  }
+}
+@media (min-resolution: 2dppx) {
+  body.core-page.echo-page .case-body .echo-desktop-gallery img.echo-desktop-gallery__image[src$=".png"] {
+    max-width: min(100%, 1024px) !important;
+  }
+}
+@media (min-resolution: 2.5dppx) {
+  body.core-page.echo-page .case-body .echo-desktop-gallery img.echo-desktop-gallery__image[src$=".png"] {
+    max-width: min(100%, 819px) !important;
+  }
+}
+@media (min-resolution: 3dppx) {
+  body.core-page.echo-page .case-body .echo-desktop-gallery img.echo-desktop-gallery__image[src$=".png"] {
+    max-width: min(100%, 682px) !important;
+  }
+}
 </style>
   <meta name="robots" content="noindex,nofollow" />
   </head>
