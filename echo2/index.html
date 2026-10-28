@@ -144,14 +144,17 @@ body.core-page.echo-page .case-body table td > * {
   vertical-align: top !important;
   text-align: left !important;
 }
-/* One role cell spans its three JTBD rows; dividers in the role column
-   appear only between the three role groups. */
+/* Each role spans three JTBD rows. Draw a dividing line in the
+   merged role cell only at the start of the next role group. */
 .core-page.echo-page .case-body .case-outline-table.echo2-jtbd-table tbody th[scope="rowgroup"] {
   font-weight: 600;
   overflow-wrap: break-word;
   text-align: left !important;
   vertical-align: top !important;
-  border-bottom: 1px solid #d8d8d8;
+}
+body.core-page.echo-page .case-body #discovery .case-outline-table.echo2-jtbd-table tbody tr:nth-child(4) > th[scope="rowgroup"],
+body.core-page.echo-page .case-body #discovery .case-outline-table.echo2-jtbd-table tbody tr:nth-child(7) > th[scope="rowgroup"] {
+  border-top: 1px solid #d8d8d8 !important;
 }
 
 /* ECHO 2 — one standard 6.912rem gap from cover to first case block,
