@@ -298,6 +298,13 @@ body.core-page.echo-page .case-body #ui .echo2-visual-principles-table {
 body.core-page.echo-page .case-body #ui .case-block--visual-system .case-outline-table-wrap {
   margin-top: 24px !important;
 }
+
+/* ECHO 2 — scenario descriptors match CORE's left-column labels.
+   Keep the normal gap between blocks even though scenario starts now
+   carry the section-start class for consistent descriptor alignment. */
+body.core-page.echo-page .case-body #ux-design > .echo2-scenario-start:not(:first-child) {
+  margin-top: 6.912rem !important;
+}
 </style>
   <meta name="robots" content="noindex,nofollow" />
   </head>
@@ -381,7 +388,7 @@ body.core-page.echo-page .case-body #ui .case-block--visual-system .case-outline
 <tr><td><strong>4</strong></td><td><strong>Компании и навигация</strong></td><td>Важно быстро находить нужную кампанию и коллаборацию, не теряя контекст компании.</td></tr>
 <tr><td><strong>5</strong></td><td><strong>Регистрация и создание компании</strong></td><td>Обязательный вход в продукт, но с относительно небольшим количеством действий и состояний.</td></tr></tbody></table></div>
 <p class="case-highlight"><span class="case-conclusion-mark">Первым подробно покажу работу с коллаборациями — самый сложный и значимый для менеджера сценарий.</span></p></div></div></section>
-<section class="case-section" id="ux-design" data-case-section><div class="case-block case-block--section-start" id="anchor-ux" data-nav-anchor="ux"><p class="case-section__label">UX Design</p><h2 class="case-heading">Начал проектирование коллабораций с изучения паттернов просмотра видео</h2><div class="case-article-copy"><p>Первым делом изучил, как популярные платформы организуют просмотр коротких вертикальных видео, чтобы использовать уже знакомые пользователям решения.</p>
+<section class="case-section" id="ux-design" data-case-section><div class="case-block case-block--section-start echo2-scenario-start" id="anchor-ux" data-nav-anchor="approval"><p class="case-section__label">Согласование</p><h2 class="case-heading">Начал проектирование коллабораций с изучения паттернов просмотра видео</h2><div class="case-article-copy"><p>Первым делом изучил, как популярные платформы организуют просмотр коротких вертикальных видео, чтобы использовать уже знакомые пользователям решения.</p>
 <div class="case-outline-table-wrap"><table class="case-outline-table"><thead><tr><th scope="col">Платформа</th><th scope="col">Как реализован просмотр</th></tr></thead><tbody><tr><td><strong>ВКонтакте · Клипы</strong></td><td>Вертикальные видео занимают практически всю высоту экрана. Переключение между роликами происходит без возвращения в ленту.</td></tr>
 <tr><td><strong>YouTube · Shorts</strong></td><td>Видео находится в центре внимания, а основные действия располагаются рядом с плеером.</td></tr>
 <tr><td><strong>Instagram · Reels</strong></td><td>Вертикальный формат с последовательным просмотром роликов и быстрым доступом к действиям.</td></tr></tbody></table></div>
@@ -417,7 +424,7 @@ body.core-page.echo-page .case-body #ui .case-block--visual-system .case-outline
 <tr><td><strong>Крупный вертикальный плеер помогает точнее оценивать материалы.</strong></td><td>Сравнить крупный и компактный плеер на одинаковых заданиях.</td><td>Task Success Rate; Error Rate</td></tr>
 <tr><td><strong>Разделение контекста, видео и инструментов упрощает согласование.</strong></td><td>Проверить, как быстро менеджер находит условия и принимает решение.</td><td>Time on Task; Task Success Rate</td></tr></tbody></table></div>
 <p class="case-highlight"><span class="case-conclusion-mark"><strong>Неочевидная гипотеза.</strong> Автоматическая смена видео может ускорять проверку, но повышать риск случайных согласований. Стоит сравнить автопереход с кнопкой «Следующий материал», оценивая не только скорость, но и ошибки.</span></p></div></div>
-<div class="case-block"><h2 class="case-heading">Перешёл к проектированию создания рекламной кампании</h2><div class="case-article-copy"><p>Учитывал, что с платформой будет работать менеджер ресторана, а не SMM-специалист. Поэтому сначала выделил сложности, с которыми он может столкнуться при создании кампании.</p>
+<div class="case-block case-block--section-start echo2-scenario-start" id="anchor-campaign-create" data-nav-anchor="campaign-create"><p class="case-section__label">Создание кампании</p><h2 class="case-heading">Перешёл к проектированию создания рекламной кампании</h2><div class="case-article-copy"><p>Учитывал, что с платформой будет работать менеджер ресторана, а не SMM-специалист. Поэтому сначала выделил сложности, с которыми он может столкнуться при создании кампании.</p>
 <div class="case-outline-table-wrap"><table class="case-outline-table"><thead><tr><th scope="col">Ожидаемая проблема</th><th scope="col">Что важно учесть</th></tr></thead><tbody><tr><td><strong>Не знает, какую рекламную задачу выбрать</strong></td><td>Помочь определиться с целью кампании.</td></tr>
 <tr><td><strong>Не умеет составлять техническое задание для блогера</strong></td><td>Предоставить готовую основу с понятными условиями.</td></tr>
 <tr><td><strong>Не готов тратить много времени на настройку</strong></td><td>Минимизировать количество действий и обязательных полей.</td></tr>
@@ -471,7 +478,7 @@ body.core-page.echo-page .case-body #ui .case-block--visual-system .case-outline
 <tr><td><strong>Гибридный подход лучше подходит для нестандартных задач, чем одни шаблоны.</strong></td><td>Проверить создание нетиповой кампании при двух вариантах интерфейса.</td><td>Task Success Rate</td></tr>
 <tr><td><strong>Разделение выбора сценария и заполнения условий снижает ошибки.</strong></td><td>Сравнить двухэтапную настройку с единой длинной формой.</td><td>Error Rate; Time on Task</td></tr></tbody></table></div>
 <p class="case-highlight"><span class="case-conclusion-mark"><strong>Неочевидная гипотеза.</strong> Шаблоны могут ускорять заполнение, но подталкивать к неверному выбору задачи. Поэтому важно отдельно оценивать корректность созданной кампании, а не только скорость её запуска.</span></p></div></div>
-<div class="case-block"><h2 class="case-heading">Сравнил подходы к подбору блогеров</h2><div class="case-article-copy"><p>При изучении рыночных решений обратил внимание на проблему ручных заявок: чем больше откликов получает кампания, тем больше времени менеджер тратит на проверку кандидатов.</p>
+<div class="case-block case-block--section-start echo2-scenario-start" id="anchor-blogger-matching" data-nav-anchor="matching"><p class="case-section__label">Подбор блогеров</p><h2 class="case-heading">Сравнил подходы к подбору блогеров</h2><div class="case-article-copy"><p>При изучении рыночных решений обратил внимание на проблему ручных заявок: чем больше откликов получает кампания, тем больше времени менеджер тратит на проверку кандидатов.</p>
 <div class="case-outline-table-wrap"><table class="case-outline-table"><thead><tr><th scope="col">Подход</th><th scope="col">Преимущества</th><th scope="col">Недостатки</th></tr></thead><tbody><tr><td><strong>Ручные заявки</strong></td><td>Менеджер самостоятельно выбирает участников.</td><td>При большом количестве откликов нужно проверить каждого блогера и принять решение.</td></tr>
 <tr><td><strong>Автоматический подбор</strong></td><td>Система отбирает подходящих блогеров и отправляет им предложения.</td><td>Требуется заранее задать критерии отбора и предусмотреть состояния процесса.</td></tr></tbody></table></div>
 <p class="case-highlight"><span class="case-conclusion-mark">Для ECHO заказчик предусмотрел автоматический подбор, чтобы менеджеру не приходилось вручную обрабатывать поток заявок. При проектировании я учитывал особенности этой механики.</span></p></div></div>
@@ -502,7 +509,7 @@ body.core-page.echo-page .case-body #ui .case-block--visual-system .case-outline
 <tr><td><strong>Количество подходящих блогеров до запуска помогает оценить условия кампании.</strong></td><td>Проверить настройку кампании со счётчиком кандидатов и без него.</td><td>Task Success Rate</td></tr>
 <tr><td><strong>Пояснение причин нулевого результата помогает исправлять условия.</strong></td><td>Сравнить пустое состояние с подсказкой и без неё.</td><td>Task Success Rate; Time on Task</td></tr></tbody></table></div>
 <p class="case-highlight"><span class="case-conclusion-mark"><strong>Неочевидная гипотеза.</strong> Точное число подходящих профилей может восприниматься как обещание будущих согласий. Стоит проверить, понятнее ли формулировка «Подходят по критериям» и пояснение, что приглашение не гарантирует участия.</span></p></div></div>
-<div class="case-block case-block--echo-registration case-block--echo-campaign-live"><h2 class="case-heading">Приоритизировал информацию на странице рекламной кампании</h2><div class="case-article-copy"><p>При проектировании учитывал, что менеджеру важно быстро оценить состояние кампании и перейти к задачам, требующим его внимания. Поэтому разделил информацию по значимости.</p>
+<div class="case-block case-block--echo-registration case-block--echo-campaign-live case-block--section-start echo2-scenario-start" id="anchor-campaign-page" data-nav-anchor="campaign-page"><p class="case-section__label">Страница кампании</p><h2 class="case-heading">Приоритизировал информацию на странице рекламной кампании</h2><div class="case-article-copy"><p>При проектировании учитывал, что менеджеру важно быстро оценить состояние кампании и перейти к задачам, требующим его внимания. Поэтому разделил информацию по значимости.</p>
 <div class="case-outline-table-wrap"><table class="case-outline-table echo2-page-priorities"><thead><tr><th scope="col">Приоритет</th><th scope="col">Элемент страницы</th><th scope="col">UX-решение</th></tr></thead><tbody><tr><td><strong>1</strong></td><td><strong>Состояние кампании</strong></td><td>Объединил статус подбора с количеством найденных блогеров, чтобы сразу показывать ход процесса.</td></tr>
 <tr><td><strong>2</strong></td><td><strong>Быстрый доступ к коллаборациям</strong></td><td>Разделил коллаборации по статусам и показал их количество. Задачи, требующие внимания менеджера, дополнительно выделил оранжевыми индикаторами.</td></tr>
 <tr><td><strong>3</strong></td><td><strong>Дополнительная информация</strong></td><td>Условия кампании, депозит, ресторанные точки и площадки публикации разместил ниже, поскольку к ним обращаются реже.</td></tr></tbody></table></div>
@@ -529,7 +536,7 @@ body.core-page.echo-page .case-body #ui .case-block--visual-system .case-outline
 <tr><td><strong>Группировка коллабораций по статусам упрощает навигацию.</strong></td><td>Сравнить статусные категории с общим списком и фильтрами.</td><td>Task Success Rate; Time on Task</td></tr>
 <tr><td><strong>Перенос справочной информации ниже освобождает внимание для рабочих задач.</strong></td><td>Проверить сценарии согласования при разных порядках блоков.</td><td>Time on Task; Error Rate</td></tr></tbody></table></div>
 <p class="case-highlight"><span class="case-conclusion-mark"><strong>Неочевидная гипотеза.</strong> Когда задач на проверку десятки или сотни, одного деления по статусам может быть мало. Стоит проверить сортировку по дедлайнам внутри статуса «К проверке».</span></p></div></div>
-<div class="case-block case-block--echo-registration"><h2 class="case-heading">Разделил регистрацию и создание профиля на отдельные экраны</h2><div class="case-article-copy"><p>При проектировании первого входа рассмотрел три варианта организации формы.</p>
+<div class="case-block case-block--echo-registration case-block--section-start echo2-scenario-start" id="anchor-registration" data-nav-anchor="registration"><p class="case-section__label">Регистрация и профиль</p><h2 class="case-heading">Разделил регистрацию и создание профиля на отдельные экраны</h2><div class="case-article-copy"><p>При проектировании первого входа рассмотрел три варианта организации формы.</p>
 <div class="case-outline-table-wrap"><table class="case-outline-table"><thead><tr><th scope="col">Подход</th><th scope="col">Преимущества</th><th scope="col">Недостатки</th></tr></thead><tbody><tr><td><strong>Одна большая форма</strong></td><td>Все поля доступны сразу, без переходов.</td><td>Большое количество полей может перегружать пользователя.</td></tr>
 <tr><td><strong>Два шага на одном экране</strong></td><td>Меньше информации на каждом шаге, сохраняется единый процесс.</td><td>Регистрация и заполнение профиля воспринимаются как одна задача, хотя решают разные цели.</td></tr>
 <tr><td><strong>Два отдельных экрана</strong></td><td>Чёткое разделение регистрации и настройки профиля, возможность адаптировать второй экран под роль.</td><td>Дополнительный переход между экранами.</td></tr></tbody></table></div>
@@ -605,8 +612,19 @@ body.core-page.echo-page .case-body #ui .case-block--visual-system .case-outline
       <ul class="core-nav__list">
         <li><a class="core-nav__link" href="#anchor-task" data-nav-key="task" aria-current="location">Задача</a></li>
         <li><a class="core-nav__link" href="#anchor-discovery" data-nav-key="discovery">Discovery</a></li>
-        <li><a class="core-nav__link" href="#anchor-ux" data-nav-key="ux">UX Design</a></li>
-        <li><a class="core-nav__link" href="#anchor-ui" data-nav-key="ui">UI</a></li>
+        <li class="core-nav__scenarios">
+          <button class="core-nav__toggle" type="button" aria-expanded="false" aria-controls="echo2-nav-scenario-links">
+            Сценарии <span class="core-nav__chevron" aria-hidden="true"></span>
+          </button>
+          <ul class="core-nav__submenu" id="echo2-nav-scenario-links" aria-label="Сценарии" hidden>
+            <li><a class="core-nav__link core-nav__sublink" href="#anchor-ux" data-nav-key="approval">Согласование</a></li>
+            <li><a class="core-nav__link core-nav__sublink" href="#anchor-campaign-create" data-nav-key="campaign-create">Создание кампании</a></li>
+            <li><a class="core-nav__link core-nav__sublink" href="#anchor-blogger-matching" data-nav-key="matching">Подбор блогеров</a></li>
+            <li><a class="core-nav__link core-nav__sublink" href="#anchor-campaign-page" data-nav-key="campaign-page">Страница кампании</a></li>
+            <li><a class="core-nav__link core-nav__sublink" href="#anchor-registration" data-nav-key="registration">Регистрация и профиль</a></li>
+          </ul>
+        </li>
+        <li><a class="core-nav__link" href="#anchor-ui" data-nav-key="ui">Design System</a></li>
       </ul>
     </nav>
 
@@ -622,6 +640,18 @@ body.core-page.echo-page .case-body #ui .case-block--visual-system .case-outline
         const intro = document.querySelector(".core-intro");
         const nav = document.querySelector(".core-nav");
         const links = [...nav.querySelectorAll(".core-nav__link")];
+        const scenarioToggle = nav.querySelector(".core-nav__toggle");
+        const scenarioContainer = nav.querySelector(".core-nav__scenarios");
+        const scenarioSubmenu = nav.querySelector(".core-nav__submenu");
+        const scenarioKeys = new Set(["approval", "campaign-create", "matching", "campaign-page", "registration"]);
+
+        const setScenarioMenuOpen = (open) => {
+          scenarioSubmenu.hidden = !open;
+          scenarioToggle.setAttribute("aria-expanded", String(open));
+        };
+        setScenarioMenuOpen(false);
+        window.addEventListener("pageshow", () => setScenarioMenuOpen(false));
+
         const anchors = links
           .map((link) => {
             const href = link.getAttribute("href");
@@ -645,6 +675,7 @@ body.core-page.echo-page .case-body #ui .case-block--visual-system .case-outline
               item.link.removeAttribute("aria-current");
             }
           }
+          scenarioToggle.classList.toggle("is-current", scenarioKeys.has(key));
         };
 
         const updateNavigation = () => {
@@ -673,6 +704,13 @@ body.core-page.echo-page .case-body #ui .case-block--visual-system .case-outline
             }
           }
 
+          const reachedCaseEnd =
+            window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4;
+
+          if (reachedCaseEnd) {
+            currentKey = anchors[anchors.length - 1]?.key || "task";
+          }
+
           setActive(currentKey);
           frameId = 0;
         };
@@ -682,9 +720,27 @@ body.core-page.echo-page .case-body #ui .case-block--visual-system .case-outline
           frameId = window.requestAnimationFrame(updateNavigation);
         };
 
+        scenarioToggle.addEventListener("click", () => {
+          setScenarioMenuOpen(scenarioSubmenu.hidden);
+        });
+
+        document.addEventListener("pointerdown", (event) => {
+          if (!scenarioContainer.contains(event.target) && !scenarioSubmenu.hidden) {
+            setScenarioMenuOpen(false);
+          }
+        });
+
+        scenarioContainer.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && !scenarioSubmenu.hidden) {
+            setScenarioMenuOpen(false);
+            scenarioToggle.focus();
+          }
+        });
+
         for (const item of anchors) {
           item.link.addEventListener("click", (event) => {
             event.preventDefault();
+            setScenarioMenuOpen(false);
 
             const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
             const desiredTop =
@@ -716,6 +772,17 @@ body.core-page.echo-page .case-body #ui .case-block--visual-system .case-outline
         window.addEventListener("touchstart", cancelPendingNavigation, { passive: true });
         window.addEventListener("scroll", scheduleUpdate, { passive: true });
         window.addEventListener("resize", scheduleUpdate);
+
+        const initialAnchor = anchors.find((item) => item.target.id === window.location.hash.slice(1));
+        if (initialAnchor) {
+          window.requestAnimationFrame(() => {
+            const desiredTop =
+              initialAnchor.target.getBoundingClientRect().top + window.scrollY - anchorOffset();
+            window.scrollTo({ top: Math.max(0, desiredTop), behavior: "auto" });
+            setActive(initialAnchor.key);
+          });
+        }
+
         updateNavigation();
       })();
     </script>
