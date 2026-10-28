@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 620" role="img" aria-labelledby="ttl desc">
+<title id="ttl">Механика автоматического подбора блогеров ECHO</title>
+<desc id="desc">Условия рекламной кампании сопоставляются с характеристиками профилей блогеров. Подходящие получают предложения; неподходящие не получают. После принятия предложения создаётся коллаборация.</desc>
+<rect width="1160" height="620" fill="#f8f8f8"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#222">
+<rect x="36" y="32" width="518" height="143" rx="8" fill="#fff" stroke="#d7d7d7"/>
+<rect x="606" y="32" width="518" height="143" rx="8" fill="#fff" stroke="#d7d7d7"/>
+<text x="60" y="71" font-size="24" font-weight="700">Рекламная кампания</text>
+<text x="630" y="71" font-size="24" font-weight="700">Профиль блогера</text>
+<text x="60" y="105" font-size="18">Площадки · подписчики · минимальный IR</text>
+<text x="630" y="105" font-size="18">Соцсети · аудитория · показатель IR</text>
+<text x="60" y="138" font-size="15" fill="#707070">Условия, заданные бизнесом</text>
+<text x="630" y="138" font-size="15" fill="#707070">Данные блогера</text>
+<path d="M295 175 V214 H580 V238 M865 175 V214 H580" fill="none" stroke="#8d8d8d" stroke-width="2.5"/>
+<path d="M571 230 L580 244 L589 230" fill="none" stroke="#8d8d8d" stroke-width="2.5"/>
+<rect x="285" y="245" width="590" height="82" rx="8" fill="#242424"/>
+<text x="580" y="278" font-size="23" fill="#fff" text-anchor="middle" font-weight="700">Сопоставление критериев</text>
+<text x="580" y="307" font-size="16" fill="#ddd" text-anchor="middle">Проверка соответствия условиям кампании</text>
+<path d="M580 327 V366 H312 V389 M580 366 H846 V389" fill="none" stroke="#8d8d8d" stroke-width="2.5"/>
+<path d="M303 381 L312 394 L321 381 M837 381 L846 394 L855 381" stroke="#8d8d8d" fill="none" stroke-width="2.5"/>
+<rect x="36" y="396" width="518" height="93" rx="8" fill="#fff" stroke="#ff5b27" stroke-width="2.5"/>
+<rect x="606" y="396" width="518" height="93" rx="8" fill="#fff" stroke="#d7d7d7"/>
+<text x="295" y="429" font-size="22" font-weight="700" text-anchor="middle">Подходит</text>
+<text x="865" y="429" font-size="22" font-weight="700" text-anchor="middle">Не подходит</text>
+<text x="295" y="459" font-size="17" text-anchor="middle">Получает предложение</text>
+<text x="865" y="459" font-size="17" text-anchor="middle">Не получает предложение</text>
+<path d="M295 489 V522" fill="none" stroke="#ff5b27" stroke-width="3"/>
+<path d="M286 514 L295 528 L304 514" stroke="#ff5b27" fill="none" stroke-width="3"/>
+<rect x="36" y="535" width="518" height="62" rx="8" fill="#ff5b27"/>
+<text x="295" y="561" font-size="18" font-weight="700" text-anchor="middle" fill="#fff">Принимает предложение</text>
+<text x="295" y="584" font-size="15" text-anchor="middle" fill="#fff">Создаётся коллаборация</text>
+</g></svg>
