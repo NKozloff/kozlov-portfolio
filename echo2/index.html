@@ -159,6 +159,21 @@ body.core-page.echo-page .case-body > #task:first-child {
   margin-top: 0 !important;
 }
 
+
+/* ECHO 2 — reference paragraph in Discovery uses line-height: 1.5.
+   Match every body-copy text layer to it, excluding case headings. */
+body.core-page.echo-page .case-body :is(
+  .case-article-copy,
+  p,
+  .case-conclusion-mark,
+  .case-outline-table,
+  .case-outline-table th,
+  .case-outline-table td,
+  .case-section__label,
+  .echo-desktop-gallery__label
+) {
+  line-height: 1.5 !important;
+}
 </style>
   <meta name="robots" content="noindex,nofollow" />
   </head>
