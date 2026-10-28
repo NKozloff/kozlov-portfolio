@@ -76,6 +76,29 @@
   .core-page.echo-page .case-body .case-outline-table { min-width: 620px; }
   .core-page.echo-page .case-body .case-outline-table-wrap { width: 100% !important; }
 }
+
+/* ECHO 2 — consistent breathing room around all yellow conclusions.
+   The shared Discovery rules reset paragraph margins to zero, so
+   these scoped !important declarations restore the intended rhythm. */
+.core-page.echo-page .case-body .case-article-copy > p.case-highlight {
+  display: block;
+  margin-top: 32px !important;
+  margin-right: 0 !important;
+  margin-bottom: 0 !important;
+  margin-left: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+.core-page.echo-page .case-body .case-article-copy > p.case-highlight + p {
+  margin-top: 24px !important;
+}
+.core-page.echo-page .case-body .case-article-copy > p.case-highlight + .case-outline-table-wrap {
+  margin-top: 32px !important;
+}
+.core-page.echo-page .case-body .case-article-copy + .echo-desktop-gallery {
+  margin-top: 48px !important;
+}
+
 </style>
   <meta name="robots" content="noindex,nofollow" />
   </head>
