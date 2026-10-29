@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="description" content="X5 — единая платформа для аудитов. Кейс продуктового дизайнера Никиты Козлова."/>
+<title>X5 — рабочее пространство для аудиторов</title>
+<link rel="icon" href="../favicon.ico?v=240" sizes="any"/>
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240"/>
+<link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240"/>
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240"/>
+<link rel="stylesheet" href="../styles.css?v=427-branding-end-spacing"/>
+<style>
+.x5-page .core-intro__media{background:#f4f4f4}
+.x5-page .case-body{padding-top:6.912rem;padding-bottom:6.912rem}
+.x5-page .case-body>.case-section{width:100%;margin:6.912rem auto 0;padding-top:0}
+.x5-page .case-body>.case-section:first-child{margin-top:0}
+.x5-page .case-section>.case-block{position:relative;margin-top:5.76rem}
+.x5-page .case-section>.case-block:first-child{margin-top:0}
+.x5-page .case-section>.case-block>:is(.case-heading,.case-lead,.case-highlight,.x5-table-wrap){width:min(100%,720px);max-width:720px;margin-left:auto;margin-right:auto;box-sizing:border-box}
+.x5-page .case-section .case-block--section-start>.case-section__label{position:absolute;top:0;left:calc(24px - var(--page-space));width:auto;max-width:none;margin:0;color:#8a8a8a;font:400 var(--text-size)/1.4 "Arial Portfolio",Arial,sans-serif;text-align:left;white-space:nowrap}
+.x5-page .case-block>.case-heading+.case-lead,.x5-page .case-block>.case-heading+.x5-table-wrap{margin-top:2.666667rem}
+.x5-page .case-block>.x5-table-wrap+.x5-conclusion{margin-top:2rem}
+.x5-page .case-block>.case-lead+.x5-table-wrap{margin-top:1.466667rem}
+.x5-page .x5-copy{font:400 var(--text-size)/1.4 "Arial Portfolio",Arial,sans-serif}
+.x5-page .x5-conclusion{padding:0;background:transparent;line-height:1.4}
+.x5-page .x5-conclusion .case-conclusion-mark{display:inline;background:#fffdd8;padding:2px 0;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.x5-page .x5-table-wrap{overflow-x:auto}
+.x5-page .x5-table{width:100%;max-width:none;table-layout:fixed}
+.x5-page .x5-table th,.x5-page .x5-table td{text-align:left;vertical-align:top;overflow-wrap:anywhere}
+.x5-page .x5-table th{font-weight:700}
+.x5-page .core-nav__scenarios{position:relative}
+@media(max-width:1280px) and (min-width:1024px){.x5-page .case-section .case-block--section-start>.case-section__label{position:static;margin:0 auto 1.333333rem;width:min(100%,720px)}}
+@media(prefers-reduced-motion:reduce){.x5-page .core-nav{transition:none}}</style>
+</head>
+<body class="core-page core-page--condensed typography-only x5-page">
+<main class="core-intro" id="cover">
+<section class="core-intro__copy" aria-labelledby="x5-title">
+<h1 class="core-intro__title" id="x5-title">Спроектировал единое рабочее пространство для аудиторов X5, исключив внешнее хранение данных и разрозненность коммуникаций</h1>
+<div class="core-intro__details"><section class="core-intro__group"><p class="core-intro__label">Мой вклад</p><p class="core-intro__value">Discovery, UX/UI Design, Usability Testing, Branding</p></section></div>
+<p class="core-intro__year">2026</p>
+</section><div class="core-intro__media" aria-hidden="true"></div>
+</main>
+<a class="core-close" href="../#projects" aria-label="Закрыть кейс"><img src="../assets/icon-close.svg" alt="" width="24" height="24"/></a>
+<div class="case-body"><section class="case-section" id="problem" data-case-section data-nav-anchor="problem">
+<div class="case-block case-block--section-start"><p class="case-section__label">Проблема</p><h2 class="case-heading">Аудиторы X5 проводили проверки в разрозненных инструментах, не имея единой рабочей системы</h2>
+<p class="case-lead x5-copy">Для внутренних и внешних проверок производств аудиторы использовали несколько не связанных между собой инструментов. Чек-листы создавали и заполняли в Excel, там же оставались данные проверок. Материалы передавали и обсуждали в чатах. Единого корпоративного пространства, в котором можно пройти весь рабочий цикл аудита, не было: данные, документы и коммуникации существовали отдельно друг от друга.</p></div>
+</section>
+
+<section class="case-section" id="task" data-case-section data-nav-anchor="task">
+<div class="case-block case-block--section-start"><p class="case-section__label">Задача</p><h2 class="case-heading">Объединить полный цикл работы аудитора в одной корпоративной веб-платформе</h2>
+<p class="case-lead x5-copy">Спроектировать внутренний продукт, в котором аудиторы смогут готовить и проводить проверки, заполнять чек-листы, работать с результатами и обмениваться материалами в контексте конкретного аудита. Вместо набора внешних инструментов — единое рабочее пространство с централизованными данными и связанными этапами процесса.</p></div>
+</section>
+
+<section class="case-section" id="discovery" data-case-section data-nav-anchor="discovery">
+<div class="case-block case-block--section-start"><p class="case-section__label">Discovery</p><h2 class="case-heading">4 роли с разными задачами внутри одного рабочего процесса</h2>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table"><thead><tr><th scope="col">Роль</th><th scope="col">Основные задачи</th></tr></thead><tbody><tr><td>Инициатор проверки</td><td>Создаёт заявки, назначает аудиторов и наблюдателей, отслеживает статусы заявок.</td></tr>
+<tr><td>Руководитель аудита</td><td>Управляет площадками и командами, проверяет результаты аудитов, оставляет замечания и согласовывает отчёты.</td></tr>
+<tr><td>Аудитор</td><td>Проводит проверки, заполняет чек-листы и фиксирует результаты.</td></tr>
+<tr><td>Суперпользователь</td><td>Администрирует платформу, управляет правами доступа и корректирует данные при нестандартных ситуациях.</td></tr></tbody></table></div>
+<p class="case-highlight x5-conclusion"><span class="case-conclusion-mark">Единая система со сквозными сценариями и разграниченными правами доступа.</span></p></div>
+</section>
+
+<section class="case-section" id="mvp" data-case-section data-nav-anchor="mvp">
+<div class="case-block case-block--section-start"><p class="case-section__label">MVP</p><h2 class="case-heading">Определил MVP через ключевые сценарии 4 пользовательских ролей</h2>
+<p class="case-lead x5-copy">MVP должен был охватить полный цикл аудита — от создания заявки и планирования до проведения проверки, фиксации результатов и коммуникации внутри платформы. Для этого определил ключевые сценарии каждой роли: вместе они составили минимальный функциональный объём первой версии продукта.</p></div>
+</section>
+
+<section class="case-section" id="initiator" data-case-section data-nav-anchor="initiator">
+<div class="case-block case-block--section-start"><p class="case-section__label">Инициатор</p><h2 class="case-heading">Начал с инициатора проверки: сформулировал Jobs to Be Done</h2>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table"><thead><tr><th scope="col">Jobs to Be Done</th><th scope="col">Ожидаемый результат</th></tr></thead><tbody><tr><td>Когда требуется провести аудит, хочу выбрать его вид, площадку и объекты, чтобы задать область проверки.</td><td>Определены объекты аудита; видны связанные чек-листы, ответственные и их контакты.</td></tr>
+<tr><td>Когда планирую аудит, хочу указать тип проведения и дату, чтобы зафиксировать параметры будущей проверки.</td><td>В заявке сохранены периодичность и запланированная дата.</td></tr>
+<tr><td>Когда создаю заявку, хочу назначить аудиторов и указать наблюдателей, чтобы определить состав участников.</td><td>Участники указаны в заявке.</td></tr>
+<tr><td>Когда передаю заявку в работу, хочу добавить комментарий и документы, чтобы предоставить контекст проверки.</td><td>Комментарий и вложения хранятся вместе с заявкой.</td></tr>
+<tr><td>Когда заявка создана, хочу видеть её статус и подробные данные, чтобы понимать, что происходит с запросом.</td><td>Состояние и параметры заявки доступны в одном месте.</td></tr>
+<tr><td>Когда планы меняются, хочу редактировать, приостанавливать или отменять заявку, чтобы актуализировать запрос.</td><td>Заявкой можно управлять после создания.</td></tr>
+<tr><td>Когда нужно восстановить ход работы, хочу увидеть историю действий и связанные проверки, чтобы понимать, что менялось.</td><td>Доступны хронология изменений и связи с проверками.</td></tr></tbody></table></div></div>
+<div class="case-block"><h2 class="case-heading">Сопоставил AS-IS и TO-BE</h2>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table"><thead><tr><th scope="col">Процесс</th><th scope="col">AS-IS</th><th scope="col">TO-BE</th></tr></thead><tbody><tr><td>Создание заявки</td><td>Сведения о проверках вносили в общий Excel-график.</td><td>Инициатор создаёт заявку с указанием площадки, объектов и вида аудита внутри платформы.</td></tr>
+<tr><td>Планирование</td><td>Даты и организационные сведения фиксировали в Excel; уточнения обсуждали в чатах.</td><td>Инициатор выбирает дату, тип проверки, аудиторов и наблюдателей в одной форме.</td></tr>
+<tr><td>Передача контекста</td><td>Рабочие обсуждения и обмен материалами происходили отдельно от Excel.</td><td>Комментарий и вложения сохраняются в контексте заявки.</td></tr>
+<tr><td>Контроль и изменения</td><td>Сведения о проверках находились в Excel, а обсуждения — в чатах.</td><td>Статус, редактирование, приостановка, отмена и история действий доступны на странице заявки.</td></tr></tbody></table></div></div>
+<div class="case-block"><h2 class="case-heading">Спроектировал создание заявки в 3 шага и управление её жизненным циклом</h2>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table"><thead><tr><th scope="col">Проектное решение</th><th scope="col">Реализация</th></tr></thead><tbody><tr><td>Пошаговое создание</td><td>Разделил форму на 3 этапа: «Площадка», «Общее» и «Вложения».</td></tr>
+<tr><td>Область проверки</td><td>Предусмотрел выбор площадки и объектов с отображением связанных чек-листов, ответственных и контактов.</td></tr>
+<tr><td>Параметры и участники</td><td>Объединил выбор типа проверки, даты, аудиторов, наблюдателей и ввод комментария на этапе «Общее».</td></tr>
+<tr><td>Сопроводительные материалы</td><td>Выделил отдельный этап для загрузки и удаления вложений.</td></tr>
+<tr><td>Детальная страница</td><td>Организовал данные заявки по вкладкам «Площадка», «Данные» и «Вложения»; вывел статус и действия для редактирования, приостановки и отмены.</td></tr>
+<tr><td>История изменений</td><td>Предусмотрел просмотр действий с датами, временем и участниками, а также связанных проверок.</td></tr></tbody></table></div>
+<p class="case-highlight x5-conclusion"><span class="case-conclusion-mark">Для инициатора предусмотрел разделы «Заявки» и «Профиль». Управление шаблонами чек-листов и администрирование площадок в эту роль не входят.</span></p></div>
+</section>
+
+<section class="case-section" id="manager" data-case-section data-nav-anchor="manager">
+<div class="case-block case-block--section-start"><p class="case-section__label">Руководитель</p><h2 class="case-heading">Для руководителя аудита определил Jobs to Be Done</h2>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table"><thead><tr><th scope="col">Jobs to Be Done</th><th scope="col">Ожидаемый результат</th></tr></thead><tbody><tr><td>Когда в команду приходит новый сотрудник, хочу добавить его в систему и назначить нужные роли, чтобы предоставить доступ к рабочим функциям.</td><td>Создан профиль сотрудника с соответствующими ролями и правами доступа.</td></tr>
+<tr><td>Когда управляю командой, хочу видеть сотрудников, их роли и статус активности, чтобы контролировать состав участников аудита.</td><td>Доступны контактные и организационные данные сотрудников, назначенные роли и статусы.</td></tr>
+<tr><td>Когда к аудиту подключается новая площадка, хочу завести её в системе, чтобы использовать данные при подготовке и проведении проверок.</td><td>Площадка доступна для дальнейшей работы с аудитами.</td></tr>
+<tr><td>Когда проверяю результаты работы команды, хочу находить отчёты по площадке, объекту, аудитору и статусу, чтобы быстро переходить к нужному результату.</td><td>Нужные отчёты доступны через поиск и фильтры.</td></tr>
+<tr><td>Когда получаю отчёт на согласование, хочу видеть его статус и показатели, чтобы оценить состояние проверки перед детальным изучением.</td><td>Доступны сводные данные о проверке и прохождении чек-листа.</td></tr>
+<tr><td>Когда изучаю отчёт, хочу видеть ответы и подтверждающие материалы по каждому вопросу, чтобы оценить корректность результатов.</td><td>Ответы и материалы доступны в контексте пунктов чек-листа.</td></tr>
+<tr><td>Когда нахожу неточность, хочу оставить замечание к конкретному ответу, чтобы аудитор понимал, что исправить.</td><td>Замечание связано с нужным вопросом и доступно аудитору.</td></tr>
+<tr><td>Когда аудитор доработал отчёт, хочу видеть исправленные ответы и предыдущие итерации, чтобы проверить изменения без повторного просмотра всего документа.</td><td>Доступны история итераций и просмотр исправленных ответов.</td></tr>
+<tr><td>Когда отчёт готов, хочу согласовать его или вернуть на доработку, чтобы контролировать качество итоговых результатов.</td><td>Отчёт получает соответствующий статус, а замечания передаются аудитору.</td></tr></tbody></table></div></div>
+<div class="case-block"><h2 class="case-heading">Сопоставил AS-IS и TO-BE</h2></div>
+<div class="case-block"><h2 class="case-heading">Спроектировал управление пользователями и согласование результатов аудита</h2>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table"><thead><tr><th scope="col">UX-задача</th><th scope="col">Проектное решение</th></tr></thead><tbody><tr><td>Видеть состав команды</td><td>В списке пользователей отобразил ФИО, контакты, тип сотрудника, статус активности и назначенные роли.</td></tr>
+<tr><td>Управлять профилем сотрудника</td><td>Разделил данные и роли по вкладкам; предусмотрел контактные и организационные поля, в том числе компанию, дирекцию и табельный номер.</td></tr>
+<tr><td>Учитывать совмещение обязанностей</td><td>Предусмотрел возможность назначать несколько ролей одному пользователю.</td></tr>
+<tr><td>Находить отчёты по разным площадкам</td><td>Сгруппировал отчёты по площадкам, а отдельные проверки представил строками объектов внутри каждой группы.</td></tr>
+<tr><td>Быстро отбирать результаты</td><td>Добавил поиск и фильтрацию по площадке, объекту, аудитору, согласующему, дате и статусу.</td></tr>
+<tr><td>Получать сводку без открытия отчёта</td><td>Предусмотрел данные о проценте прохождения, баллах, вопросах, несоответствиях, сроках и участниках проверки.</td></tr>
+<tr><td>Изучать результат на уровне отдельного вопроса</td><td>Представил в отчёте ответы аудитора, фотографии и комментарии в контексте пунктов чек-листа.</td></tr>
+<tr><td>Передавать точные замечания</td><td>Связал текстовый комментарий с конкретным ответом и разместил постоянную область замечаний внутри отчёта вместо отдельного поп-апа.</td></tr>
+<tr><td>Повторно проверять исправления</td><td>Добавил переключение между итерациями и просмотр только исправленных ответов.</td></tr>
+<tr><td>Управлять согласованием</td><td>Сохранил согласование отчёта, а отправку на доработку перенёс внутрь области замечаний с предупреждением об ограничении дальнейшего редактирования.</td></tr></tbody></table></div>
+<p class="case-highlight x5-conclusion"><span class="case-conclusion-mark">Замечания руководителя связаны с конкретными ответами, а последующие итерации позволяют сосредоточиться на доработанных пунктах, не просматривая весь отчёт заново.</span></p></div>
+<div class="case-block"><h2 class="case-heading">На юзабилити-тестировании выявил 2 проблемы в согласовании отчётов и переработал сценарий</h2>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table"><thead><tr><th scope="col">Выявленная проблема</th><th scope="col">Что изменил после тестирования</th><th scope="col">Для чего</th></tr></thead><tbody><tr><td>Замечания добавлялись через отдельное всплывающее окно. Руководителю приходилось выходить из контекста отчёта, чтобы оставить следующую правку.</td><td>Заменил поп-ап постоянно доступной областью комментариев непосредственно в отчёте, чтобы можно было просматривать ответы и фиксировать замечания в одном рабочем пространстве.</td><td>Не прерывать проверку отчёта при переходе между ответами и замечаниями.</td></tr>
+<tr><td>Кнопка «Вернуть на доработку» находилась отдельно от работы с комментариями. Руководители нажимали её до того, как завершали список замечаний; после отправки добавлять новые правки было нельзя, пока аудитор не вернёт исправленный отчёт.</td><td>Перенёс действие «Отправить на доработку» внутрь области комментариев и добавил подсказку при наведении: после отправки новые замечания будут недоступны до следующей итерации.</td><td>Разделить этапы «сформулировать замечания» и «передать отчёт аудитору» и предупредить о последствиях отправки.</td></tr></tbody></table></div>
+<p class="case-highlight x5-conclusion"><span class="case-conclusion-mark">В ходе тестирования выяснил, что проблема заключалась не только в расположении элементов: <strong>момент передачи отчёта на доработку был непонятен пользователям</strong>. Поэтому переработал последовательность действий, а не просто переименовал кнопку.</span></p></div>
+</section>
+
+<section class="case-section" id="auditor" data-case-section data-nav-anchor="auditor">
+<div class="case-block case-block--section-start"><p class="case-section__label">Аудитор</p><h2 class="case-heading">Для аудитора определил Jobs to Be Done</h2>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table"><thead><tr><th scope="col">Jobs to Be Done</th><th scope="col">Ожидаемый результат</th></tr></thead><tbody><tr><td>Когда мне назначают проверки, хочу видеть их список и состояния, чтобы понимать, какие задачи требуют внимания.</td><td>Проверки доступны с группировкой по площадкам и статусам.</td></tr>
+<tr><td>Когда приступаю к аудиту, хочу изучить данные площадки, объекта и участников, чтобы понимать контекст проверки.</td><td>Сведения о проверке доступны без поиска в отдельных файлах.</td></tr>
+<tr><td>Когда провожу аудит, хочу перемещаться между разделами и вопросами, чтобы последовательно заполнять длинный чек-лист.</td><td>Доступна навигация по структуре чек-листа.</td></tr>
+<tr><td>Когда отвечаю на вопросы, хочу использовать подходящий формат ввода, чтобы корректно зафиксировать результаты.</td><td>Доступны текстовые, числовые, оценочные и другие форматы ответа.</td></tr>
+<tr><td>Когда фиксирую состояние объекта, хочу добавлять фотографии и комментарии к вопросам, чтобы сохранить доказательные материалы.</td><td>Материалы привязаны к соответствующим ответам.</td></tr>
+<tr><td>Когда не могу закончить проверку за один раз, хочу сохранить черновик и видеть прогресс, чтобы продолжить позже.</td><td>Сохранённые ответы и степень заполнения остаются доступны.</td></tr>
+<tr><td>Когда готовлю результаты к отправке, хочу находить помеченные и незавершённые вопросы, чтобы проверить полноту работы.</td><td>Доступны быстрые фильтры и проверка перед отправкой.</td></tr>
+<tr><td>Когда руководитель возвращает отчёт на доработку, хочу быстро находить его замечания, чтобы исправить конкретные ответы.</td><td>Замечания доступны у нужных вопросов, а пункты на доработку можно отфильтровать.</td></tr></tbody></table></div></div>
+<div class="case-block"><h2 class="case-heading">Сопоставил AS-IS и TO-BE</h2>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table"><thead><tr><th scope="col">Процесс</th><th scope="col">AS-IS</th><th scope="col">TO-BE</th></tr></thead><tbody><tr><td>Поиск проверок</td><td>Расписание и данные аудитов находились в общем Excel-графике.</td><td>Список проверок, сгруппированных по площадкам и рабочим статусам, с поиском.</td></tr>
+<tr><td>Подготовка к проверке</td><td>Необходимые сведения приходилось искать в отдельных файлах и обсуждениях.</td><td>Контекст площадки, объекта и аудита доступен из проверки.</td></tr>
+<tr><td>Заполнение чек-листа</td><td>Аудиторы создавали и заполняли чек-листы в Excel.</td><td>Ответы разных типов вводятся непосредственно в платформе.</td></tr>
+<tr><td>Доказательные материалы</td><td>Файлы и обсуждения существовали отдельно от заполненного чек-листа.</td><td>Фото и комментарии связаны с конкретными вопросами.</td></tr>
+<tr><td>Контроль прогресса</td><td>Полноту заполнения отслеживали в Excel.</td><td>Показаны прогресс и вопросы, требующие внимания; доступна проверка перед отправкой.</td></tr>
+<tr><td>Доработка результатов</td><td>Замечания обсуждались преимущественно в мессенджерах.</td><td>Комментарии руководителя доступны рядом с нужными ответами, есть фильтр вопросов на доработку.</td></tr></tbody></table></div></div>
+<div class="case-block"><h2 class="case-heading">Спроектировал рабочее пространство аудитора для проведения проверок без Excel</h2>
+<p class="case-lead x5-copy">В одном интерфейсе аудитор получает структуру длинного чек-листа, фиксирует ответы и материалы, сохраняет промежуточный результат и возвращается к конкретным замечаниям согласующего.</p></div>
+<div class="case-block"><h2 class="case-heading">На юзабилити-тестировании обнаружил проблему поиска проверок и изменил группировку</h2>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table"><thead><tr><th scope="col">Выявленная проблема</th><th scope="col">Что изменил после тестирования</th><th scope="col">Для чего</th></tr></thead><tbody><tr><td>В первоначальном списке проверки были разделены только по статусам. Аудиторам было сложно найти объекты нужной площадки, а фильтра по площадкам не было.</td><td>Сохранил переключение по рабочим статусам, но внутри списка сгруппировал проверки по площадкам; объекты каждой площадки собрал в отдельную группу.</td><td>Сделать связь «площадка → объекты → проверки» видимой и облегчить поиск нужного объекта.</td></tr></tbody></table></div>
+<p class="case-highlight x5-conclusion"><span class="case-conclusion-mark">Обратная связь аудиторов показала, что одного деления по статусам недостаточно: <strong>для поиска работы им важна принадлежность объекта к площадке</strong>. Это повлияло на структуру списка проверок.</span></p></div>
+</section>
+
+<section class="case-section" id="superuser" data-case-section data-nav-anchor="superuser">
+<div class="case-block case-block--section-start"><p class="case-section__label">Суперпользователь</p><h2 class="case-heading">Для суперпользователя определил Jobs to Be Done</h2>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table"><thead><tr><th scope="col">Jobs to Be Done</th><th scope="col">Ожидаемый результат</th></tr></thead><tbody><tr><td>Когда сотруднику необходимо предоставить или изменить доступ, хочу управлять его ролями и правами, чтобы он мог выполнять свои задачи.</td><td>Пользователь получает необходимые права доступа.</td></tr>
+<tr><td>Когда пользователь ошибся при работе с данными, хочу иметь возможность исправить информацию, чтобы восстановить её корректность.</td><td>Администратор может скорректировать доступные ему данные без обращения к разработчикам.</td></tr>
+<tr><td>Когда возникает нестандартная ситуация, хочу иметь доступ ко всем разделам системы, чтобы решить проблему, не ограничиваясь правами одной роли.</td><td>Доступны административные действия во всех разделах платформы.</td></tr></tbody></table></div></div>
+<div class="case-block"><h2 class="case-heading">Сопоставил AS-IS и TO-BE</h2></div>
+<div class="case-block"><h2 class="case-heading">Предусмотрел административную роль с полным доступом к платформе</h2>
+<p class="case-lead x5-copy">Суперпользователь получил доступ ко всем разделам и функциям системы, чтобы решать нестандартные ситуации, управлять правами и исправлять ошибки пользователей.</p></div>
+</section>
+
+<section class="case-section" id="result" data-case-section data-nav-anchor="result">
+<div class="case-block case-block--section-start"><p class="case-section__label">Результат</p><h2 class="case-heading">Запустили MVP для 4 пользовательских ролей и получили первую обратную связь от подразделений X5</h2>
+<p class="case-lead x5-copy">Платформа вышла в эксплуатацию: сотрудники начали осваивать новые сценарии работы с заявками, проверками и отчётами внутри корпоративной системы.</p>
+<p class="case-lead x5-copy">После запуска получили первую обратную связь от бизнес-подразделений X5. На момент завершения проекта продукт находился на начальном этапе внедрения, поэтому оценить долгосрочное влияние на рабочие процессы и отказ от внешних инструментов количественно ещё не успели.</p></div>
+</section></div>
+<nav class="core-nav" aria-label="Разделы кейса" aria-hidden="true" inert>
+<ul class="core-nav__list">
+<li><a class="core-nav__link" href="#problem" data-nav-key="problem">Проблема</a></li>
+<li><a class="core-nav__link" href="#task" data-nav-key="task">Задача</a></li>
+<li><a class="core-nav__link" href="#discovery" data-nav-key="discovery">Discovery</a></li>
+<li class="core-nav__scenarios"><button class="core-nav__toggle" type="button" aria-expanded="false" aria-controls="x5-nav-design-links">Проектирование <span class="core-nav__chevron" aria-hidden="true"></span></button>
+<ul class="core-nav__submenu" id="x5-nav-design-links" aria-label="Проектирование" hidden>
+<li><a class="core-nav__link core-nav__sublink" href="#mvp" data-nav-key="mvp">MVP</a></li>
+<li><a class="core-nav__link core-nav__sublink" href="#initiator" data-nav-key="initiator">Инициатор</a></li>
+<li><a class="core-nav__link core-nav__sublink" href="#manager" data-nav-key="manager">Руководитель</a></li>
+<li><a class="core-nav__link core-nav__sublink" href="#auditor" data-nav-key="auditor">Аудитор</a></li>
+<li><a class="core-nav__link core-nav__sublink" href="#superuser" data-nav-key="superuser">Суперпользователь</a></li>
+</ul></li>
+<li><a class="core-nav__link" href="#result" data-nav-key="result">Результат</a></li>
+</ul>
+</nav>
+<main class="mobile-note"><div class="mobile-note__content"><h1>Проекты лучше смотреть на большом экране</h1><p>Откройте сайт на компьютере — так макеты сохранят все детали.</p></div></main>
+<script>
+(()=>{
+const intro=document.querySelector('.core-intro'),nav=document.querySelector('.core-nav');
+const links=[...nav.querySelectorAll('.core-nav__link')],toggle=nav.querySelector('.core-nav__toggle'),submenu=nav.querySelector('.core-nav__submenu');
+const keys=new Set(['mvp','initiator','manager','auditor','superuser']);
+const anchors=links.map(link=>({link,section:document.getElementById(link.dataset.navKey)})).filter(x=>x.section);
+const menu=open=>{submenu.hidden=!open;toggle.setAttribute('aria-expanded',String(open));};
+const update=()=>{
+ const visible=scrollY>intro.offsetHeight*.65;
+ nav.classList.toggle('is-visible',visible);nav.setAttribute('aria-hidden',String(!visible));
+ if(visible)nav.removeAttribute('inert');else{nav.setAttribute('inert','');menu(false);}
+ let active=anchors[0];for(const a of anchors){if(a.section.getBoundingClientRect().top<=innerHeight*.38)active=a;else break;}
+ for(const a of anchors){if(a===active)a.link.setAttribute('aria-current','location');else a.link.removeAttribute('aria-current');}
+ toggle.classList.toggle('is-current',keys.has(active.link.dataset.navKey));
+};
+toggle.addEventListener('click',()=>menu(submenu.hidden));
+links.forEach(x=>x.addEventListener('click',()=>menu(false)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!submenu.hidden){menu(false);toggle.focus();}});
+document.addEventListener('click',e=>{if(!e.target.closest('.core-nav__scenarios'))menu(false);});
+window.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update,{passive:true});
+window.addEventListener('pageshow',()=>{menu(false);update();});menu(false);update();
+})();
+</script>
+</body>
+</html>
