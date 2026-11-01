@@ -2158,6 +2158,17 @@ a:focus-visible {
   object-position: right center;
 }
 
+/* Preserve the ECHO cover height, but show Core Tracker's left edge.
+   The oversized screenshot intentionally clips at the right frame edge. */
+.case-card__preview--core-tracker {
+  justify-content: flex-start;
+  padding-left: 11%;
+}
+
+.case-card__preview--core-tracker img {
+  flex-shrink: 0;
+}
+
 /* X5: center the folder; place the Arial caption just beneath it. */
 .case-card__preview--x5 {
   position: relative;
