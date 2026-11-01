@@ -14,11 +14,12 @@
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=240" />
     <link rel="preload" as="image" href="assets/optimized-v219/nikita-kozlov-1728w.jpg?v=219" />
     <link rel="preload" as="image" href="assets/optimized-v219/case-core-v138-945w.png?v=219" />
+    <link rel="preload" as="image" href="assets/core-tracker-card.webp" />
     <link rel="preload" as="image" href="assets/optimized-v219/case-echo-v138-1334w.png?v=219" />
     <script>
       document.documentElement.classList.add("is-loading");
     </script>
-    <link rel="stylesheet" href="styles.css?v=367" />
+    <link rel="stylesheet" href="styles.css?v=368-core-tracker-grid" />
   </head>
   <body>
     <div class="site-loader" role="status" aria-live="polite">
@@ -109,34 +110,19 @@
     <section class="portfolio" id="projects" aria-label="Проекты">
       <div class="portfolio__grid">
         <article class="case-card">
-          <a class="case-card__link" href="core/" aria-label="Открыть кейс Выявил 6 сценариев потенциального раскрытия пользовательских данных и спроектировал механики их предотвращения">
-            <div class="case-card__preview case-card__preview--core">
-              <div class="case-card__core-phone">
-                <img
-                  src="assets/optimized-v219/case-core-v138-473w.png?v=219"
-                  srcset="assets/optimized-v219/case-core-v138-473w.png?v=219 473w, assets/optimized-v219/case-core-v138-945w.png?v=219 945w"
-                  sizes="(max-width: 960px) 100vw, 31vw"
-                  alt="Обложка кейса CORE"
-                  width="945"
-                  height="2048"
-                  data-critical-image
-                  decoding="async"
-                />
-                <video
-                  class="case-card__core-video"
-                  autoplay
-                  loop
-                  muted
-                  playsinline
-                  preload="auto"
-                  aria-hidden="true"
-                >
-                  <source src="assets/head-v208.mp4?v=221" type="video/mp4" />
-                </video>
-              </div>
+          <a class="case-card__link" href="core-tracker/" aria-label="Открыть кейс Переосмыслил UX/UI и расширил функциональность корпоративного трекера в связке с ChatGPT и Claude">
+            <div class="case-card__preview case-card__preview--core-tracker">
+              <img
+                src="assets/core-tracker-card.webp"
+                alt="Интерфейс раздела заметок корпоративной платформы Core Tracker"
+                width="500"
+                height="282"
+                data-critical-image
+                decoding="async"
+              />
             </div>
             <div class="case-card__meta">
-              <p class="case-card__title">Выявил 6 сценариев потенциального раскрытия пользовательских данных и спроектировал механики их предотвращения</p>
+              <p class="case-card__title">Переосмыслил UX/UI и расширил функциональность корпоративного трекера в связке с ChatGPT и Claude</p>
               <p class="case-card__description">2026</p>
             </div>
           </a>
@@ -179,6 +165,40 @@
             </div>
             <div class="case-card__meta">
               <p class="case-card__title">Спроектировал единое рабочее пространство для аудиторов X5, исключив внешнее хранение данных и разрозненность коммуникаций</p>
+              <p class="case-card__description">2026</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="case-card">
+          <a class="case-card__link" href="core/" aria-label="Открыть кейс Выявил 6 сценариев потенциального раскрытия пользовательских данных и спроектировал механики их предотвращения">
+            <div class="case-card__preview case-card__preview--core">
+              <div class="case-card__core-phone">
+                <img
+                  src="assets/optimized-v219/case-core-v138-473w.png?v=219"
+                  srcset="assets/optimized-v219/case-core-v138-473w.png?v=219 473w, assets/optimized-v219/case-core-v138-945w.png?v=219 945w"
+                  sizes="(max-width: 960px) 100vw, 31vw"
+                  alt="Обложка кейса CORE"
+                  width="945"
+                  height="2048"
+                  data-critical-image
+                  decoding="async"
+                />
+                <video
+                  class="case-card__core-video"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  preload="auto"
+                  aria-hidden="true"
+                >
+                  <source src="assets/head-v208.mp4?v=221" type="video/mp4" />
+                </video>
+              </div>
+            </div>
+            <div class="case-card__meta">
+              <p class="case-card__title">Выявил 6 сценариев потенциального раскрытия пользовательских данных и спроектировал механики их предотвращения</p>
               <p class="case-card__description">2026</p>
             </div>
           </a>

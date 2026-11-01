@@ -220,7 +220,7 @@ a:focus-visible {
 
 .portfolio__grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   background: #ffffff;
 }
 
@@ -2145,11 +2145,13 @@ a:focus-visible {
   object-fit: contain;
 }
 
-.case-card__preview--echo {
+.case-card__preview--echo,
+.case-card__preview--core-tracker {
   justify-content: flex-end;
 }
 
-.case-card__preview--echo img {
+.case-card__preview--echo img,
+.case-card__preview--core-tracker img {
   width: auto;
   height: 80%;
   object-fit: contain;
