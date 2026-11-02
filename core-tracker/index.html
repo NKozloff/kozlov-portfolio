@@ -33,9 +33,15 @@
 .x5-page .core-nav__scenarios{position:relative}
 @media(max-width:1280px) and (min-width:1024px){.x5-page .case-section .case-block--section-start>.case-section__label{position:static;margin:0 auto 1.333333rem;width:min(100%,720px)}}
 @media(prefers-reduced-motion:reduce){.x5-page .core-nav{transition:none}}
-/* Same first-screen cover composition as ECHO: 80% height,
-   aligned to the right, with viewport cropping on overflow. */
-.x5-page .core-tracker-intro__media { justify-content:flex-end; align-items:center; background:#f4f4f4; }
+/* Match ECHO's visible cover placement: keep the screenshot at 80% height,
+   show its left edge with a 10% inset, and clip the right side. */
+.x5-page .core-tracker-intro__media {
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10%;
+  box-sizing: border-box;
+  background: #f4f4f4;
+}
 .x5-page .core-tracker-intro__cover-image {
   display:block; width:auto; height:80%; max-width:none;
   object-fit:contain; object-position:right center; flex:0 0 auto;
