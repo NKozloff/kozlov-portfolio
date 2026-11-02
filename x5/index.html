@@ -36,7 +36,16 @@
 .x5-page .x5-table th{font-weight:700}
 .x5-page .core-nav__scenarios{position:relative}
 @media(max-width:1280px) and (min-width:1024px){.x5-page .case-section .case-block--section-start>.case-section__label{position:static;margin:0 auto 1.333333rem;width:min(100%,720px)}}
-@media(prefers-reduced-motion:reduce){.x5-page .core-nav{transition:none}}</style>
+@media(prefers-reduced-motion:reduce){.x5-page .core-nav{transition:none}}
+/* X5: matching task and delivery checklists, using the existing editorial table. */
+.x5-page .x5-target-table td:first-child{font-weight:600}
+.x5-page .x5-target-list{list-style:none;margin:0;padding:0;display:grid;gap:0.7em}
+.x5-page .x5-target-list li{display:grid;grid-template-columns:minmax(0,1fr);align-items:start;min-width:0}
+.x5-page .x5-target-list--done li{grid-template-columns:1.15em minmax(0,1fr);column-gap:0.55em}
+.x5-page .x5-done-mark{color:#23884c;font-weight:700;line-height:inherit}
+.x5-page #task .x5-table-wrap,.x5-page #result .x5-table-wrap{margin-top:2.666667rem}
+.x5-page #result .x5-table-wrap+.x5-copy{margin-top:2rem}
+</style>
 </head>
 <body class="core-page core-page--condensed typography-only x5-page">
 <main class="core-intro" id="cover">
@@ -65,8 +74,9 @@
 </section>
 
 <section class="case-section" id="task" data-case-section data-nav-anchor="task">
-<div class="case-block case-block--section-start"><p class="case-section__label">Задача</p><h2 class="case-heading">Объединить полный цикл работы аудитора в одной корпоративной веб-платформе</h2>
-<p class="case-lead x5-copy">Спроектировать внутренний продукт, в котором аудиторы смогут готовить и проводить проверки, заполнять чек-листы, работать с результатами и обмениваться материалами в контексте конкретного аудита. Вместо набора внешних инструментов — единое рабочее пространство с централизованными данными и связанными этапами процесса.</p></div>
+<div class="case-block case-block--section-start"><p class="case-section__label">Задача</p><h2 class="case-heading">Объединить данные и проведение аудитов в одной корпоративной платформе</h2>
+<p class="case-lead x5-copy">Передо мной стояли 3 задачи: централизовать данные аудитов, обеспечить работу с чек-листами внутри платформы и исключить необходимость хранения рабочих материалов во внешних инструментах.</p>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table x5-target-table"><colgroup><col style="width:34%"><col style="width:66%"></colgroup><thead><tr><th scope="col">Направление</th><th scope="col">Что необходимо было сделать</th></tr></thead><tbody><tr><td>Централизация данных</td><td><ul class="x5-target-list"><li><span>Объединить заявки, проверки, документы и результаты аудитов в одной корпоративной системе.</span></li><li><span>Связать данные и материалы с конкретными проверками.</span></li></ul></td></tr><tr><td>Удобная работа с чек-листами</td><td><ul class="x5-target-list"><li><span>Перенести заполнение чек-листов из Excel в платформу.</span></li><li><span>Предусмотреть фиксацию ответов, комментариев и вложений по вопросам.</span></li><li><span>Организовать согласование отчётов и работу с замечаниями.</span></li></ul></td></tr><tr><td>Исключение внешнего хранения</td><td><ul class="x5-target-list"><li><span>Хранить рабочие данные и материалы аудитов внутри корпоративной системы.</span></li><li><span>Исключить необходимость использования внешних сервисов для хранения и передачи рабочих материалов в основных сценариях.</span></li></ul></td></tr></tbody></table></div></div>
 </section>
 
 <section class="case-section" id="discovery" data-case-section data-nav-anchor="discovery">
@@ -187,9 +197,11 @@
 </section>
 
 <section class="case-section" id="result" data-case-section data-nav-anchor="result">
-<div class="case-block case-block--section-start"><p class="case-section__label">Результат</p><h2 class="case-heading">Запустили MVP для 4 пользовательских ролей и получили первую обратную связь от подразделений X5</h2>
-<p class="case-lead x5-copy">Платформа вышла в эксплуатацию: сотрудники начали осваивать новые сценарии работы с заявками, проверками и отчётами внутри корпоративной системы.</p>
-<p class="case-lead x5-copy">После запуска получили первую обратную связь от бизнес-подразделений X5. На момент завершения проекта продукт находился на начальном этапе внедрения, поэтому оценить долгосрочное влияние на рабочие процессы и отказ от внешних инструментов количественно ещё не успели.</p></div>
+<div class="case-block case-block--section-start"><p class="case-section__label">Результат</p><h2 class="case-heading">Реализовали ключевые задачи и запустили MVP корпоративной платформы</h2>
+<p class="case-lead x5-copy">В MVP реализовали все 3 направления, определённые в начале проекта:</p>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table x5-target-table"><colgroup><col style="width:34%"><col style="width:66%"></colgroup><thead><tr><th scope="col">Направление</th><th scope="col">Что необходимо было сделать</th></tr></thead><tbody><tr><td>Централизация данных</td><td><ul class="x5-target-list x5-target-list--done"><li><span class="x5-done-mark" aria-label="Выполнено">✓</span><span>Объединить заявки, проверки, документы и результаты аудитов в одной корпоративной системе.</span></li><li><span class="x5-done-mark" aria-label="Выполнено">✓</span><span>Связать данные и материалы с конкретными проверками.</span></li></ul></td></tr><tr><td>Удобная работа с чек-листами</td><td><ul class="x5-target-list x5-target-list--done"><li><span class="x5-done-mark" aria-label="Выполнено">✓</span><span>Перенести заполнение чек-листов из Excel в платформу.</span></li><li><span class="x5-done-mark" aria-label="Выполнено">✓</span><span>Предусмотреть фиксацию ответов, комментариев и вложений по вопросам.</span></li><li><span class="x5-done-mark" aria-label="Выполнено">✓</span><span>Организовать согласование отчётов и работу с замечаниями.</span></li></ul></td></tr><tr><td>Исключение внешнего хранения</td><td><ul class="x5-target-list x5-target-list--done"><li><span class="x5-done-mark" aria-label="Выполнено">✓</span><span>Хранить рабочие данные и материалы аудитов внутри корпоративной системы.</span></li><li><span class="x5-done-mark" aria-label="Выполнено">✓</span><span>Исключить необходимость использования внешних сервисов для хранения и передачи рабочих материалов в основных сценариях.</span></li></ul></td></tr></tbody></table></div>
+<p class="case-lead x5-copy">Платформа вышла в эксплуатацию: подразделения X5 начали осваивать работу с заявками, проверками и отчётами и предоставлять первую обратную связь. На момент завершения проекта внедрение ещё продолжалось, поэтому полный отказ сотрудников от внешних инструментов и долгосрочный эффект количественно не измеряли.</p>
+</div>
 </section></div>
 <nav class="core-nav" aria-label="Разделы кейса" aria-hidden="true" inert>
 <ul class="core-nav__list">
