@@ -14,7 +14,9 @@
 <style>
 .x5-page .core-intro__media{background:#f4f4f4}
 .x5-page .x5-intro__media{justify-content:flex-end;align-items:center;background:#f4f4f4}
-.x5-page .x5-intro__media .x5-intro__cover-image{display:block;width:auto;height:80%;max-width:none;object-fit:contain;object-position:right center;flex:0 0 auto}
+/* Match ECHO’s visible cover rectangle while keeping the X5 screenshot’s aspect ratio undistorted. */
+.x5-page .x5-intro__cover-frame{height:80%;aspect-ratio:1473 / 1425;flex:0 0 auto;overflow:hidden}
+.x5-page .x5-intro__cover-frame .x5-intro__cover-image{display:block;width:100%;height:100%;max-width:none;object-fit:cover;object-position:left center}
 .x5-page .case-body{padding-top:6.912rem;padding-bottom:6.912rem}
 .x5-page .case-body>.case-section{width:100%;margin:6.912rem auto 0;padding-top:0}
 .x5-page .case-body>.case-section:first-child{margin-top:0}
@@ -43,6 +45,7 @@
 <div class="core-intro__details"><section class="core-intro__group"><p class="core-intro__label">Мой вклад</p><p class="core-intro__value">Discovery, UX/UI Design, Usability Testing, Branding</p></section></div>
 <p class="core-intro__year">2026</p>
 </section><div class="core-intro__media x5-intro__media">
+  <div class="x5-intro__cover-frame">
   <img
     class="x5-intro__cover-image"
     src="../assets/x5-cover-v2-2048w.webp"
@@ -52,6 +55,7 @@
     fetchpriority="high"
     decoding="async"
   />
+  </div>
 </div>
 </main>
 <a class="core-close" href="../#projects" aria-label="Закрыть кейс"><img src="../assets/icon-close.svg" alt="" width="24" height="24"/></a>
