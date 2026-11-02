@@ -9,9 +9,12 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=240"/>
 <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png?v=240"/>
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=240"/>
+<link rel="preload" as="image" href="../assets/x5-cover-v2-2048w.webp"/>
 <link rel="stylesheet" href="../styles.css?v=427-branding-end-spacing"/>
 <style>
 .x5-page .core-intro__media{background:#f4f4f4}
+.x5-page .x5-intro__media{justify-content:flex-end;align-items:center;background:#f4f4f4}
+.x5-page .x5-intro__media .x5-intro__cover-image{display:block;width:auto;height:80%;max-width:none;object-fit:contain;object-position:right center;flex:0 0 auto}
 .x5-page .case-body{padding-top:6.912rem;padding-bottom:6.912rem}
 .x5-page .case-body>.case-section{width:100%;margin:6.912rem auto 0;padding-top:0}
 .x5-page .case-body>.case-section:first-child{margin-top:0}
@@ -39,7 +42,17 @@
 <h1 class="core-intro__title" id="x5-title">Спроектировал единое рабочее пространство для аудиторов X5, исключив внешнее хранение данных и разрозненность коммуникаций</h1>
 <div class="core-intro__details"><section class="core-intro__group"><p class="core-intro__label">Мой вклад</p><p class="core-intro__value">Discovery, UX/UI Design, Usability Testing, Branding</p></section></div>
 <p class="core-intro__year">2026</p>
-</section><div class="core-intro__media" aria-hidden="true"></div>
+</section><div class="core-intro__media x5-intro__media">
+  <img
+    class="x5-intro__cover-image"
+    src="../assets/x5-cover-v2-2048w.webp"
+    alt="Интерфейс страницы заявки в системе аудита X5"
+    width="2048"
+    height="1048"
+    fetchpriority="high"
+    decoding="async"
+  />
+</div>
 </main>
 <a class="core-close" href="../#projects" aria-label="Закрыть кейс"><img src="../assets/icon-close.svg" alt="" width="24" height="24"/></a>
 <div class="case-body"><section class="case-section" id="problem" data-case-section data-nav-anchor="problem">
