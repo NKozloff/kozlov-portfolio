@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Редизайн и расширение функциональности консьерж-сервиса через AI без Figma. Кейс продуктового дизайнера Никиты Козлова." />
-  <title>Переосмыслил UX/UI и расширил функциональность консьерж-сервиса, используя AI вместо Figma — Козлов Никита</title>
+  <title>Переосмыслил UX UI и расширил функциональность консьерж-сервиса, используя AI вместо Figma — Козлов Никита</title>
   <link rel="icon" href="../favicon.ico?v=240" sizes="any" />
   <link rel="stylesheet" href="../styles.css?v=368-core-tracker-grid" />
 <style>
@@ -32,12 +32,21 @@
 .x5-page .x5-table th{font-weight:700}
 .x5-page .core-nav__scenarios{position:relative}
 @media(max-width:1280px) and (min-width:1024px){.x5-page .case-section .case-block--section-start>.case-section__label{position:static;margin:0 auto 1.333333rem;width:min(100%,720px)}}
-@media(prefers-reduced-motion:reduce){.x5-page .core-nav{transition:none}}</style>
+@media(prefers-reduced-motion:reduce){.x5-page .core-nav{transition:none}}
+/* Same first-screen cover composition as ECHO: 80% height,
+   aligned to the right, with viewport cropping on overflow. */
+.x5-page .core-tracker-intro__media { justify-content:flex-end; align-items:center; background:#f4f4f4; }
+.x5-page .core-tracker-intro__cover-image {
+  display:block; width:auto; height:80%; max-width:none;
+  object-fit:contain; object-position:right center; flex:0 0 auto;
+  image-rendering:auto;
+}
+</style>
 </head>
 <body class="core-page core-page--condensed typography-only x5-page">
   <main class="core-intro" id="cover">
     <section class="core-intro__copy" aria-labelledby="tracker-title">
-      <h1 class="core-intro__title" id="tracker-title">Переосмыслил UX/UI и расширил функциональность консьерж-сервиса, используя AI вместо Figma</h1>
+      <h1 class="core-intro__title" id="tracker-title">Переосмыслил UX UI и расширил функциональность консьерж-сервиса, используя AI вместо Figma</h1>
       <div class="core-intro__details">
         <section class="core-intro__group">
           <p class="core-intro__label">Мой вклад</p>
@@ -46,8 +55,18 @@
       </div>
       <p class="core-intro__year">2026</p>
     </section>
-    <div class="core-intro__media" style="background:#202020">
-      <img src="../assets/core-tracker-cover-1600w.webp" alt="Интерфейс раздела заметок Core Tracker" style="width:100%;max-width:none;height:auto;max-height:80%;object-fit:contain" />
+    <div class="core-intro__media core-tracker-intro__media">
+      <img
+        class="core-tracker-intro__cover-image"
+        src="../assets/core-tracker-cover-2048w.webp"
+        srcset="../assets/core-tracker-cover-800w.webp 800w, ../assets/core-tracker-cover-1600w.webp 1600w, ../assets/core-tracker-cover-2048w.webp 2048w"
+        sizes="(max-width: 900px) 100vw, 80vw"
+        alt="Интерфейс раздела заметок Core Tracker"
+        width="2048"
+        height="1156"
+        fetchpriority="high"
+        decoding="async"
+      />
     </div>
   </main>
   <a class="core-close" href="../#projects" aria-label="Закрыть кейс">
@@ -56,12 +75,18 @@
   <div class="case-body">
 <section class="case-section" id="problem" data-case-section data-nav-anchor="problem">
 <div class="case-block case-block--section-start"><p class="case-section__label">Проблема</p><h2 class="case-heading">Функциональность платформы не покрывала все рабочие сценарии, а интерфейс потерял визуальную целостность</h2>
-<p class="case-lead x5-copy">Команда перестала справляться с растущим количеством проблем, и заказчик был недоволен качеством продукта. Поэтому к проекту решили привлечь дизайнера.</p></div>
-<div class="case-block"><h2 class="case-heading">1. Недостаток функциональности</h2>
-<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table"><thead><tr><th scope="col">Раздел</th><th scope="col">Что было не так</th></tr></thead><tbody><tr><td><strong>Заметки</strong></td><td>Пользователи вели заметки в сторонних сервисах, поскольку в платформе не было отдельного модуля для их хранения и редактирования. Рабочая информация оставалась за пределами платформы.</td></tr></tbody></table></div></div>
-<div class="case-block"><h2 class="case-heading">2. Разрозненность визуальных решений</h2>
-<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table"><thead><tr><th scope="col">Раздел</th><th scope="col">Что было не так</th></tr></thead><tbody><tr><td><strong>Цвета</strong></td><td>В интерфейсе накопилось множество оттенков и локальных исключений. Отсутствовали единая цветовая палитра и правила её применения.</td></tr>
-<tr><td><strong>Типографика</strong></td><td>Использовались несогласованные размеры и начертания шрифтов. Отсутствовала единая типографическая система.</td></tr></tbody></table></div></div>
+<p class="case-lead x5-copy">Команда перестала справляться с растущим количеством проблем, и заказчик был недоволен качеством продукта. Поэтому к проекту решили привлечь дизайнера.</p>
+<div class="case-outline-table-wrap x5-table-wrap">
+<table class="case-outline-table x5-table">
+<colgroup><col style="width:28%"><col style="width:20%"><col style="width:52%"></colgroup>
+<thead><tr><th scope="col">Проблема</th><th scope="col">Раздел</th><th scope="col">Что было не так</th></tr></thead>
+<tbody>
+<tr><td><strong>Недостаток функциональности</strong></td><td><strong>Заметки</strong></td><td>Пользователи вели заметки в сторонних сервисах, поскольку в платформе не было отдельного модуля для их хранения и редактирования. Рабочая информация оставалась за пределами платформы.</td></tr>
+<tr><td rowspan="2"><strong>Разрозненность визуальных решений</strong></td><td><strong>Цвета</strong></td><td>В интерфейсе накопилось множество оттенков и локальных исключений. Отсутствовали единая цветовая палитра и правила её применения.</td></tr>
+<tr><td><strong>Типографика</strong></td><td>Использовались несогласованные размеры и начертания шрифтов. Отсутствовала единая типографическая система.</td></tr>
+</tbody></table>
+</div>
+</div>
 </section>
 
 <section class="case-section" id="task" data-case-section data-nav-anchor="task">
@@ -116,7 +141,7 @@
 <tr><td><strong>2. Список заметок</strong></td><td>Заметок предполагалось немного, при этом они быстро теряли актуальность.</td><td>Разместил хронологический список рядом с редактором, предусмотрев закрепление важных записей и переключение между ними без дополнительных переходов.</td></tr>
 <tr><td><strong>3. Редактор заметки</strong></td><td>Длинные строки усложняют чтение объёмных документов, а переходы на отдельную страницу создают лишние действия.</td><td>Ограничил ширину текстовой области до 700–800 px и предусмотрел редактирование заметки непосредственно рядом со списком.</td></tr></tbody></table></div>
 <p class="case-highlight x5-conclusion"><span class="case-conclusion-mark">С помощью ChatGPT собрал кликабельный прототип для демонстрации заказчику. На его основе реализовали и запустили модуль заметок.</span></p>
-<div class="echo-desktop-gallery echo2-gallery--single" aria-label="Интерфейс модуля заметок"><div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/core-tracker-cover-1600w.webp" width="1600" height="903" alt="Раздел заметок консьерж-сервиса: навигация, список заметок и редактор" loading="lazy" decoding="async" /></div></div></div>
+<div class="echo-desktop-gallery echo2-gallery--single" aria-label="Интерфейс модуля заметок"><div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/core-tracker-cover-2048w.webp" srcset="../assets/core-tracker-cover-1600w.webp 1600w, ../assets/core-tracker-cover-2048w.webp 2048w" sizes="100vw" width="2048" height="1156" alt="Раздел заметок консьерж-сервиса: навигация, список заметок и редактор" loading="lazy" decoding="async" /></div></div></div>
 <div class="case-block"><h2 class="case-heading">Провёл Usability Testing с заказчиком и личным ассистентом и получил положительную обратную связь</h2>
 <p class="case-lead x5-copy">Оба участника положительно оценили трёхколоночную структуру: навигация, список заметок и редактор доступны на одном экране, поэтому не нужно переходить между страницами. Замечаний к компоновке по итогам тестирования не возникло.</p></div>
 </section>
