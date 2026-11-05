@@ -50,7 +50,7 @@
 
 /* Notes screenshot: same viewport-fitting, centered desktop treatment as ECHO.
    Overrides only this gallery, not the cover or other case blocks. */
-.core-page.x5-page #notes .core-tracker-notes-gallery {
+.core-page.x5-page :is(#notes .core-tracker-notes-gallery, #financial-approvals .core-tracker-approvals-gallery) {
   --tracker-gallery-pad-block: clamp(24px, 3.2rem, 60px);
   --tracker-gallery-nav-space: calc(2.533333rem + 24px + 24px);
   --tracker-gallery-media-height: max(
@@ -65,14 +65,14 @@
   padding-bottom: var(--tracker-gallery-pad-block);
 }
 @supports (height: 100dvh) {
-  .core-page.x5-page #notes .core-tracker-notes-gallery {
+  .core-page.x5-page :is(#notes .core-tracker-notes-gallery, #financial-approvals .core-tracker-approvals-gallery) {
     --tracker-gallery-media-height: max(
       120px,
       calc(100dvh - var(--tracker-gallery-pad-block) - var(--tracker-gallery-pad-block) - var(--tracker-gallery-nav-space))
     );
   }
 }
-.core-page.x5-page #notes .core-tracker-notes-gallery .echo-desktop-gallery__item {
+.core-page.x5-page :is(#notes .core-tracker-notes-gallery, #financial-approvals .core-tracker-approvals-gallery) .echo-desktop-gallery__item {
   display: flex;
   width: 100%;
   max-width: 100%;
@@ -80,7 +80,7 @@
   align-items: center;
   justify-content: center;
 }
-.core-page.x5-page #notes .core-tracker-notes-gallery .echo-desktop-gallery__image {
+.core-page.x5-page :is(#notes .core-tracker-notes-gallery, #financial-approvals .core-tracker-approvals-gallery) .echo-desktop-gallery__image {
   display: block;
   width: auto;
   height: auto;
@@ -206,6 +206,59 @@
 <div class="case-block"><h2 class="case-heading">Провёл Usability Testing с заказчиком и личным ассистентом и получил положительную обратную связь</h2>
 <p class="case-lead x5-copy">Оба участника положительно оценили трёхколоночную структуру: навигация, список заметок и редактор доступны на одном экране, поэтому не нужно переходить между страницами. Замечаний к компоновке по итогам тестирования не возникло.</p></div>
 </section>
+
+<section class="case-section" id="financial-approvals" data-case-section data-nav-anchor="financial-approvals">
+<div class="case-block case-block--section-start"><p class="case-section__label">Финансовые согласования</p><h2 class="case-heading">Провёл UX-аудит финансовых согласований и выявил проблемы в навигации и структуре интерфейса</h2>
+<p class="case-lead x5-copy">Раздел объединял несколько самостоятельных модулей, а элементы управления располагались без единой логики. Из-за этого пользователю было сложнее ориентироваться между сценариями и понимать, к каким данным относятся поиск, фильтры и действия.</p>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table">
+<colgroup><col style="width:32%"><col style="width:68%"></colgroup>
+<thead><tr><th scope="col">Проблема</th><th scope="col">Что выявил</th></tr></thead>
+<tbody>
+<tr><td><strong>Навигация</strong></td><td>Requests, Cost centers и ERP находились во вкладках внутри Financial, хотя это разные разделы с собственным содержимым и сценариями.</td></tr>
+<tr><td><strong>Иерархия действий</strong></td><td>Поиск, Import и Export располагались над вкладками, хотя их назначение зависит от открытого раздела.</td></tr>
+<tr><td><strong>Режим просмотра</strong></td><td>Переключение All / Pending approval было оформлено как два равнозначных таба, хотя второй вариант — частный случай фильтрации списка.</td></tr>
+<tr><td><strong>Фильтрация</strong></td><td>Часть фильтров находилась слева, а общая кнопка Filter — справа рядом с настройками таблицы. Управление выборкой оказалось разрозненным.</td></tr>
+<tr><td><strong>Таблица</strong></td><td>Колонки, заголовки и значения не образовывали достаточно последовательную сетку: расстояния между ними мешали быстро сопоставлять данные.</td></tr>
+<tr><td><strong>Итоговая строка</strong></td><td>Количество заявок и общая сумма не были выстроены по логике соответствующих столбцов.</td></tr>
+</tbody></table></div></div>
+<div class="case-block"><h2 class="case-heading">Сопоставил AS-IS и TO-BE для ключевых сценариев</h2>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table">
+<colgroup><col style="width:50%"><col style="width:50%"></colgroup>
+<thead><tr><th scope="col">AS-IS</th><th scope="col">TO-BE</th></tr></thead>
+<tbody>
+<tr><td>Для перехода между Requests, Cost centers и ERP нужно пользоваться внутренними вкладками, меняющими содержимое всего рабочего пространства.</td><td>Каждый модуль доступен как отдельный пункт глобального меню внутри Financial.</td></tr>
+<tr><td>Поиск и действия находятся выше переключателя разделов, поэтому их контекст неочевиден.</td><td>Поиск и Import / Export находятся в шапке конкретного раздела Requests.</td></tr>
+<tr><td>Чтобы увидеть все заявки, нужно переключиться с Pending approval на All.</td><td>По умолчанию показан общий список заявок; отдельный переключатель оставляет только ожидающие согласования.</td></tr>
+<tr><td>Фильтры рассредоточены между левой и правой частями панели управления.</td><td>Управление выборкой собрано слева; Grouping и Columns вынесены вправо как настройки отображения таблицы.</td></tr>
+<tr><td>Разные интервалы между колонками затрудняют сканирование строк.</td><td>Заголовки и значения выровнены по единой табличной сетке.</td></tr>
+<tr><td>Итоговая сумма визуально отделена от столбца Amount.</td><td>В нижней строке сумма расположена непосредственно под Amount, а число заявок показано отдельно.</td></tr>
+</tbody></table></div></div>
+<div class="case-block"><h2 class="case-heading">Сформулировал требования к новой структуре финансовых согласований</h2>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table">
+<colgroup><col style="width:32%"><col style="width:68%"></colgroup>
+<thead><tr><th scope="col">Элемент</th><th scope="col">Требование</th></tr></thead>
+<tbody>
+<tr><td><strong>Глобальное меню</strong></td><td>Развести Requests, Cost centers и ERP по самостоятельным пунктам навигации, сохранив общую группу Financial.</td></tr>
+<tr><td><strong>Шапка раздела</strong></td><td>Оставить название Requests, поиск, Import, Export и New request в контексте текущего рабочего пространства.</td></tr>
+<tr><td><strong>Панель фильтров</strong></td><td>Собрать Visibility, Status и Filter рядом; добавить отдельный переключатель Only pending approval.</td></tr>
+<tr><td><strong>Настройки таблицы</strong></td><td>Разместить Grouping и Columns отдельно от фильтров; сортировку оставить у заголовков соответствующих столбцов.</td></tr>
+<tr><td><strong>Таблица заявок</strong></td><td>Упорядочить ширины столбцов, интервалы, выравнивание заголовков и второстепенной информации в строках.</td></tr>
+<tr><td><strong>Итоги</strong></td><td>Выделить нижнюю строку и выровнять суммарное значение под столбцом Amount.</td></tr>
+</tbody></table></div></div>
+<div class="case-block case-block--echo-registration"><h2 class="case-heading">Разделил навигацию, фильтры и настройки таблицы по их назначению</h2>
+<p class="case-lead x5-copy">Главное изменение — отказ от вложенных вкладок в пользу понятной структуры разделов. Внутри Requests элементы теперь сгруппированы по контексту: действия с заявками — в шапке, фильтрация — слева над таблицей, настройки представления — справа, сортировка — у названий столбцов.</p>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table">
+<colgroup><col style="width:32%"><col style="width:68%"></colgroup>
+<thead><tr><th scope="col">Принцип</th><th scope="col">Что изменилось</th></tr></thead>
+<tbody>
+<tr><td><strong>Информационная архитектура</strong></td><td>Самостоятельные разделы перестали выглядеть как варианты одной страницы. Их место в меню отражает различие рабочих задач.</td></tr>
+<tr><td><strong>Понятный сценарий по умолчанию</strong></td><td>Пользователь сразу видит все доступные заявки, а для отбора ожидающих согласования использует один переключатель.</td></tr>
+<tr><td><strong>Локальность управления</strong></td><td>Фильтры отвечают за состав списка, а Grouping, Columns и сортировка — за способ его просмотра.</td></tr>
+<tr><td><strong>Читаемость данных</strong></td><td>Единые выравнивания помогают сопоставлять значения строк и находить общую сумму в привычной для таблиц позиции.</td></tr>
+</tbody></table></div>
+<p class="case-highlight x5-conclusion"><span class="case-conclusion-mark">Переработал структуру Financial Requests: вынес самостоятельные модули в меню, упростил переключение между всеми и ожидающими согласования заявками и привёл таблицу к единой системе выравнивания.</span></p>
+<div class="echo-desktop-gallery echo2-gallery--single core-tracker-approvals-gallery" aria-label="Обновлённый интерфейс финансовых согласований"><div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/core-tracker-approvals-redesign-2048w.webp" srcset="../assets/core-tracker-approvals-redesign-1024w.webp 1024w, ../assets/core-tracker-approvals-redesign-2048w.webp 2048w, ../assets/core-tracker-approvals-redesign-3072w.webp 3072w" sizes="100vw" width="2048" height="1223" alt="Обновлённый интерфейс Financial Requests: навигация, единая панель фильтров и выровненная таблица" loading="lazy" decoding="async" /></div></div></div>
+</section>
 </div>
 <nav class="core-nav" aria-label="Разделы кейса" aria-hidden="true" inert>
 <ul class="core-nav__list">
@@ -215,6 +268,7 @@
 <li class="core-nav__scenarios"><button class="core-nav__toggle" type="button" aria-expanded="false" aria-controls="core-tracker-nav-design-links">Проектирование <span class="core-nav__chevron" aria-hidden="true"></span></button>
 <ul class="core-nav__submenu" id="core-tracker-nav-design-links" aria-label="Проектирование" hidden>
 <li><a class="core-nav__link core-nav__sublink" href="#notes" data-nav-key="notes">Заметки</a></li>
+<li><a class="core-nav__link core-nav__sublink" href="#financial-approvals" data-nav-key="financial-approvals">Финансовые согласования</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -223,7 +277,7 @@
 (()=>{
 const intro=document.querySelector('.core-intro'),nav=document.querySelector('.core-nav');
 const links=[...nav.querySelectorAll('.core-nav__link')],toggle=nav.querySelector('.core-nav__toggle'),submenu=nav.querySelector('.core-nav__submenu');
-const keys=new Set(['notes']);
+const keys=new Set(['notes','financial-approvals']);
 const anchors=links.map(link=>({link,section:document.getElementById(link.dataset.navKey)})).filter(x=>x.section);
 const menu=open=>{submenu.hidden=!open;toggle.setAttribute('aria-expanded',String(open));};
 const update=()=>{
