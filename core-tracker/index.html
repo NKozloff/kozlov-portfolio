@@ -252,6 +252,38 @@
 <p class="case-highlight x5-conclusion"><span class="case-conclusion-mark">В результате переработал структуру раздела без добавления новых экранов: самостоятельные разделы перенёс в меню, объединил фильтры и упорядочил таблицу. Ниже — обновлённый интерфейс финансовых согласований.</span></p>
 <div class="echo-desktop-gallery echo2-gallery--single core-tracker-financial-gallery" aria-label="Обновлённый интерфейс финансовых согласований"><div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/core-tracker-approvals-redesign-2048w.webp" srcset="../assets/core-tracker-approvals-redesign-1024w.webp 1024w, ../assets/core-tracker-approvals-redesign-2048w.webp 2048w, ../assets/core-tracker-approvals-redesign-3072w.webp 3072w" sizes="100vw" width="2048" height="1223" alt="Обновлённый экран Requests: разделы Financial в боковом меню, единая панель фильтров и таблица с итогами" loading="lazy" decoding="async" /></div></div></div>
 </section>
+
+<section class="case-section" id="okr" data-case-section data-nav-anchor="okr">
+<div class="case-block case-block--section-start"><p class="case-section__label">OKR</p><h2 class="case-heading">Провёл UX-аудит OKR и выявил проблемы в аналитике и отображении обновлений</h2>
+<p class="case-lead x5-copy">Проверил, насколько быстро пользователь может оценить состояние целей за период и разобраться в последних изменениях. Выявил две основные проблемы: показатели трудно воспринимать без визуальных ориентиров, а обновления отделены от целей, к которым относятся.</p>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table">
+<colgroup><col style="width:25%"><col style="width:38%"><col style="width:37%"></colgroup>
+<thead><tr><th scope="col">Область</th><th scope="col">Что было не так</th><th scope="col">Почему это мешало</th></tr></thead>
+<tbody>
+<tr><td><strong>Аналитика периода</strong></td><td>Карточки Period progress, Objectives и Key results передавали состояние преимущественно числами и подписями, без наглядного графического сравнения.</td><td>Чтобы оценить прогресс периода и распределение показателей, приходилось читать значения и самостоятельно сопоставлять их.</td></tr>
+<tr><td><strong>Цели и обновления</strong></td><td>Objectives отображались в таблице слева, а Latest updates — в отдельной ленте справа.</td><td>Нужно было искать связь между обновлением и конкретной целью, переключая внимание между двумя частями экрана.</td></tr>
+<tr><td><strong>Контекст изменений</strong></td><td>События в Latest updates были сгруппированы в общей ленте, отдельно от прогресса и статуса соответствующих целей.</td><td>Чтобы понять, что изменилось и на какой результат это влияет, пользователь должен был сопоставлять сведения вручную.</td></tr>
+</tbody></table></div></div>
+<div class="case-block"><h2 class="case-heading">Сопоставил AS-IS и TO-BE для ключевых сценариев OKR</h2>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table">
+<colgroup><col style="width:50%"><col style="width:50%"></colgroup>
+<thead><tr><th scope="col">AS-IS</th><th scope="col">TO-BE</th></tr></thead>
+<tbody>
+<tr><td>Показатели периода представлены числами и пояснениями. Для понимания соотношений и состояния целей приходится сравнивать значения вручную.</td><td>заполнить позже</td></tr>
+<tr><td>Список Objectives и лента Latest updates находятся в отдельных колонках. Связь конкретного обновления с целью неочевидна.</td><td>заполнить позже</td></tr>
+<tr><td>Чтобы разобраться в причине изменения прогресса или Confidence, нужно отдельно изучать общую ленту событий и сопоставлять её с данными целей.</td><td>заполнить позже</td></tr>
+</tbody></table></div></div>
+<div class="case-block"><h2 class="case-heading">Сформулировал требования к переработке раздела OKR</h2>
+<p class="case-lead x5-copy">Сосредоточился на двух задачах: сделать аналитику нагляднее и сократить усилия на поиск обновлений, связанных с каждой целью. Конкретные интерфейсные решения зафиксирую после подготовки обновлённого макета.</p>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table">
+<colgroup><col style="width:30%"><col style="width:70%"></colgroup>
+<thead><tr><th scope="col">Направление</th><th scope="col">Требование</th></tr></thead>
+<tbody>
+<tr><td><strong>Визуальная аналитика</strong></td><td>Дополнить показатели периода и достижения целей понятными графическими индикаторами, чтобы состояние считывалось без постоянного сравнения чисел.</td></tr>
+<tr><td><strong>Связь с целью</strong></td><td>Показывать обновления в понятном контексте соответствующего Objective или Key result, не заставляя пользователя искать их в общей ленте.</td></tr>
+<tr><td><strong>Иерархия данных</strong></td><td>Сохранить ключевые сведения — прогресс, ответственного, Confidence и результаты — и сделать их визуально связанными с актуальными изменениями.</td></tr>
+</tbody></table></div></div>
+</section>
 </div>
 <nav class="core-nav" aria-label="Разделы кейса" aria-hidden="true" inert>
 <ul class="core-nav__list">
@@ -262,6 +294,7 @@
 <ul class="core-nav__submenu" id="core-tracker-nav-design-links" aria-label="Проектирование" hidden>
 <li><a class="core-nav__link core-nav__sublink" href="#notes" data-nav-key="notes">Заметки</a></li>
 <li><a class="core-nav__link core-nav__sublink" href="#financial-approvals" data-nav-key="financial-approvals">Финансовые согласования</a></li>
+<li><a class="core-nav__link core-nav__sublink" href="#okr" data-nav-key="okr">OKR</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -270,7 +303,7 @@
 (()=>{
 const intro=document.querySelector('.core-intro'),nav=document.querySelector('.core-nav');
 const links=[...nav.querySelectorAll('.core-nav__link')],toggle=nav.querySelector('.core-nav__toggle'),submenu=nav.querySelector('.core-nav__submenu');
-const keys=new Set(['notes','financial-approvals']);
+const keys=new Set(['notes','financial-approvals','okr']);
 const anchors=links.map(link=>({link,section:document.getElementById(link.dataset.navKey)})).filter(x=>x.section);
 const menu=open=>{submenu.hidden=!open;toggle.setAttribute('aria-expanded',String(open));};
 const update=()=>{
