@@ -51,7 +51,8 @@
 /* Notes screenshot: same viewport-fitting, centered desktop treatment as ECHO.
    Overrides only this gallery, not the cover or other case blocks. */
 .core-page.x5-page #notes .core-tracker-notes-gallery,
-.core-page.x5-page #financial-approvals .core-tracker-financial-gallery {
+.core-page.x5-page #financial-approvals .core-tracker-financial-gallery,
+.core-page.x5-page #okr .core-tracker-okr-gallery {
   --tracker-gallery-pad-block: clamp(24px, 3.2rem, 60px);
   --tracker-gallery-nav-space: calc(2.533333rem + 24px + 24px);
   --tracker-gallery-media-height: max(
@@ -67,7 +68,8 @@
 }
 @supports (height: 100dvh) {
   .core-page.x5-page #notes .core-tracker-notes-gallery,
-  .core-page.x5-page #financial-approvals .core-tracker-financial-gallery {
+  .core-page.x5-page #financial-approvals .core-tracker-financial-gallery,
+.core-page.x5-page #okr .core-tracker-okr-gallery {
     --tracker-gallery-media-height: max(
       120px,
       calc(100dvh - var(--tracker-gallery-pad-block) - var(--tracker-gallery-pad-block) - var(--tracker-gallery-nav-space))
@@ -75,7 +77,8 @@
   }
 }
 .core-page.x5-page #notes .core-tracker-notes-gallery .echo-desktop-gallery__item,
-.core-page.x5-page #financial-approvals .core-tracker-financial-gallery .echo-desktop-gallery__item {
+.core-page.x5-page #financial-approvals .core-tracker-financial-gallery .echo-desktop-gallery__item,
+.core-page.x5-page #okr .core-tracker-okr-gallery .echo-desktop-gallery__item {
   display: flex;
   width: 100%;
   max-width: 100%;
@@ -84,7 +87,8 @@
   justify-content: center;
 }
 .core-page.x5-page #notes .core-tracker-notes-gallery .echo-desktop-gallery__image,
-.core-page.x5-page #financial-approvals .core-tracker-financial-gallery .echo-desktop-gallery__image {
+.core-page.x5-page #financial-approvals .core-tracker-financial-gallery .echo-desktop-gallery__image,
+.core-page.x5-page #okr .core-tracker-okr-gallery .echo-desktop-gallery__image {
   display: block;
   width: auto;
   height: auto;
@@ -273,8 +277,8 @@
 <tr><td>Список Objectives и лента Latest updates находятся в отдельных колонках. Связь конкретного обновления с целью неочевидна.</td><td>заполнить позже</td></tr>
 <tr><td>Чтобы разобраться в причине изменения прогресса или Confidence, нужно отдельно изучать общую ленту событий и сопоставлять её с данными целей.</td><td>заполнить позже</td></tr>
 </tbody></table></div></div>
-<div class="case-block"><h2 class="case-heading">Сформулировал требования к переработке раздела OKR</h2>
-<p class="case-lead x5-copy">Сосредоточился на двух задачах: сделать аналитику нагляднее и сократить усилия на поиск обновлений, связанных с каждой целью. Конкретные интерфейсные решения зафиксирую после подготовки обновлённого макета.</p>
+<div class="case-block case-block--echo-registration"><h2 class="case-heading">Сформулировал требования к переработке раздела OKR</h2>
+<p class="case-lead x5-copy">Сосредоточился на двух задачах: сделать аналитику нагляднее и сократить усилия на поиск обновлений, связанных с каждой целью. В обновлённом макете эти требования легли в основу новой структуры экрана.</p>
 <div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table">
 <colgroup><col style="width:30%"><col style="width:70%"></colgroup>
 <thead><tr><th scope="col">Направление</th><th scope="col">Требование</th></tr></thead>
@@ -282,7 +286,10 @@
 <tr><td><strong>Визуальная аналитика</strong></td><td>Дополнить показатели периода и достижения целей понятными графическими индикаторами, чтобы состояние считывалось без постоянного сравнения чисел.</td></tr>
 <tr><td><strong>Связь с целью</strong></td><td>Показывать обновления в понятном контексте соответствующего Objective или Key result, не заставляя пользователя искать их в общей ленте.</td></tr>
 <tr><td><strong>Иерархия данных</strong></td><td>Сохранить ключевые сведения — прогресс, ответственного, Confidence и результаты — и сделать их визуально связанными с актуальными изменениями.</td></tr>
-</tbody></table></div></div>
+</tbody></table></div>
+
+<p class="case-highlight x5-conclusion"><span class="case-conclusion-mark">В обновлённом макете добавил визуальные диаграммы для показателей OKR и разместил последние изменения рядом с соответствующими целями, чтобы оценивать прогресс и события в одном контексте.</span></p>
+<div class="echo-desktop-gallery echo2-gallery--single core-tracker-okr-gallery" aria-label="Обновлённый интерфейс раздела OKR"><div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/core-tracker-okr-redesign-2048w.webp" srcset="../assets/core-tracker-okr-redesign-1024w.webp 1024w, ../assets/core-tracker-okr-redesign-2048w.webp 2048w, ../assets/core-tracker-okr-redesign-3072w.webp 3072w" sizes="100vw" width="2048" height="1224" alt="Обновлённый интерфейс OKR: кольцевые диаграммы показателей и обновления в строках соответствующих целей" loading="lazy" decoding="async" /></div></div></div>
 </section>
 </div>
 <nav class="core-nav" aria-label="Разделы кейса" aria-hidden="true" inert>
