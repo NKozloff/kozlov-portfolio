@@ -338,6 +338,18 @@
 <div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/core-tracker-visual-before-tasks-hq-2048w.webp" srcset="../assets/core-tracker-visual-before-tasks-hq-1024w.webp 1024w, ../assets/core-tracker-visual-before-tasks-hq-2048w.webp 2048w" sizes="(max-width: 900px) 100vw, calc(50vw - 32px)" width="2048" height="1224" alt="Исходный экран Tasks: таблица задач и множество вторичных элементов" loading="lazy" decoding="async" /></div>
 <div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/core-tracker-visual-before-dashboard-hq-2048w.webp" srcset="../assets/core-tracker-visual-before-dashboard-hq-1024w.webp 1024w, ../assets/core-tracker-visual-before-dashboard-hq-2048w.webp 2048w" sizes="(max-width: 900px) 100vw, calc(50vw - 32px)" width="2048" height="1224" alt="Исходный экран Dashboard: аналитика, OKR и список задач" loading="lazy" decoding="async" /></div>
 </div></div>
+
+<div class="case-block"><h2 class="case-heading">Перестроил архитектуру визуальных правил для Claude, чтобы продукт могли развивать без моего участия</h2>
+<p class="case-lead x5-copy">Получил песочницу проекта с MD-файлами, самостоятельно развернул её локально и переработал архитектуру описания интерфейса. Важно было сформулировать не набор разовых правок, а однозначные правила для нейросети: разработчики должны применять их к новым экранам и компонентам без постоянных согласований со мной.</p>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table">
+<colgroup><col style="width:35%"><col style="width:65%"></colgroup>
+<thead><tr><th scope="col">Принцип</th><th scope="col">Что закрепил</th></tr></thead>
+<tbody>
+<tr><td><strong>Уровни поверхностей</strong></td><td>Ввёл иерархию фонов для рабочей области, крупных контейнеров и вложенных элементов. Контраст между уровнями показывает структуру без лишних обводок.</td></tr>
+<tr><td><strong>Семантическая иерархия</strong></td><td>Определил единые уровни для цвета, типографики, иконок, размеров и скруглений. Их выбор зависит от роли и вложенности элемента, а не от локальных исключений.</td></tr>
+<tr><td><strong>Состояния контролов</strong></td><td>Задал общую логику визуальных состояний для интерактивных элементов, чтобы одинаковые действия и состояния во всех разделах выглядели последовательно.</td></tr>
+<tr><td><strong>Роль синего цвета</strong></td><td>Развил пожелание заказчика до правила: определил, где синий помогает выделять важные действия и активные состояния, а где акцент избыточен.</td></tr>
+</tbody></table></div></div>
 </section>
 </div>
 <nav class="core-nav" aria-label="Разделы кейса" aria-hidden="true" inert>
