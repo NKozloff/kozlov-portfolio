@@ -128,6 +128,34 @@
     padding: 48px var(--page-space);
   }
 }
+
+/* Three approved-concept examples, using the same wide gallery frame. */
+.core-page.x5-page #visual-principles .core-tracker-concept-gallery {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 1.25vw, 20px);
+  padding: clamp(32px, 4vw, 64px) clamp(16px, 2vw, 32px);
+}
+.core-page.x5-page #visual-principles .core-tracker-concept-gallery .echo-desktop-gallery__item {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+}
+.core-page.x5-page #visual-principles .core-tracker-concept-gallery .echo-desktop-gallery__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+@media (max-width: 900px) {
+  .core-page.x5-page #visual-principles .core-tracker-concept-gallery {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    padding: 48px var(--page-space);
+  }
+}
 </style>
 </head>
 <body class="core-page core-page--condensed typography-only x5-page">
@@ -338,6 +366,26 @@
 <div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/core-tracker-visual-before-tasks-hq-2048w.webp" srcset="../assets/core-tracker-visual-before-tasks-hq-1024w.webp 1024w, ../assets/core-tracker-visual-before-tasks-hq-2048w.webp 2048w" sizes="(max-width: 900px) 100vw, calc(50vw - 32px)" width="2048" height="1224" alt="Исходный экран Tasks: таблица задач и множество вторичных элементов" loading="lazy" decoding="async" /></div>
 <div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/core-tracker-visual-before-dashboard-hq-2048w.webp" srcset="../assets/core-tracker-visual-before-dashboard-hq-1024w.webp 1024w, ../assets/core-tracker-visual-before-dashboard-hq-2048w.webp 2048w" sizes="(max-width: 900px) 100vw, calc(50vw - 32px)" width="2048" height="1224" alt="Исходный экран Dashboard: аналитика, OKR и список задач" loading="lazy" decoding="async" /></div>
 </div></div>
+
+
+<div class="case-block case-block--echo-registration"><h2 class="case-heading">Представил концепт на основе существующего интерфейса, чтобы снизить риск правок заказчика</h2>
+<p class="case-lead x5-copy">Изучил текущие экраны Stage, выделил повторяющиеся визуальные решения и на их основе собрал новый концепт. Сохранил узнаваемый характер интерфейса, но заменил разрозненные решения последовательной логикой — без радикальной смены привычного визуального языка.</p>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table">
+<colgroup><col style="width:35%"><col style="width:65%"></colgroup>
+<thead><tr><th scope="col">Подход</th><th scope="col">Обоснование</th></tr></thead>
+<tbody>
+<tr><td><strong>Сохранил визуальную основу</strong></td><td>Оставил узнаваемую тёмную палитру, характер компонентов и существующие визуальные акценты, чтобы продукт не воспринимался как совершенно новый.</td></tr>
+<tr><td><strong>Систематизировал решения</strong></td><td>На основе текущих экранов сформировал общую логику контраста, иерархии и применения компонентов вместо локальных исключений.</td></tr>
+<tr><td><strong>Снизил риск правок</strong></td><td>Нельзя заранее знать, какие детали уже нравятся заказчику. Полный редизайн мог вызвать негативную реакцию, поэтому предложил эволюционное обновление.</td></tr>
+<tr><td><strong>Обосновал подход менеджеру</strong></td><td>Сначала презентовал концепт менеджеру проекта и объяснил, почему сохранение знакомого визуального языка уменьшает риск субъективных изменений со стороны заказчика.</td></tr>
+</tbody></table></div>
+<div class="echo-desktop-gallery core-tracker-concept-gallery" aria-label="Экраны концепта в разделах Заметки, Финансовые согласования и OKR">
+<div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/core-tracker-notes-updated-2048w.webp" srcset="../assets/core-tracker-notes-updated-1024w.webp 1024w, ../assets/core-tracker-notes-updated-2048w.webp 2048w, ../assets/core-tracker-notes-updated-3072w.webp 3072w" sizes="(max-width: 900px) 100vw, 33vw" width="2048" height="1223" alt="Концепт интерфейса заметок: навигация, список и редактор" loading="lazy" decoding="async" /></div>
+<div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/core-tracker-approvals-redesign-2048w.webp" srcset="../assets/core-tracker-approvals-redesign-1024w.webp 1024w, ../assets/core-tracker-approvals-redesign-2048w.webp 2048w, ../assets/core-tracker-approvals-redesign-3072w.webp 3072w" sizes="(max-width: 900px) 100vw, 33vw" width="2048" height="1223" alt="Концепт Financial Requests: единые фильтры и таблица заявок" loading="lazy" decoding="async" /></div>
+<div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/core-tracker-okr-redesign-2048w.webp" srcset="../assets/core-tracker-okr-redesign-1024w.webp 1024w, ../assets/core-tracker-okr-redesign-2048w.webp 2048w, ../assets/core-tracker-okr-redesign-3072w.webp 3072w" sizes="(max-width: 900px) 100vw, 33vw" width="2048" height="1224" alt="Концепт OKR: визуальные индикаторы прогресса и обновления в контексте целей" loading="lazy" decoding="async" /></div>
+</div>
+<p class="case-highlight x5-conclusion"><span class="case-conclusion-mark">Менеджер проекта поддержал концепт и согласился с выбранным подходом. Затем концепт представили заказчику — он получил одобрение.</span></p>
+</div>
 
 <div class="case-block"><h2 class="case-heading">Перестроил архитектуру визуальных правил для Claude, чтобы продукт могли развивать без моего участия</h2>
 <p class="case-lead x5-copy">Получил песочницу проекта с MD-файлами, самостоятельно развернул её локально и переработал архитектуру описания интерфейса. Важно было сформулировать не набор разовых правок, а однозначные правила для нейросети: разработчики должны применять их к новым экранам и компонентам без постоянных согласований со мной.</p>
