@@ -98,6 +98,36 @@
   margin-inline: auto;
   image-rendering: auto;
 }
+
+/* Visual principles: three original desktop screens in one horizontal gallery. */
+.core-page.x5-page #visual-principles .core-tracker-principles-gallery {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  justify-items: stretch;
+  gap: clamp(12px, 1.5vw, 24px);
+  padding: clamp(32px, 4vw, 64px) clamp(20px, 3vw, 48px);
+}
+.core-page.x5-page #visual-principles .core-tracker-principles-gallery .echo-desktop-gallery__item {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+}
+.core-page.x5-page #visual-principles .core-tracker-principles-gallery .echo-desktop-gallery__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+@media (max-width: 900px) {
+  .core-page.x5-page #visual-principles .core-tracker-principles-gallery {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    padding: 48px var(--page-space);
+  }
+}
 </style>
 </head>
 <body class="core-page core-page--condensed typography-only x5-page">
@@ -291,6 +321,25 @@
 <p class="case-highlight x5-conclusion"><span class="case-conclusion-mark">В обновлённом макете добавил визуальные диаграммы для показателей OKR и разместил последние изменения рядом с соответствующими целями, чтобы оценивать прогресс и события в одном контексте.</span></p>
 <div class="echo-desktop-gallery echo2-gallery--single core-tracker-okr-gallery" aria-label="Обновлённый интерфейс раздела OKR"><div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/core-tracker-okr-redesign-2048w.webp" srcset="../assets/core-tracker-okr-redesign-1024w.webp 1024w, ../assets/core-tracker-okr-redesign-2048w.webp 2048w, ../assets/core-tracker-okr-redesign-3072w.webp 3072w" sizes="100vw" width="2048" height="1224" alt="Обновлённый интерфейс OKR: кольцевые диаграммы показателей и обновления в строках соответствующих целей" loading="lazy" decoding="async" /></div></div></div>
 </section>
+
+<section class="case-section" id="visual-principles" data-case-section data-nav-anchor="visual-principles">
+<div class="case-block case-block--section-start case-block--echo-registration"><p class="case-section__label">Визуальные принципы</p><h2 class="case-heading">Переосмыслил UX/UI всей платформы и сформировал единые визуальные принципы</h2>
+<p class="case-lead x5-copy">Проанализировал не только отдельные экраны, но и правила, по которым оформлялась вся платформа. Выявил четыре системные проблемы, из-за которых интерфейс терял визуальную целостность.</p>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table">
+<colgroup><col style="width:25%"><col style="width:39%"><col style="width:36%"></colgroup>
+<thead><tr><th scope="col">Проблема</th><th scope="col">Что выявил</th><th scope="col">К чему это приводило</th></tr></thead>
+<tbody>
+<tr><td><strong>Нет зафиксированных визуальных правил</strong></td><td>В MD-файлах не были описаны архитектура интерфейса, визуальные принципы и правила использования компонентов. При работе с Claude решения принимались локально.</td><td>Появлялись исключения, несогласованные стили и разные решения для одинаковых компонентов.</td></tr>
+<tr><td><strong>Слабая визуальная иерархия</strong></td><td>Не были определены приоритеты основного и второстепенного контента: многие подписи, метаданные и элементы управления оформлялись одинаково мелко.</td><td>Второстепенные детали конкурировали с важными данными, усложняя быстрое считывание экрана.</td></tr>
+<tr><td><strong>Недостаточный контраст поверхностей</strong></td><td>Фон страницы, контейнеры и вложенные элементы слабо различались по оттенку. Чтобы обозначить границы, компоненты часто получали обводки.</td><td>Избыточные контуры создавали визуальный шум, а структура экрана оставалась недостаточно выразительной.</td></tr>
+<tr><td><strong>Не учтена логика акцентного цвета</strong></td><td>Заказчик сформулировал пожелания к использованию синего в интерфейсе, но эти правила не закрепили в общей визуальной системе.</td><td>Синий применялся непоследовательно и не всегда помогал выделять нужные действия или состояния.</td></tr>
+</tbody></table></div>
+<div class="echo-desktop-gallery core-tracker-principles-gallery" aria-label="Исходные интерфейсы платформы до обновления визуальных принципов">
+<div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/core-tracker-visual-before-tasks-2048w.webp" srcset="../assets/core-tracker-visual-before-tasks-1024w.webp 1024w, ../assets/core-tracker-visual-before-tasks-2048w.webp 2048w" sizes="(max-width: 900px) 100vw, 33vw" width="2048" height="1224" alt="Исходный экран Tasks: таблица задач и множество вторичных элементов" loading="lazy" decoding="async" /></div>
+<div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/core-tracker-visual-before-dashboard-2048w.webp" srcset="../assets/core-tracker-visual-before-dashboard-1024w.webp 1024w, ../assets/core-tracker-visual-before-dashboard-2048w.webp 2048w" sizes="(max-width: 900px) 100vw, 33vw" width="2048" height="1224" alt="Исходный экран Dashboard: аналитика, OKR и список задач" loading="lazy" decoding="async" /></div>
+<div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/core-tracker-visual-before-personal-goals-2048w.webp" srcset="../assets/core-tracker-visual-before-personal-goals-1024w.webp 1024w, ../assets/core-tracker-visual-before-personal-goals-2048w.webp 2048w" sizes="(max-width: 900px) 100vw, 33vw" width="2048" height="1224" alt="Исходный экран Personal Goals: цели и таблица привычек" loading="lazy" decoding="async" /></div>
+</div></div>
+</section>
 </div>
 <nav class="core-nav" aria-label="Разделы кейса" aria-hidden="true" inert>
 <ul class="core-nav__list">
@@ -302,6 +351,7 @@
 <li><a class="core-nav__link core-nav__sublink" href="#notes" data-nav-key="notes">Заметки</a></li>
 <li><a class="core-nav__link core-nav__sublink" href="#financial-approvals" data-nav-key="financial-approvals">Финансовые согласования</a></li>
 <li><a class="core-nav__link core-nav__sublink" href="#okr" data-nav-key="okr">OKR</a></li>
+<li><a class="core-nav__link core-nav__sublink" href="#visual-principles" data-nav-key="visual-principles">Визуальные принципы</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -310,7 +360,7 @@
 (()=>{
 const intro=document.querySelector('.core-intro'),nav=document.querySelector('.core-nav');
 const links=[...nav.querySelectorAll('.core-nav__link')],toggle=nav.querySelector('.core-nav__toggle'),submenu=nav.querySelector('.core-nav__submenu');
-const keys=new Set(['notes','financial-approvals','okr']);
+const keys=new Set(['notes','financial-approvals','okr','visual-principles']);
 const anchors=links.map(link=>({link,section:document.getElementById(link.dataset.navKey)})).filter(x=>x.section);
 const menu=open=>{submenu.hidden=!open;toggle.setAttribute('aria-expanded',String(open));};
 const update=()=>{
