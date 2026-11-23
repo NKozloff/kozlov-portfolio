@@ -172,9 +172,23 @@
 .core-page.x5-page .core-tracker-metric-note{color:#777;font-size:14px;line-height:1.5}
 .core-page.x5-page .core-tracker-result-table td:nth-child(n+2),.core-page.x5-page .core-tracker-result-table th:nth-child(n+2){text-align:center}
 @media(max-width:640px){.core-page.x5-page .core-tracker-video-frame{min-height:185px;padding:14px}}
+
+/* CORE Tracker 2 only: restore spacing before Problem after the new Context section. */
+.core-tracker2-page .case-body > #context + #problem {
+  margin-top: 6.912rem !important;
+}
+/* A two-column AS-IS table gives concise problem statements more room. */
+.core-tracker2-page .case-body .core-tracker-as-is-table th:first-child,
+.core-tracker2-page .case-body .core-tracker-as-is-table td:first-child {
+  width: 55% !important;
+}
+.core-tracker2-page .case-body .core-tracker-as-is-table th:last-child,
+.core-tracker2-page .case-body .core-tracker-as-is-table td:last-child {
+  width: 45% !important;
+}
 </style>
 </head>
-<body class="core-page core-page--condensed typography-only x5-page">
+<body class="core-page core-page--condensed typography-only x5-page core-tracker2-page">
   <main class="core-intro" id="cover">
     <section class="core-intro__copy" aria-labelledby="tracker-title">
       <h1 class="core-intro__title" id="tracker-title">Сократил ручные операции пользователей и зависимость от сторонних сервисов</h1>
@@ -235,17 +249,20 @@
 </section>
 
 <section class="case-section" id="scenario-as-is" data-case-section data-nav-anchor="scenario-as-is">
-<div class="case-block case-block--section-start"><p class="case-section__label">Анализ AS-IS</p><h2 class="case-heading">Проанализировал создание связанных задач и выявил 3 крупные проблемы</h2>
-<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table "><colgroup><col style="width:31%"><col style="width:34%"><col style="width:35%"></colgroup><thead><tr><th scope="col">Проблема</th><th scope="col">Что выявил</th><th scope="col">Последствия для пользователя</th></tr></thead><tbody>
-<tr><td><strong>1. Разрыв между созданием и настройкой задач</strong></td><td>Задачи создавались отдельно, а зависимости настраивались позже в других карточках.</td><td>Приходилось повторно искать созданные задачи по названию или идентификатору, теряя рабочий контекст.</td></tr>
-<tr><td><strong>2. Повторяющиеся действия</strong></td><td>Для каждой задачи требовалось заново открывать попап и заполнять форму.</td><td>Однотипные операции отнимали время и вызывали раздражение у бизнес-ассистента.</td></tr>
-<tr><td><strong>3. Невозможность увидеть иерархию задач целиком</strong></td><td>Существующая логика отображения зависимостей была слишком сложной для бизнес-ассистента и не давала общей картины.</td><td>Приходилось переходить между карточками задач и самостоятельно восстанавливать их взаимосвязи.</td></tr>
+<div class="case-block case-block--section-start"><h2 class="case-heading">Проанализировал создание связанных задач и выявил 3 крупные проблемы</h2>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table core-tracker-as-is-table">
+<colgroup><col style="width:55%"><col style="width:45%"></colgroup>
+<thead><tr><th scope="col">Выявленная проблема</th><th scope="col">Последствия для пользователя</th></tr></thead>
+<tbody>
+<tr><td><strong>1. Разрыв сценария.</strong> Создание и настройка задач происходили в разных интерфейсах.</td><td>Приходилось повторно искать задачи по названию или идентификатору, теряя рабочий контекст.</td></tr>
+<tr><td><strong>2. Повторяющиеся действия.</strong> Каждая задача создавалась через отдельный попап.</td><td>Однотипные операции отнимали время и вызывали раздражение у бизнес-ассистента.</td></tr>
+<tr><td><strong>3. Отсутствие общей иерархии.</strong> Связи между задачами не отображались целиком.</td><td>Приходилось переходить между карточками и самостоятельно восстанавливать взаимосвязи задач.</td></tr>
 </tbody></table></div><div class="core-tracker-video-frame" role="group" aria-label="Место для видео AS-IS"><div class="core-tracker-video-frame__content"><span class="core-tracker-video-frame__play" aria-hidden="true">▶</span><span class="core-tracker-video-frame__title">Видео AS-IS</span><span class="core-tracker-video-frame__hint">Будет добавлено после подготовки записи со счётчиком действий</span></div></div></div>
 <div class="case-block"><h2 class="case-heading">Выявил потребность сначала выстраивать связи между задачами, а затем заполнять их</h2><p class="case-lead x5-copy">После созвонов с заказчиком бизнес-ассистенту было важно быстро зафиксировать структуру связанных задач, пока он помнил договорённости. Старый интерфейс вынуждал сначала создавать задачи по отдельности и только потом настраивать зависимости между ними.</p></div>
 </section>
 
 <section class="case-section" id="scenario-to-be" data-case-section data-nav-anchor="scenario-to-be">
-<div class="case-block case-block--section-start"><p class="case-section__label">Решение / TO-BE</p><h2 class="case-heading">Нашёл способ устранить все выявленные проблемы</h2>
+<div class="case-block case-block--section-start"><h2 class="case-heading">Нашёл способ устранить все выявленные проблемы</h2>
 <div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table "><colgroup><col style="width:45%"><col style="width:55%"></colgroup><thead><tr><th scope="col">Что улучшил</th><th scope="col">Результат для пользователя</th></tr></thead><tbody>
 <tr><td><strong>1. Объединил создание и настройку задач в одном интерфейсе</strong></td><td>Можно сразу работать со всеми параметрами задачи без повторного открытия карточки.</td></tr>
 <tr><td><strong>2. Добавил построение связей прямо при создании задачи</strong></td><td>Можно быстро зафиксировать структуру поручений после созвона, а заполнение деталей отложить на потом.</td></tr>
@@ -254,7 +271,7 @@
 </section>
 
 <section class="case-section" id="scenario-result" data-case-section data-nav-anchor="scenario-result">
-<div class="case-block case-block--section-start"><p class="case-section__label">Результат</p><h2 class="case-heading">Итого: адаптировал сценарий под привычный порядок работы пользователя и сократил количество кликов на 43%</h2>
+<div class="case-block case-block--section-start"><h2 class="case-heading">Итого: адаптировал сценарий под привычный порядок работы пользователя и сократил количество кликов на 43%</h2>
 <div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table core-tracker-result-table"><colgroup><col style="width:66%"><col style="width:17%"><col style="width:17%"></colgroup><thead><tr><th scope="col">Показатель</th><th scope="col">AS-IS</th><th scope="col">TO-BE</th></tr></thead><tbody>
 <tr><td>Создание и настройка задачи в одном интерфейсе</td><td>✗</td><td>✓</td></tr>
 <tr><td>Возможность сначала выстроить связи, а затем заполнить задачи</td><td>✗</td><td>✓</td></tr>
