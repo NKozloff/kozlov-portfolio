@@ -161,8 +161,8 @@
 /* CORE Tracker 2: full-width media slots for the two upcoming walkthrough videos. */
 .core-page.x5-page .core-tracker-video-frame{
   display:flex; align-items:center; justify-content:center; box-sizing:border-box;
-  width:100%; max-width:100%; aspect-ratio:16 / 9; min-height:220px;
-  margin-top:2.666667rem; padding:24px; border:1px solid #dedede;
+  width:calc(100% + 2 * var(--page-space)); max-width:none; aspect-ratio:16 / 9; min-height:220px;
+  margin:2.666667rem calc(-1 * var(--page-space)) 0; padding:24px; border:0;
   background:#f4f4f4; color:#555;
 }
 .core-page.x5-page .core-tracker-video-frame__content{display:flex; flex-direction:column; align-items:center; gap:12px; text-align:center}
