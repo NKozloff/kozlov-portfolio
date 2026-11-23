@@ -157,6 +157,21 @@
     padding: 48px var(--page-space);
   }
 }
+
+/* CORE Tracker 2: full-width media slots for the two upcoming walkthrough videos. */
+.core-page.x5-page .core-tracker-video-frame{
+  display:flex; align-items:center; justify-content:center; box-sizing:border-box;
+  width:100%; max-width:100%; aspect-ratio:16 / 9; min-height:220px;
+  margin-top:2.666667rem; padding:24px; border:1px solid #dedede;
+  background:#f4f4f4; color:#555;
+}
+.core-page.x5-page .core-tracker-video-frame__content{display:flex; flex-direction:column; align-items:center; gap:12px; text-align:center}
+.core-page.x5-page .core-tracker-video-frame__play{display:grid;place-items:center;width:56px;height:56px;border:1px solid #999;border-radius:50%;font-size:18px;padding-left:3px;box-sizing:border-box}
+.core-page.x5-page .core-tracker-video-frame__title{color:#222;font-weight:700}
+.core-page.x5-page .core-tracker-video-frame__hint{font-size:14px;line-height:1.45}
+.core-page.x5-page .core-tracker-metric-note{color:#777;font-size:14px;line-height:1.5}
+.core-page.x5-page .core-tracker-result-table td:nth-child(n+2),.core-page.x5-page .core-tracker-result-table th:nth-child(n+2){text-align:center}
+@media(max-width:640px){.core-page.x5-page .core-tracker-video-frame{min-height:185px;padding:14px}}
 </style>
 </head>
 <body class="core-page core-page--condensed typography-only x5-page">
@@ -189,216 +204,78 @@
     <img src="../assets/icon-close.svg" alt="" width="24" height="24" />
   </a>
   <div class="case-body">
-<section class="case-section" id="problem" data-case-section data-nav-anchor="problem">
-<div class="case-block case-block--section-start"><p class="case-section__label">Проблема</p><h2 class="case-heading">Один консьерж-сервис — 2 уровня проблем</h2>
-<div class="case-outline-table-wrap x5-table-wrap">
-<table class="case-outline-table x5-table">
-<colgroup><col style="width:34%"><col style="width:66%"></colgroup>
-<thead><tr><th scope="col">Проблема</th><th scope="col">Как проявлялась</th></tr></thead>
-<tbody>
-<tr><td><strong>Зависимость от сторонних сервисов</strong></td><td>Ручные операции вне платформы отнимали время и вызывали опасения за сохранность личных данных.</td></tr>
-<tr><td><strong>Отсутствие системного дизайна</strong></td><td>Продукт развивали разработчики без дизайнера. Накопились визуальные несоответствия, дизайн-система потеряла целостность.</td></tr>
-</tbody></table>
-</div>
-</div>
+<section class="case-section" id="context" data-case-section data-nav-anchor="context">
+<div class="case-block case-block--section-start"><p class="case-section__label">Контекст</p><h2 class="case-heading">Веб-платформа объединила личные и рабочие процессы частного бизнесмена в едином пространстве</h2><p class="case-lead x5-copy">Платформа обеспечивает централизованное хранение данных, управление операционной деятельностью и контроль исполнения.</p></div>
 </section>
 
-<section class="case-section" id="task" data-case-section data-nav-anchor="task">
-<div class="case-block case-block--section-start"><p class="case-section__label">Задача</p><h2 class="case-heading">Моя задача — сократить ручные операции и привести интерфейс к единой системе</h2>
-<div class="case-outline-table-wrap x5-table-wrap">
-<table class="case-outline-table x5-table">
-<colgroup><col style="width:32%"><col style="width:68%"></colgroup>
-<thead><tr><th scope="col">Проблема</th><th scope="col">Способ решения</th></tr></thead>
-<tbody>
-<tr><td><strong>Зависимость от сторонних сервисов</strong></td><td>Изучить задачи пользователей, улучшить сценарии их решения и перенести в платформу.</td></tr>
-<tr><td><strong>Отсутствие системного дизайна</strong></td><td>Провести аудит интерфейса и выстроить единую дизайн-систему.</td></tr>
-</tbody></table>
-</div></div>
+<section class="case-section" id="problem" data-case-section data-nav-anchor="problem">
+<div class="case-block case-block--section-start"><p class="case-section__label">Проблема</p><h2 class="case-heading">По мере развития платформы накапливались проблемы в рабочих сценариях и росло недовольство заказчика</h2><p class="case-lead x5-copy">Часть функций была неудобной, необходимых возможностей не хватало, а команде разработки не хватало дизайн-экспертизы для дальнейшего развития интерфейса.</p></div>
+</section>
+
+<section class="case-section" id="users" data-case-section data-nav-anchor="users">
+<div class="case-block case-block--section-start"><p class="case-section__label">Пользователи</p><h2 class="case-heading">Основную работу с платформой выполнял бизнес-ассистент</h2><p class="case-lead x5-copy">Он вёл большую часть операционных процессов и пользовался сервисом чаще самого заказчика.</p></div>
 </section>
 
 <section class="case-section" id="discovery" data-case-section data-nav-anchor="discovery">
-<div class="case-block case-block--section-start"><p class="case-section__label">Приоритизация</p><h2 class="case-heading">Оценил влияние изменений на платформу и приоритизировал разработку</h2>
-<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table">
-<colgroup><col style="width:32%"><col style="width:68%"></colgroup>
-<thead><tr><th scope="col">Приоритет</th><th scope="col">Причина приоритета</th></tr></thead>
-<tbody>
-<tr><td><strong>1. Новые функции</strong></td><td><div><strong>Первичные:</strong> Закрывают ключевые сценарии ежедневной работы.</div><div style="margin-top:0.65em"><strong>Вторичные:</strong> Не влияют на основные рабочие сценарии.</div></td></tr>
-<tr><td><strong>2. Редизайн</strong></td><td>Не требует срочных изменений.</td></tr>
+<div class="case-block case-block--section-start"><p class="case-section__label">Discovery</p><h2 class="case-heading">Выделил Jobs to Be Done и построил CJM, чтобы выявить слабые места платформы</h2><p class="case-lead x5-copy">Декомпозировал работу бизнес-ассистента на ключевые задачи, сопоставил их с возможностями платформы и самостоятельно прошёл пользовательские сценарии. Сверил наблюдения с обратной связью бизнес-ассистента и определил направления доработки.</p></div>
+</section>
+
+<section class="case-section" id="priorities" data-case-section data-nav-anchor="priorities">
+<div class="case-block case-block--section-start"><p class="case-section__label">Приоритизация</p><h2 class="case-heading">Расставил приоритеты разработки по влиянию на работу пользователей</h2>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table "><colgroup><col style="width:39%"><col style="width:61%"></colgroup><thead><tr><th scope="col">Приоритет</th><th scope="col">Обоснование</th></tr></thead><tbody>
+<tr><td><strong>1. Доработка ключевых рабочих сценариев</strong></td><td>Устранить проблемы в существующих функциях, которыми бизнес-ассистент пользуется в основной работе.</td></tr>
+<tr><td><strong>2. Недостающие рабочие функции</strong></td><td>Закрыть задачи, для выполнения которых пользователям приходилось обращаться к сторонним сервисам.</td></tr>
+<tr><td><strong>3. Личные функции заказчика</strong></td><td>Расширить возможности платформы для личных потребностей, не влияющих на основные рабочие процессы.</td></tr>
+<tr><td><strong>4. Дизайн-система</strong></td><td>Систематизировать интерфейс и визуальные правила после проработки приоритетных сценариев.</td></tr>
 </tbody></table></div></div>
 </section>
 
-<section class="case-section" id="notes" data-case-section data-nav-anchor="notes">
-<div class="case-block case-block--section-start"><p class="case-section__label">Заметки</p><h2 class="case-heading">Начал проектирование с приоритетного раздела «Заметки» и сформулировал Jobs to Be Done</h2>
-<p class="case-lead x5-copy">Нужно было определить, какие функции действительно нужны пользователям и что не устраивало заказчика в существующем интерфейсе.</p>
-<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table"><thead><tr><th scope="col">Сценарий</th><th scope="col">Jobs to Be Done</th></tr></thead><tbody>
-<tr><td><strong>Сохранить информацию</strong></td><td>Когда мне нужно зафиксировать личную или рабочую информацию, я хочу быстро создать заметку, чтобы не потерять важные сведения и вернуться к ним позже.</td></tr>
-<tr><td><strong>Дополнить запись</strong></td><td>Когда появляются новые сведения, я хочу легко найти и отредактировать заметку, чтобы информация оставалась актуальной.</td></tr>
-<tr><td><strong>Сохранить контекст задачи</strong></td><td>Когда поручение требует дополнительных пояснений, я хочу прикрепить к нему заметку, чтобы контекст оставался вместе с задачей.</td></tr>
-</tbody></table></div></div>
-<div class="case-block"><h2 class="case-heading">Сопоставил AS-IS и TO-BE</h2>
-<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table"><thead><tr><th scope="col">AS-IS</th><th scope="col">TO-BE</th></tr></thead><tbody><tr><td>Заказчик и его ассистент вели заметки в сторонних приложениях на компьютере и телефоне.</td><td>Заметки создаются и хранятся непосредственно в корпоративной платформе.</td></tr>
-<tr><td>Дополнительную информацию к задачам приходилось размещать в небольшом текстовом поле или хранить отдельно.</td><td>Заметка становится самостоятельной сущностью, которую можно прикрепить к задаче.</td></tr>
-<tr><td>Для работы с объёмными записями приходилось переключаться между приложениями.</td><td>Встроенный текстовый редактор позволяет работать с объёмными заметками и форматировать содержимое.</td></tr>
-<tr><td>Самостоятельные заметки не имели отдельного пространства внутри платформы.</td><td>Появляется отдельный раздел с быстрым доступом к созданию, просмотру и редактированию заметок.</td></tr></tbody></table></div></div>
-<div class="case-block"><h2 class="case-heading">Сформулировал функциональные требования к модулю заметок</h2>
-<p class="case-lead x5-copy">На основе Jobs to Be Done определил требования к новому модулю. Заметки должны были стать самостоятельной сущностью с возможностью организации, редактирования и совместного использования, сохранив связь с задачами.</p>
-<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table"><thead><tr><th scope="col">Раздел</th><th scope="col">Требования</th></tr></thead><tbody><tr><td><strong>Структура интерфейса</strong></td><td>Организовать рабочее пространство в три колонки: навигация по заметкам, список заметок и редактор выбранной записи.</td></tr>
-<tr><td><strong>Навигация</strong></td><td>Предусмотреть категории: все заметки, мои, закреплённые, общие, из Telegram и удалённые.</td></tr>
-<tr><td><strong>Организация заметок</strong></td><td>Добавить папки, теги и шаблоны для структурирования информации и быстрого доступа к ней.</td></tr>
-<tr><td><strong>Список заметок</strong></td><td>Группировать заметки по датам, отображать заголовок и превью содержимого. Предусмотреть закрепление важных записей в верхней части списка.</td></tr>
-<tr><td><strong>Поиск и создание</strong></td><td>Обеспечить быстрый поиск по заметкам и создание новых записей непосредственно из рабочего пространства.</td></tr>
-<tr><td><strong>Текстовый редактор</strong></td><td>Предоставить возможность создавать и редактировать заметки разного объёма прямо внутри платформы, без перехода в сторонние приложения.</td></tr>
-<tr><td><strong>Форматирование</strong></td><td>Поддержать заголовки, жирный, курсивный и зачёркнутый текст, списки разных типов, ссылки, таблицы, блоки кода и другие инструменты форматирования.</td></tr>
-<tr><td><strong>Управление доступом</strong></td><td>Предусмотреть возможность предоставления доступа к заметке отдельным людям или целой команде.</td></tr>
-<tr><td><strong>Связь с задачами</strong></td><td>Позволить прикреплять заметки к задачам, сохраняя возможность использовать их как самостоятельные документы.</td></tr>
-<tr><td><strong>Вложения</strong></td><td>Обеспечить прикрепление файлов и изображений непосредственно к заметке, независимо от её связи с задачами.</td></tr>
-<tr><td><strong>Управление заметкой</strong></td><td>Добавить назначение папки и тегов, закрепление заметки, удаление через меню дополнительных действий и отображение времени последнего редактирования.</td></tr></tbody></table></div></div>
-<div class="case-block case-block--echo-registration"><h2 class="case-heading">На основе ограничений выбрал трёхколоночную структуру заметок</h2>
-<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table"><thead><tr><th scope="col">Раздел</th><th scope="col">Ограничения / вводные</th><th scope="col">UX-решение</th></tr></thead><tbody><tr><td><strong>1. Навигация и фильтры</strong></td><td>Предполагалось небольшое количество папок и тегов.</td><td>Разместил категории, папки и теги в постоянно открытой боковой панели для быстрого доступа к нужным заметкам.</td></tr>
-<tr><td><strong>2. Список заметок</strong></td><td>Заметок предполагалось немного, при этом они быстро теряли актуальность.</td><td>Разместил хронологический список рядом с редактором, предусмотрев закрепление важных записей и переключение между ними без дополнительных переходов.</td></tr>
-<tr><td><strong>3. Редактор заметки</strong></td><td>Длинные строки усложняют чтение объёмных документов, а переходы на отдельную страницу создают лишние действия.</td><td>Ограничил ширину текстовой области до 700–800 px и предусмотрел редактирование заметки непосредственно рядом со списком.</td></tr></tbody></table></div>
-<p class="case-highlight x5-conclusion"><span class="case-conclusion-mark">С помощью ChatGPT собрал кликабельный прототип для демонстрации заказчику. На его основе реализовали и запустили модуль заметок.</span></p>
-<div class="echo-desktop-gallery echo2-gallery--single core-tracker-notes-gallery" aria-label="Интерфейс модуля заметок"><div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/core-tracker-notes-updated-2048w.webp" srcset="../assets/core-tracker-notes-updated-1024w.webp 1024w, ../assets/core-tracker-notes-updated-2048w.webp 2048w, ../assets/core-tracker-notes-updated-3072w.webp 3072w" sizes="100vw" width="2048" height="1223" alt="Раздел заметок консьерж-сервиса: навигация, список заметок и редактор" loading="lazy" decoding="async" /></div></div></div>
-<div class="case-block"><h2 class="case-heading">Провёл Usability Testing с заказчиком и личным ассистентом и получил положительную обратную связь</h2>
-<p class="case-lead x5-copy">Оба участника положительно оценили трёхколоночную структуру: навигация, список заметок и редактор доступны на одном экране, поэтому не нужно переходить между страницами. Замечаний к компоновке по итогам тестирования не возникло.</p></div>
+<section class="case-section" id="scenario-context" data-case-section data-nav-anchor="scenario-context">
+<div class="case-block case-block--section-start"><p class="case-section__label">Рабочий сценарий 1</p><h2 class="case-heading">Начал с ключевого рабочего сценария — постановки задач и контроля их выполнения</h2><p class="case-lead x5-copy">За постановку задач преимущественно отвечал бизнес-ассистент. Его фактический порядок действий лёг в основу AS-IS.</p></div>
 </section>
 
-<section class="case-section" id="financial-approvals" data-case-section data-nav-anchor="financial-approvals">
-<div class="case-block case-block--section-start"><p class="case-section__label">Финансовые согласования</p><h2 class="case-heading">Провёл UX-аудит финансовых согласований и выявил проблемы в навигации и структуре экрана</h2>
-<p class="case-lead x5-copy">Разобрал основные действия сотрудника: найти заявку, отфильтровать список, проверить бюджет и статус согласования. Выяснил, что навигация, фильтры и действия над заявками были распределены по разным уровням интерфейса.</p>
-<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table">
-<colgroup><col style="width:22%"><col style="width:41%"><col style="width:37%"></colgroup>
-<thead><tr><th scope="col">Область</th><th scope="col">Что было не так</th><th scope="col">Почему это мешало</th></tr></thead>
-<tbody>
-<tr><td><strong>Навигация</strong></td><td>Requests, Cost centers и ERP находились во вкладках, хотя представляли самостоятельные разделы с разным содержимым.</td><td>Переход между разными рабочими пространствами выглядел как переключение вида одной страницы.</td></tr>
-<tr><td><strong>Иерархия экрана</strong></td><td>Поиск и основные действия располагались над вкладками, определяющими текущий раздел.</td><td>Было неочевидно, к какому разделу относится поиск и набор действий после переключения вкладки.</td></tr>
-<tr><td><strong>Фильтрация</strong></td><td>Переключатель Pending approval / All находился слева, а Filter — справа рядом с Grouping и Columns.</td><td>Настройки выборки были разнесены, а фильтрация смешивалась с управлением видом таблицы.</td></tr>
-<tr><td><strong>Стартовый режим</strong></td><td>По умолчанию открывались только заявки Pending approval.</td><td>Чтобы увидеть полный список, пользователь должен был вручную переключиться на All.</td></tr>
-<tr><td><strong>Таблица и итоги</strong></td><td>Отступы и выравнивание столбцов не образовывали единой сетки; строка Total находилась вне соответствующего столбца сумм.</td><td>Сопоставлять значения с заголовками и находить итоговую сумму было сложнее.</td></tr>
-<tr><td><strong>Массовые действия</strong></td><td>Approve all отображалась в одной панели с фильтрами и настройками таблицы.</td><td>Действие над заявками визуально конкурировало с настройками их отображения.</td></tr>
-</tbody></table></div></div>
-<div class="case-block"><h2 class="case-heading">Сопоставил AS-IS и TO-BE для ключевых пользовательских сценариев</h2>
-<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table">
-<thead><tr><th scope="col">AS-IS</th><th scope="col">TO-BE</th></tr></thead>
-<tbody>
-<tr><td>Requests, Cost centers и ERP переключались табами внутри финансового раздела.</td><td>Каждый раздел доступен отдельно из глобального меню Financial — пользователь сразу понимает, куда переходит.</td></tr>
-<tr><td>Поиск и кнопки действий стояли выше табов и не имели явной связи с конкретной страницей.</td><td>Заголовок Requests, поиск, Import, Export и New request объединены на уровне текущего раздела.</td></tr>
-<tr><td>Режим Pending approval был основным, а полный список открывался через отдельный таб All.</td><td>Сразу показываются все заявки; переключатель Only pending approval позволяет временно сузить список.</td></tr>
-<tr><td>Фильтр и выбор режима находились отдельно, а Filter соседствовал с настройками группировки.</td><td>Visibility, Status, Filter и переключатель ожидающих согласования собраны вместе; Grouping и Columns отделены справа.</td></tr>
-<tr><td>Ширина столбцов и внутренние отступы затрудняли визуальное сканирование таблицы.</td><td>Заголовки, значения и разделители выровнены по единой сетке с последовательными отступами.</td></tr>
-<tr><td>Total располагался внизу слева как отдельная строка с суммой рядом с подписью.</td><td>Итоговая сумма находится под столбцом Amount, а количество заявок — в правой части нижней строки таблицы.</td></tr>
-<tr><td>Approve all находилась в общем ряду настроек списка.</td><td>Массовое действие убрано из панели настроек представления, чтобы не смешивать разные типы операций.</td></tr>
-</tbody></table></div></div>
-<div class="case-block case-block--echo-registration"><h2 class="case-heading">Пересобрал иерархию управления заявками и привёл таблицу к единой сетке</h2>
-<p class="case-lead x5-copy">Разделил интерфейс на уровни: навигация по продукту, действия внутри Requests, фильтрация, настройки представления и работа с таблицей. Каждая группа теперь отвечает за свою задачу.</p>
-<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table">
-<colgroup><col style="width:25%"><col style="width:40%"><col style="width:35%"></colgroup>
-<thead><tr><th scope="col">Уровень</th><th scope="col">Решение</th><th scope="col">Зачем</th></tr></thead>
-<tbody>
-<tr><td><strong>Глобальная навигация</strong></td><td>Перенёс Requests, Cost centers и ERP в меню Financial, убрав вкладки над содержимым.</td><td>Самостоятельные разделы больше не воспринимаются как режимы одной таблицы.</td></tr>
-<tr><td><strong>Заголовок и действия</strong></td><td>Оставил поиск рядом с названием Requests, а Import, Export и New request — в правой части заголовка.</td><td>Поиск и действия воспринимаются как инструменты текущего раздела.</td></tr>
-<tr><td><strong>Фильтрация</strong></td><td>Собрал Visibility, Status и Filter слева; рядом разместил Only pending approval, выключенный по умолчанию.</td><td>Пользователь видит все заявки и при необходимости быстро переходит к ожидающим согласования.</td></tr>
-<tr><td><strong>Настройки таблицы</strong></td><td>Вынес Grouping и Columns в отдельную группу справа, отделив их от фильтров.</td><td>Изменение набора данных больше не смешивается с настройкой его представления.</td></tr>
-<tr><td><strong>Таблица и Total</strong></td><td>Унифицировал отступы строк и столбцов, уточнил иерархию заголовков и расположил итог под Amount.</td><td>Проще проследить связь между числовыми значениями, заголовками и итогами.</td></tr>
-</tbody></table></div>
-<p class="case-highlight x5-conclusion"><span class="case-conclusion-mark">В результате переработал структуру раздела без добавления новых экранов: самостоятельные разделы перенёс в меню, объединил фильтры и упорядочил таблицу. Ниже — обновлённый интерфейс финансовых согласований.</span></p>
-<div class="echo-desktop-gallery echo2-gallery--single core-tracker-financial-gallery" aria-label="Обновлённый интерфейс финансовых согласований"><div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/core-tracker-approvals-redesign-2048w.webp" srcset="../assets/core-tracker-approvals-redesign-1024w.webp 1024w, ../assets/core-tracker-approvals-redesign-2048w.webp 2048w, ../assets/core-tracker-approvals-redesign-3072w.webp 3072w" sizes="100vw" width="2048" height="1223" alt="Обновлённый экран Requests: разделы Financial в боковом меню, единая панель фильтров и таблица с итогами" loading="lazy" decoding="async" /></div></div></div>
+<section class="case-section" id="scenario-as-is" data-case-section data-nav-anchor="scenario-as-is">
+<div class="case-block case-block--section-start"><p class="case-section__label">Анализ AS-IS</p><h2 class="case-heading">Проанализировал создание связанных задач и выявил 3 крупные проблемы</h2>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table "><colgroup><col style="width:31%"><col style="width:34%"><col style="width:35%"></colgroup><thead><tr><th scope="col">Проблема</th><th scope="col">Что выявил</th><th scope="col">Последствия для пользователя</th></tr></thead><tbody>
+<tr><td><strong>1. Разрыв между созданием и настройкой задач</strong></td><td>Задачи создавались отдельно, а зависимости настраивались позже в других карточках.</td><td>Приходилось повторно искать созданные задачи по названию или идентификатору, теряя рабочий контекст.</td></tr>
+<tr><td><strong>2. Повторяющиеся действия</strong></td><td>Для каждой задачи требовалось заново открывать попап и заполнять форму.</td><td>Однотипные операции отнимали время и вызывали раздражение у бизнес-ассистента.</td></tr>
+<tr><td><strong>3. Невозможность увидеть иерархию задач целиком</strong></td><td>Существующая логика отображения зависимостей была слишком сложной для бизнес-ассистента и не давала общей картины.</td><td>Приходилось переходить между карточками задач и самостоятельно восстанавливать их взаимосвязи.</td></tr>
+</tbody></table></div><div class="core-tracker-video-frame" role="group" aria-label="Место для видео AS-IS"><div class="core-tracker-video-frame__content"><span class="core-tracker-video-frame__play" aria-hidden="true">▶</span><span class="core-tracker-video-frame__title">Видео AS-IS</span><span class="core-tracker-video-frame__hint">Будет добавлено после подготовки записи со счётчиком действий</span></div></div></div>
+<div class="case-block"><h2 class="case-heading">Выявил потребность сначала выстраивать связи между задачами, а затем заполнять их</h2><p class="case-lead x5-copy">После созвонов с заказчиком бизнес-ассистенту было важно быстро зафиксировать структуру связанных задач, пока он помнил договорённости. Старый интерфейс вынуждал сначала создавать задачи по отдельности и только потом настраивать зависимости между ними.</p></div>
 </section>
 
-<section class="case-section" id="okr" data-case-section data-nav-anchor="okr">
-<div class="case-block case-block--section-start"><p class="case-section__label">OKR</p><h2 class="case-heading">Провёл UX-аудит OKR и выявил проблемы в аналитике и отображении обновлений</h2>
-<p class="case-lead x5-copy">Проверил, насколько быстро пользователь может оценить состояние целей за период и разобраться в последних изменениях. Выявил две основные проблемы: показатели трудно воспринимать без визуальных ориентиров, а обновления отделены от целей, к которым относятся.</p>
-<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table">
-<colgroup><col style="width:25%"><col style="width:38%"><col style="width:37%"></colgroup>
-<thead><tr><th scope="col">Область</th><th scope="col">Что было не так</th><th scope="col">Почему это мешало</th></tr></thead>
-<tbody>
-<tr><td><strong>Аналитика периода</strong></td><td>Карточки Period progress, Objectives и Key results передавали состояние преимущественно числами и подписями, без наглядного графического сравнения.</td><td>Чтобы оценить прогресс периода и распределение показателей, приходилось читать значения и самостоятельно сопоставлять их.</td></tr>
-<tr><td><strong>Цели и обновления</strong></td><td>Objectives отображались в таблице слева, а Latest updates — в отдельной ленте справа.</td><td>Нужно было искать связь между обновлением и конкретной целью, переключая внимание между двумя частями экрана.</td></tr>
-<tr><td><strong>Контекст изменений</strong></td><td>События в Latest updates были сгруппированы в общей ленте, отдельно от прогресса и статуса соответствующих целей.</td><td>Чтобы понять, что изменилось и на какой результат это влияет, пользователь должен был сопоставлять сведения вручную.</td></tr>
-</tbody></table></div></div>
-<div class="case-block"><h2 class="case-heading">Сопоставил AS-IS и TO-BE для ключевых сценариев OKR</h2>
-<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table">
-<colgroup><col style="width:50%"><col style="width:50%"></colgroup>
-<thead><tr><th scope="col">AS-IS</th><th scope="col">TO-BE</th></tr></thead>
-<tbody>
-<tr><td>Показатели периода представлены числами и пояснениями. Для понимания соотношений и состояния целей приходится сравнивать значения вручную.</td><td>заполнить позже</td></tr>
-<tr><td>Список Objectives и лента Latest updates находятся в отдельных колонках. Связь конкретного обновления с целью неочевидна.</td><td>заполнить позже</td></tr>
-<tr><td>Чтобы разобраться в причине изменения прогресса или Confidence, нужно отдельно изучать общую ленту событий и сопоставлять её с данными целей.</td><td>заполнить позже</td></tr>
-</tbody></table></div></div>
-<div class="case-block case-block--echo-registration"><h2 class="case-heading">Сформулировал требования к переработке раздела OKR</h2>
-<p class="case-lead x5-copy">Сосредоточился на двух задачах: сделать аналитику нагляднее и сократить усилия на поиск обновлений, связанных с каждой целью. В обновлённом макете эти требования легли в основу новой структуры экрана.</p>
-<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table">
-<colgroup><col style="width:30%"><col style="width:70%"></colgroup>
-<thead><tr><th scope="col">Направление</th><th scope="col">Требование</th></tr></thead>
-<tbody>
-<tr><td><strong>Визуальная аналитика</strong></td><td>Дополнить показатели периода и достижения целей понятными графическими индикаторами, чтобы состояние считывалось без постоянного сравнения чисел.</td></tr>
-<tr><td><strong>Связь с целью</strong></td><td>Показывать обновления в понятном контексте соответствующего Objective или Key result, не заставляя пользователя искать их в общей ленте.</td></tr>
-<tr><td><strong>Иерархия данных</strong></td><td>Сохранить ключевые сведения — прогресс, ответственного, Confidence и результаты — и сделать их визуально связанными с актуальными изменениями.</td></tr>
-</tbody></table></div>
-
-<p class="case-highlight x5-conclusion"><span class="case-conclusion-mark">В обновлённом макете добавил визуальные диаграммы для показателей OKR и разместил последние изменения рядом с соответствующими целями, чтобы оценивать прогресс и события в одном контексте.</span></p>
-<div class="echo-desktop-gallery echo2-gallery--single core-tracker-okr-gallery" aria-label="Обновлённый интерфейс раздела OKR"><div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/core-tracker-okr-redesign-2048w.webp" srcset="../assets/core-tracker-okr-redesign-1024w.webp 1024w, ../assets/core-tracker-okr-redesign-2048w.webp 2048w, ../assets/core-tracker-okr-redesign-3072w.webp 3072w" sizes="100vw" width="2048" height="1224" alt="Обновлённый интерфейс OKR: кольцевые диаграммы показателей и обновления в строках соответствующих целей" loading="lazy" decoding="async" /></div></div></div>
+<section class="case-section" id="scenario-to-be" data-case-section data-nav-anchor="scenario-to-be">
+<div class="case-block case-block--section-start"><p class="case-section__label">Решение / TO-BE</p><h2 class="case-heading">Нашёл способ устранить все выявленные проблемы</h2>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table "><colgroup><col style="width:45%"><col style="width:55%"></colgroup><thead><tr><th scope="col">Что улучшил</th><th scope="col">Результат для пользователя</th></tr></thead><tbody>
+<tr><td><strong>1. Объединил создание и настройку задач в одном интерфейсе</strong></td><td>Можно сразу работать со всеми параметрами задачи без повторного открытия карточки.</td></tr>
+<tr><td><strong>2. Добавил построение связей прямо при создании задачи</strong></td><td>Можно быстро зафиксировать структуру поручений после созвона, а заполнение деталей отложить на потом.</td></tr>
+<tr><td><strong>3. Заменил списки связей деревом с быстрой навигацией</strong></td><td>Иерархия задач стала наглядной, а переходить между связанными задачами можно без возврата к общему списку.</td></tr>
+</tbody></table></div><div class="core-tracker-video-frame" role="group" aria-label="Место для видео TO-BE"><div class="core-tracker-video-frame__content"><span class="core-tracker-video-frame__play" aria-hidden="true">▶</span><span class="core-tracker-video-frame__title">Видео TO-BE</span><span class="core-tracker-video-frame__hint">Будет добавлено после подготовки записи со счётчиком действий</span></div></div></div>
 </section>
 
-<section class="case-section" id="visual-principles" data-case-section data-nav-anchor="visual-principles">
-<div class="case-block case-block--section-start case-block--echo-registration"><p class="case-section__label">Визуальные принципы</p><h2 class="case-heading">Переосмыслил UX UI всей платформы и сформировал единые визуальные принципы</h2>
-<p class="case-lead x5-copy">Проанализировал не только отдельные экраны, но и правила, по которым оформлялась вся платформа. Выявил четыре системные проблемы, из-за которых интерфейс терял визуальную целостность.</p>
-<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table">
-<colgroup><col style="width:35%"><col style="width:65%"></colgroup>
-<thead><tr><th scope="col">Проблема</th><th scope="col">Суть</th></tr></thead>
-<tbody>
-<tr><td><strong>Нет зафиксированных визуальных правил</strong></td><td>В MD-файлах не закрепили общие правила интерфейса. Claude создавал локальные исключения вместо единых решений.</td></tr>
-<tr><td><strong>Слабая визуальная иерархия</strong></td><td>Главное и второстепенное имели похожий визуальный вес. Мелкие подписи и метаданные мешали быстро находить важное.</td></tr>
-<tr><td><strong>Недостаточный контраст поверхностей</strong></td><td>Из-за близких оттенков фона границы компонентов обозначали обводками — это создавало визуальный шум.</td></tr>
-<tr><td><strong>Не учтена логика акцентного цвета</strong></td><td>Пожелания заказчика по применению синего не закрепили в системе, поэтому цвет использовался непоследовательно.</td></tr>
-</tbody></table></div>
-<div class="echo-desktop-gallery core-tracker-principles-gallery" aria-label="Исходные интерфейсы платформы до обновления визуальных принципов">
-<div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/core-tracker-visual-before-tasks-hq-2048w.webp" srcset="../assets/core-tracker-visual-before-tasks-hq-1024w.webp 1024w, ../assets/core-tracker-visual-before-tasks-hq-2048w.webp 2048w" sizes="(max-width: 900px) 100vw, calc(50vw - 32px)" width="2048" height="1224" alt="Исходный экран Tasks: таблица задач и множество вторичных элементов" loading="lazy" decoding="async" /></div>
-<div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/core-tracker-visual-before-dashboard-hq-2048w.webp" srcset="../assets/core-tracker-visual-before-dashboard-hq-1024w.webp 1024w, ../assets/core-tracker-visual-before-dashboard-hq-2048w.webp 2048w" sizes="(max-width: 900px) 100vw, calc(50vw - 32px)" width="2048" height="1224" alt="Исходный экран Dashboard: аналитика, OKR и список задач" loading="lazy" decoding="async" /></div>
-</div></div>
-
-
-<div class="case-block case-block--echo-registration"><h2 class="case-heading">Представил концепт на основе существующего интерфейса, чтобы снизить риск правок заказчика</h2>
-<p class="case-lead x5-copy">Изучил текущие экраны Stage, выделил повторяющиеся визуальные решения и на их основе собрал новый концепт. Сохранил узнаваемый характер интерфейса, но заменил разрозненные решения последовательной логикой — без радикальной смены привычного визуального языка.</p>
-<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table">
-<colgroup><col style="width:35%"><col style="width:65%"></colgroup>
-<thead><tr><th scope="col">Подход</th><th scope="col">Обоснование</th></tr></thead>
-<tbody>
-<tr><td><strong>Сохранил визуальную основу</strong></td><td>Оставил узнаваемую тёмную палитру, характер компонентов и существующие визуальные акценты, чтобы продукт не воспринимался как совершенно новый.</td></tr>
-<tr><td><strong>Систематизировал решения</strong></td><td>На основе текущих экранов сформировал общую логику контраста, иерархии и применения компонентов вместо локальных исключений.</td></tr>
-<tr><td><strong>Снизил риск правок</strong></td><td>Нельзя заранее знать, какие детали уже нравятся заказчику. Полный редизайн мог вызвать негативную реакцию, поэтому предложил эволюционное обновление.</td></tr>
-<tr><td><strong>Обосновал подход менеджеру</strong></td><td>Сначала презентовал концепт менеджеру проекта и объяснил, почему сохранение знакомого визуального языка уменьшает риск субъективных изменений со стороны заказчика.</td></tr>
-</tbody></table></div>
-<div class="echo-desktop-gallery core-tracker-concept-gallery" aria-label="Презентованный концепт интерфейса Financial Requests">
-<div class="echo-desktop-gallery__item"><img class="echo-desktop-gallery__image" src="../assets/core-tracker-approvals-redesign-2048w.webp" srcset="../assets/core-tracker-approvals-redesign-1024w.webp 1024w, ../assets/core-tracker-approvals-redesign-2048w.webp 2048w, ../assets/core-tracker-approvals-redesign-3072w.webp 3072w" sizes="100vw" width="2048" height="1223" alt="Концепт Financial Requests: единые фильтры и таблица заявок" loading="lazy" decoding="async" /></div>
-</div>
-<p class="case-highlight x5-conclusion"><span class="case-conclusion-mark">Менеджер проекта поддержал концепт и согласился с выбранным подходом. Затем концепт представили заказчику — он получил одобрение.</span></p>
-</div>
-
-<div class="case-block"><h2 class="case-heading">Перестроил архитектуру визуальных правил для Claude, чтобы продукт могли развивать без моего участия</h2>
-<p class="case-lead x5-copy">Получил песочницу проекта с MD-файлами, самостоятельно развернул её локально и переработал архитектуру описания интерфейса. Важно было сформулировать не набор разовых правок, а однозначные правила для нейросети: разработчики должны применять их к новым экранам и компонентам без постоянных согласований со мной.</p>
-<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table">
-<colgroup><col style="width:35%"><col style="width:65%"></colgroup>
-<thead><tr><th scope="col">Принцип</th><th scope="col">Что закрепил</th></tr></thead>
-<tbody>
-<tr><td><strong>Уровни поверхностей</strong></td><td>Ввёл иерархию фонов для рабочей области, крупных контейнеров и вложенных элементов. Контраст между уровнями показывает структуру без лишних обводок.</td></tr>
-<tr><td><strong>Семантическая иерархия</strong></td><td>Определил единые уровни для цвета, типографики, иконок, размеров и скруглений. Их выбор зависит от роли и вложенности элемента, а не от локальных исключений.</td></tr>
-<tr><td><strong>Состояния компонентов</strong></td><td>Задал общую логику визуальных состояний для интерактивных элементов, чтобы одинаковые действия и состояния во всех разделах выглядели последовательно.</td></tr>
-<tr><td><strong>Желания клиента</strong></td><td>Развил пожелание заказчика до правила: определил, где синий помогает выделять важные действия и активные состояния, а где акцент избыточен.</td></tr>
-</tbody></table></div></div>
+<section class="case-section" id="scenario-result" data-case-section data-nav-anchor="scenario-result">
+<div class="case-block case-block--section-start"><p class="case-section__label">Результат</p><h2 class="case-heading">Итого: адаптировал сценарий под привычный порядок работы пользователя и сократил количество кликов на 43%</h2>
+<div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table core-tracker-result-table"><colgroup><col style="width:66%"><col style="width:17%"><col style="width:17%"></colgroup><thead><tr><th scope="col">Показатель</th><th scope="col">AS-IS</th><th scope="col">TO-BE</th></tr></thead><tbody>
+<tr><td>Создание и настройка задачи в одном интерфейсе</td><td>✗</td><td>✓</td></tr>
+<tr><td>Возможность сначала выстроить связи, а затем заполнить задачи</td><td>✗</td><td>✓</td></tr>
+<tr><td>Возможность увидеть иерархию задач целиком</td><td>✗</td><td>✓</td></tr>
+<tr><td><strong>Количество кликов</strong></td><td><strong>7</strong></td><td><strong>4 (−43%)</strong></td></tr>
+</tbody></table></div><p class="case-lead x5-copy core-tracker-metric-note">Количество кликов — предварительный расчёт. Для окончательной публикации следует проверить, что в AS-IS и TO-BE выполнен одинаковый сценарий.</p></div>
 </section>
 </div>
 <nav class="core-nav" aria-label="Разделы кейса" aria-hidden="true" inert>
 <ul class="core-nav__list">
+<li><a class="core-nav__link" href="#context" data-nav-key="context">Контекст</a></li>
 <li><a class="core-nav__link" href="#problem" data-nav-key="problem">Проблема</a></li>
-<li><a class="core-nav__link" href="#task" data-nav-key="task">Задача</a></li>
+<li><a class="core-nav__link" href="#users" data-nav-key="users">Пользователи</a></li>
 <li><a class="core-nav__link" href="#discovery" data-nav-key="discovery">Discovery</a></li>
-<li class="core-nav__scenarios"><button class="core-nav__toggle" type="button" aria-expanded="false" aria-controls="core-tracker-nav-design-links">Проектирование <span class="core-nav__chevron" aria-hidden="true"></span></button>
-<ul class="core-nav__submenu" id="core-tracker-nav-design-links" aria-label="Проектирование" hidden>
-<li><a class="core-nav__link core-nav__sublink" href="#notes" data-nav-key="notes">Заметки</a></li>
-<li><a class="core-nav__link core-nav__sublink" href="#financial-approvals" data-nav-key="financial-approvals">Финансовые согласования</a></li>
-<li><a class="core-nav__link core-nav__sublink" href="#okr" data-nav-key="okr">OKR</a></li>
-<li><a class="core-nav__link core-nav__sublink" href="#visual-principles" data-nav-key="visual-principles">Система</a></li>
+<li><a class="core-nav__link" href="#priorities" data-nav-key="priorities">Приоритизация</a></li>
+<li class="core-nav__scenarios"><button class="core-nav__toggle" type="button" aria-expanded="false" aria-controls="core-tracker-nav-design-links">Сценарий 1 <span class="core-nav__chevron" aria-hidden="true"></span></button>
+<ul class="core-nav__submenu" id="core-tracker-nav-design-links" aria-label="Рабочий сценарий 1" hidden>
+<li><a class="core-nav__link core-nav__sublink" href="#scenario-context" data-nav-key="scenario-context">Контекст</a></li>
+<li><a class="core-nav__link core-nav__sublink" href="#scenario-as-is" data-nav-key="scenario-as-is">AS-IS</a></li>
+<li><a class="core-nav__link core-nav__sublink" href="#scenario-to-be" data-nav-key="scenario-to-be">TO-BE</a></li>
+<li><a class="core-nav__link core-nav__sublink" href="#scenario-result" data-nav-key="scenario-result">Результат</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -407,7 +284,7 @@
 (()=>{
 const intro=document.querySelector('.core-intro'),nav=document.querySelector('.core-nav');
 const links=[...nav.querySelectorAll('.core-nav__link')],toggle=nav.querySelector('.core-nav__toggle'),submenu=nav.querySelector('.core-nav__submenu');
-const keys=new Set(['notes','financial-approvals','okr','visual-principles']);
+const keys=new Set(['scenario-context','scenario-as-is','scenario-to-be','scenario-result']);
 const anchors=links.map(link=>({link,section:document.getElementById(link.dataset.navKey)})).filter(x=>x.section);
 const menu=open=>{submenu.hidden=!open;toggle.setAttribute('aria-expanded',String(open));};
 const update=()=>{
