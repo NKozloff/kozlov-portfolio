@@ -187,20 +187,46 @@
   width: 45% !important;
 }
 
-/* CORE Tracker 2: screenshot-based AS-IS walkthrough, using the same 72px cursor and 900ms motion as CORE's connection demo. */
+/* CORE Tracker 2: fit desktop screenshots by viewport height, as in ECHO. */
 .core-tracker2-page .case-body .core-tracker-video-frame.core-tracker-as-is-walkthrough {
+  --tracker-frame-pad-block:clamp(24px, 3.2rem, 60px);
+  --tracker-frame-nav-space:calc(2.533333rem + 24px + 24px);
+  --tracker-frame-media-height:max(
+    120px,
+    calc(100svh - var(--tracker-frame-pad-block) - var(--tracker-frame-pad-block) - var(--tracker-frame-nav-space))
+  );
   position:relative;
-  display:block;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   min-height:0;
-  padding:0;
+  padding:var(--tracker-frame-pad-block) clamp(16px, 4vw, 64px);
   overflow:hidden;
+  aspect-ratio:auto;
+}
+@supports (height:100dvh) {
+  .core-tracker2-page .case-body .core-tracker-video-frame.core-tracker-as-is-walkthrough {
+    --tracker-frame-media-height:max(
+      120px,
+      calc(100dvh - var(--tracker-frame-pad-block) - var(--tracker-frame-pad-block) - var(--tracker-frame-nav-space))
+    );
+  }
+}
+/* Keep the pointer coordinates attached to the scaled screenshot, not
+   the gray full-width field, so every target stays aligned. */
+.core-tracker2-page .core-tracker-as-is-walkthrough__viewport {
+  position:relative;
+  flex:0 1 auto;
+  width:min(100%, calc(var(--tracker-frame-media-height) * 1.673202614));
+  min-width:0;
   aspect-ratio:2048 / 1224;
 }
 .core-tracker2-page .core-tracker-as-is-walkthrough__frame {
   display:block;
   width:100%;
   height:100%;
-  object-fit:cover;
+  max-width:100%;
+  object-fit:contain;
   object-position:center;
   pointer-events:none;
   user-select:none;
@@ -305,8 +331,10 @@
 <tr><td><strong>2. Повторяющиеся действия.</strong> Каждая задача создавалась через отдельный попап.</td><td>Однотипные операции отнимали время и вызывали раздражение у бизнес-ассистента.</td></tr>
 <tr><td><strong>3. Отсутствие общей иерархии.</strong> Связи между задачами не отображались целиком.</td><td>Приходилось переходить между карточками и самостоятельно восстанавливать взаимосвязи задач.</td></tr>
 </tbody></table></div><div class="core-tracker-video-frame core-tracker-as-is-walkthrough" role="img" aria-label="AS-IS: создание задач через отдельные окна и переход в карточку для настройки связей. Анимированная демонстрация автоматически воспроизводится при появлении на экране.">
-  <img class="core-tracker-as-is-walkthrough__frame" src="../assets/core-tracker2-as-is-1.webp" width="2048" height="1224" alt="" aria-hidden="true" draggable="false" decoding="async" loading="lazy" />
-  <img class="core-tracker-as-is-walkthrough__cursor" src="../assets/core-tracker2-cursor.svg" width="72" height="72" alt="" aria-hidden="true" draggable="false" />
+  <div class="core-tracker-as-is-walkthrough__viewport">
+    <img class="core-tracker-as-is-walkthrough__frame" src="../assets/core-tracker2-as-is-1.webp" width="2048" height="1224" alt="" aria-hidden="true" draggable="false" decoding="async" loading="lazy" />
+    <img class="core-tracker-as-is-walkthrough__cursor" src="../assets/core-tracker2-cursor.svg" width="72" height="72" alt="" aria-hidden="true" draggable="false" />
+  </div>
 </div></div>
 <div class="case-block"><h2 class="case-heading">Выявил потребность сначала выстраивать связи между задачами, а затем заполнять их</h2><p class="case-lead x5-copy">После созвонов с заказчиком бизнес-ассистенту было важно быстро зафиксировать структуру связанных задач, пока он помнил договорённости. Старый интерфейс вынуждал сначала создавать задачи по отдельности и только потом настраивать зависимости между ними.</p></div>
 </section>
