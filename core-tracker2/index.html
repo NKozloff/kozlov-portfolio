@@ -197,8 +197,10 @@
   );
   position:relative;
   display:flex;
+  flex-direction:column;
   align-items:center;
   justify-content:center;
+  gap:24px;
   min-height:0;
   padding:var(--tracker-frame-pad-block) clamp(16px, 4vw, 64px);
   overflow:hidden;
@@ -269,16 +271,13 @@
 }
 
 
-/* Caption lives inside the existing gray top padding.
-   Its bottom edge is 24px above the screenshot; the screenshot stays put. */
+/* A single flex column uses the same top and bottom padding;
+   the caption-to-screenshot gap is always 24px. */
 .core-tracker2-page .case-body .core-tracker-as-is-walkthrough__caption {
-  position:absolute;
-  z-index:3;
-  top:calc(var(--tracker-frame-pad-block) - 24px);
-  left:50%;
-  transform:translate(-50%, -100%);
-  width:max-content;
-  max-width:calc(100% - 32px);
+  position:static;
+  flex:none;
+  width:auto;
+  max-width:100%;
   margin:0;
   padding:0;
   color:var(--ink);
@@ -289,8 +288,6 @@
 }
 @media (max-width:760px) {
   .core-tracker2-page .case-body .core-tracker-as-is-walkthrough__caption {
-    top:calc(var(--tracker-frame-pad-block) / 2);
-    transform:translate(-50%, -50%);
     font-size:14px;
   }
 }
