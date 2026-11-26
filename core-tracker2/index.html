@@ -203,7 +203,7 @@
   padding:var(--tracker-frame-pad-block) clamp(16px, 4vw, 64px);
   overflow:hidden;
   aspect-ratio:auto;
-  margin-top:0;
+  margin-top:2.666667rem;
 }
 @supports (height:100dvh) {
   .core-tracker2-page .case-body .core-tracker-video-frame.core-tracker-as-is-walkthrough {
@@ -269,15 +269,30 @@
 }
 
 
-/* Editorial caption above the AS-IS animation: centered as live text. */
+/* Caption lives inside the existing gray top padding.
+   Its bottom edge is 24px above the screenshot; the screenshot stays put. */
 .core-tracker2-page .case-body .core-tracker-as-is-walkthrough__caption {
-  margin:2.666667rem 0 24px;
+  position:absolute;
+  z-index:3;
+  top:calc(var(--tracker-frame-pad-block) - 24px);
+  left:50%;
+  transform:translate(-50%, -100%);
+  width:max-content;
+  max-width:calc(100% - 32px);
+  margin:0;
   padding:0;
   color:var(--ink);
   font-size:16px;
   font-weight:400;
   line-height:1.35;
   text-align:center;
+}
+@media (max-width:760px) {
+  .core-tracker2-page .case-body .core-tracker-as-is-walkthrough__caption {
+    top:calc(var(--tracker-frame-pad-block) / 2);
+    transform:translate(-50%, -50%);
+    font-size:14px;
+  }
 }
 </style>
 </head>
@@ -350,8 +365,9 @@
 <tr><td><strong>1. Разрыв сценария.</strong> Создание и настройка задач происходили в разных интерфейсах.</td><td>Приходилось повторно искать задачи по названию или идентификатору, теряя рабочий контекст.</td></tr>
 <tr><td><strong>2. Повторяющиеся действия.</strong> Каждая задача создавалась через отдельный попап.</td><td>Однотипные операции отнимали время и вызывали раздражение у бизнес-ассистента.</td></tr>
 <tr><td><strong>3. Отсутствие общей иерархии.</strong> Связи между задачами не отображались целиком.</td><td>Приходилось переходить между карточками и самостоятельно восстанавливать взаимосвязи задач.</td></tr>
-</tbody></table></div><p class="core-tracker-as-is-walkthrough__caption">Сценарий до изменений</p>
+</tbody></table></div>
 <div class="core-tracker-video-frame core-tracker-as-is-walkthrough" role="img" aria-label="AS-IS: создание задач через отдельные окна и переход в карточку для настройки связей. Анимированная демонстрация автоматически воспроизводится при появлении на экране.">
+  <p class="core-tracker-as-is-walkthrough__caption">Сценарий до изменений</p>
   <div class="core-tracker-as-is-walkthrough__viewport">
     <img class="core-tracker-as-is-walkthrough__frame is-shown" src="../assets/core-tracker2-as-is-1.webp" width="2048" height="1224" alt="" aria-hidden="true" draggable="false" decoding="async" loading="eager" />
     <img class="core-tracker-as-is-walkthrough__frame" src="../assets/core-tracker2-as-is-2.webp" width="2048" height="1224" alt="" aria-hidden="true" draggable="false" decoding="async" loading="eager" />
