@@ -169,7 +169,8 @@
 .core-page.x5-page .core-tracker-video-frame__play{display:grid;place-items:center;width:56px;height:56px;border:1px solid #999;border-radius:50%;font-size:18px;padding-left:3px;box-sizing:border-box}
 .core-page.x5-page .core-tracker-video-frame__title{color:#222;font-weight:700}
 .core-page.x5-page .core-tracker-video-frame__hint{font-size:14px;line-height:1.45}
-.core-page.x5-page .core-tracker-metric-note{color:#777;font-size:14px;line-height:1.5}
+.core-tracker2-page #scenario-result .core-tracker-result-metric{white-space:nowrap}
+.core-tracker2-page #scenario-result .core-tracker-result-percent{font-family:Arial,sans-serif;font-size:20px;font-weight:400;line-height:1;}
 .core-page.x5-page .core-tracker-result-table td:nth-child(n+2),.core-page.x5-page .core-tracker-result-table th:nth-child(n+2){text-align:center}
 @media(max-width:640px){.core-page.x5-page .core-tracker-video-frame{min-height:185px;padding:14px}}
 
@@ -389,13 +390,13 @@
 </section>
 
 <section class="case-section" id="scenario-result" data-case-section data-nav-anchor="scenario-result">
-<div class="case-block case-block--section-start"><h2 class="case-heading">Итого: адаптировал сценарий под привычный порядок работы пользователя и сократил количество кликов на 43%</h2>
+<div class="case-block case-block--section-start"><h2 class="case-heading">Итого: адаптировал сценарий под привычный порядок работы пользователя и сократил количество кликов на <span class="core-tracker-result-metric">43<span class="core-tracker-result-percent">%</span></span></h2>
 <div class="case-outline-table-wrap x5-table-wrap"><table class="case-outline-table x5-table core-tracker-result-table"><colgroup><col style="width:66%"><col style="width:17%"><col style="width:17%"></colgroup><thead><tr><th scope="col">Показатель</th><th scope="col">AS-IS</th><th scope="col">TO-BE</th></tr></thead><tbody>
 <tr><td>Создание и настройка задачи в одном интерфейсе</td><td>✗</td><td>✓</td></tr>
 <tr><td>Возможность сначала выстроить связи, а затем заполнить задачи</td><td>✗</td><td>✓</td></tr>
 <tr><td>Возможность увидеть иерархию задач целиком</td><td>✗</td><td>✓</td></tr>
 <tr><td><strong>Количество кликов</strong></td><td><strong>7</strong></td><td><strong>4 (−43%)</strong></td></tr>
-</tbody></table></div><p class="case-lead x5-copy core-tracker-metric-note">Количество кликов — предварительный расчёт. Для окончательной публикации следует проверить, что в AS-IS и TO-BE выполнен одинаковый сценарий.</p></div>
+</tbody></table></div></div>
 </section>
 </div>
 <nav class="core-nav" aria-label="Разделы кейса" aria-hidden="true" inert>
