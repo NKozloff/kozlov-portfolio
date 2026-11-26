@@ -259,6 +259,46 @@
 @media (prefers-reduced-motion: reduce) {
   .core-tracker2-page .core-tracker-as-is-walkthrough__cursor.is-moving { transition:none; }
 }
+
+/* CORE Tracker 2 — static User Flow preview next to the animated AS-IS frame.
+   Keep the full-bleed neutral field, with 100px internal side gutters. */
+.core-tracker2-page .case-body .core-tracker-video-frame.core-tracker-as-is-userflow {
+  --tracker-frame-pad-block:clamp(24px, 3.2rem, 60px);
+  --tracker-frame-nav-space:calc(2.533333rem + 24px + 24px);
+  --tracker-frame-media-height:max(
+    120px,
+    calc(100svh - var(--tracker-frame-pad-block) - var(--tracker-frame-pad-block) - var(--tracker-frame-nav-space))
+  );
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-sizing:border-box;
+  aspect-ratio:auto;
+  min-height:calc(var(--tracker-frame-media-height) + 2 * var(--tracker-frame-pad-block));
+  padding:var(--tracker-frame-pad-block) 100px;
+  overflow:hidden;
+}
+@supports (height:100dvh) {
+  .core-tracker2-page .case-body .core-tracker-video-frame.core-tracker-as-is-userflow {
+    --tracker-frame-media-height:max(
+      120px,
+      calc(100dvh - var(--tracker-frame-pad-block) - var(--tracker-frame-pad-block) - var(--tracker-frame-nav-space))
+    );
+  }
+}
+.core-tracker2-page .core-tracker-as-is-userflow__image {
+  display:block;
+  flex:0 1 auto;
+  width:100%;
+  max-width:100%;
+  height:auto;
+  object-fit:contain;
+}
+@media (max-width:760px) {
+  .core-tracker2-page .case-body .core-tracker-video-frame.core-tracker-as-is-userflow {
+    padding-inline:clamp(16px, 5vw, 100px);
+  }
+}
 </style>
 </head>
 <body class="core-page core-page--condensed typography-only x5-page core-tracker2-page">
@@ -335,6 +375,9 @@
     <img class="core-tracker-as-is-walkthrough__frame" src="../assets/core-tracker2-as-is-1.webp" width="2048" height="1224" alt="" aria-hidden="true" draggable="false" decoding="async" loading="lazy" />
     <img class="core-tracker-as-is-walkthrough__cursor" src="../assets/core-tracker2-cursor.svg" width="72" height="72" alt="" aria-hidden="true" draggable="false" />
   </div>
+</div>
+<div class="core-tracker-video-frame core-tracker-as-is-userflow" role="img" aria-label="AS-IS User Flow: повторяющийся цикл создания задач, переход к поиску и настройке связей, а также отсутствие общей иерархии.">
+  <img class="core-tracker-as-is-userflow__image" src="../assets/core-tracker2-as-is-userflow.webp" width="1860" height="290" alt="" aria-hidden="true" loading="lazy" decoding="async" draggable="false" />
 </div></div>
 <div class="case-block"><h2 class="case-heading">Выявил потребность сначала выстраивать связи между задачами, а затем заполнять их</h2><p class="case-lead x5-copy">После созвонов с заказчиком бизнес-ассистенту было важно быстро зафиксировать структуру связанных задач, пока он помнил договорённости. Старый интерфейс вынуждал сначала создавать задачи по отдельности и только потом настраивать зависимости между ними.</p></div>
 </section>
